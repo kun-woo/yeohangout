@@ -2,9 +2,12 @@
 
 GUIDELINE
 ================================================================================
-1. Create & Switch to 'New Branch'
-2. Commit & Push local changes to 'New Branch'
-3. 
+1. Pull latest changes from 'master'
+2. Create & switch to 'New Branch'
+3. Let others know you are going to commit
+4. Commit & push local changes to 'New Branch'
+5. Click 'Pull requests' then 'merge' 'New Branch' to 'master'
+6. Confirm 'Pull requests'
 
 ACADEMIC HONESTY STATEMENT
 ================================================================================
@@ -39,7 +42,7 @@ regarded as evidence of an attempt to conceal that sharing has taken place.
 When in doubt about whether or not I am permitted to use particular source
 materials, I will obtain written permission from the Professor(s), in advance of
 my submission. Such permission is best requested and obtained by E-mail to
-cse320@cs.stonybrook.edu
+howoo@cs.stonybrook.edu
 ================================================================================
 Signed:
 Wed Aug 23 04:28:39 UTC 2017 - Jude Hokyoon Woo

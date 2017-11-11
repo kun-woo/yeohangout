@@ -1,4 +1,5 @@
-yeohangout
+# yeohangout
+CSE 305 Database Project
 
 GUIDELINE
 ================================================================================

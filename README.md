@@ -22,8 +22,8 @@ source code into my work. In this case, the origins of all such code is clearly
 cited in my files.
 
 2. I have not shared, transmitted, or received source code written for this
-class (including in any semester) from anyone else except the Professor(s) and
-the TAs. This includes both electronic forms (E-mail or downloading), as well as
+class (including in any semester) from anyone else except teammates & the Professor(s)
+& the TAs. This includes both electronic forms (E-mail or downloading), as well as
 written or printed source code.
 
 3. Except in the case of explicit written permission given by the Professor(s),

@@ -2,7 +2,7 @@
 CSE 305 Database Project
 
 # Notice
-- 2017-11-11 16:13:42 Update JDBC Driver in lib folder
+- Updated JDBC Driver in lib folder (2017-11-11 16:13:42)
 
 GUIDELINE
 ================================================================================

@@ -1,5 +1,8 @@
 # yeohangout
 CSE 305 Database Project
+# Notice
+## 2017-11-11 16:13:42
+- Update JDBC Driver in lib folder
 
 GUIDELINE
 ================================================================================

@@ -33,7 +33,7 @@ public class MySQLAccess {
             statement = connect.createStatement();
             // Result set get the result of the SQL query
             resultSet = statement
-            			.executeQuery("select * from howoo.airline");
+            			.executeQuery("select * from howoo.customer");
             writeResultSet(resultSet);
 
             // PreparedStatements can use variables and are more efficient

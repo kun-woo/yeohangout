@@ -47,7 +47,6 @@ public class SignUpServlet extends HttpServlet{
 	    Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
 	    
 	    
-	    
 	    newPerson.setId(id);
 	    newPerson.setFirstName(fName);
 	    newPerson.setLastName(lName);
@@ -63,10 +62,9 @@ public class SignUpServlet extends HttpServlet{
 	    newUser.setRating(0);
 	    
 	    
-	    
-	    
 	    boolean submitButtonPressed = request.getParameter("submitBt") != null;
 	    
+	    //Insert new user info to Database, This code will insert the sign up information into Person and Customer table.
 	    try {
 	    		MySQLAccess dao = new MySQLAccess();
 	    		dao.readDataBase();
@@ -76,6 +74,7 @@ public class SignUpServlet extends HttpServlet{
 			DBUtils.insertPerson(connect, newPerson);
 			DBUtils.insertUser(connect, newUser);
 			
+			dao.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException ex) {
@@ -86,15 +85,10 @@ public class SignUpServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 	    
-//	    if(submitButtonPressed==true) {
-//	    		
-//	    }
-//	    else {
-//	    	
-//	    }
 		
 	    out.println("<html><head><title>SignUp</title></head>");
 	    out.println("<body>");
+	    out.println("<p> New Customer is added </p>");
 	    out.println("<p> id : "+newPerson.getId()+"</p>");
 	    out.println("<p> first name : "+newPerson.getFirstName()+"</p>");
 	    out.println("<p> last name : "+newPerson.getLastName()+"</p>");
@@ -102,6 +96,7 @@ public class SignUpServlet extends HttpServlet{
 	    out.println("<p> city : "+ newPerson.getCity()+"</p>");
 	    out.println("<p> state : "+ newPerson.getState()+"</p>");
 	    out.println("<p> zipcode : "+newPerson.getZipcode()+"</p>");
+	  
 	    out.println("</body>");
 	    out.println("</html>");
 	}

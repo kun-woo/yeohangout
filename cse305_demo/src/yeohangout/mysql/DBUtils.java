@@ -44,4 +44,28 @@ public class DBUtils {
     		
     		pstm.executeUpdate();
     }
+    
+    public static UserAccount searchUser(Connection conn, int userId) throws SQLException{
+    		
+    		String sql = "Select * FROM howoo.customer c Where c.id = ?";
+    		
+    		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+    		
+    		pstm.setInt(1, userId);
+    		
+    		
+    		ResultSet rs = pstm.executeQuery();
+    		while(rs.next()) {
+    			UserAccount loginedUser = new UserAccount();
+    			loginedUser.setUserID(rs.getInt("Id"));
+    			loginedUser.setAccountNo(rs.getInt("AccountNo"));
+    			loginedUser.setCreditCardNo(rs.getInt("CreditCardNo"));
+    			loginedUser.setRating(rs.getInt("Rating"));
+    			loginedUser.setAccountCreationDate(rs.getDate("CreationDate"));
+    			return loginedUser;
+    		}
+    		
+    		return null;
+
+    }
 }

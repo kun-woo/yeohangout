@@ -1,0 +1,295 @@
+@charset "UTF-8";
+
+/*=================================================
+||				0. Animation 
+==================================================*/
+
+.slideanim {visibility:hidden;}
+
+.slide-up {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+	/* The duration of the animation */    
+	animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+
+/*=================================================
+||				1. Container 
+==================================================*/
+
+.container-fluid {
+	padding: 60px 50px;
+}
+
+.bg-gray {
+	background-color: #f8f9fa;
+}
+
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+
+ @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+  }
+
+/*=================================================
+||				2. Carousel 
+==================================================*/
+
+#mycarousel {
+	font-family: Montserrat, sans-serif;
+}
+
+.full-screen {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.carousel-caption {
+	top: 40%;
+	bottom: auto;
+}
+/* Hide Circles */
+.right.carousel-control, .left.carousel-control { 
+    opacity: 0;
+    filter:alpha(opacity=0); /* IE support */
+}
+
+.book-button {
+    background-color: transparent;
+    border-width: thick;
+    border-color: #fff;
+    color: #fff;
+    transition: all .5s;
+}
+
+.book-button:hover {
+    background-color: #fff;
+    color: #cc6600;
+    border-color: #fff;
+}
+
+.book-button:active {
+    background-color: #fff;
+    color: #cc6600;
+    border-color: #fff;
+}
+
+.book-button:focus {
+    background-color: #fff;
+    color: #cc6600;
+    border-color: #fff;
+}
+
+@media (max-width: 600px) {
+    .carousel-caption > h1, .carousel-caption > h2 {
+        display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+}
+
+.thumbnail-popular {
+    padding: 0 0 15px 0;
+    border: 10px solid transparent;
+	opacity: 0.7;
+}
+
+.thumbnail-popular:hover {
+	box-shadow: 5px 0px 40px rgba(0,0,0, .2);	
+}
+
+.thumbnail-popular > img {
+    width: 100%;
+    height: 100%;
+    -webkit-filter: grayscale(90%);
+    filter: grayscale(90%); /* make all photos black and white */ 
+    margin-bottom: 10px;
+}
+
+.thumbnail-popular > img:hover {
+	filter:none; 
+}
+
+.myStar {
+	color: blue;
+}
+
+/*=================================================
+||				2. About 
+==================================================*/
+
+.logo {
+    /* color: #f4511e; */
+    font-size: 200px;
+}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail:hover {
+	box-shadow: 5px 0px 40px rgba(0,0,0, .2);	
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+/*=================================================
+||				3. Services 
+==================================================*/
+
+.logo-small {
+    font-size: 50px;
+}
+
+/*=================================================
+||				4. Search 
+==================================================*/
+
+.half-rule { 
+    border:none;
+  	height: 20px;
+ 	width: 90%;
+	height: 50px;
+	margin-top: 0;
+	border-bottom: 1px solid #1f1209;
+}
+
+.search-tab {
+	border-color: #000;
+}
+
+.search-form {
+	background-color: #f8f9fa;
+}
+
+/*=================================================
+||				5. Navbar 
+==================================================*/
+.navbar {
+    margin-bottom: 0;
+    background-color: #000;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #000 !important;
+    background-color: #fff !important;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+@media (max-width: 991px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .navbar-text {
+        float: none;
+        margin: 15px 0;
+    }
+    /* since 3.1.0 */
+    .navbar-collapse.collapse.in { 
+        display: block!important;
+    }
+    .collapsing {
+        overflow: hidden!important;
+    }
+}
+
+/*=================================================
+||				6. Footer 
+==================================================*/
+
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+footer {
+	background-color: #000;
+}
+
+footer > p {
+	color: #fff;
+}

@@ -192,7 +192,7 @@ body {
 ||				4. Search 
 ==================================================*/
 
-.half-rule { 
+/* .half-rule { 
     border:none;
   	height: 20px;
  	width: 90%;
@@ -207,35 +207,40 @@ body {
 
 .search-form {
 	background-color: #f8f9fa;
-}
+} */
 
 /*=================================================
 ||				5. Navbar 
 ==================================================*/
+/* Add a dark background color with a little bit see-through */ 
 .navbar {
     margin-bottom: 0;
-    background-color: #000;
-    z-index: 9999;
+    background-color: #2d2d30;
     border: 0;
-    font-size: 12px !important;
-    line-height: 1.42857143 !important;
+    font-size: 11px !important;
     letter-spacing: 4px;
-    border-radius: 0;
-    font-family: Montserrat, sans-serif;
+    opacity:0.9;
 }
 
-.navbar li a, .navbar .navbar-brand {
+/* Add a gray color to all navbar links */
+.navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
+/* On hover, the links will turn white */
+.navbar-nav li a:hover {
     color: #fff !important;
 }
 
-.navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #000 !important;
-    background-color: #fff !important;
+/* The active link */
+.navbar-nav li.active a {
+    color: #fff !important;
+    background-color:#29292c !important;
 }
 
+/* Remove border color from the collapsible button */
 .navbar-default .navbar-toggle {
     border-color: transparent;
-    color: #fff !important;
 }
 
 @media (max-width: 991px) {
@@ -250,7 +255,7 @@ body {
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
     }
     .navbar-collapse.collapse {
-        display: none!important;
+        display: none !important;
     }
     .navbar-nav {
         float: none!important;
@@ -287,9 +292,50 @@ footer .glyphicon {
 }
 
 footer {
-	background-color: #000;
+	background-color: #2d2d30;
+	opacity:0.9;
 }
 
 footer > p {
 	color: #fff;
+}
+
+.no-wrap {
+	white-space: nowrap;
+}
+
+/*=================================================
+||				7. Modal 
+==================================================*/
+
+.modal-header, .modal-header > h4, .close {
+    background-color: #000;
+    color: #fff !important;
+    text-align: center;
+    font-size: 30px;    
+}
+
+.modal-header, .modal-body {
+    padding: 40px 50px;
+}
+
+.sign-up-button, .log-in-button {
+	background-color: #2d2d30;
+	color: #fff;
+	transition: all .5s;
+}
+
+.sign-up-button:hover, .log-in-button:hover {
+	background-color: #fff;
+	color: #2d2d30;
+}
+
+.sign-up-button:active, .log-in-button:active {
+	background-color: #fff;
+	color: #2d2d30;
+}
+
+.sign-up-button:focus, .log-in-button:focus {
+	background-color: #fff;
+	color: #2d2d30;
 }

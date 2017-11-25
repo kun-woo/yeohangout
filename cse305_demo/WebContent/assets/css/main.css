@@ -227,8 +227,6 @@ body {
     color: #d5d5d5 !important;
 }
 
-=======
-}
 
 /* Add a gray color to all navbar links */
 .navbar li a, .navbar .navbar-brand { 
@@ -253,7 +251,6 @@ body {
 
 .hide {
 	display: none;
-=======
 }
 
 @media (max-width: 991px) {

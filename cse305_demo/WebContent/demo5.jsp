@@ -34,12 +34,15 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#mycarousel">HOME</a></li>
 				<li><a href="#search">BOOK</a></li>
 				<li><a href="#about">ABOUT</a></li>
 				<li><a href="#service">SERVICE</a></li>
 				<li><a href="#contact">CONTACT</a></li>
-				<li><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        			<li><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        			<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
 			</ul>
 		</div>
 	</div>
@@ -94,6 +97,151 @@
 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 		</a>
+	</div>
+	<!-- SignUp Modal -->
+	<div class="modal fade" id="mySignUp" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4> Yeo Hang Out </h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="id"
+									placeholder="Username"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="password" class="form-control" id="pwd"
+									placeholder="Password"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-edit"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="password" class="form-control" id="pwd2"
+									placeholder="Password confirm"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-check"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="fname"
+								placeholder="First Name">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="lname"
+								placeholder="Last Name">
+							</span>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="address" placeholder="Address">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-home"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="city" placeholder="City">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-th-large"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="zipcode" placeholder="Zipcode">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-menu-hamburger"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="number" class="form-control" id="telephone" placeholder="Telephone">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-earphone"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="email" class="form-control" id="email" placeholder="Email">
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-envelope"></span>
+								</span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-block sign-up-button" data-dismiss="modal">
+							Sign Up <span class="glyphicon glyphicon-ok"></span>
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+					<p>
+						Need <a>help?</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- LogIn Modal -->
+	<div class="modal fade" id="myLogIn" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4> Yeo Hang Out </h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="id"
+									placeholder="Username"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="password" class="form-control" id="pwd"
+									placeholder="Password"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-block log-in-button">
+							Log In<span class="glyphicon glyphicon-log-in"></span>
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+					<p>
+						Forgot <a >ID or Password?</a>
+					</p>
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Popular -->
 	<div class="container-fluid bg-gray text-center">
@@ -150,7 +298,7 @@
 						<div class="col-sm-12 text-left">
 							<div class="btn-group">
 								<button type="button" class="btn btn-default btn-md">One-Way</button>
-								<button type="button" class="btn btn-default btn-md">Round Trip</button>
+								<button type="button" class="btn btn-default btn-md active">Round Trip</button>
 								<button type="button" class="btn btn-default btn-md">Multi-City</button>
 							</div>
 						</div>
@@ -235,7 +383,7 @@
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
 							<br>
-							<button type="button" class="btn btn-success btn-md">Search</button>
+							<button type="button" class="btn btn-success btn-md btn-search">Search</button>
 						</div>
 					</div>
 				</form>
@@ -279,16 +427,28 @@
 	</div>
 	<div class="container-fluid bg-gray">
 		<div class="row">
-			<div class="col-sm-offset-2 col-sm-4">
-				<span class="glyphicon glyphicon-globe logo"></span>
+			<div class="col-sm-4 text-center">
+				<span class="glyphicon glyphicon-globe logo slideanim"></span>
 			</div>
-			<div class="col-sm-6 text-center">
+			<div class="col-sm-8">
 				<h2>Our Values</h2>
 				<h4>
-					<strong>MISSION:</strong> Our mission is.
+					<strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet,
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat.
 				</h4>
+				<br>
 				<p>
-					<strong>VISION:</strong> Our vision is.
+					<strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet,
+					consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+					labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+					nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+					nisi ut aliquip ex ea commodo consequat.
 				</p>
 			</div>
 		</div>
@@ -298,7 +458,7 @@
 		<h2>SERVICES</h2>
 		<h4>What we offer</h4>
 		<br>
-		<div class="row">
+		<div class="row slideanim">
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-off logo-small"></span>
 				<h4>POWER</h4>
@@ -317,7 +477,7 @@
 		</div>
 		<br>
 		<br>
-		<div class="row">
+		<div class="row slideanim">
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-leaf logo-small"></span>
 				<h4>GREEN</h4>
@@ -337,11 +497,26 @@
 	</div>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-offset-2 col-sm-6 text-center">
+			<div class="col-sm-8">
 				<h2>Fly With Us</h2>
-				<button class="btn btn-default btn-lg">Get in Touch</button>
+				<h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+					sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+					nisi ut aliquip ex ea commodo consequat.</h4>
+				<br>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+					do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+					enim ad minim veniam, quis nostrud exercitation ullamco laboris
+					nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat
+					cupidatat non proident, sunt in culpa qui officia deserunt mollit
+					anim id est laborum consectetur adipiscing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+					minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+					aliquip ex ea commodo consequat.</p>
+				<br>
+				<button class="btn btn-default btn-lg sign-up-button">Click to Fly</button>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-sm-4 text-center slideanim">
 				<span class="glyphicon glyphicon-plane logo"></span>
 			</div>
 		</div>
@@ -390,7 +565,7 @@
 		title="To Top"> <span class="glyphicon glyphicon-chevron-up"></span>
 	</a>
 	<p>
-		Fifth Demo Powered by <strong>Boostrap</strong> Made by <b>Yeo Hang Out</b>
+		Fifth Demo Powered by <strong>Boostrap</strong> <a class="no-wrap">Made by <b>Yeo Hang Out</b></a>
 	</p>
 	</footer>
 </body>

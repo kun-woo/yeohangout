@@ -13,6 +13,13 @@ $(window).scroll(function() {
   });
 });
 
+//For Toggle Button
+$(function () {
+	$(".btn-group > .btn").click(function(){
+		$(this).addClass("active").siblings().removeClass("active");
+	});
+});
+
 //For DateTimePicker
 $(function () {
 	$('#datetimepicker1').datetimepicker({
@@ -22,12 +29,6 @@ $(function () {
 		format: 'MM/DD/YYYY'
 	});
 });
-
-//For Toggle Switch
-$(function () {
-	$("[name='my-checkbox']").bootstrapSwitch();
-});
-
 
 //For Carousel
 $(function () {
@@ -59,6 +60,11 @@ $(function () {
 		  pause: "false"
 	});
 });
+
+//For Search Button
+//$(".btn-search").onclick = function () {
+//    location.href = "flight.jsp";
+//};
 
 //For Dropdown
 $(function(){

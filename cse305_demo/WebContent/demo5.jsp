@@ -43,6 +43,7 @@
         			<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
         			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
+=======
 			</ul>
 		</div>
 	</div>
@@ -243,6 +244,51 @@
 			</div>
 		</div>
 	</div>
+=======
+	<!-- Flight Modal -->
+	<div class="modal fade" id="myFlight" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4> Yeo Hang Out </h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="id"
+									placeholder="Username"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="password" class="form-control" id="pwd"
+									placeholder="Password"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-block log-in-button">
+							Log In<span class="glyphicon glyphicon-log-in"></span>
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+					<p>
+						Forgot <a >ID or Password?</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Popular -->
 	<div class="container-fluid bg-gray text-center">
 		<h2>Our <b>Top</b> Tours</h2>
@@ -384,6 +430,8 @@
 						<div class="col-sm-12 text-left">
 							<br>
 							<button type="button" class="btn btn-success btn-md btn-search">Search</button>
+=======
+							<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myFlight">Search</button>
 						</div>
 					</div>
 				</form>

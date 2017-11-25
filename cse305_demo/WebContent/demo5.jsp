@@ -428,7 +428,6 @@
 						<div class="col-sm-12 text-left">
 							<br>
 							<button type="button" class="btn btn-success btn-md btn-search">Search</button>
-							<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myFlight">Search</button>
 						</div>
 					</div>
 				</form>

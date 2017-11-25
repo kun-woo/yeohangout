@@ -243,50 +243,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Flight Modal -->
-	<div class="modal fade" id="myFlight" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4> Yeo Hang Out </h4>
-				</div>
-				<div class="modal-body">
-					<form role="form">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" class="form-control" id="id"
-									placeholder="Username"> <span class="input-group-addon">
-									<span class="glyphicon glyphicon-user"></span>
-								</span>
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="input-group">
-								<input type="password" class="form-control" id="pwd"
-									placeholder="Password"> <span class="input-group-addon">
-									<span class="glyphicon glyphicon-lock"></span>
-								</span>
-							</div>
-						</div>
-						<button type="submit" class="btn btn-block log-in-button">
-							Log In<span class="glyphicon glyphicon-log-in"></span>
-						</button>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="submit" class="btn btn-default pull-left"
-						data-dismiss="modal">
-						<span class="glyphicon glyphicon-remove"></span> Cancel
-					</button>
-					<p>
-						Forgot <a >ID or Password?</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- Popular -->
 	<div class="container-fluid bg-gray text-center">
 		<h2>Our <b>Top</b> Tours</h2>
@@ -307,6 +263,7 @@
 					<span class="glyphicon glyphicon-star myStar"></span>
 					Rate Paris!
 					</p>
+					<button class="btn sign-up-button">See More</button>
 				</div>
 			</div>
 			<div class="col-sm-4">
@@ -438,33 +395,56 @@
 	<div id="about" class="container-fluid bg-gray text-center">
 		<h2>About Us</h2>
 		<h4>Yeo Hang Out: A Creative Travel Agency</h4>
-		<p>That Will Take You Far away</p>
+		<p>
+			<em>That Will Take You Far away</em>
+		</p>
+		<p class="slideanim">We have created a fictional travel website. Lorem ipsum dolor sit
+			amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+			ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+			nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+			esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+			cupidatat non proident, sunt in culpa qui officia deserunt mollit
+			anim id est laborum consectetur adipiscing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+			veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+			ea commodo consequat.</p>
+		<br>
 		<div class="row text-center slideanim">
 			<div class="col-sm-4">
-				<div class="thumbnail">
-					<img src="images/about-image-1.jpg" alt="Paris">
-					<p>
-						<strong>Paris</strong>
-					</p>
-					<p>Yes, we built Paris</p>
+				<p class="text-center">
+					<strong>Jayson Demarchi</strong>
+				</p>
+				<div class="person-container img-circle">
+					<img class="img-circle person" src="images/5.jpg" alt="Jayson"
+						width="255" height="255">
+					<div class="middle">
+						<div class="text"><a>See More</a></div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="thumbnail">
-					<img src="images/about-image-2.jpg" alt="New York">
-					<p>
-						<strong>New York</strong>
-					</p>
-					<p>We built New York</p>
+				<p>
+					<strong>Wongeun Cho</strong>
+				</p>
+				<div class="person-container img-circle">
+					<img class="img-circle person" src="images/6.jpg" alt="Wongeun"
+						width="255" height="255">
+					<div class="middle">
+						<div class="text"><a>See More</a></div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
-				<div class="thumbnail">
-					<img src="images/about-image-3.jpg" alt="San Francisco">
-					<p>
-						<strong>San Francisco</strong>
-					</p>
-					<p>Yes, San Fran is ours</p>
+				<p class="text-center">
+					<strong>Jude Woo</strong>
+				</p>
+				<div class="person-container img-circle">
+					<img class="img-circle person" src="images/7.jpg"
+						alt="Jude" width="255" height="255">
+					<div class="middle">
+						<div class="text"><a>See More</a></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -474,7 +454,7 @@
 			<div class="col-sm-4 text-center">
 				<span class="glyphicon glyphicon-globe logo slideanim"></span>
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-8 slideanim">
 				<h2>Our Values</h2>
 				<h4>
 					<strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet,
@@ -560,7 +540,7 @@
 				<br>
 				<button class="btn btn-default btn-lg sign-up-button">Click to Fly</button>
 			</div>
-			<div class="col-sm-4 text-center slideanim">
+			<div class="col-sm-4 slideanim">
 				<span class="glyphicon glyphicon-plane logo"></span>
 			</div>
 		</div>

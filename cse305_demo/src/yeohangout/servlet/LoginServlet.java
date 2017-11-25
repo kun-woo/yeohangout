@@ -15,6 +15,8 @@ import javax.servlet.http.HttpSession;
 import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.MySQLAccess;
+import yeohangout.mysql.MyUtils;
+
 
 
 public class LoginServlet extends HttpServlet{
@@ -27,14 +29,12 @@ public class LoginServlet extends HttpServlet{
 		throws ServletException, IOException {
 		ServletOutputStream out = response.getOutputStream();
 		
-		
 		String contextPath = request.getContextPath();
 		
 		int id = Integer.parseInt(request.getParameter("userIDTF"));
 	    boolean submitButtonPressed = request.getParameter("submitBt") != null;
 	    UserAccount loginedUser  = null;
 	    
-	    //if(submitButtonPressed==true) {
 	
 	    	 	try {
 	    	 		MySQLAccess dao = new MySQLAccess();
@@ -57,25 +57,20 @@ public class LoginServlet extends HttpServlet{
 		    
 	    	 	if(loginedUser == null) {
 	    	 		//go to the user is not existing page.
-
-	    			// ==> /ServletTutorial/showMe
 	    			response.sendRedirect(contextPath + "/userNotFound.jsp");
 	    			return;
-		    		 
-	    	 		   
-	    	 	} else {
+		    	} else {
+		    		HttpSession session = request.getSession(true);
+		    		//store user into session and cookie
+		    		MyUtils.storeLoginedUser(session, loginedUser);
+		    		MyUtils.storeUserCookie(response, loginedUser);
+		    		
 	    		    out.println("<body>");
-	    		    out.println("<p> Hello, "+id+ "!!</p>");
+	    		    out.println("<p> Hello, "+MyUtils.getLoginedUser(session).getUserID()+ "!!!!!</p>");
 	    		    out.println("<p> your account is  : "+loginedUser.getAccountNo()+"</p>");
-	    	 	}
-	    		
-//	    }
-//	    else {
-//	    		
-//	    }
-
-	    	
+	    	 	}   	
 	}
+	
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

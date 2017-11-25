@@ -227,6 +227,14 @@ body {
     color: #d5d5d5 !important;
 }
 
+=======
+}
+
+/* Add a gray color to all navbar links */
+.navbar li a, .navbar .navbar-brand { 
+    color: #d5d5d5 !important;
+}
+
 /* On hover, the links will turn white */
 .navbar-nav li a:hover {
     color: #fff !important;
@@ -241,6 +249,11 @@ body {
 /* Remove border color from the collapsible button */
 .navbar-default .navbar-toggle {
     border-color: transparent;
+}
+
+.hide {
+	display: none;
+=======
 }
 
 @media (max-width: 991px) {

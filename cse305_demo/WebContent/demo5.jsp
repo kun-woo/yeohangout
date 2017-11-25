@@ -41,6 +41,9 @@
 				<li><a href="#contact">CONTACT</a></li>
 				<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
         			<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
+=======
 			</ul>
 		</div>
 	</div>
@@ -241,6 +244,7 @@
 			</div>
 		</div>
 	</div>
+=======
 	<!-- Flight Modal -->
 	<div class="modal fade" id="myFlight" role="dialog">
 		<div class="modal-dialog">
@@ -425,6 +429,8 @@
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
 							<br>
+							<button type="button" class="btn btn-success btn-md btn-search">Search</button>
+=======
 							<button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#myFlight">Search</button>
 						</div>
 					</div>

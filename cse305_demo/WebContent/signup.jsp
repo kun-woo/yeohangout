@@ -10,7 +10,7 @@
 					<h4> Yeo Hang Out </h4>
 				</div>
 				<div class="modal-body">
-					<form name="signupForm" action="${pageContext.request.contextPath}/signup" method="POST">
+					<form name="signupForm" action="signup" method="POST">
 						<div class="form-group">
 							<div class="input-group">
 								<input type="text" class="form-control" id="id"
@@ -101,9 +101,9 @@
 								</span>
 							</div>
 						</div>
-						
-						<input type="submit" id ="submitBt" value="Sign Up" class="btn btn-block sign-up-button" />
-							
+						<button type="submit" class="btn btn-block sign-up-button">
+							Sign Up <span class="glyphicon glyphicon-ok"></span>
+						</button>	
 					</form>
 				</div>
 				<div class="modal-footer">

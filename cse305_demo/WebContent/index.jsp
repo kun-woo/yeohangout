@@ -4,7 +4,6 @@
 	<!-- HEADER -->
 	<%@ include file="../header.jsp"%>
 	<!-- Home -->
-	
 	<%@ include file="../slider.jsp"%>
 	
 	<!-- SignUp Modal -->

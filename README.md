@@ -3,7 +3,7 @@ CSE 305 Database Project
 
 # Notice
 - Updated JDBC Driver in lib folder (2017-11-11 16:13:42)
-~~- Updated UI (demo5.jsp) in WebContent folder (2017-11-25 11:38:30)~~
+- ~~Updated UI (demo5.jsp) in WebContent folder (2017-11-25 11:38:30)~~
 - Updated index.jsp in WebContent folder (2017-11-26 00:30:20)
 
 GUIDELINE

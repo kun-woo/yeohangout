@@ -46,33 +46,37 @@ public class SignUpServlet extends HttpServlet {
 		Person newPerson = new Person();
 		UserAccount newUser = new UserAccount();
 
-		int id = Integer.parseInt(request.getParameter("personID"));
-
 		String fName = request.getParameter("personFName");
 		String lName = request.getParameter("personLName");
 		String address = request.getParameter("personAddress");
 		String city = request.getParameter("city");
 		String state = request.getParameter("state");
+		String email = request.getParameter("email");
+		String telephone = request.getParameter("telephone");
+		
 		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
-
-		int accountNo = Integer.parseInt(request.getParameter("accountNo"));
 		int creditCardNo = Integer.parseInt(request.getParameter("creditCardNo"));
+		String userID = request.getParameter("userID");
+		String password = request.getParameter("password");
 		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
 
-
-		newPerson.setId(id);
+		System.out.println("State : "+state);
+		
 		newPerson.setFirstName(fName);
 		newPerson.setLastName(lName);
 		newPerson.setAddress(address);
 		newPerson.setCity(city);
 		newPerson.setState(state);
 		newPerson.setZipcode(zipcode);
+		newPerson.setEmail(email);
+		newPerson.setTelephone(telephone);
+		
 
-		newUser.setUserID(id);
-		newUser.setAccountNo(accountNo);
 		newUser.setCreditCardNo(creditCardNo);
 		newUser.setAccountCreationDate(currentDate);
 		newUser.setRating(0);
+		newUser.setUserID(userID);
+		newUser.setPasswor(password);
 
 
 		boolean submitButtonPressed = request.getParameter("submitBt") != null;
@@ -85,6 +89,7 @@ public class SignUpServlet extends HttpServlet {
 			connect = dao.getConnection();
 
 			DBUtils.insertPerson(connect, newPerson);
+			newUser.setPersonID(newPerson.getId());
 			DBUtils.insertUser(connect, newUser);
 
 			dao.close();

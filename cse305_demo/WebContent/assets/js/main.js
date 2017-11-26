@@ -3,6 +3,7 @@
  */
 
 $(window).scroll(function() {
+	
   $(".slideanim").each(function(){
     var pos = $(this).offset().top;
 
@@ -66,6 +67,7 @@ $(function () {
 //    location.href = "flight.jsp";
 //};
 
+
 //For Dropdown
 $(function(){
     $(".dropdown-menu li a").click(function(){
@@ -125,3 +127,13 @@ $(function(){
 		  });
 });
 
+function checkPassword() {
+	  if (document.getElementById('pwd').value ==
+	    document.getElementById('pwd2').value) {
+		  alert("match");
+		  return true;
+	  } else {
+		  alert("not match");
+		  return false;
+	  }
+}

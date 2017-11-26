@@ -1,97 +1,49 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <head>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Set Viewpoint -->
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
-    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" /> <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
+<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 
-        <!-- Description, Keywords and Author -->
-
-        <meta name="description" content="">
-
-        <meta name="author" content="">
-
-        
-
-        <title>:: Yeo Hangout ::</title>
-
-		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-
-
-
-        <!-- style -->
-
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-
-        <!-- style -->
-
-        <!-- bootstrap -->
-
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-
-        <!-- responsive -->
-
-        <link href="css/responsive.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-        <!-- font-awesome -->
-
-        <link href="css/effects/set2.css" rel="stylesheet" type="text/css">
-
-        <link href="css/effects/normalize.css" rel="stylesheet" type="text/css">
-
-        <link href="css/effects/component.css"  rel="stylesheet" type="text/css" >
-
-	</head>
-
-
-
-    <body>
-
-    
-
-    	<!-- header -->
-
-        	<header role="header">
-
-            	<div class="container">
-
-                	<!-- logo -->
-
-                    	<h1>
-
-                        	<a href="index.html" title="avana LLC"><img src="images/logo.png" title="Yeo Hangout" alt="avana LLC"/></a>
-
-                        </h1>
-
-                    <!-- logo -->
-
-                    <!-- nav -->
-
-                    <nav role="header-nav" class="navy">
-
-                        <ul>
-
-                            <li class="nav-active"><a href="index.html" title="Work">Work</a></li>
-
-                            <li><a href="${pageContext.request.contextPath}/signin.jsp" title="Sign In">Sgin In</a></li>
-
-                            <li><a href="${pageContext.request.contextPath}/signup.jsp" title="Sign Up">Sign Up</a></li>
-
-                            <li><a href="contact.html" title="Contact">Contact</a></li>
-
-                        </ul>
-
-                    </nav>
-
-                    <!-- nav -->
-
-                </div>
-
-            </header>
-
-        <!-- header -->
+<script src="assets/js/jquery-3.2.1.min.js"></script> <!-- Jquery JS-->
+<script src="assets/js/bootstrap.js"></script> <!-- Boostrap JS -->
+<script src="assets/js/moment.js"></script> <!-- Moment JS -->
+<script src="assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
+<script src="assets/js/main.js"></script>
+<title>YeoHangOut Demo5</title>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+	<!-- Navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#mycarousel">Yeo Hang Out</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#mycarousel">HOME</a></li>
+				<li><a href="#search">BOOK</a></li>
+				<li><a href="#about">ABOUT</a></li>
+				<li><a href="#service">SERVICE</a></li>
+				<li><a href="#contact">CONTACT</a></li>
+				<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        			<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
+        			<li class="hide"><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>

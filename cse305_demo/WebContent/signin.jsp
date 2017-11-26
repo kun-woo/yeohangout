@@ -1,16 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ include file="../header.jsp"%>
-	<form name="loginForm" action="${pageContext.request.contextPath}/login" method="POST">
-		<span id = "userID">User ID : </span>
-		<input id = "userIDTF" name ="userIDTF" type="text" />
-	
-		<input id = "submitBt" name ="submitBt" value="submit" type="submit" />
-<!-- 		<input id = "cancelBt" name ="cancelBt" value="cancel" type="button" />
-		<input id = "signUpBt" name ="signUpBt" value="sign Up" type="button"/>
- -->	</form>
- 
- 	<input id = "signupBt" name ="signupBt" value = "Sign Up" type = "button" onclick ="window.location.href='${pageContext.request.contextPath}/signup.jsp'"/>
-
-<%@ include file="../footer.jsp"%>
+    <div class="modal fade" id="myLogIn" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4> Yeo Hang Out </h4>
+				</div>
+				<div class="modal-body">
+					<form role="form">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" id="id"
+									placeholder="Username"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-user"></span>
+								</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<input type="password" class="form-control" id="pwd"
+									placeholder="Password"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-lock"></span>
+								</span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-block log-in-button">
+							Log In<span class="glyphicon glyphicon-log-in"></span>
+						</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default pull-left"
+						data-dismiss="modal">
+						<span class="glyphicon glyphicon-remove"></span> Cancel
+					</button>
+					<p>
+						Forgot <a >ID or Password?</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>

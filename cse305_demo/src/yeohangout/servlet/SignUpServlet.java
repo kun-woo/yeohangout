@@ -8,6 +8,7 @@ import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,17 +18,27 @@ import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.MySQLAccess;
 
-public class SignUpServlet extends HttpServlet{
+/**
+ * Servlet implementation class SignUpServletTemp
+ */
+@WebServlet("/SignUpServlet")
+public class SignUpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SignUpServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public SignUpServlet() {
-		super();
-	}
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
-		
-		ServletOutputStream out = response.getOutputStream();
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+ServletOutputStream out = response.getOutputStream();
 		
 		String contextPath = request.getContextPath();
 		
@@ -100,10 +111,13 @@ public class SignUpServlet extends HttpServlet{
 	    out.println("</body>");
 	    out.println("</html>");
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException{
-		this.doGet(request, response);
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }

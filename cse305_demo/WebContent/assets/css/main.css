@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+
 /*=================================================
 ||				0. Animation 
 ==================================================*/
@@ -269,6 +271,7 @@ body {
 /* On hover, the links will turn white */
 .navbar-nav li a:hover {
     color: #fff !important;
+    cursor: pointer;
 }
 
 /* The active link */
@@ -281,6 +284,7 @@ body {
 .navbar-default .navbar-toggle {
     border-color: transparent;
 }
+
 
 .hide {
 	display: none;
@@ -361,6 +365,11 @@ footer > p {
 .modal-header, .modal-body {
     padding: 40px 50px;
 }
+
+.modal-footer {
+	cursor: default;
+}
+
 
 .sign-up-button, .log-in-button {
 	background-color: #2d2d30;

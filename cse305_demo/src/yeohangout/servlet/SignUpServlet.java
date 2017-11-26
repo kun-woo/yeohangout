@@ -18,64 +18,75 @@ import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.MySQLAccess;
 
-public class SignUpServlet extends HttpServlet{
+/**
+ * Servlet implementation class SignUpServletTemp
+ */
+@WebServlet("/signup")
+public class SignUpServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
 	public SignUpServlet() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException {
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		System.out.println("SIGNUP PAGE");
 		ServletOutputStream out = response.getOutputStream();
-		
+
 		String contextPath = request.getContextPath();
-		
+
 		Person newPerson = new Person();
 		UserAccount newUser = new UserAccount();
-		
+
 		int id = Integer.parseInt(request.getParameter("personID"));
-		
-	    String fName = request.getParameter("personFName");
-	    String lName = request.getParameter("personLName");
-	    String address = request.getParameter("personAddress");
-	    String city = request.getParameter("city");
-	    String state = request.getParameter("state");
-	    int zipcode = Integer.parseInt(request.getParameter("zipcode"));
-	    
-	    int accountNo = Integer.parseInt(request.getParameter("accountNo"));
-	    int creditCardNo = Integer.parseInt(request.getParameter("creditCardNo"));
-	    Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
-	    
-	    
-	    newPerson.setId(id);
-	    newPerson.setFirstName(fName);
-	    newPerson.setLastName(lName);
-	    newPerson.setAddress(address);
-	    newPerson.setCity(city);
-	    newPerson.setState(state);
-	    newPerson.setZipcode(zipcode);
-	    
-	    newUser.setUserID(id);
-	    newUser.setAccountNo(accountNo);
-	    newUser.setCreditCardNo(creditCardNo);
-	    newUser.setAccountCreationDate(currentDate);
-	    newUser.setRating(0);
-	    
-	    
-	    boolean submitButtonPressed = request.getParameter("submitBt") != null;
-	    
-	    //Insert new user info to Database, This code will insert the sign up information into Person and Customer table.
-	    try {
-	    		MySQLAccess dao = new MySQLAccess();
-	    		dao.readDataBase();
+
+		String fName = request.getParameter("personFName");
+		String lName = request.getParameter("personLName");
+		String address = request.getParameter("personAddress");
+		String city = request.getParameter("city");
+		String state = request.getParameter("state");
+		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
+
+		int accountNo = Integer.parseInt(request.getParameter("accountNo"));
+		int creditCardNo = Integer.parseInt(request.getParameter("creditCardNo"));
+		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
+
+
+		newPerson.setId(id);
+		newPerson.setFirstName(fName);
+		newPerson.setLastName(lName);
+		newPerson.setAddress(address);
+		newPerson.setCity(city);
+		newPerson.setState(state);
+		newPerson.setZipcode(zipcode);
+
+		newUser.setUserID(id);
+		newUser.setAccountNo(accountNo);
+		newUser.setCreditCardNo(creditCardNo);
+		newUser.setAccountCreationDate(currentDate);
+		newUser.setRating(0);
+
+
+		boolean submitButtonPressed = request.getParameter("submitBt") != null;
+
+		//Insert new user info to Database, This code will insert the sign up information into Person and Customer table.
+		try {
+			MySQLAccess dao = new MySQLAccess();
+			dao.readDataBase();
 			Connection connect = null;
 			connect = dao.getConnection();
-			
+
 			DBUtils.insertPerson(connect, newPerson);
 			DBUtils.insertUser(connect, newUser);
-			
+
 			dao.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -86,26 +97,29 @@ public class SignUpServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
-		
-	    out.println("<html><head><title>SignUp</title></head>");
-	    out.println("<body>");
-	    out.println("<p> New Customer is added </p>");
-	    out.println("<p> id : "+newPerson.getId()+"</p>");
-	    out.println("<p> first name : "+newPerson.getFirstName()+"</p>");
-	    out.println("<p> last name : "+newPerson.getLastName()+"</p>");
-	    out.println("<p> address : "+newPerson.getAddress()+"</p>");
-	    out.println("<p> city : "+ newPerson.getCity()+"</p>");
-	    out.println("<p> state : "+ newPerson.getState()+"</p>");
-	    out.println("<p> zipcode : "+newPerson.getZipcode()+"</p>");
-	  
-	    out.println("</body>");
-	    out.println("</html>");
+
+
+		out.println("<html><head><title>SignUp</title></head>");
+		out.println("<body>");
+		out.println("<p> New Customer is added </p>");
+		out.println("<p> id : "+newPerson.getId()+"</p>");
+		out.println("<p> first name : "+newPerson.getFirstName()+"</p>");
+		out.println("<p> last name : "+newPerson.getLastName()+"</p>");
+		out.println("<p> address : "+newPerson.getAddress()+"</p>");
+		out.println("<p> city : "+ newPerson.getCity()+"</p>");
+		out.println("<p> state : "+ newPerson.getState()+"</p>");
+		out.println("<p> zipcode : "+newPerson.getZipcode()+"</p>");
+
+		out.println("</body>");
+		out.println("</html>");
 	}
-	
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-		throws ServletException, IOException{
-		this.doGet(request, response);
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
+
 }

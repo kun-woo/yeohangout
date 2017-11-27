@@ -60,8 +60,6 @@ public class SignUpServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
 
-		System.out.println("State : "+state);
-		
 		newPerson.setFirstName(fName);
 		newPerson.setLastName(lName);
 		newPerson.setAddress(address);

@@ -61,28 +61,28 @@ public class DBUtils {
     }
     	    
     
-    public static UserAccount searchUser(Connection conn, int userId) throws SQLException{
+    public static UserAccount searchUser(Connection conn, String userId) throws SQLException{
     		
-    		String sql = "Select * FROM howoo.customer c Where c.id = ?";
+    		String sql = "Select * FROM howoo.customer c Where c.UserName = ?";
     		
     		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
     		
-    		pstm.setInt(1, userId);
-    		
-    		
+    		pstm.setString(1, userId);
+    		System.out.println("USER NAME : "+userId);
     		ResultSet rs = pstm.executeQuery();
+
     		while(rs.next()) {
-    			UserAccount loginedUser = new UserAccount();
-    			loginedUser.setPersonID(rs.getInt("Id"));
-    			loginedUser.setAccountNo(rs.getInt("AccountNo"));
-    			loginedUser.setCreditCardNo(rs.getInt("CreditCardNo"));
-    			loginedUser.setRating(rs.getInt("Rating"));
-    			loginedUser.setAccountCreationDate(rs.getDate("CreationDate"));
-    			loginedUser.setUserID(rs.getString("UserName"));
-    			loginedUser.setPasswor(rs.getString("Pwd"));
-    			return loginedUser;
+    			UserAccount searchedUser = new UserAccount();
+    			searchedUser.setPersonID(rs.getInt("Id"));
+    			searchedUser.setAccountNo(rs.getInt("AccountNo"));
+    			searchedUser.setCreditCardNo(rs.getInt("CreditCardNo"));
+    			searchedUser.setRating(rs.getInt("Rating"));
+    			searchedUser.setAccountCreationDate(rs.getDate("CreationDate"));
+    			searchedUser.setUserID(rs.getString("UserName"));
+    			searchedUser.setPasswor(rs.getString("Pwd"));
+
+    			return searchedUser;
     		}
-    		
     		return null;
 
     }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import yeohangout.javabeans.Employee;
 import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.MySQLAccess;
@@ -55,7 +56,51 @@ public class LoginServlet extends HttpServlet {
 
 			loginedUser = DBUtils.searchUser(connect, userId);
 			
+			
+			if(loginedUser == null) {
+				//go to the user is not existing page.
+				//check employee if the user name is not in Customer table.
+				Employee loginedEmployee = DBUtils.searchEmployee(connect, userId);
+				//
+				if(loginedEmployee ==null) {
+					System.out.println("NO USER");
+					response.sendRedirect(contextPath + "/userNotFound.jsp");
+					return;
+				}else if(!loginedEmployee.getPassword().equals(password)) {
+					//the home page will be changed employee version
+		
+					System.out.println("Not matched");
+					response.sendRedirect(contextPath+"/userNotFound.jsp");
+					
+				} else {
+					System.out.println("here");
+					HttpSession session = request.getSession(true);
+					//store user into session and cookie
+					MyUtils myUtil =  MyUtils.getMyUtils();
+					
+					MyUtils.storeLoginedUser(session, loginedEmployee);
+					MyUtils.storeUserCookie(response, loginedEmployee);
+					MyUtils.setUserType(1);
+					response.sendRedirect(contextPath+"/index.jsp");
+				}
+				
+			} else if (!loginedUser.getPassword().equals(password)){
+				System.out.println("NOT MATCHED");
+				//if the password is not matched.
+				response.sendRedirect(contextPath+"/userNotFound.jsp");
+			} else {
+				HttpSession session = request.getSession(true);
+				//store user into session and cookie
+				MyUtils myUtil =  MyUtils.getMyUtils();
+				
+				MyUtils.storeLoginedUser(session, loginedUser);
+				MyUtils.storeUserCookie(response, loginedUser);
+				MyUtils.setUserType(0);
+				
+				response.sendRedirect(contextPath+"/index.jsp");
+			} 
 			dao.close();
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException ex) {
@@ -64,27 +109,7 @@ public class LoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-
-		if(loginedUser == null) {
-			//go to the user is not existing page.
-			System.out.println("NO USER");
-			response.sendRedirect(contextPath + "/userNotFound.jsp");
-			return;
-		} else if (!loginedUser.getPassword().equals(password)){
-			System.out.println("NOT MATCHED");
-			//if the password is not matched.
-			response.sendRedirect(contextPath+"/userNotFound.jsp");
-		} else {
-			HttpSession session = request.getSession(true);
-			//store user into session and cookie
-			MyUtils myUtil =  MyUtils.getMyUtils();
-			
-			MyUtils.storeLoginedUser(session, loginedUser);
-			MyUtils.storeUserCookie(response, loginedUser);
-			
-			response.sendRedirect(contextPath+"/index.jsp");
-		} 
+		}		
 	}
 
 	/**

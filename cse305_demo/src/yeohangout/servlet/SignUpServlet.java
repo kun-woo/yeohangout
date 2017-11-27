@@ -17,6 +17,7 @@ import yeohangout.javabeans.Person;
 import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.MySQLAccess;
+import yeohangout.mysql.MyUtils;
 
 /**
  * Servlet implementation class SignUpServletTemp
@@ -75,7 +76,7 @@ public class SignUpServlet extends HttpServlet {
 		newUser.setAccountCreationDate(currentDate);
 		newUser.setRating(0);
 		newUser.setUserID(userID);
-		newUser.setPasswor(password);
+		newUser.setPassword(password);
 
 
 		boolean submitButtonPressed = request.getParameter("submitBt") != null;
@@ -86,11 +87,14 @@ public class SignUpServlet extends HttpServlet {
 			dao.readDataBase();
 			Connection connect = null;
 			connect = dao.getConnection();
-
-			DBUtils.insertPerson(connect, newPerson);
-			newUser.setPersonID(newPerson.getId());
-			DBUtils.insertUser(connect, newUser);
-
+			
+			if(DBUtils.searchEmployee(connect, userID)==null && DBUtils.searchUser(connect, userID)==null) {
+				DBUtils.insertPerson(connect, newPerson);
+				newUser.setPersonID(newPerson.getId());
+				DBUtils.insertUser(connect, newUser);
+			}else {
+				MyUtils.setIdAlreadyExists(true);
+			}
 			dao.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -103,19 +107,8 @@ public class SignUpServlet extends HttpServlet {
 		}
 
 		//Redirection to index.jsp
-		out.println("<html><head><title>SignUp</title></head>");
-		out.println("<body>");
-		out.println("<p> New Customer is added </p>");
-		out.println("<p> id : "+newPerson.getId()+"</p>");
-		out.println("<p> first name : "+newPerson.getFirstName()+"</p>");
-		out.println("<p> last name : "+newPerson.getLastName()+"</p>");
-		out.println("<p> address : "+newPerson.getAddress()+"</p>");
-		out.println("<p> city : "+ newPerson.getCity()+"</p>");
-		out.println("<p> state : "+ newPerson.getState()+"</p>");
-		out.println("<p> zipcode : "+newPerson.getZipcode()+"</p>");
-
-		out.println("</body>");
-		out.println("</html>");
+		
+		response.sendRedirect(contextPath+"/index.jsp");
 	}
 
 	/**

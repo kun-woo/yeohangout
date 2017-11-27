@@ -22,6 +22,9 @@
 <title>YeoHangOut</title>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+						
+
+	
 	<!-- Navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -45,16 +48,22 @@
 					if(MyUtils.getSession()==null){
 				%>
 					<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        				<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        				<li><a data-toggle="modal" data-target="#myLogIn" ><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
         			
 				<%
-					} else { 
-				%>
+					} else if(MyUtils.getUserType() == 0){ 
+				%>	
+				
 					<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
         				<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			<%
-					} 
+					} else if(MyUtils.getUserType()==1){
+				%>
+					<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+        				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+				<%
+					}
 				%>
 				
 			</ul>

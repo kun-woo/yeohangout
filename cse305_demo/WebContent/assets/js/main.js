@@ -130,7 +130,6 @@ $(function(){
 function checkPassword() {
 	  if (document.getElementById('pwd').value ==
 	    document.getElementById('pwd2').value) {
-		  alert("match");
 		  return true;
 	  } else {
 		  alert("not match");

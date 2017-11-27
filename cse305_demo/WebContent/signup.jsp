@@ -1,7 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ page import="yeohangout.mysql.MyUtils"%>
 <!-- SignUp Modal -->
+	<% 
+		//This code is for alerting there is an userID which is same as user signed up.
+		
+		if(MyUtils.getIdAlreadyExists()){
+	%>
+		<script type="text/javascript">
+			alert("The id already exists");
+			
+			$(document).ready(function(){
+			      $("#mySignUp").modal("show");
+			});
+			
+		</script>
+			
+	<%
+			MyUtils.setIdAlreadyExists(false);
+		}
+	%>
+	
 		<div class="modal fade" id="mySignUp" role="dialog">
+	
 			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">

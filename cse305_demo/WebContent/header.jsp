@@ -22,6 +22,9 @@
 <title>YeoHangOut</title>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+						
+
+	
 	<!-- Navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container">
@@ -45,7 +48,7 @@
 					if(MyUtils.getSession()==null){
 				%>
 					<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        				<li><a data-toggle="modal" data-target="#myLogIn"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        				<li><a data-toggle="modal" data-target="#myLogIn" ><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
         			
 				<%
 					} else if(MyUtils.getUserType() == 0){ 

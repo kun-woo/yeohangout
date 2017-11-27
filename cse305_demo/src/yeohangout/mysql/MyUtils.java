@@ -25,6 +25,7 @@ public class MyUtils {
 	
 	private static int userType = -1; 
 	private static HttpSession session = null;
+	private static boolean idAlreadyExists = false;
 	
 	private MyUtils() {
 		
@@ -49,6 +50,14 @@ public class MyUtils {
 	
 	public static void deleteSession() {
 		session = null;
+	}
+	
+	public static boolean getIdAlreadyExists() {
+		return idAlreadyExists;
+	}
+	
+	public static void setIdAlreadyExists(boolean b) {
+		idAlreadyExists = b;
 	}
 	 // Store Connection in request attribute.
     // (Information stored only exist during requests)

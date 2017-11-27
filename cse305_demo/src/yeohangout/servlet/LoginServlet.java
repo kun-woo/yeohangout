@@ -41,7 +41,9 @@ public class LoginServlet extends HttpServlet {
 
 		String contextPath = request.getContextPath();
 
-		int id = Integer.parseInt(request.getParameter("userIDTF"));
+		String userId = request.getParameter("userID");
+		String password = request.getParameter("password");
+		
 		boolean submitButtonPressed = request.getParameter("submitBt") != null;
 		UserAccount loginedUser  = null;
 
@@ -51,8 +53,8 @@ public class LoginServlet extends HttpServlet {
 			Connection connect = null;
 			connect = dao.getConnection();
 
-			loginedUser = DBUtils.searchUser(connect, id);
-
+			loginedUser = DBUtils.searchUser(connect, userId);
+			
 			dao.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
@@ -66,17 +68,22 @@ public class LoginServlet extends HttpServlet {
 
 		if(loginedUser == null) {
 			//go to the user is not existing page.
+			System.out.println("NO USER");
 			response.sendRedirect(contextPath + "/userNotFound.jsp");
 			return;
+		} else if (!loginedUser.getPassword().equals(password)){
+			System.out.println("NOT MATCHED");
+			//if the password is not matched.
+			response.sendRedirect(contextPath+"/userNotFound.jsp");
 		} else {
 			HttpSession session = request.getSession(true);
 			//store user into session and cookie
+			MyUtils myUtil =  MyUtils.getMyUtils();
+			
 			MyUtils.storeLoginedUser(session, loginedUser);
 			MyUtils.storeUserCookie(response, loginedUser);
-
-			out.println("<body>");
-			out.println("<p> Hello, "+MyUtils.getLoginedUser(session).getUserID()+ "!!!!!</p>");
-			out.println("<p> your account is  : "+loginedUser.getAccountNo()+"</p>");
+			
+			response.sendRedirect(contextPath+"/index.jsp");
 		} 
 	}
 

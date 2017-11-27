@@ -21,6 +21,7 @@ import yeohangout.mysql.MySQLAccess;
 /**
  * Servlet implementation class SignUpServletTemp
  */
+
 @WebServlet("/signup")
 public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -101,7 +102,7 @@ public class SignUpServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-
+		//Redirection to index.jsp
 		out.println("<html><head><title>SignUp</title></head>");
 		out.println("<body>");
 		out.println("<p> New Customer is added </p>");

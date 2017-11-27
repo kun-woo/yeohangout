@@ -3,7 +3,7 @@
     
 	<!-- HEADER -->
 	<%@ include file="../header.jsp"%>
-	<!-- Home -->
+	<!-- Slider -->
 	<%@ include file="../slider.jsp"%>
 	
 	<!-- SignUp Modal -->

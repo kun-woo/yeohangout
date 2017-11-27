@@ -3,6 +3,7 @@ package yeohangout.mysql;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.mysql.jdbc.PreparedStatement;
 
@@ -12,38 +13,53 @@ public class DBUtils {
 	
     	
     public static void insertPerson(Connection conn, Person person) throws SQLException {
-       String sql = "Insert into howoo.Person (Id,FirstName,LastName, Address, City, State, ZipCode, Telephone, Email) "
-       		+ "values (?,?,?,?,?,?,?,?,?)";
-       PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+       String sql = "Insert into howoo.Person (FirstName,LastName, Address, City, State, ZipCode, Telephone, Email) "
+       		+ "values (?,?,?,?,?,?,?,?)";
+       PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
        
-       pstm.setInt(1, person.getId());
-       pstm.setString(2, person.getFirstName());
-       pstm.setString(3, person.getLastName());
-       pstm.setString(4, person.getAddress());
-       pstm.setString(5, person.getCity());
-       pstm.setString(6, person.getState());
-       pstm.setInt(7, person.getZipcode());
-       pstm.setString(8, null);
-       pstm.setString(9, null);
-      
+       System.out.println(person.getFirstName()+" "+person.getLastName() +" "+ person.getAddress()
+       	+" "+person.getCity()+ " "+ person.getEmail() + " "+person.getState() + " "+person.getZipcode() + " "+person.getTelephone());
+       pstm.setString(1, person.getFirstName());
+       pstm.setString(2, person.getLastName());
+       pstm.setString(3, person.getAddress());
+       pstm.setString(4, person.getCity());
+       pstm.setString(5, person.getState());
+       pstm.setInt(6, person.getZipcode());
+       pstm.setString(7, person.getTelephone());
+       pstm.setString(8, person.getEmail());
+       
        
        pstm.executeUpdate();
+       
+       
+       ResultSet personID = pstm.getGeneratedKeys();
+       if(personID.next()) {		//To avoid error of 'Before start of result set'
+       	  person.setId(personID.getInt(1));
+       }
+
     }
     
     public static void insertUser(Connection conn, UserAccount user) throws SQLException {
-    		String sql = "Insert into howoo.customer(Id, AccountNo, CreditCardNo, CreationDate, Rating) " 
-    				+ "values (?,?,?,?,?)";
+    		String sql = "Insert into howoo.customer(Id, CreditCardNo, CreationDate, Rating, UserName, Pwd) " 
+    				+ "values (?,?,?,?,?,?)";
     		
-    		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+    		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
     	   
-    		pstm.setInt(1,user.getUserID());
-    		pstm.setInt(2, user.getAccountNo());
-    		pstm.setInt(3, user.getCreditCardNo());
-    		pstm.setDate(4, user.getAccountCreationDate());
-    		pstm.setInt(5, user.getRating());
+    		pstm.setInt(1, user.getPersonID());
+    		pstm.setInt(2, user.getCreditCardNo());
+    		pstm.setDate(3, user.getAccountCreationDate());
+    		pstm.setInt(4, user.getRating());
+    		pstm.setString(5, user.getUserID());
+    		pstm.setString(6, user.getPassword());
     		
     		pstm.executeUpdate();
+
+    	    ResultSet userAccount = pstm.getGeneratedKeys();
+    	    if(userAccount.next()) {
+    	    		user.setAccountNo(userAccount.getInt(1));
+    	    }
     }
+    	    
     
     public static UserAccount searchUser(Connection conn, int userId) throws SQLException{
     		
@@ -57,11 +73,13 @@ public class DBUtils {
     		ResultSet rs = pstm.executeQuery();
     		while(rs.next()) {
     			UserAccount loginedUser = new UserAccount();
-    			loginedUser.setUserID(rs.getInt("Id"));
+    			loginedUser.setPersonID(rs.getInt("Id"));
     			loginedUser.setAccountNo(rs.getInt("AccountNo"));
     			loginedUser.setCreditCardNo(rs.getInt("CreditCardNo"));
     			loginedUser.setRating(rs.getInt("Rating"));
     			loginedUser.setAccountCreationDate(rs.getDate("CreationDate"));
+    			loginedUser.setUserID(rs.getString("UserName"));
+    			loginedUser.setPasswor(rs.getString("Pwd"));
     			return loginedUser;
     		}
     		

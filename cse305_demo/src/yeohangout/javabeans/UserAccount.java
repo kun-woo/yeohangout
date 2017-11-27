@@ -3,10 +3,10 @@ package yeohangout.javabeans;
 import java.sql.Date;
 
 public class UserAccount {
-	public static final String MALE = "M";
-	public static final String FEMALE = "F";
 	
-	private int userID;
+	private int personID;
+	private String userID;
+	private String password;
 	private int accountNo;
 	private int creditCardNo;
 	private Date accountCreationDate;
@@ -15,15 +15,31 @@ public class UserAccount {
 	public UserAccount() {
 		
 	}
-
-	public int getUserID() {
+	
+	public int getPersonID() {
+		return personID;
+	}
+	
+	public void setPersonID(int personID) {
+		this.personID = personID;
+	}
+	
+	public String getUserID() {
 		return userID;
 	}
 
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+	
+	public void setPasswor(String password) {
+		this.password = password;
+	}
+	
 	public int getAccountNo() {
 		return accountNo;
 	}

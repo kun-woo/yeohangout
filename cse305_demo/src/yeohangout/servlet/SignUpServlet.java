@@ -75,7 +75,7 @@ public class SignUpServlet extends HttpServlet {
 		newUser.setAccountCreationDate(currentDate);
 		newUser.setRating(0);
 		newUser.setUserID(userID);
-		newUser.setPasswor(password);
+		newUser.setPassword(password);
 
 
 		boolean submitButtonPressed = request.getParameter("submitBt") != null;

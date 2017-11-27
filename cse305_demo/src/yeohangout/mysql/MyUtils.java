@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import yeohangout.javabeans.User;
 import yeohangout.javabeans.UserAccount;
 
 public class MyUtils {
@@ -15,6 +16,14 @@ public class MyUtils {
 	public static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
 	
 	private static MyUtils myUtils = null;
+	/*user type
+	 *  -1 : not logged in
+	 *  0  : customer
+	 *  1  : employee
+	 *  2  : manager
+	 */
+	
+	private static int userType = -1; 
 	private static HttpSession session = null;
 	
 	private MyUtils() {
@@ -28,6 +37,7 @@ public class MyUtils {
 		
 		return myUtils;
 	}
+	
 	
 	public static void setSession(HttpSession session2) {
 		session = session2;
@@ -54,7 +64,7 @@ public class MyUtils {
     }
     
  // Store user info in Session.
-    public static void storeLoginedUser(HttpSession session, UserAccount loginedUser) {
+    public static void storeLoginedUser(HttpSession session, User loginedUser) {
     		setSession(session);
         // On the JSP can access via ${loginedUser}
         session.setAttribute("loginedUser", loginedUser);
@@ -65,7 +75,7 @@ public class MyUtils {
         return loginedUser;
     }
     
-    public static void storeUserCookie(HttpServletResponse response, UserAccount user) {
+    public static void storeUserCookie(HttpServletResponse response, User user) {
         System.out.println("Store user cookie");
         Cookie cookieUserName = new Cookie(ATT_NAME_USER_NAME, ""+user.getUserID());
         // 1 hour (Converted to seconds)
@@ -92,5 +102,15 @@ public class MyUtils {
         cookieUserName.setMaxAge(0);
         response.addCookie(cookieUserName);
     }
+
+	public static int getUserType() {
+		return userType;
+	}
+
+	public static void setUserType(int userType) {
+		MyUtils.userType = userType;
+	}
+    
+    
  
 }

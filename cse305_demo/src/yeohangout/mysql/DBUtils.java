@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import yeohangout.javabeans.Employee;
 import yeohangout.javabeans.Person;
 import yeohangout.javabeans.UserAccount;
 public class DBUtils {
@@ -79,11 +80,38 @@ public class DBUtils {
     			searchedUser.setRating(rs.getInt("Rating"));
     			searchedUser.setAccountCreationDate(rs.getDate("CreationDate"));
     			searchedUser.setUserID(rs.getString("UserName"));
-    			searchedUser.setPasswor(rs.getString("Pwd"));
+    			searchedUser.setPassword(rs.getString("Pwd"));
 
     			return searchedUser;
     		}
     		return null;
 
     }
+    
+    public static Employee searchEmployee(Connection conn, String userId) throws SQLException{
+    		String sql = "Select * FROM howoo.employee e Where e.UserName = ?";
+    		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+    		
+    		pstm.setString(1, userId);
+    		System.out.println("USER NAME : "+userId);
+    		ResultSet rs = pstm.executeQuery();
+
+    		while(rs.next()) {
+    			Employee searchedUser = new Employee();
+    			
+    			searchedUser.setPersonID(rs.getInt("Id"));
+    			searchedUser.setSSN(rs.getInt("SSN"));
+    			searchedUser.setManager(rs.getBoolean("IsManager"));
+    			searchedUser.setStartDate(rs.getDate("startDate"));
+    			searchedUser.setHourlyRate(rs.getDouble("hourlyRate"));
+    			searchedUser.setUserID(rs.getString("userName"));
+    			searchedUser.setPassword(rs.getString("pwd"));
+    			
+    			return searchedUser;
+    		}
+		
+    		return null;
+    }
+    
+    
 }

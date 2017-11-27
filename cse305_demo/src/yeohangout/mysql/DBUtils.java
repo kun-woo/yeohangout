@@ -31,9 +31,11 @@ public class DBUtils {
        
        pstm.executeUpdate();
        
+       
        ResultSet personID = pstm.getGeneratedKeys();
-       person.setId(personID.getInt(1));
-       System.out.println("person ID "+person.getId());
+       if(personID.next()) {		//To avoid error of 'Before start of result set'
+       	  person.setId(personID.getInt(1));
+       }
 
     }
     
@@ -53,8 +55,11 @@ public class DBUtils {
     		pstm.executeUpdate();
 
     	    ResultSet userAccount = pstm.getGeneratedKeys();
-    	    user.setAccountNo(userAccount.getInt(2));
+    	    if(userAccount.next()) {
+    	    		user.setAccountNo(userAccount.getInt(1));
+    	    }
     }
+    	    
     
     public static UserAccount searchUser(Connection conn, int userId) throws SQLException{
     		

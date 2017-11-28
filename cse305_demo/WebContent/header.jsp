@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="yeohangout.mysql.MyUtils"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -60,7 +61,7 @@
         			<%
 					} else if(MyUtils.getUserType()==1){
 				%>
-					<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+					<li><a data-toggle="modal" href="./employee_menu.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
 				<%
 					}
@@ -71,6 +72,3 @@
 	</div>
 	</nav>
 	
-	
-				
-				

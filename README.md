@@ -16,6 +16,8 @@ GUIDELINE
 6. Confirm 'Pull requests'
 
 ================================================================================
+Signed
+
 Wed Aug 23 04:28:39 UTC 2017 - Jude Hokyoon Woo
 
 Wed Aug 23 06:38:28 UTC 2017 - Jayson DeMarchi

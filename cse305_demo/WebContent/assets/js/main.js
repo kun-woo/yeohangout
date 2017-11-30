@@ -29,6 +29,9 @@ $(function () {
 	$('#datetimepicker2').datetimepicker({
 		format: 'MM/DD/YYYY'
 	});
+	
+	$('#datetimepicker3').datetimepicker();
+	$('#datetimepicker4').datetimepicker();
 });
 
 //For Carousel

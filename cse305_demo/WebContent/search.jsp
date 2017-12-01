@@ -6,7 +6,7 @@
 		<br>
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
-				<form class="form" action="FlightSearch" method="POST">
+				<form class="form" action="flightsearch" method="POST">
 					<br>
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
@@ -16,28 +16,37 @@
 								<button type="button" class="btn btn-default btn-md">Multi-City</button>
 							</div>
 						</div>
+					</div>
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 text-left">
+								<br>
+								<label class="control-label" for="text">Flying From</label> 
+							</div>
+							<div class="col-sm-6 text-left">
+								<br>
+								<label class="control-label" for="text">Flying To</label> 
+							</div>
+							<div class="col-sm-4 text-left">
+								<input type="text" class="form-control" name="depCity" placeholder="City">
+							</div>
+							<div class="col-sm-2 text-left">
+								<input type="text" class="form-control" name="depCountry" placeholder="Country">
+							</div>
+							<div class="col-sm-4 text-left">
+								<input type="text" class="form-control" name="arrCity" placeholder="City">
+							</div>
+							<div class="col-sm-2 text-left">
+								<input type="text" class="form-control" name="arrCountry" placeholder="Country">
+							</div>
+						</div>
 					</div>				
-					<div class="form-group">
-						<div class="col-sm-6 text-left">
-							<br>
-							<!-- .control-label for all horizontal form's labels -->
-							<label class="control-label" for="text">Flying From</label> 
-							<input type="text" class="form-control" placeholder="City or Airport">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-6 text-left">
-							<br>
-							<label class="control-label" for="text">Flying To</label>
-							<input type="text" class="form-control" placeholder="City or Airport">
-						</div>
-					</div>
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4 text-left">
 							<br>
 							<label class="control-label" for="text">Departing</label>
 							<div class='input-group date' id='datetimepicker1'>
-								<input type="text" class="form-control" placeholder="mm/dd/yyyy">
+								<input type="text" class="form-control" name="depTime" placeholder="mm/dd/yyyy">
 								<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -49,7 +58,7 @@
 							<br>
 							<label class="control-label" for="text">Returning</label>
 							<div class='input-group date' id='datetimepicker2'>
-								<input type="text" class="form-control" placeholder="mm/dd/yyyy">
+								<input type="text" class="form-control" name="arrTime" placeholder="mm/dd/yyyy">
 								<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>

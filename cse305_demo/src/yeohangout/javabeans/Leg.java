@@ -1,6 +1,6 @@
 package yeohangout.javabeans;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Leg {
 	private String airlineID;

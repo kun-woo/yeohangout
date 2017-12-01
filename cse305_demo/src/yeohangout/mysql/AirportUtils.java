@@ -44,6 +44,7 @@ public class AirportUtils {
 				System.out.println("\tAIRPORT : " + currAirport.getName());
 				airportArray.add(currAirport);
 			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

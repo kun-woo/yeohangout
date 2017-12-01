@@ -7,7 +7,7 @@
 <%@ page import="yeohangout.mysql.MySQLAccess" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="yeohangout.mysql.ReservationUtils" %>
-
+<%@ page import="java.sql.Connection" %>
 	<!-- HEADER -->
 	<%@ include file="../header.jsp"%>
 	
@@ -25,6 +25,7 @@
 					<td>Reservation Date</td>
 					<td>Booking Fee </td>
 					<td>Total Fare </td>
+					<td>Itinerary</td>
 				</tr>
 			</thead>
 			
@@ -33,7 +34,8 @@
 				
 				MySQLAccess access = new MySQLAccess();
 				access.readDataBase();
-				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(access.getConnection(), loginedEmployee.getAccountNo());
+				Connection conn1 = access.getConnection();
+				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedEmployee.getAccountNo());
 				
 				for (int i=0; i<reservationList.size(); i++){
 					int resrNo = reservationList.get(i).getResrNo();
@@ -43,9 +45,17 @@
 					<td> <%= reservationList.get(i).getResrDate() %> </td>
 					<td> <%= reservationList.get(i).getBookingFee() %> </td>
 					<td> <%= reservationList.get(i).getTotalFare() %> </td>
+					<td>
+					<%
+	    							session.setAttribute("iter_resrNo", resrNo);
+								session.setAttribute("iter_count", i);
+								session.setAttribute("iter_conn", conn1);
+	        			%>
+					<a data-toggle="modal" data-target="#viewItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
+					<% System.out.println(resrNo); %>
+					<%@ include file="../ViewItinerary.jsp" %>
+					</td>
 				</tr>
-				
-				
 			 <%
 				}
 			 %>
@@ -54,5 +64,7 @@
 		 </table>
 	 </div>
 	 
+	
+					
 	<!-- Footer -->
 	<%@ include file="../footer.jsp"%>

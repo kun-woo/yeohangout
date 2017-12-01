@@ -22,7 +22,7 @@
 		}
 	%>
 	
-		<div class="modal fade" id="mySignUp" role="dialog">
+		<div class="modal fade" id="mySignUp" role="dialog" tabindex=-1>
 	
 			<div class="modal-dialog">
 				<!-- Modal content-->

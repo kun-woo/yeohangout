@@ -6,7 +6,7 @@
 		<br>
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
-				<form class="form">
+				<form class="form" action="FlightSearch" method="POST">
 					<br>
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
@@ -97,7 +97,7 @@
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
 							<br>
-							<button type="button" class="btn btn-success btn-md btn-search">Search</button>
+							<button type="submit" class="btn btn-success btn-md btn-search">Search</button>
 						</div>
 					</div>
 				</form>

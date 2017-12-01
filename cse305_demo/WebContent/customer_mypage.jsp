@@ -7,6 +7,7 @@
 <div class="container-fluid bg-gray text-center">
 		<ul>
 			<li><a data-toggle="modal" href="./customer_current_resrv.jsp" ><span class="glyphicon glyphicon-user"></span>Current Reservation</a></li>
+        		<li><a data-toggle="modal" href="./customer_every_resrv.jsp" ><span class="glyphicon glyphicon-user"></span>All of Reservations History</a></li>
         		
         	</ul>
 </div>

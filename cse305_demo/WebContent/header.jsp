@@ -55,9 +55,8 @@
 				<%
 					} else if(MyUtils.getUserType() == 0){ 
 				%>	
-				
-					<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-cog"></span> Manage</a></li>
-        				<li><a data-toggle="modal" data-target=""><span class="glyphicon glyphicon-th-list"></span> My Trips</a></li>
+
+        				<li><a data-toggle="modal" href="./customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			<%
 					} else if(MyUtils.getUserType()==1){

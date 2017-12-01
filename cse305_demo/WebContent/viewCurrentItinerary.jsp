@@ -7,7 +7,7 @@
 <%@ page import="java.sql.Connection" %>
 
 
-<div class="modal fade" id="viewItinerary-<%= session.getAttribute("iter_count") %>" role="dialog">
+<div class="modal fade" id="viewCurrentItinerary-<%= session.getAttribute("iter_count") %>" role="dialog">
 		<div class="modal-dialog modal-lg">
 			<!-- Modal content-->
 			

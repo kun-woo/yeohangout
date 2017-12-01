@@ -42,10 +42,8 @@
 				for (int i=0; i<reservationList.size(); i++){
 					int resrNo = reservationList.get(i).getResrNo();
 					
-					ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, true);
-					
-					if(itineraries.size()!=0){
-					
+					ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, false);
+						
 			%>
 				<tr>
 					<td> <%= resrNo %> </td>
@@ -57,13 +55,13 @@
 								session.setAttribute("iter_count", i);
 								session.setAttribute("itineryList", itineraries);
 	        			%>
-					<a data-toggle="modal" data-target="#viewCurrentItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
+					<a data-toggle="modal" data-target="#viewItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
 					<% System.out.println(resrNo); %>
-					<%@ include file="../viewCurrentItinerary.jsp" %>
+					<%@ include file="../ViewItinerary.jsp" %>
 					</td>
 				</tr>
 			 <%
-				}
+				
 				}
 			 %>
 		 

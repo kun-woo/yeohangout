@@ -6,17 +6,17 @@
 		<br>
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
-				<form class="form" action="flightsearch" method="POST">
-					<br>
-					<div class="form-group">
-						<div class="col-sm-12 text-left">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default btn-md">One-Way</button>
-								<button type="button" class="btn btn-default btn-md active">Round Trip</button>
-								<button type="button" class="btn btn-default btn-md">Multi-City</button>
-							</div>
+				<br>
+				<div class="form-group">
+					<div class="col-sm-12 text-left">
+							<div class="btn-group">								
+							<button type="button" class="btn btn-default btn-md">One-Way</button>
+							<button type="button" class="btn btn-default btn-md active">Round Trip</button>
+							<button type="button" class="btn btn-default btn-md">Multi-City</button>
 						</div>
 					</div>
+				</div>
+				<form class="form" action="flightsearch" method="POST">					
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 text-left">
@@ -65,6 +65,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>

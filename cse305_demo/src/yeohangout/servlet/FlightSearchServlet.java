@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,6 +40,9 @@ public class FlightSearchServlet extends HttpServlet {
 		System.out.println("---Connected to Flight Search Servlet---");
 		
 		String contextPath 	= request.getContextPath();
+		RequestDispatcher rd = 	getServletContext()
+								.getRequestDispatcher(contextPath + "/search_results.jsp");
+
 
 		String depCity 		= request.getParameter("depCity");
 		String depCountry 	= request.getParameter("depCountry");
@@ -62,12 +66,15 @@ public class FlightSearchServlet extends HttpServlet {
 			Connection connect = null;
 			connect = dao.getConnection();
 			
+			request.setAttribute("numOfResults", validLegs.size());
+			
 			// Obtain all airports in the given departure city, country
 			
 			System.out.println("Departure: ");
 			depAirports = AirportUtils.searchAirport(connect, depCity, depCountry);
 			if(depAirports.isEmpty()) {
 				response.sendRedirect(contextPath+"/search_results.jsp");
+				//rd.forward(request, response);
 			}
 			
 			// Obtain all airports in the given arrival city, country
@@ -76,6 +83,7 @@ public class FlightSearchServlet extends HttpServlet {
 			arrAirports = AirportUtils.searchAirport(connect, arrCity, arrCountry);
 			if(arrAirports.isEmpty()) {
 				response.sendRedirect(contextPath+"/search_results.jsp");
+				//rd.forward(request, response);
 			}
 			
 			// Obtain all legs that satisfy the search requirement
@@ -83,13 +91,22 @@ public class FlightSearchServlet extends HttpServlet {
 			for(int i = 0; i < depAirports.size(); i++) {
 				for(int j = 0; j < arrAirports.size(); j++) {
 					ArrayList<Leg> currLegGroup = new ArrayList<>();
-					currLegGroup = LegUtils.searchLeg(connect, depAirports.get(i), arrAirports.get(j), depTime, arrTime);
+					currLegGroup = LegUtils.searchLeg(	connect, depAirports.get(i), 
+														arrAirports.get(j), depTime, arrTime);
 					validLegs.addAll(currLegGroup);
 				}
 			}
 			
-			response.sendRedirect(contextPath+"/search_results.jsp");
+			System.out.println("Valid Legs : " + validLegs.size());		
 			
+			request.setAttribute("numOfResults", validLegs.size());
+			for(int i = 0; i < validLegs.size(); i++) {
+				request.setAttribute("searchResults" + i, validLegs.get(i));
+			}
+			
+			response.sendRedirect(contextPath+"/search_results.jsp");
+			//rd.forward(request, response);
+		    
 			dao.close();
 			
 		} catch(SQLException e) {

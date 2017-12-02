@@ -39,14 +39,13 @@ public class ReservationUtils {
 	 		ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	 		
 	 		String sql = "Select * FROM howoo.reservation r Where r.accountNo = ?";
-	 		System.out.println("Connection : "+conn);
 	 		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
 	 		
 	 		pstm.setInt(1, accountNo);
 	 		
 	 		ResultSet rs = pstm.executeQuery();
-	
-	 		while(rs.next()) {
+	 		int count = 0;
+	 		while(rs.next()&&count<10) {
 	 			Reservation searchedReservation = new Reservation();
 	 			
 	 			searchedReservation.setResrNo(rs.getInt("ResrNo"));
@@ -57,7 +56,8 @@ public class ReservationUtils {
 	 			searchedReservation.setAccountNo(rs.getInt("accountNo"));
 	 			
 	 			reservations.add(searchedReservation);
-	 		
+	 			count++;
+	 			
 	 		}
 	 		
 	 		return reservations;

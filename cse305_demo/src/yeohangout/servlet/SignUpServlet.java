@@ -95,6 +95,7 @@ public class SignUpServlet extends HttpServlet {
 			}else {
 				MyUtils.setIdAlreadyExists(true);
 			}
+			
 			dao.close();
 		} catch(SQLException e) {
 			e.printStackTrace();

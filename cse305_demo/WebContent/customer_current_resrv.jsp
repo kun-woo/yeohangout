@@ -16,10 +16,10 @@
 	
 	<div class="container-fluid bg-gray text-center">
 	<%
-		UserAccount loginedEmployee = MyUtils.getLoginedUser(MyUtils.getSession());
+		UserAccount loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
 	%>
 	
-	<h2> <%= loginedEmployee.getUserID()%>'s Reservation</h2>
+	<h2> <%= loginedUser.getUserID()%>'s Reservation</h2>
 		<table class="table">
 			<thead class="table-inverse">
 				<tr>
@@ -37,7 +37,7 @@
 				MySQLAccess access = new MySQLAccess();
 				access.readDataBase();
 				Connection conn1 = access.getConnection();
-				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedEmployee.getAccountNo());
+				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedUser.getAccountNo());
 				
 				for (int i=0; i<reservationList.size(); i++){
 					int resrNo = reservationList.get(i).getResrNo();
@@ -65,6 +65,8 @@
 			 <%
 				}
 				}
+
+				access.close();
 			 %>
 		 
 		 	</tbody>

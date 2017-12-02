@@ -32,19 +32,19 @@
 			</thead>
 			
 			<tbody>
-			<%
-				
-				MySQLAccess access = new MySQLAccess();
-				access.readDataBase();
-				Connection conn1 = access.getConnection();
-				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedEmployee.getAccountNo());
-				
-				for (int i=0; i<reservationList.size(); i++){
-					int resrNo = reservationList.get(i).getResrNo();
+				<%
 					
-					ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, false);
+					MySQLAccess access = new MySQLAccess();
+					access.readDataBase();
+					Connection conn1 = access.getConnection();
+					ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedEmployee.getAccountNo());
+					
+					for (int i=0; i<reservationList.size(); i++){
+						int resrNo = reservationList.get(i).getResrNo();
 						
-			%>
+						ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, false);
+							
+				%>
 				<tr>
 					<td> <%= resrNo %> </td>
 					<td> <%= reservationList.get(i).getResrDate() %> </td>
@@ -60,11 +60,12 @@
 					<%@ include file="../ViewItinerary.jsp" %>
 					</td>
 				</tr>
-			 <%
-				
-				}
-			 %>
-		 
+				 <%
+					
+					}
+					access.close();
+				 %>
+			 
 		 	</tbody>
 		 </table>
 	 </div>

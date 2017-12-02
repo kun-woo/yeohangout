@@ -5,12 +5,14 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
 
 import yeohangout.javabeans.Airline;
 import yeohangout.javabeans.Airport;
 import yeohangout.javabeans.Flight;
+import yeohangout.javabeans.IncludeAndLeg;
 import yeohangout.javabeans.Leg;
 
 public class AirlineUtils {
@@ -180,4 +182,61 @@ public class AirlineUtils {
 		 		
 		 		pstm.executeUpdate();
 			}
+			
+			 public static ArrayList<Leg> searchFlightByUserID(Connection conn, int accountNo) throws SQLException{
+				 ArrayList<Leg> legs = new ArrayList<Leg>();
+				 String sql = "SELECT * "+
+				 		 "FROM howoo.reservation r, howoo.includes i,  howoo.leg l, howoo.leg l2 "+
+						 "WHERE r.AccountNo = ? AND i.ResrNo = r.ResrNo "+
+						 "AND i.AirlineID = l.AirlineID AND i.flightNO = l.flightNO AND i.LegNO = l.LegNo "+
+						 "AND l.ArrAirportID = l2.ArrAirportID";
+				 
+				 PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+				 pstm.setInt(1, accountNo);
+				 
+				 ResultSet rs = pstm.executeQuery();
+			 		
+				 while(rs.next()) {
+			 			Leg searchedLeg = new Leg();
+			 			
+			 			searchedLeg.setAirlineID(rs.getString("l2.airlineID"));
+			 			searchedLeg.setFlightNo(rs.getInt("l2.flightNo"));
+			 			searchedLeg.setLegNo(rs.getInt("l2.LegNo"));
+			 			searchedLeg.setDepAirportID(rs.getString("l2.DepAirportID"));
+			 			searchedLeg.setArrAirportID(rs.getString("l2.ArrAirportID"));
+			 			searchedLeg.setDepDate(new java.util.Date(rs.getDate("l2.DepTime").getTime()));
+			 			searchedLeg.setArrDate(new java.util.Date(rs.getDate("l2.ArrTime").getTime()));
+			 		
+			 			legs.add(searchedLeg);
+			 	}
+				 
+				 return legs;
+			
+			 }
+			 
+			 public static ArrayList<Flight> searchFlighSuggestionBasedOnBestSeller(Connection conn, int accountNo) throws SQLException{
+				 ArrayList<Flight> flights = new ArrayList();
+				 String sql = "Select * FROM howoo.bestflight bf"
+				 		+ ", howoo.includes i, howoo.reservation r "
+						 +"WHERE bf.airlineID = i.airlineID AND bf.flightNO = i.flightNO "
+						 +"AND i.ResrNO = r.ResrNO AND r.accountNO != ?";
+				 PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+				 pstm.setInt(1, accountNo);
+				 
+				 ResultSet rs = pstm.executeQuery();
+			 		
+				 while(rs.next()) {
+			 			Flight searchedFlight = new Flight();
+			 			
+			 			searchedFlight.setAirlineID(rs.getString("bf.airlineID"));
+			 			searchedFlight.setFlightNumber(rs.getInt("bf.flightNo"));
+			 			searchedFlight.setDaysOperating(rs.getString("bf.DaysOperating"));
+			 			searchedFlight.setMinLenStay(rs.getInt("bf.MinLengthOfStay"));
+			 			searchedFlight.setMaxLenStay(rs.getInt("bf.MaxLengthOfStay"));
+			 		
+			 			flights.add(searchedFlight);
+			 	}
+				 
+				 return flights;
+			 }
 }

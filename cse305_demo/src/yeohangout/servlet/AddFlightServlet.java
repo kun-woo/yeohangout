@@ -19,7 +19,7 @@ import yeohangout.mysql.MyUtils;
 
 @WebServlet("/addFlight")
 public class AddFlightServlet extends HttpServlet{
-private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 	
 	public AddFlightServlet() {
 		super();
@@ -70,6 +70,7 @@ private static final long serialVersionUID = 1L;
 					System.out.println("exists");
 					//MyUtils.setIdAlreadyExists(true);
 				}
+				
 				dao.close();
 			} catch(SQLException e) {
 				e.printStackTrace();

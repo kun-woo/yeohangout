@@ -28,7 +28,7 @@
 							</div>
 						</div>
 						<button type="submit" class="btn btn-block log-in-button">
-							Log In<span class="glyphicon glyphicon-log-in"></span>
+							Log In <span class="glyphicon glyphicon-log-in"></span>
 						</button>
 					</form>
 				</div>

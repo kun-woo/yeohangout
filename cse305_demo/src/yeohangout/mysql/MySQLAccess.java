@@ -17,7 +17,6 @@ import java.sql.Statement;
 public class MySQLAccess {
 	private Connection connect = null;
     private Statement statement = null;
-    private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
 
 	public void readDataBase() throws Exception {
@@ -28,30 +27,6 @@ public class MySQLAccess {
             connect = DriverManager
                     .getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
                             + "user=howoo&password=111255764");
-
-//            // Statements allow to issue SQL queries to the database
-//            statement = connect.createStatement();
-//            // Result set get the result of the SQL query
-//            resultSet = statement
-//            			.executeQuery("select * from howoo.customer");
-//            writeResultSet(resultSet);
-//
-//
-//            preparedStatement = connect
-//                    .prepareStatement("SELECT id, Name from howoo.airline");
-//            resultSet = preparedStatement.executeQuery();
-//            writeResultSet(resultSet);
-//
-//            // Remove again the insert comment
-//            preparedStatement = connect
-//            .prepareStatement("delete from howoo.airline where id= ? ; ");
-//            preparedStatement.setString(1, "KA");
-//            preparedStatement.executeUpdate();
-//
-//            resultSet = statement
-//            .executeQuery("select * from howoo.airline");
-//            writeMetaData(resultSet);
-
         } catch (Exception e) {
             throw e;
         } finally {

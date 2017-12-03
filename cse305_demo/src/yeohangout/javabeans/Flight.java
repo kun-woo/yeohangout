@@ -10,6 +10,17 @@ public class Flight {
 	
 	public Flight() {}
 
+	public Flight(String airlineID, int flightNumber, int numberOfSeats, String daysOperating, int minLenStay,
+			int maxLenStay) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.numberOfSeats = numberOfSeats;
+		DaysOperating = daysOperating;
+		this.minLenStay = minLenStay;
+		this.maxLenStay = maxLenStay;
+	}
+
 	public String getAirlineID() {
 		return airlineID;
 	}

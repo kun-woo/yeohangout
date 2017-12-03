@@ -51,15 +51,13 @@
 					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="../view-employee">Manage
-							Employee <span class="sr-only">(current)</span>
-					</a></li>
+					<li><a href="../view-employee">Manage Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-sales-report">View Sales Report</a></li>
 					<li><a href="../view-reservation">View Reservation</a></li>
 					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
-					<li><a href="#">View Flight</a></li>
+					<li class="active"><a href="#">View Flight <span class="sr-only">(current)</span></a></li>
 					<li><a href="../view-customer">View Customer</a></li>
 				</ul>
 			</div>

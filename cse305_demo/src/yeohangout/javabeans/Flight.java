@@ -1,14 +1,54 @@
 package yeohangout.javabeans;
 
-public class Flight {
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+public class Flight implements Serializable{
+	private static final long serialVersionUID = -1888423918006538970L;
+	
 	private String airlineID;
 	private int flightNumber;
 	private int numberOfSeats;
 	private String DaysOperating;
 	private int minLenStay;
 	private int maxLenStay;
+	private String airportName;
+	private String airportID;
+	private int legNumber;
+	private Timestamp expected;
+	private Timestamp actual;
 	
 	public Flight() {}
+
+	public Flight(String airlineID, int flightNumber, int legNumber, String airportName, Timestamp expected,
+			Timestamp actual) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.airportName = airportName;
+		this.legNumber = legNumber;
+		this.expected = expected;
+		this.actual = actual;
+	}
+
+	public Flight(String airportID, String airportName, String airlineID, int flightNumber) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.airportName = airportName;
+		this.airportID = airportID;
+	}
+
+	public Flight(String airlineID, int flightNumber, int numberOfSeats, String daysOperating, int minLenStay,
+			int maxLenStay) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.numberOfSeats = numberOfSeats;
+		DaysOperating = daysOperating;
+		this.minLenStay = minLenStay;
+		this.maxLenStay = maxLenStay;
+	}
 
 	public String getAirlineID() {
 		return airlineID;
@@ -57,4 +97,45 @@ public class Flight {
 	public void setMaxLenStay(int maxLenStay) {
 		this.maxLenStay = maxLenStay;
 	}
+
+	public String getAirportName() {
+		return airportName;
+	}
+
+	public void setAirportName(String airportName) {
+		this.airportName = airportName;
+	}
+
+	public String getAirportID() {
+		return airportID;
+	}
+
+	public void setAirportID(String airportID) {
+		this.airportID = airportID;
+	}
+
+	public int getLegNumber() {
+		return legNumber;
+	}
+
+	public void setLegNumber(int legNumber) {
+		this.legNumber = legNumber;
+	}
+
+	public Timestamp getExpected() {
+		return expected;
+	}
+
+	public void setExpected(Timestamp expected) {
+		this.expected = expected;
+	}
+
+	public Timestamp getActual() {
+		return actual;
+	}
+
+	public void setActual(Timestamp actual) {
+		this.actual = actual;
+	}
+	
 }

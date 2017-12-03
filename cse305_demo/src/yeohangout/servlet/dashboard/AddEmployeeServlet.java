@@ -1,18 +1,12 @@
-package yeohangout.servlet;
+package yeohangout.servlet.dashboard;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Locale;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -51,13 +45,13 @@ public class AddEmployeeServlet extends HttpServlet {
 		String lastName = request.getParameter("lastName");
 		int SSN = Integer.parseInt(request.getParameter("SSN"));
 		boolean isManager = Boolean.parseBoolean(request.getParameter("isManager"));
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 		double hourlyRate = Double.parseDouble(request.getParameter("hourlyRate"));
 		String userName = request.getParameter("userName");
 		String pwd = request.getParameter("pwd");
 		String errorMsg = null;
-		Date startDate = null;
-		java.sql.Date  sqlDate = null;
+//		Date startDate = null;
+//		java.sql.Date  sqlDate = null;
+//		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 		
 		if (firstName == null || firstName.equals("")) {
 			errorMsg = "Input Null";
@@ -82,10 +76,11 @@ public class AddEmployeeServlet extends HttpServlet {
 //			e.printStackTrace();
 //		}
 		if (errorMsg != null){
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/login.html");
 			PrintWriter out= response.getWriter();
-			out.println("<font color=red>"+errorMsg+"</font>");
-			rd.include(request, response);
+			out.println(errorMsg);
+			String contextPath = request.getContextPath();
+			response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-overview.jsp");
+			
 		}
 		else {
 			// This will load the MySQL driver, each DB has its own driver
@@ -132,8 +127,7 @@ public class AddEmployeeServlet extends HttpServlet {
 					PrintWriter out= response.getWriter();
 					out.println("<font color=green>Add successful, please check table.</font>");
 					
-					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-employee.jsp");
+					response.sendRedirect("view-employee");
 					
 					connect.close();
 				} finally {

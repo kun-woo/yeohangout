@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Set Viewpoint -->
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" /> <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->

@@ -19,26 +19,7 @@ public class Flight implements Serializable{
 	private Timestamp actual;
 	
 	public Flight() {}
-
-	public Flight(String airlineID, int flightNumber, int legNumber, String airportName, Timestamp expected,
-			Timestamp actual) {
-		super();
-		this.airlineID = airlineID;
-		this.flightNumber = flightNumber;
-		this.airportName = airportName;
-		this.legNumber = legNumber;
-		this.expected = expected;
-		this.actual = actual;
-	}
-
-	public Flight(String airportID, String airportName, String airlineID, int flightNumber) {
-		super();
-		this.airlineID = airlineID;
-		this.flightNumber = flightNumber;
-		this.airportName = airportName;
-		this.airportID = airportID;
-	}
-
+	
 	public Flight(String airlineID, int flightNumber, int numberOfSeats, String daysOperating, int minLenStay,
 			int maxLenStay) {
 		super();
@@ -48,6 +29,32 @@ public class Flight implements Serializable{
 		DaysOperating = daysOperating;
 		this.minLenStay = minLenStay;
 		this.maxLenStay = maxLenStay;
+	}
+	
+	public Flight(String airlineID, int flightNumber, int maxLenStay) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.maxLenStay = maxLenStay;
+	}
+
+	public Flight(String airportID, String airportName, String airlineID, int flightNumber) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.airportName = airportName;
+		this.airportID = airportID;
+	}
+	
+	public Flight(String airlineID, int flightNumber, int legNumber, String airportName, Timestamp expected,
+			Timestamp actual) {
+		super();
+		this.airlineID = airlineID;
+		this.flightNumber = flightNumber;
+		this.airportName = airportName;
+		this.legNumber = legNumber;
+		this.expected = expected;
+		this.actual = actual;
 	}
 
 	public String getAirlineID() {

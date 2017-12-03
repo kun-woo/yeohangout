@@ -37,7 +37,7 @@
 					<li><a href="../index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
 					<li><a href="#">LOG OUT</a></li>
-					<li><a href="#">HELP</a></li>
+					<li><a href="#">Help</a></li>
 				</ul>
 			</div>
 		</div>
@@ -132,17 +132,22 @@
 					<h4>Delete Employee</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" class="form-horizontal">
+					<form action="../delete-employee" role="form" class="form-horizontal" method="post">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">SSN:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="SSN">
+								<input type="text" name="SSN" class="form-control" placeholder="SSN">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<button type="submit" class="btn btn-default btn-md pull-right">Delete</button>
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default btn-md pull-right">Delete</button>
+					<h5>This message will be shown only when input is wrong.</h5>
 				</div>
 			</div>
 		</div>
@@ -158,57 +163,75 @@
 					<h4>Edit Employee</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" class="form-horizontal">
+					<form action="../edit-employee" role="form" class="form-horizontal" method="post">
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Target SSN:</label>
+							<label class="control-label col-sm-4" for="text">Key SSN:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="Target SSN">
+								<input type="text" name="keySSN" class="form-control" placeholder="Key SSN">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">First
 								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="First Name">
+								<input type="text" name="firstName" class="form-control" placeholder="First Name">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">Last
 								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="Last Name">
+								<input type="text" name="lastName" class="form-control" placeholder="Last Name">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">SSN:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="SSN">
+								<input type="text" name="SSN" class="form-control" placeholder="SSN">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">isManager:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="isManager">
+								<input type="text" name="isManager" class="form-control" placeholder="isManager">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">Start
 								Date:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="MM-DD-YY">
+								<input type="text" name="startDate" class="form-control" placeholder="YYYY-MM-DD">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">Hourly
 								Rate:</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" placeholder="isManager">
+								<input type="text" name="hourlyRate" class="form-control" placeholder="Hourly Rate">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">User
+								Name:</label>
+							<div class="col-sm-8">
+								<input type="text" name="userName" class="form-control" placeholder="User Name">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Password:</label>
+							<div class="col-sm-8">
+								<input type="text" name="pwd" class="form-control" placeholder="HPassword">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
+				<h5>This message will be shown only when input is wrong.</h5>
 				</div>
 			</div>
 		</div>

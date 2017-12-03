@@ -3,6 +3,7 @@
     
     <%@ page import="java.util.ArrayList" %>
     <%@ page import="yeohangout.javabeans.Leg" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 	<!-- HEADER -->
 	<%@ include file="../header.jsp"%>
@@ -16,71 +17,36 @@
 	<!-- Search -->
 	<%@ include file="../search.jsp"%>
 	
+	<c:choose>
+		<c:when test = "${searchType.equals(one-way)}">
+		</c:when>
+		<c:when test = "round-trip">
+		</c:when>
+		<c:when test = "multi-flight">
+		</c:when>
+	</c:choose>
+	
 	<hr>
-	<%
-		int numOfResults = 0;
-		if(request.getAttribute("numOfResults") != null){
-			numOfResults = (int) request.getAttribute("numOfResults");
-		}
-		ArrayList<Leg> resultTable = new ArrayList<Leg>();
-
-		for(int i = 0; i < numOfResults; i++){
-			resultTable.add((Leg) request.getAttribute("searchResult" + i));
-		}
+	<table class="table">
 		
-	  	for(int i = 0; i< numOfResults; i++){
-	%>
+		<c:forEach items="${searchResults}" var="result">
+			<tr>
+				<td><span class="glyphicon glyphicon-plane"></span></td>
+				<td><c:out value="${result.depDate}"></c:out></td>
+				<td><c:out value="${result.arrDate}"></c:out></td>
+				<td>Reserve</td>
+			</tr>
+			<tr>
+				<td><c:out value="${result.airlineID}"></c:out></td>
+				<td><c:out value="${result.depAirportID}"></c:out></td>
+				<td><c:out value="${result.arrAirportID}"></c:out></td>
+				<td><button type="submit" class="btn btn-success btn-md btn-search">Book</button></td>
+			</tr>
+			<hr>
+		</c:forEach>
+  		
+  	</table>
 	
-	<div class="row text-center">
-		<div class="col-sm-12 search-form">
-			<form class="form" action="bookflight" method="POST">
-				<div class="form-group">
-				<div class="row">
-				<!-- ROW ONE -->
-				<!-- Depart/Return	| DepDate	     "	-->
-					<div class="col-sm-2 text-right">
-						<label class="control-label" for="text">Departure: </label>
-					</div>
-					<div class="col-sm-9 text-left">
-						<label class="control-label" for="text">Jan. 6, 2018 </label>
-					</div>
-				<!-- ROW TWO -->
-				<!-- PlaneGLYF	| DepTime	| ArrTime	| "Book:     "	-->
-					<div class="col-sm-3">
-						<span class="glyphicon glyphicon-plane"></span>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="text"><%=resultTable.get(i).getDepDate() %> </label>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="text"><%=resultTable.get(i).getArrDate() %> </label>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="text">Reserve: </label>
-					</div>
-				<!-- ROW THREE -->
-				<!-- AirlineID	| DepAirport| ArrAirport| "BookButton"	-->
-					<div class="col-sm-3">
-						<label class="control-label" for="text"><%=resultTable.get(i).getAirlineID() %> </label>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="text"><%=resultTable.get(i).getDepAirportID() %> </label>
-					</div>
-					<div class="col-sm-3">
-						<label class="control-label" for="text"><%=resultTable.get(i).getArrAirportID() %> </label>
-					</div>
-					<div class="col-sm-3">
-						<button type="submit" class="btn btn-success btn-md btn-search">Book</button>
-					</div>
-				</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	
-	<hr>
-	
-	<% } %>
 	<!-- Footer -->
 	<%@ include file="../footer.jsp"%>
 	

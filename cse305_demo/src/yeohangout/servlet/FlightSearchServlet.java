@@ -38,10 +38,9 @@ public class FlightSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("---Connected to Flight Search Servlet---");
-		
-		String contextPath 	= request.getContextPath();
+
 		RequestDispatcher rd = 	getServletContext()
-								.getRequestDispatcher(contextPath + "/search_results.jsp");
+								.getRequestDispatcher("/search_results.jsp");
 
 
 		String depCity 		= request.getParameter("depCity");
@@ -67,14 +66,13 @@ public class FlightSearchServlet extends HttpServlet {
 			connect = dao.getConnection();
 			
 			request.setAttribute("numOfResults", validLegs.size());
-			
+
 			// Obtain all airports in the given departure city, country
 			
 			System.out.println("Departure: ");
 			depAirports = AirportUtils.searchAirport(connect, depCity, depCountry);
 			if(depAirports.isEmpty()) {
-				response.sendRedirect(contextPath+"/search_results.jsp");
-				//rd.forward(request, response);
+
 			}
 			
 			// Obtain all airports in the given arrival city, country
@@ -82,8 +80,7 @@ public class FlightSearchServlet extends HttpServlet {
 			System.out.println("Arrival: ");
 			arrAirports = AirportUtils.searchAirport(connect, arrCity, arrCountry);
 			if(arrAirports.isEmpty()) {
-				response.sendRedirect(contextPath+"/search_results.jsp");
-				//rd.forward(request, response);
+
 			}
 			
 			// Obtain all legs that satisfy the search requirement
@@ -97,15 +94,15 @@ public class FlightSearchServlet extends HttpServlet {
 				}
 			}
 			
-			System.out.println("Valid Legs : " + validLegs.size());		
+			System.out.println("Valid Legs : " + validLegs.size());
+					
 			
 			request.setAttribute("numOfResults", validLegs.size());
-			for(int i = 0; i < validLegs.size(); i++) {
-				request.setAttribute("searchResults" + i, validLegs.get(i));
-			}
 			
-			response.sendRedirect(contextPath+"/search_results.jsp");
-			//rd.forward(request, response);
+			request.setAttribute("searchResults", validLegs);
+			
+			
+			rd.forward(request, response);
 		    
 			dao.close();
 			

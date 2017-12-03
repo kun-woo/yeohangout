@@ -61,7 +61,8 @@
         			<%
 					} else if(MyUtils.getUserType()==1){
 				%>
-					<li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+					<!-- <li><a data-toggle="modal" href="./employee_menu.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+					 --><li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
 				<%
 					}

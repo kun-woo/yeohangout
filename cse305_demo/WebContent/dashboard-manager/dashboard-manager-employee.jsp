@@ -21,7 +21,7 @@
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -34,10 +34,10 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../index.jsp">Home</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Log out</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="../index.jsp">HOME</a></li>
+					<li><a href="#">SETTINGS</a></li>
+					<li><a href="#">LOG OUT</a></li>
+					<li><a href="#">HELP</a></li>
 				</ul>
 			</div>
 		</div>

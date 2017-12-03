@@ -42,7 +42,12 @@
 			</div>
 		</div>
 	</nav>
-	<% ArrayList<Flight> flightArr = (ArrayList<Flight>) session.getAttribute("flightArr"); %>
+	<% ArrayList<Flight> flightArr = (ArrayList<Flight>) session.getAttribute("flightArr");
+	   ArrayList<Flight> flightArrActive = (ArrayList<Flight>) session.getAttribute("flightArrActive");
+	   ArrayList<Flight> flightArrAirport = (ArrayList<Flight>) session.getAttribute("flightArrAirport");
+	   ArrayList<Flight> flightArrOnTime = (ArrayList<Flight>) session.getAttribute("flightArrOnTime");
+	   ArrayList<Flight> flightArrDelayed = (ArrayList<Flight>) session.getAttribute("flightArr");
+	%>
 
 	<div class="container-fluid">
 		<div class="row">
@@ -65,7 +70,7 @@
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main slideanim">
 				<h1 class="page-header">View Flight</h1>
 				<div class="table-responsive">
-					<table id="test-table1" class="table table-striped">
+					<table class="table table-striped">
 						<thead>
 							<tr>
 								<th>Airline</th>
@@ -85,6 +90,122 @@
 								<td><%= flightArr.get(i).getDaysOperating() %></td>
 								<td><%= flightArr.get(i).getMinLenStay() %></td>
 								<td><%= flightArr.get(i).getMaxLenStay() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">Active Flight</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Airline</th>
+								<th>Flight Number</th>
+								<th>Number of Seats</th>
+								<th>Days of Operating</th>
+								<th>Minimum Length of Stay</th>
+								<th>Max Length of Stay</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<flightArrActive.size(); i++) { %>
+							<tr>
+								<td><%= flightArrActive.get(i).getAirlineID() %></td>
+								<td><%= flightArrActive.get(i).getFlightNumber() %></td>
+								<td><%= flightArrActive.get(i).getNumberOfSeats() %></td>
+								<td><%= flightArrActive.get(i).getDaysOperating() %></td>
+								<td><%= flightArrActive.get(i).getMinLenStay() %></td>
+								<td><%= flightArrActive.get(i).getMaxLenStay() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">Flight by Airport</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Airport ID</th>
+								<th>Airport Name</th>
+								<th>Airline</th>
+								<th>Flight Number</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<flightArrAirport.size(); i++) { %>
+							<tr>
+								<td><%= flightArrAirport.get(i).getAirportID() %></td>
+								<td><%= flightArrAirport.get(i).getAirportName() %></td>
+								<td><%= flightArrAirport.get(i).getAirlineID() %></td>
+								<td><%= flightArrAirport.get(i).getFlightNumber() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">On-Time Flight</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Airline</th>
+								<th>Flight Number</th>
+								<th>Number of Seats</th>
+								<th>Days of Operating</th>
+								<th>Minimum Length of Stay</th>
+								<th>Max Length of Stay</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<flightArrOnTime.size(); i++) { %>
+							<tr>
+								<td><%= flightArrOnTime.get(i).getAirlineID() %></td>
+								<td><%= flightArrOnTime.get(i).getFlightNumber() %></td>
+								<td><%= flightArrOnTime.get(i).getNumberOfSeats() %></td>
+								<td><%= flightArrOnTime.get(i).getDaysOperating() %></td>
+								<td><%= flightArrOnTime.get(i).getMinLenStay() %></td>
+								<td><%= flightArrOnTime.get(i).getMaxLenStay() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">Delayed Flight</h2>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Airline</th>
+								<th>Flight Number</th>
+								<th>Number of Seats</th>
+								<th>Days of Operating</th>
+								<th>Minimum Length of Stay</th>
+								<th>Max Length of Stay</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<flightArrDelayed.size(); i++) { %>
+							<tr>
+								<td><%= flightArrDelayed.get(i).getAirlineID() %></td>
+								<td><%= flightArrDelayed.get(i).getFlightNumber() %></td>
+								<td><%= flightArrDelayed.get(i).getNumberOfSeats() %></td>
+								<td><%= flightArrDelayed.get(i).getDaysOperating() %></td>
+								<td><%= flightArrDelayed.get(i).getMinLenStay() %></td>
+								<td><%= flightArrDelayed.get(i).getMaxLenStay() %></td>
 							</tr>
 							<%
 							}

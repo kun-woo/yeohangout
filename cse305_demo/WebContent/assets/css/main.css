@@ -343,8 +343,8 @@ footer > p {
 ||				7. Modal 
 ==================================================*/
 
-.modal-header, .modal-body {
-    padding: 40px 50px;
+.modal-header, .modal-footer {
+    padding: 20px 30px;
 }
 
 .sign-up-button, .log-in-button {

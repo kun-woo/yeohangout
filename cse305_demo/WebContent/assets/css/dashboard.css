@@ -192,6 +192,6 @@ table {
  * Modal
  */
  
-.modal-header, .modal-body {
+.modal-header, .modal-footer {
     padding: 20px 30px;
 }

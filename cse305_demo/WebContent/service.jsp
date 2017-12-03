@@ -62,7 +62,7 @@
 				<br>
 				<button class="btn btn-default btn-lg sign-up-button">Click to Fly</button>
 			</div>
-			<div class="col-sm-4 slideanim">
+			<div class="col-sm-4 slideanim text-center">
 				<span class="glyphicon glyphicon-plane logo"></span>
 			</div>
 		</div>

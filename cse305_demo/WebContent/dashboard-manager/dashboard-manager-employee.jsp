@@ -109,11 +109,14 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
+							<div class="col-sm-offset-4 col-sm-8">
+								<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
+							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
+				<h5>This message will be shown only when input is wrong.</h5>
 				</div>
 			</div>
 		</div>

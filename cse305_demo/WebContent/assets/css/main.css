@@ -245,36 +245,30 @@ body {
 /*=================================================
 ||				5. Navbar 
 ==================================================*/
-/* Add a dark background color with a little bit see-through */ 
+/* Add a white background color */ 
 .navbar {
     margin-bottom: 0;
-    background-color: #2d2d30;
+    background-color: #fff;
     border: 0;
     font-size: 11px !important;
     letter-spacing: 4px;
-    opacity:0.9;
 }
 
 /* Add a gray color to all navbar links */
 .navbar li a, .navbar .navbar-brand { 
-    color: #d5d5d5 !important;
+    color: #000 !important;
 }
 
-
-/* Add a gray color to all navbar links */
-.navbar li a, .navbar .navbar-brand { 
-    color: #d5d5d5 !important;
-}
-
-/* On hover, the links will turn white */
+/* On hover, the links will turn blue */
 .navbar-nav li a:hover {
-    color: #fff !important;
+    color: #0f49c6 !important;
+    background-color: #fff !important;
 }
 
 /* The active link */
 .navbar-nav li.active a {
-    color: #fff !important;
-    background-color:#29292c !important;
+    color: #0f49c6 !important;
+    background-color: #fff !important;
 }
 
 /* Remove border color from the collapsible button */
@@ -350,13 +344,6 @@ footer > p {
 /*=================================================
 ||				7. Modal 
 ==================================================*/
-
-.modal-header, .modal-header > h4, .close {
-    background-color: #000;
-    color: #fff !important;
-    text-align: center;
-    font-size: 30px;    
-}
 
 .modal-header, .modal-body {
     padding: 40px 50px;

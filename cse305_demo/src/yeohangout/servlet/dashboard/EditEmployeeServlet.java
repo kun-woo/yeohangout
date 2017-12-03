@@ -1,4 +1,4 @@
-package yeohangout.servlet;
+package yeohangout.servlet.dashboard;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,26 +15,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class AddEmployeeServlet
+ * Servlet implementation class EditEmployeeServlet
  */
-@WebServlet(name = "add-employee", urlPatterns = { "/add-employee" })
-public class AddEmployeeServlet extends HttpServlet {
+@WebServlet(name = "edit-employee", urlPatterns = { "/edit-employee" })
+public class EditEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public AddEmployeeServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public EditEmployeeServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -49,6 +50,7 @@ public class AddEmployeeServlet extends HttpServlet {
 		double hourlyRate = Double.parseDouble(request.getParameter("hourlyRate"));
 		String userName = request.getParameter("userName");
 		String pwd = request.getParameter("pwd");
+		int keySSN = Integer.parseInt(request.getParameter("keySSN"));
 		String errorMsg = null;
 //		Date startDate = null;
 //		java.sql.Date  sqlDate = null;
@@ -92,43 +94,18 @@ public class AddEmployeeServlet extends HttpServlet {
 								+ "user=howoo&password=111255764");
 				try {
 					// Execute SQL query
-					ps = connect.prepareStatement("INSERT into Person(FirstName, LastName, Address, City, State, Zipcode)"
-							+ "values(?, ?, ?, ?, ?, ?)");
-					ps.setString(1, firstName);
-					ps.setString(2, lastName);
-					ps.setString(3, "unknown");
-					ps.setString(4, "unknown");
-					ps.setString(5, "unknown");
-					ps.setInt(6, 11790);
-					ps.execute();
-
-				} finally {
-					try {
-						ps.close();
-					} catch (SQLException e) {
-						PrintWriter out= response.getWriter();
-						out.println("SQLException in closing PreparedStatement or ResultSet");
-					}
-				}
-
-				try {
-					// Execute SQL query
-					ps = connect.prepareStatement("INSERT into Employee(Id, SSN, IsManager, StartDate, "
-							+ "HourlyRate, UserName, Pwd)"
-							+ "values(?, ?, ?, now(), ?, ?, ?)");
-					ps.setInt(1, 6);
-					ps.setInt(2, SSN);
-					ps.setBoolean(3, isManager);
-					ps.setDouble(4, hourlyRate);
-					ps.setString(5, userName);
-					ps.setString(6, pwd);
+					ps = connect.prepareStatement("UPDATE Employee SET SSN = ?, IsManager = ?, StartDate = now(), HourlyRate = ?, UserName = ?, Pwd = ? WHERE Employee.SSN = ?");
+					ps.setInt(1, SSN);
+					ps.setBoolean(2, isManager);
+					ps.setDouble(3, hourlyRate);
+					ps.setString(4, userName);
+					ps.setString(5, pwd);
+					ps.setInt(6, keySSN);
 					ps.execute();
 
 					PrintWriter out= response.getWriter();
-					out.println("<font color=green>Add successful, please check table.</font>");
+					out.println("Add successful, please check table.");
 					
-//					String contextPath = request.getContextPath();
-//					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-overview.jsp");
 					response.sendRedirect("view-employee");
 					
 					connect.close();
@@ -140,6 +117,36 @@ public class AddEmployeeServlet extends HttpServlet {
 						out.println("SQLException in closing PreparedStatement or ResultSet");
 					}
 				}
+
+//				try {
+//					// Execute SQL query
+//					ps = connect.prepareStatement("INSERT into Employee(Id, SSN, IsManager, StartDate, "
+//							+ "HourlyRate, UserName, Pwd)"
+//							+ "values(?, ?, ?, now(), ?, ?, ?)");
+//					ps.setInt(1, 6);
+//					ps.setInt(2, SSN);
+//					ps.setBoolean(3, isManager);
+//					ps.setDouble(4, hourlyRate);
+//					ps.setString(5, userName);
+//					ps.setString(6, pwd);
+//					ps.execute();
+//
+//					PrintWriter out= response.getWriter();
+//					out.println("Add successful, please check table.");
+//					
+////					String contextPath = request.getContextPath();
+////					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-overview.jsp");
+//					response.sendRedirect("view-employee");
+//					
+//					connect.close();
+//				} finally {
+//					try {
+//						ps.close();
+//					} catch (SQLException e) {
+//						PrintWriter out= response.getWriter();
+//						out.println("SQLException in closing PreparedStatement or ResultSet");
+//					}
+//				}
 
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block

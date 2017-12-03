@@ -1,4 +1,4 @@
-package yeohangout.servlet;
+package yeohangout.servlet.dashboard;
 
 import java.io.IOException;
 import java.io.PrintWriter;

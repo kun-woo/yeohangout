@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="dashboard for managers" />
-<meta name="author" content="jude hokyoon woo" />
+<meta name="author" content="jude hokyoon woo - yeo hang out" />
 <title>Yeo Hang Out</title>
 <!-- Bootstrap core CSS -->
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">

@@ -223,14 +223,10 @@
 					</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="dashboard-manager-salesreport.jsp">View Sales
-							Report</a></li>
-					<li><a href="dashboard-manager-reservation.jsp">View
-							Reservation</a></li>
-					<li><a href="dashboard-manager-revenue.jsp">View Total
-							Revenue</a></li>
-					<li><a href="dashboard-manager-flight.jsp">View Flight</a></li>
-					<li><a href="dashboard-manager-customer.jsp">View Customer</a></li>
+					<li><a href="../view-reservation">View Reservation</a></li>
+					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
+					<li><a href="../view-flight">View Flight</a></li>
+					<li><a href="../view-customer">View Customer</a></li>
 				</ul>
 			</div>
 			<div

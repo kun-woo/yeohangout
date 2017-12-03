@@ -129,10 +129,11 @@ public class AddEmployeeServlet extends HttpServlet {
 					ps.setString(6, pwd);
 					ps.execute();
 
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
 					PrintWriter out= response.getWriter();
 					out.println("<font color=green>Add successful, please check table.</font>");
-					rd.forward(request, response);
+					
+					String contextPath = request.getContextPath();
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-employee.jsp");
 					
 					connect.close();
 				} finally {

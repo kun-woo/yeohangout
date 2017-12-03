@@ -81,6 +81,35 @@ public class GetFlightServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
+				ps = connect.prepareStatement("SELECT * FROM MostActFlight");
+				rs = ps.executeQuery();
+
+				ArrayList<Flight> flightArrActive = new ArrayList<Flight>();
+
+				if (rs != null) {
+					while (rs.next()) {
+						flightArrActive.add(new Flight(rs.getString("AirlineID"), rs.getInt("FlightNo"), rs.getInt("MaxLengthOfStay")));
+					}
+					HttpSession session = request.getSession();
+					session.setAttribute("flightArrActive", flightArrActive);
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
+					System.out.println("No user found with given input, please register first.");
+					rd.include(request, response);
+				}
+
+			} finally {
+				try {
+					rs.close();
+					ps.close();
+				} catch (SQLException e) {
+					System.out.println("No user found with given input, please register first.");
+				}
+			}
+			
+			try {
+				// Execute SQL query
 				ps = connect.prepareStatement("SELECT * FROM FlightListAir");
 				rs = ps.executeQuery();
 
@@ -92,7 +121,7 @@ public class GetFlightServlet extends HttpServlet {
 								rs.getInt("FlightNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("flightArr", flightArrAirport);
+					session.setAttribute("flightArrAirport", flightArrAirport);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -117,24 +146,14 @@ public class GetFlightServlet extends HttpServlet {
 				ArrayList<Flight> flightArrOnTime = new ArrayList<Flight>();
 
 				if (rs != null) {
-					ResultSetMetaData rsmd = rs.getMetaData();
-					int columnsNumber = rsmd.getColumnCount();                     
-
-					// Iterate through the data in the result set and display it. 
-
+					ResultSetMetaData rsmd = rs.getMetaData();                
 					while (rs.next()) {
-					//Print one row          
-					for(int i = 1 ; i <= columnsNumber; i++){
-
-					      System.out.print(rs.getString(i) + " "); //Print one element of a row
-
+						flightArrOnTime.add(new Flight(rs.getString(rsmd.getColumnLabel(1)), rs.getInt(rsmd.getColumnLabel(2)), 
+								rs.getInt(rsmd.getColumnLabel(3)), rs.getString(rsmd.getColumnLabel(4)), 
+								rs.getTimestamp(rsmd.getColumnLabel(5)), rs.getTimestamp(rsmd.getColumnLabel(6))));
 					}
-
-					  System.out.println();//Move to the next line to print the next row.           
-
-					    }
 					HttpSession session = request.getSession();
-					session.setAttribute("flightArr", flightArrOnTime);
+					session.setAttribute("flightArrOnTime", flightArrOnTime);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -158,21 +177,23 @@ public class GetFlightServlet extends HttpServlet {
 
 				ArrayList<Flight> flightArrDelayed = new ArrayList<Flight>();
 
-//				if (rs != null) {
-//					while (rs.next()) {
-//						flightArrDelayed.add(new Flight(rs.getString("AirlineID"), rs.getInt("FlightNo"), rs.getInt("LegNo"), 
-//								rs.getString("Name"), rs.getTimestamp("Expected"), rs.getTimestamp("Actual")));
-//					}
-//					HttpSession session = request.getSession();
-//					session.setAttribute("flightArr", flightArrDelayed);
-//					String contextPath = request.getContextPath();
-//					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-flight.jsp");
-//				}
-//				else {
-//					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
-//					System.out.println("No user found with given input, please register first.");
-//					rd.include(request, response);
-//				}
+				if (rs != null) {
+					ResultSetMetaData rsmd = rs.getMetaData();                
+					while (rs.next()) {
+						flightArrDelayed.add(new Flight(rs.getString(rsmd.getColumnLabel(1)), rs.getInt(rsmd.getColumnLabel(2)), 
+								rs.getInt(rsmd.getColumnLabel(3)), rs.getString(rsmd.getColumnLabel(4)), 
+								rs.getTimestamp(rsmd.getColumnLabel(5)), rs.getTimestamp(rsmd.getColumnLabel(6))));
+					}
+					HttpSession session = request.getSession();
+					session.setAttribute("flightArrDelayed", flightArrDelayed);
+					String contextPath = request.getContextPath();
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-flight.jsp");
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
+					System.out.println("No user found with given input, please register first.");
+					rd.include(request, response);
+				}
 
 				connect.close();
 

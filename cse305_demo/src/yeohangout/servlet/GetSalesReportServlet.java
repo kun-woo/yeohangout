@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import yeohangout.javabeans.EmployeeJude;
+import yeohangout.javabeans.SalesReport;
 
 /**
  * Servlet implementation class SalesReportServlet
@@ -49,27 +50,25 @@ public class GetSalesReportServlet extends HttpServlet {
 					.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
 							+ "user=howoo&password=111255764");
 			// Execute SQL query
-			ps = connect.prepareStatement("SELECT p.FirstName, p.LastName, e.SSN, e.isManager, e.StartDate, "
-					+ "e.HourlyRate, e.UserName, e.Pwd "
-					+ "FROM Employee e LEFT JOIN Person P ON p.Id = e.Id");
+			ps = connect.prepareStatement("SELECT *"
+					+ "FROM Salesreport");
 			rs = ps.executeQuery();
 
-			ArrayList<EmployeeJude> emplArr = new ArrayList<EmployeeJude>();
+			ArrayList<SalesReport> srArr = new ArrayList<SalesReport>();
 
 			if (rs != null) {
 				while (rs.next()) {
-					emplArr.add(new EmployeeJude(rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("SSN"), rs.getBoolean("isManager"), 
-							rs.getDate("StartDate"), rs.getDouble("HourlyRate"), rs.getString("UserName"), rs.getString("Pwd")));
+					srArr.add(new SalesReport(rs.getString("Month"), rs.getString("Revenue")));
 				}
 				HttpSession session = request.getSession();
-				session.setAttribute("emplArr", emplArr);
+				session.setAttribute("salesReport", srArr);
 				String contextPath = request.getContextPath();
 				response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-salesreport.jsp");
 			}
 			else {
 				RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-salesreport.jsp");
 				PrintWriter out= response.getWriter();
-				out.println("<font color=red>No user found with given input, please register first.</font>");
+				out.println("<font color=red>No sales report foundss</font>");
 				rd.include(request, response);
 			}
 

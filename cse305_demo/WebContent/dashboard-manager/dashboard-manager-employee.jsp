@@ -223,6 +223,7 @@
 					</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
+					<li><a href="../view-sales-report">View Sales Report</a></li>
 					<li><a href="../view-reservation">View Reservation</a></li>
 					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
 					<li><a href="../view-flight">View Flight</a></li>

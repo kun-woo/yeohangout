@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import yeohangout.javabeans.EmployeeJude;
+import yeohangout.mysql.DBUtils;
+
 /**
  * Servlet implementation class EditEmployeeServlet
  */
@@ -43,6 +46,7 @@ public class EditEmployeeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		int SSN = Integer.parseInt(request.getParameter("SSN"));
@@ -50,7 +54,9 @@ public class EditEmployeeServlet extends HttpServlet {
 		double hourlyRate = Double.parseDouble(request.getParameter("hourlyRate"));
 		String userName = request.getParameter("userName");
 		String pwd = request.getParameter("pwd");
-		int keySSN = Integer.parseInt(request.getParameter("keySSN"));
+		//int keySSN = Integer.parseInt(request.getParameter("keySSN"));
+		int keySSN = Integer.parseInt(request.getParameter("edited_ssn"));
+
 		String errorMsg = null;
 //		Date startDate = null;
 //		java.sql.Date  sqlDate = null;
@@ -92,31 +98,40 @@ public class EditEmployeeServlet extends HttpServlet {
 				Connection connect = DriverManager
 						.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
 								+ "user=howoo&password=111255764");
-				try {
-					// Execute SQL query
-					ps = connect.prepareStatement("UPDATE Employee SET SSN = ?, IsManager = ?, StartDate = now(), HourlyRate = ?, UserName = ?, Pwd = ? WHERE Employee.SSN = ?");
-					ps.setInt(1, SSN);
-					ps.setBoolean(2, isManager);
-					ps.setDouble(3, hourlyRate);
-					ps.setString(4, userName);
-					ps.setString(5, pwd);
-					ps.setInt(6, keySSN);
-					ps.execute();
-
-					PrintWriter out= response.getWriter();
-					out.println("Add successful, please check table.");
-					
-					response.sendRedirect("view-employee");
-					
-					connect.close();
-				} finally {
-					try {
-						ps.close();
-					} catch (SQLException e) {
-						PrintWriter out= response.getWriter();
-						out.println("SQLException in closing PreparedStatement or ResultSet");
-					}
-				}
+				//try {
+				// Execute SQL query
+				EmployeeJude updatedEmployee = new EmployeeJude();
+				
+				updatedEmployee.setSSN(SSN);
+				updatedEmployee.setHourlyRate(hourlyRate);
+				updatedEmployee.setManager(isManager);
+				//updatedEmployee.setStartDate(startDate);
+				updatedEmployee.setUserName(userName);
+				updatedEmployee.setPwd(pwd);
+				
+				//UpdateEmp
+				DBUtils.updateEmployee(connect, updatedEmployee, keySSN);
+				
+				updatedEmployee = DBUtils.searchEmployeeBySSN(connect, SSN);
+				updatedEmployee.setFirstName(firstName);
+				updatedEmployee.setLastName(lastName);
+				
+				DBUtils.updatePerson(connect, updatedEmployee.getFirstName(), updatedEmployee.getLastName(), updatedEmployee.getId());
+				
+				PrintWriter out= response.getWriter();
+				out.println("Add successful, please check table.");
+				
+				response.sendRedirect("view-employee");
+				
+				connect.close();
+//				} finally {
+//					try {
+//						ps.close();
+//					} catch (SQLException e) {
+//						PrintWriter out= response.getWriter();
+//						out.println("SQLException in closing PreparedStatement or ResultSet");
+//					}
+//				}
 
 //				try {
 //					// Execute SQL query

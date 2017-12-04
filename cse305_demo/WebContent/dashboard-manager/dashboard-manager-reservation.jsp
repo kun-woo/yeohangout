@@ -54,12 +54,12 @@
 					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="../view-employee">Manage
+					<li><a href="../view-employee">Manage
 							Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-sales-report">View Sales Report</a></li>
-					<li><a href="#">View Reservation  <span class="sr-only">(current)</span></a></li>
+					<li class="active"><a href="#">View Reservation  <span class="sr-only">(current)</span></a></li>
 					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
 					<li><a href="../view-flight">View Flight</a></li>
 					<li><a href="../view-customer">View Customer</a></li>
@@ -69,32 +69,84 @@
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main slideanim">
 				<h1 class="page-header">View Reservation</h1>
 				<div class="table-responsive">
-					<table id="test-table1" class="table table-striped">
+					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>SSN</th>
-								<th>Name</th>
-								<th>isManager</th>
-								<th>Start Date</th>
-								<th>Hourly Rate</th>
-								<th>User Name</th>
-								<th>Password</th>
+								<th>Reservation Number</th>
+								<th>Reservation Date</th>
+								<th>Booking Fee</th>
+								<th>Total Fare</th>
+								<th>Representative's SSN</th>
+								<th>Customer's Account Number</th>
 							</tr>
 						</thead>
 						<tbody>
-						<% for (int i=0; i<resrArr.size(); i++) { 
-							String fn = resrArr.get(i).getFirstName();
-							String ln = resrArr.get(i).getLastName();
-							String full = fn + " " + ln;
- 						%>
+						<% for (int i=0; i<resrArr.size(); i++) { %>
 							<tr>
-								<td><%= resrArr.get(i).getSSN() %></td>
-								<td><%= full %></td>
-								<td><%= resrArr.get(i).isManager() %></td>
-								<td><%= resrArr.get(i).getStartDate() %></td>
-								<td><%= resrArr.get(i).getHourlyRate() %></td>
-								<td><%= resrArr.get(i).getUserName() %></td>
-								<td><%= resrArr.get(i).getPwd() %></td>
+								<td><%= resrArr.get(i).getResrNo() %></td>
+								<td><%= resrArr.get(i).getResrDateTime() %></td>
+								<td><%= resrArr.get(i).getBookingFee() %></td>
+								<td><%= resrArr.get(i).getTotalFare() %></td>
+								<td><%= resrArr.get(i).getRepSSN() %></td>
+								<td><%= resrArr.get(i).getAccountNo() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">Reservation by Flight</h2>
+				<div class="table-responsive">
+					<table id="table-1" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Airline</th>
+								<th>Flight Number</th>
+								<th>Reservation Number</th>
+								<th>Reservation Date</th>
+								<th>Booking Fee</th>
+								<th>Total Fare</th>
+								<th>Representative's SSN</th>
+								<th>Customer's Account Number</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<resrArrFlight.size(); i++) { %>
+							<tr>
+								<td><%= resrArrFlight.get(i).getAirlineID()%></td>
+								<td><%= resrArrFlight.get(i).getFlightNo()%></td>
+								<td><%= resrArrFlight.get(i).getResrNo()%></td>
+								<td><%= resrArrFlight.get(i).getResrDateTime() %></td>
+								<td><%= resrArrFlight.get(i).getBookingFee() %></td>
+								<td><%= resrArrFlight.get(i).getTotalFare() %></td>
+								<td><%= resrArrFlight.get(i).getRepSSN() %></td>
+								<td><%= resrArrFlight.get(i).getAccountNo() %></td>
+							</tr>
+							<%
+							}
+							%>
+						</tbody>
+					</table>
+				</div>
+				
+				<h2 class="sub-header">Reservation by Customer</h2>
+				<div class="table-responsive">
+					<table id="table-2" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Customer's Name</th>
+								<th>Customer's Account Number</th>
+								<th>Reservation Number</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% for (int i=0; i<resrArrFlight.size(); i++) { %>
+							<tr>
+								<td><%= resrArrFlight.get(i).getCustName()%></td>
+								<td><%= resrArrFlight.get(i).getAccountNo()%></td>
+								<td><%= resrArrFlight.get(i).getResrNo()%></td>
 							</tr>
 							<%
 							}

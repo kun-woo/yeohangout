@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -17,14 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import yeohangout.javabeans.Flight;
-import yeohangout.javabeans.Reservation;
+import yeohangout.javabeans.Revenue;
 
 /**
- * Servlet implementation class GetReservationServlet
+ * Servlet implementation class GetRevenue
  */
-@WebServlet(name = "view-reservation", urlPatterns = { "/view-reservation" })
-public class GetReservationServlet extends HttpServlet {
+@WebServlet(name = "view-revenue", urlPatterns = { "/view-revenue" })
+public class GetRevenueServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
 	private ResultSet rs;
@@ -32,7 +30,7 @@ public class GetReservationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetReservationServlet() {
+	public GetRevenueServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -51,18 +49,18 @@ public class GetReservationServlet extends HttpServlet {
 							+ "user=howoo&password=111255764");
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM ResrData");
+				ps = connect.prepareStatement("SELECT * FROM RevnCity");
 				rs = ps.executeQuery();
 
-				ArrayList<Reservation> resrArr = new ArrayList<Reservation>();
+				ArrayList<Revenue> revnCityArr = new ArrayList<Revenue>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						resrArr.add(new Reservation(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+						revnCityArr.add(new Revenue(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
 								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("resrArr", resrArr);
+					session.setAttribute("revnCityArr", revnCityArr);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -81,19 +79,19 @@ public class GetReservationServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM ResrFlightListInfo");
+				ps = connect.prepareStatement("SELECT * FROM RevnCust");
 				rs = ps.executeQuery();
 
-				ArrayList<Reservation> resrArrFlight = new ArrayList<Reservation>();
+				ArrayList<Revenue> revnCustArr = new ArrayList<Revenue>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						resrArrFlight.add(new Reservation(rs.getString("AirlineID"), rs.getInt("FlightNo"), 
+						resrArrFlight.add(new Revenue(rs.getString("AirlineID"), rs.getInt("FlightNo"), 
 								rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
 								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("resrArrFlight", resrArrFlight);
+					session.setAttribute("revnCustArr", revnCustArr);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -112,10 +110,43 @@ public class GetReservationServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM ResrCustList");
+				ps = connect.prepareStatement("SELECT * FROM RevnCustRep");
 				rs = ps.executeQuery();
 
-				ArrayList<Reservation> resrArrCust = new ArrayList<Reservation>();
+				ArrayList<Revenue> revnCustRepArr = new ArrayList<Revenue>();
+
+				if (rs != null) {
+					while (rs.next()) {
+						revnCustRepArr.add(new Revenue(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("ResrNo")));
+					}
+					HttpSession session = request.getSession();
+					session.setAttribute("revnCustRepArr", revnCustRepArr);
+					String contextPath = request.getContextPath();
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-reservation.jsp");
+				}
+				else {
+					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
+					System.out.println("No user found with given input, please register first.");
+					rd.include(request, response);
+				}
+
+				connect.close();
+
+			} finally {
+				try {
+					rs.close();
+					ps.close();
+				} catch (SQLException e) {
+					System.out.println("No user found with given input, please register first.");
+				}
+			}
+			
+			try {
+				// Execute SQL query
+				ps = connect.prepareStatement("SELECT * FROM RevnFlight");
+				rs = ps.executeQuery();
+
+				ArrayList<Revenue> resrArrCust = new ArrayList<Revenue>();
 
 				if (rs != null) {
 					while (rs.next()) {
@@ -131,7 +162,7 @@ public class GetReservationServlet extends HttpServlet {
 					System.out.println("No user found with given input, please register first.");
 					rd.include(request, response);
 				}
-				
+
 				connect.close();
 
 			} finally {
@@ -142,7 +173,7 @@ public class GetReservationServlet extends HttpServlet {
 					System.out.println("No user found with given input, please register first.");
 				}
 			}
-			
+
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,5 +187,4 @@ public class GetReservationServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

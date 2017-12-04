@@ -20,7 +20,6 @@
 				<div class="modal-body">
 					<%
 						 int edited_ssn =  edited_emp_ssn_arr.get(edited_emp_index); 
-						System.out.println("HERE : "+edited_ssn);
 					%>
 					<form action="../edit-employee" role="form" class="form-horizontal" method="post">
 						

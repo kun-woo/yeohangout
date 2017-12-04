@@ -191,7 +191,10 @@ table {
 /*
  * Modal
  */
- 
-.modal-header, .modal-footer {
+ .modal-header, .modal-footer {
     padding: 20px 30px;
+}
+ 
+ .form-group {
+    overflow: hidden;
 }

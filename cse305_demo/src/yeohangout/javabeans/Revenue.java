@@ -60,4 +60,44 @@ public class Revenue implements Serializable{
 		this.revenue = revenue;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAccountNo() {
+		return accountNo;
+	}
+
+	public void setAccountNo(int accountNo) {
+		this.accountNo = accountNo;
+	}
+
+	public int getSSN() {
+		return SSN;
+	}
+
+	public void setSSN(int sSN) {
+		SSN = sSN;
+	}
+
+	public String getAirlineID() {
+		return airlineID;
+	}
+
+	public void setAirlineID(String airlineID) {
+		this.airlineID = airlineID;
+	}
+
+	public int getFlightNo() {
+		return flightNo;
+	}
+
+	public void setFlightNo(int flightNo) {
+		this.flightNo = flightNo;
+	}
+
 }

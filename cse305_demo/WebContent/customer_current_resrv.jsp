@@ -32,18 +32,15 @@
 			</thead>
 			
 			<tbody>
-			<%
-				
-				MySQLAccess access = new MySQLAccess();
-				access.readDataBase();
-				Connection conn1 = access.getConnection();
-				ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedUser.getAccountNo());
-				
+			
+			<% ArrayList<Reservation> reservationList = (ArrayList<Reservation>)request.getAttribute("cu_reservations"); 
+	
 				for (int i=0; i<reservationList.size(); i++){
 					int resrNo = reservationList.get(i).getResrNo();
 					
-					ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, true);
-					
+					/* ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(request.getCon, resrNo, true);
+					 */
+					ArrayList<IncludeAndLeg> itineraries = reservationList.get(i).getItineraries();
 					if(itineraries.size()!=0){
 					
 			%>
@@ -58,15 +55,14 @@
 								session.setAttribute("itineryList", itineraries);
 	        			%>
 					<a data-toggle="modal" data-target="#viewCurrentItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
-					<% System.out.println(resrNo); %>
+					
+					
 					<%@ include file="../viewCurrentItinerary.jsp" %>
 					</td>
 				</tr>
 			 <%
 				}
 				}
-
-				access.close();
 			 %>
 		 
 		 	</tbody>

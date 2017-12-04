@@ -41,144 +41,45 @@
 		</div>
 	</nav>
 
-	<div class="col-sm-3 col-md-2 sidebar">
-		<ul class="nav nav-sidebar">
-			<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
-		</ul>
-		<ul class="nav nav-sidebar">
-			<li><a href="../view-employee">Manage Employee</a></li>
-		</ul>
-		<ul class="nav nav-sidebar">
-			<li><a href="../view-sales-report">View Sales Report</a></li>
-			<li class="active"><a href="#">View Reservation <span
-					class="sr-only">(current)</span></a></li>
-			<li><a href="../view-total-revenue">View Total Revenue</a></li>
-			<li><a href="../view-flight">View Flight</a></li>
-			<li><a href="../view-customer">View Customer</a></li>
-		</ul>
+	<div class="container-fluid">
+		<h1>Search Bar</h1>
 	</div>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-		<div class="row">
-			<h1>Search Results</h1>
-			<div class="btn-group pull-right">
-				<a href="#" id="list" class="btn btn-default btn-sm"><span
-					class="glyphicon glyphicon-th-list"> </span>List</a> <a href="#"
-					id="grid" class="btn btn-default btn-sm"><span
-					class="glyphicon glyphicon-th"></span>Grid</a>
-			</div>
+	<div class="container-fluid">
+		<h1>Select Departure</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="col-sm-3 col-xs-12">
+			<h1>Search Options</h1>
 		</div>
-		<div id="products" class="row list-group">
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="col-sm-9 col-xs-12">
+			<div class="container-fluid">
+				<h1>Search Results</h1>
 			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
-							</div>
-						</div>
-					</div>
+			<div class="container-fluid bg-warning">
+				<div class="col-xs-2 col-sm-2 bg-primary text-center">
+					<h5>Logo</h5>
+					<h6>Logo</h6>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
-							</div>
-						</div>
-					</div>
+				<div class="col-xs-12 col-sm-2 bg-success">
+					<h5>Text</h5>
+					<h6>Text</h6>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add
-									to cart</a>
-							</div>
-						</div>
-					</div>
+				<div class="col-xs-12 col-sm-2 bg-success">
+					<h5>Text</h5>
+					<h6>Text</h6>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add
-									to cart</a>
-							</div>
-						</div>
-					</div>
+				<div class="col-xs-12 col-sm-2 bg-success">
+					<h5>Text</h5>
+					<h6>Text</h6>
+				</div>
+				<div class="col-xs-12 col-sm-4 bg-primary">
+					<h5>$1000</h5>
+					<h6>Fair-Type</h6>
+					<a href="#search" class="btn btn-success btn-block" role="button">Select</a>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

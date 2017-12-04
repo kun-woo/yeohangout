@@ -1,5 +1,6 @@
 package yeohangout.javabeans;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Reservation {
@@ -9,6 +10,7 @@ public class Reservation {
 	private double totalFare;
 	private int repSSN;
 	private int accountNo;
+	private ArrayList<IncludeAndLeg> itineraries;
 	
 	public Reservation() {}
 
@@ -58,6 +60,14 @@ public class Reservation {
 
 	public void setAccountNo(int accountNo) {
 		this.accountNo = accountNo;
+	}
+
+	public ArrayList<IncludeAndLeg> getItineraries() {
+		return itineraries;
+	}
+
+	public void setItineraries(ArrayList<IncludeAndLeg> itineraries) {
+		this.itineraries = itineraries;
 	}
 	
 	

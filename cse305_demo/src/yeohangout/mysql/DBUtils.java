@@ -140,6 +140,61 @@ public class DBUtils {
     		return null;
     }
     
+    public static EmployeeJude searchEmployeeBySSN(Connection conn, int SSN) throws SQLException{
+		String sql = "Select * FROM howoo.employee e Where e.SSN = ?";
+		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+		
+		pstm.setInt(1, SSN);
+		
+		ResultSet rs = pstm.executeQuery();
+
+		while(rs.next()) {
+			EmployeeJude searchedUser = new EmployeeJude();
+			
+			searchedUser.setId(rs.getInt("Id"));
+			searchedUser.setSSN(rs.getInt("SSN"));
+			searchedUser.setManager(rs.getBoolean("IsManager"));
+			searchedUser.setStartDate(rs.getDate("startDate"));
+			searchedUser.setHourlyRate(rs.getDouble("hourlyRate"));
+			searchedUser.setUserName(rs.getString("userName"));
+			searchedUser.setPwd(rs.getString("pwd"));
+			
+			return searchedUser;
+		}
+	
+		return null;
+}
+    
+    public static void updateEmployee(Connection conn, EmployeeJude updatedEmp, int keySSN) throws SQLException{
+		
+    		String sql = "UPDATE Employee SET SSN = ?, IsManager = ?,  HourlyRate = ?, UserName = ?, Pwd = ? WHERE Employee.SSN = ?";
+    		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+		
+    		ps.setInt(1, updatedEmp.getSSN());
+		ps.setBoolean(2, updatedEmp.isManager());
+		ps.setDouble(3, updatedEmp.getHourlyRate());
+		ps.setString(4, updatedEmp.getUserName() );
+		ps.setString(5, updatedEmp.getPwd());
+		ps.setInt(6, keySSN);
+		ps.execute();
+		
+		ps.close();
+    }
+    
+    public static void updatePerson(Connection conn, String firstName, String lastName, int id) throws SQLException{
+		
+		String sql = "UPDATE Person SET FirstName = ?, LastName = ? WHERE Person.id = ?";
+		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+	
+		ps.setString(1, firstName);
+		ps.setString(2, lastName);
+		ps.setInt(3, id);
+		
+		ps.execute();
+	
+		ps.close();
+    }
+    
     
     
 }

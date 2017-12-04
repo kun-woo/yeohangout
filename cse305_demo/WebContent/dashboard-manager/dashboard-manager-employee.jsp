@@ -153,90 +153,7 @@
 		</div>
 	</div>
 	
-	<!-- Edit Modal -->
-	<div class="modal fade" id="editTable" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>Edit Employee</h4>
-				</div>
-				<div class="modal-body">
-					<form action="../edit-employee" role="form" class="form-horizontal" method="post">
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Key SSN:</label>
-							<div class="col-sm-8">
-								<input type="text" name="keySSN" class="form-control" placeholder="Key SSN">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">First
-								Name:</label>
-							<div class="col-sm-8">
-								<input type="text" name="firstName" class="form-control" placeholder="First Name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Last
-								Name:</label>
-							<div class="col-sm-8">
-								<input type="text" name="lastName" class="form-control" placeholder="Last Name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">SSN:</label>
-							<div class="col-sm-8">
-								<input type="text" name="SSN" class="form-control" placeholder="SSN">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">isManager:</label>
-							<div class="col-sm-8">
-								<input type="text" name="isManager" class="form-control" placeholder="isManager">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Start
-								Date:</label>
-							<div class="col-sm-8">
-								<input type="text" name="startDate" class="form-control" placeholder="YYYY-MM-DD">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Hourly
-								Rate:</label>
-							<div class="col-sm-8">
-								<input type="text" name="hourlyRate" class="form-control" placeholder="Hourly Rate">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">User
-								Name:</label>
-							<div class="col-sm-8">
-								<input type="text" name="userName" class="form-control" placeholder="User Name">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Password:</label>
-							<div class="col-sm-8">
-								<input type="text" name="pwd" class="form-control" placeholder="HPassword">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-4 col-sm-8">
-								<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-				<h5>This message will be shown only when input is wrong.</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-
+	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
@@ -282,13 +199,20 @@
 								<th>Hourly Rate</th>
 								<th>User Name</th>
 								<th>Password</th>
+								<th>Edit</th>
 							</tr>
 						</thead>
 						<tbody>
-						<% for (int i=0; i<emplArr.size(); i++) { 
+						<% 
+						ArrayList<Integer> ssnArray = new ArrayList<Integer>();
+						
+						for (int i=0; i<emplArr.size(); i++) { 
 							String fn = emplArr.get(i).getFirstName();
 							String ln = emplArr.get(i).getLastName();
 							String full = fn + " " + ln;
+							ssnArray.add(emplArr.get(i).getSSN());
+							
+							
  						%>
 							<tr>
 								<td><%= emplArr.get(i).getSSN() %></td>
@@ -298,9 +222,22 @@
 								<td><%= emplArr.get(i).getHourlyRate() %></td>
 								<td><%= emplArr.get(i).getUserName() %></td>
 								<td><%= emplArr.get(i).getPwd() %></td>
+								
+								<td>
+								<% 
+									session.setAttribute("dash_edit_emp", i);
+									session.setAttribute("emp_ssn_arr", ssnArray);
+								%>
+								<a role="button" class="btn btn-default btn-md" data-toggle="modal"
+									data-target="#editTable-<%= i %>" tabindex=i>Edit</a></td>
+									
+								
+								<%@ include file = "../dashboard-manager/dashboard-manager-employee-edit.jsp" %>
 							</tr>
 							<%
 							}
+						
+
 							%>
 						</tbody>
 					</table>
@@ -308,7 +245,10 @@
 			</div>
 		</div>
 	</div>
-
+		
+	
+	
+	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

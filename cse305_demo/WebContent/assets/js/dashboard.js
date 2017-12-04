@@ -88,16 +88,16 @@ $(document).ready(function() {
 	$("#test-table1").DataTable({
 		"order" : [[0, 'asc']]
 	});
-	$("#flight-table-1").DataTable({
+	$("#table-1").DataTable({
 		"order" : [[0, 'asc']]
 	});
-	$("#flight-table-2").DataTable({
+	$("#table-2").DataTable({
 		"order" : [[0, 'asc']]
 	});
-	$("#flight-table-3").DataTable({
+	$("#table-3").DataTable({
 		"order" : [[0, 'asc']]
 	});
-	$("#flight-table-4").DataTable({
+	$("#table-4").DataTable({
 		"order" : [[0, 'asc']]
 	});
 //	$('#test-table1 > tbody > tr').click(function() {

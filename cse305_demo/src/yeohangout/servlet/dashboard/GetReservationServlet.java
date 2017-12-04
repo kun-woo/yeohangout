@@ -81,15 +81,16 @@ public class GetReservationServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM ResrDataCust");
+				ps = connect.prepareStatement("SELECT * FROM ResrFlightListInfo");
 				rs = ps.executeQuery();
 
 				ArrayList<Reservation> resrArrFlight = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						resrArrFlight.add(new Reservation(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
-								rs.getDouble("TotalFare"), rs.getInt("RepSSN")));
+						resrArrFlight.add(new Reservation(rs.getString("AirlineID"), rs.getInt("FlightNo"), 
+								rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
 					session.setAttribute("resrArrFlight", resrArrFlight);
@@ -111,91 +112,26 @@ public class GetReservationServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM FlightListAir");
+				ps = connect.prepareStatement("SELECT * FROM ResrCustList");
 				rs = ps.executeQuery();
 
-				ArrayList<Flight> flightArrAirport = new ArrayList<Flight>();
+				ArrayList<Reservation> resrArrCust = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						flightArrAirport.add(new Flight(rs.getString("Id"), rs.getString("Airport"), rs.getString("AirlineID"), 
-								rs.getInt("FlightNo")));
+						resrArrCust.add(new Reservation(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("ResrNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("flightArrAirport", flightArrAirport);
-				}
-				else {
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
-					System.out.println("No user found with given input, please register first.");
-					rd.include(request, response);
-				}
-
-			} finally {
-				try {
-					rs.close();
-					ps.close();
-				} catch (SQLException e) {
-					System.out.println("No user found with given input, please register first.");
-				}
-			}
-
-			try {
-				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM Flightlistontime");
-				rs = ps.executeQuery();
-
-				ArrayList<Flight> flightArrOnTime = new ArrayList<Flight>();
-
-				if (rs != null) {
-					ResultSetMetaData rsmd = rs.getMetaData();                
-					while (rs.next()) {
-						flightArrOnTime.add(new Flight(rs.getString(rsmd.getColumnLabel(1)), rs.getInt(rsmd.getColumnLabel(2)), 
-								rs.getInt(rsmd.getColumnLabel(3)), rs.getString(rsmd.getColumnLabel(4)), 
-								rs.getTimestamp(rsmd.getColumnLabel(5)), rs.getTimestamp(rsmd.getColumnLabel(6))));
-					}
-					HttpSession session = request.getSession();
-					session.setAttribute("flightArrOnTime", flightArrOnTime);
-				}
-				else {
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
-					System.out.println("No user found with given input, please register first.");
-					rd.include(request, response);
-				}
-
-			} finally {
-				try {
-					rs.close();
-					ps.close();
-				} catch (SQLException e) {
-					System.out.println("No user found with given input, please register first.");
-				}
-			}
-
-			try {
-				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM FlightListDelayed");
-				rs = ps.executeQuery();
-
-				ArrayList<Flight> flightArrDelayed = new ArrayList<Flight>();
-
-				if (rs != null) {
-					ResultSetMetaData rsmd = rs.getMetaData();                
-					while (rs.next()) {
-						flightArrDelayed.add(new Flight(rs.getString(rsmd.getColumnLabel(1)), rs.getInt(rsmd.getColumnLabel(2)), 
-								rs.getInt(rsmd.getColumnLabel(3)), rs.getString(rsmd.getColumnLabel(4)), 
-								rs.getTimestamp(rsmd.getColumnLabel(5)), rs.getTimestamp(rsmd.getColumnLabel(6))));
-					}
-					HttpSession session = request.getSession();
-					session.setAttribute("flightArrDelayed", flightArrDelayed);
+					session.setAttribute("resrArrCust", resrArrCust);
 					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-flight.jsp");
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-reservation.jsp");
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
 					System.out.println("No user found with given input, please register first.");
 					rd.include(request, response);
 				}
-
+				
 				connect.close();
 
 			} finally {
@@ -206,6 +142,7 @@ public class GetReservationServlet extends HttpServlet {
 					System.out.println("No user found with given input, please register first.");
 				}
 			}
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -16,7 +16,9 @@ public class Reservation implements Serializable{
 	private int repSSN;
 	private int accountNo;
 	private ArrayList<IncludeAndLeg> itineraries;
-	
+	private String airlineID;
+	private int flightNo;
+	private String custName;
 	
 	public Reservation() {}
 
@@ -31,13 +33,24 @@ public class Reservation implements Serializable{
 		this.accountNo = accountNo;
 	}
 
-	public Reservation(int resrNo, Timestamp resrDateTime, double bookingFee, double totalFare, int repSSN) {
+	public Reservation(String airlineID, int flightNo, int resrNo, Timestamp resrDateTime, double bookingFee, double totalFare, int repSSN,
+			int accountNo) {
 		super();
 		this.resrNo = resrNo;
 		this.resrDateTime = resrDateTime;
 		this.bookingFee = bookingFee;
 		this.totalFare = totalFare;
 		this.repSSN = repSSN;
+		this.accountNo = accountNo;
+		this.airlineID = airlineID;
+		this.flightNo = flightNo;
+	}
+
+	public Reservation(String custName, int resrNo, int accountNo) {
+		super();
+		this.custName = custName;
+		this.resrNo = resrNo;
+		this.accountNo = accountNo;
 	}
 
 	public int getResrNo() {
@@ -95,7 +108,37 @@ public class Reservation implements Serializable{
 	public void setItineraries(ArrayList<IncludeAndLeg> itineraries) {
 		this.itineraries = itineraries;
 	}
-	
-	
+
+	public Timestamp getResrDateTime() {
+		return resrDateTime;
+	}
+
+	public void setResrDateTime(Timestamp resrDateTime) {
+		this.resrDateTime = resrDateTime;
+	}
+
+	public String getAirlineID() {
+		return airlineID;
+	}
+
+	public void setAirlineID(String airlineID) {
+		this.airlineID = airlineID;
+	}
+
+	public int getFlightNo() {
+		return flightNo;
+	}
+
+	public void setFlightNo(int flightNo) {
+		this.flightNo = flightNo;
+	}
+
+	public String getCustName() {
+		return custName;
+	}
+
+	public void setCustName(String custName) {
+		this.custName = custName;
+	}
 	
 }

@@ -181,8 +181,6 @@
 						data-target="#addTable">Add</a> 
 					<a role="button" class="btn btn-default btn-md" data-toggle="modal"
 						data-target="#deleteTable">Delete</a>
-					<a role="button" class="btn btn-default btn-md" data-toggle="modal"
-						data-target="#editTable">Edit</a>
 				</div>
 				<div>
 					<!-- For Padding -->

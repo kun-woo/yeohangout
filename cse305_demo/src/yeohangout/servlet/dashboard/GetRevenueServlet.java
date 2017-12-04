@@ -21,7 +21,7 @@ import yeohangout.javabeans.Revenue;
 /**
  * Servlet implementation class GetRevenue
  */
-@WebServlet(name = "view-revenue", urlPatterns = { "/view-revenue" })
+@WebServlet(name = "view-total-revenue", urlPatterns = { "/view-total-revenue" })
 public class GetRevenueServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
@@ -56,8 +56,7 @@ public class GetRevenueServlet extends HttpServlet {
 
 				if (rs != null) {
 					while (rs.next()) {
-						revnCityArr.add(new Revenue(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
-								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
+						revnCityArr.add(new Revenue(rs.getString("City"), rs.getDouble("Revenue")));
 					}
 					HttpSession session = request.getSession();
 					session.setAttribute("revnCityArr", revnCityArr);
@@ -86,9 +85,7 @@ public class GetRevenueServlet extends HttpServlet {
 
 				if (rs != null) {
 					while (rs.next()) {
-						resrArrFlight.add(new Revenue(rs.getString("AirlineID"), rs.getInt("FlightNo"), 
-								rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
-								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
+						revnCustArr.add(new Revenue(rs.getDouble("Revenue"), rs.getString("Name"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
 					session.setAttribute("revnCustArr", revnCustArr);
@@ -117,20 +114,16 @@ public class GetRevenueServlet extends HttpServlet {
 
 				if (rs != null) {
 					while (rs.next()) {
-						revnCustRepArr.add(new Revenue(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("ResrNo")));
+						revnCustRepArr.add(new Revenue(rs.getInt("SSN"), rs.getString("Name"), rs.getDouble("Revenue")));
 					}
 					HttpSession session = request.getSession();
 					session.setAttribute("revnCustRepArr", revnCustRepArr);
-					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-reservation.jsp");
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
 					System.out.println("No user found with given input, please register first.");
 					rd.include(request, response);
 				}
-
-				connect.close();
 
 			} finally {
 				try {
@@ -146,16 +139,16 @@ public class GetRevenueServlet extends HttpServlet {
 				ps = connect.prepareStatement("SELECT * FROM RevnFlight");
 				rs = ps.executeQuery();
 
-				ArrayList<Revenue> resrArrCust = new ArrayList<Revenue>();
+				ArrayList<Revenue> revnFlightArr = new ArrayList<Revenue>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						resrArrCust.add(new Reservation(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("ResrNo")));
+						revnFlightArr.add(new Revenue(rs.getString("AirlineID"), rs.getDouble("FlightNo"), rs.getInt("Revenue")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("resrArrCust", resrArrCust);
+					session.setAttribute("revnFlightArr", revnFlightArr);
 					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-reservation.jsp");
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-revenue.jsp");
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");

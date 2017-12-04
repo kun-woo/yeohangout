@@ -33,10 +33,10 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="../index.jsp">Home</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Log out</a></li>
-				<li><a href="#">Help</a></li>
+				<li><a href="../index.jsp">HOME</a></li>
+				<li><a href="#">SETTINGS</a></li>
+				<li><a href="#">LOG OUT</a></li>
+				<li><a href="#">HELP</a></li>
 			</ul>
 		</div>
 	</div>

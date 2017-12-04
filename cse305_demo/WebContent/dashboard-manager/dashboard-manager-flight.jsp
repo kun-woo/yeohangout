@@ -37,7 +37,7 @@
 					<li><a href="../index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
 					<li><a href="#">LOG OUT</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="#">HELP</a></li>
 				</ul>
 			</div>
 		</div>
@@ -98,9 +98,9 @@
 					</table>
 				</div>
 				
-				<h2 class="sub-header">Active Flight</h2>
+				<h2 class="sub-header">Most Active Flight</h2>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="flight-table-1" class="table table-striped">
 						<thead>
 							<tr>
 								<th>Airport ID</th>
@@ -124,7 +124,7 @@
 				
 				<h2 class="sub-header">Flight by Airport</h2>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="flight-table-2" class="table table-striped">
 						<thead>
 							<tr>
 								<th>Airport ID</th>
@@ -150,7 +150,7 @@
 				
 				<h2 class="sub-header">On-Time Flight</h2>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="flight-table-3" class="table table-striped">
 						<thead>
 							<tr>
 								<th>Airline</th>
@@ -180,7 +180,7 @@
 				
 				<h2 class="sub-header">Delayed Flight</h2>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="flight-table-4" class="table table-striped">
 						<thead>
 							<tr>
 								<th>Airline</th>

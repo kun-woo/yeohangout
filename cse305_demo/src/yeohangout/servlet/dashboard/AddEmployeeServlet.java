@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import yeohangout.javabeans.Employee;
+import yeohangout.javabeans.EmployeeJude;
+import yeohangout.javabeans.Person;
+import yeohangout.mysql.DBUtils;
+
 /**
  * Servlet implementation class AddEmployeeServlet
  */
@@ -83,6 +88,18 @@ public class AddEmployeeServlet extends HttpServlet {
 			
 		}
 		else {
+			
+			//make person object
+			Person newPerson = new Person();
+			
+			newPerson.setFirstName(firstName);
+			newPerson.setLastName(lastName);
+			newPerson.setAddress("unknown");
+			newPerson.setCity("unknown");
+			newPerson.setState("unknown");
+			newPerson.setZipcode(11790);
+			
+			
 			// This will load the MySQL driver, each DB has its own driver
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
@@ -90,61 +107,39 @@ public class AddEmployeeServlet extends HttpServlet {
 				Connection connect = DriverManager
 						.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
 								+ "user=howoo&password=111255764");
-				try {
 					// Execute SQL query
-					ps = connect.prepareStatement("INSERT into Person(FirstName, LastName, Address, City, State, Zipcode)"
-							+ "values(?, ?, ?, ?, ?, ?)");
-					ps.setString(1, firstName);
-					ps.setString(2, lastName);
-					ps.setString(3, "unknown");
-					ps.setString(4, "unknown");
-					ps.setString(5, "unknown");
-					ps.setInt(6, 11790);
-					ps.execute();
+					//Add Person
+					DBUtils.insertPerson(connect, newPerson);
+					
+				
 
-				} finally {
-					try {
-						ps.close();
-					} catch (SQLException e) {
-						PrintWriter out= response.getWriter();
-						out.println("SQLException in closing PreparedStatement or ResultSet");
-					}
-				}
-
-				try {
+				
 					// Execute SQL query
-					ps = connect.prepareStatement("INSERT into Employee(Id, SSN, IsManager, StartDate, "
-							+ "HourlyRate, UserName, Pwd)"
-							+ "values(?, ?, ?, now(), ?, ?, ?)");
-					ps.setInt(1, 6);
-					ps.setInt(2, SSN);
-					ps.setBoolean(3, isManager);
-					ps.setDouble(4, hourlyRate);
-					ps.setString(5, userName);
-					ps.setString(6, pwd);
-					ps.execute();
-
+					EmployeeJude newEmployee = new EmployeeJude();
+					newEmployee.setId(newPerson.getId());
+					newEmployee.setSSN(SSN);
+					newEmployee.setManager(isManager);
+					newEmployee.setHourlyRate(hourlyRate);
+					newEmployee.setUserName(userName);
+					newEmployee.setPwd(pwd);
+					
+					
+					DBUtils.insertEmployee(connect, newEmployee);
+					
+					
 					PrintWriter out= response.getWriter();
 					out.println("<font color=green>Add successful, please check table.</font>");
 					
 					response.sendRedirect("view-employee");
 					
 					connect.close();
-				} finally {
-					try {
-						ps.close();
-					} catch (SQLException e) {
-						PrintWriter out= response.getWriter();
-						out.println("SQLException in closing PreparedStatement or ResultSet");
-					}
-				}
 
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		
 		}
-		 
 	}
 
 }

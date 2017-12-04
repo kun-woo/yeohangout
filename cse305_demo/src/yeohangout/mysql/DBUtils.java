@@ -1,5 +1,6 @@
 package yeohangout.mysql;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,6 +9,7 @@ import java.sql.Statement;
 import com.mysql.jdbc.PreparedStatement;
 
 import yeohangout.javabeans.Employee;
+import yeohangout.javabeans.EmployeeJude;
 import yeohangout.javabeans.Person;
 import yeohangout.javabeans.UserAccount;
 public class DBUtils {
@@ -37,6 +39,9 @@ public class DBUtils {
        if(personID.next()) {		//To avoid error of 'Before start of result set'
        	  person.setId(personID.getInt(1));
        }
+       
+       pstm.close();
+		
 
     }
     
@@ -60,6 +65,28 @@ public class DBUtils {
     	    		user.setAccountNo(userAccount.getInt(1));
     	    }
     }
+    
+    public static void insertEmployee(Connection conn, EmployeeJude employee) throws SQLException {
+    		String sql = "INSERT into Employee(id, SSN, IsManager, StartDate, "
+					+ "HourlyRate, UserName, Pwd) "
+					+ "values(?,?, ?, now(), ?, ?, ?)";
+		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
+	   
+		pstm.setInt(1,employee.getId());
+		pstm.setInt(2, employee.getSSN());
+		pstm.setBoolean(3, employee.isManager());
+		pstm.setDouble(4, employee.getHourlyRate());
+		pstm.setString(5, employee.getUserName());
+		pstm.setString(6, employee.getPwd());
+		
+		pstm.executeUpdate();
+		
+
+	    pstm.close();
+	    
+    }
+    
+    
     	    
     
     public static UserAccount searchUser(Connection conn, String userId) throws SQLException{

@@ -8,6 +8,7 @@ public class EmployeeJude implements Serializable{
 	
 	private String firstName;
 	private String lastName;
+	private int id;
 	private int SSN;
 	private boolean isManager;
 	private Date startDate;
@@ -18,6 +19,7 @@ public class EmployeeJude implements Serializable{
 	public EmployeeJude() {}
 	
 	public EmployeeJude(String firstName, String lastName, int SSN, boolean isManager, Date startDate, double hourlyRate, String userName, String pwd) {
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.SSN = SSN;
@@ -28,6 +30,14 @@ public class EmployeeJude implements Serializable{
 		this.pwd = pwd;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

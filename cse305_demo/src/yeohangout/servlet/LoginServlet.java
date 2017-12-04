@@ -81,7 +81,13 @@ public class LoginServlet extends HttpServlet {
 					
 					MyUtils.storeLoginedUser(session, loginedEmployee);
 					MyUtils.storeUserCookie(response, loginedEmployee);
-					MyUtils.setUserType(1);
+					
+					if(loginedEmployee.isManager()) {
+						MyUtils.setUserType(2);
+					}else {
+						MyUtils.setUserType(1);
+					}
+					
 					response.sendRedirect(contextPath+"/index.jsp");
 				}
 				

@@ -3,6 +3,7 @@ package yeohangout.javabeans;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Reservation implements Serializable{
 	private static final long serialVersionUID = -730050536098649031L;
@@ -14,6 +15,7 @@ public class Reservation implements Serializable{
 	private double totalFare;
 	private int repSSN;
 	private int accountNo;
+	private ArrayList<IncludeAndLeg> itineraries;
 	
 	
 	public Reservation() {}
@@ -84,6 +86,14 @@ public class Reservation implements Serializable{
 
 	public void setAccountNo(int accountNo) {
 		this.accountNo = accountNo;
+	}
+
+	public ArrayList<IncludeAndLeg> getItineraries() {
+		return itineraries;
+	}
+
+	public void setItineraries(ArrayList<IncludeAndLeg> itineraries) {
+		this.itineraries = itineraries;
 	}
 	
 	

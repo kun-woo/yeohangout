@@ -33,16 +33,13 @@
 			
 			<tbody>
 				<%
-					
-					MySQLAccess access = new MySQLAccess();
-					access.readDataBase();
-					Connection conn1 = access.getConnection();
-					ArrayList<Reservation> reservationList = ReservationUtils.searchReservationListByAccountNo(conn1, loginedEmployee.getAccountNo());
+					ArrayList<Reservation> reservationList = (ArrayList<Reservation>)request.getAttribute("cu_every_reservations"); 
+				
 					
 					for (int i=0; i<reservationList.size(); i++){
 						int resrNo = reservationList.get(i).getResrNo();
 						
-						ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(conn1, resrNo, false);
+						ArrayList<IncludeAndLeg> itineraries = reservationList.get(i).getItineraries();
 							
 				%>
 				<tr>
@@ -63,7 +60,6 @@
 				 <%
 					
 					}
-					access.close();
 				 %>
 			 
 		 	</tbody>

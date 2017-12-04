@@ -10,8 +10,8 @@
 	%>
 <div class="container-fluid bg-gray text-center">
 		<ul>
-			<li><a data-toggle="modal" href="./customer_current_resrv.jsp" ><span class="glyphicon glyphicon-user"></span>Current Reservation</a></li>
-        		<li><a data-toggle="modal" href="./customer_every_resrv.jsp" ><span class="glyphicon glyphicon-user"></span>All of Reservations History</a></li>
+			<li><a data-toggle="modal" href="currentReservationServlet?userID=<%= loginedUser.getAccountNo() %>" ><span class="glyphicon glyphicon-user"></span>Current Reservation</a></li>
+        		<li><a data-toggle="modal" href="everyReservationServlet?userID=<%= loginedUser.getAccountNo() %>" ><span class="glyphicon glyphicon-user"></span>All of Reservations History</a></li>
         		<li><a data-toggle="modal" href="flightSuggestion?userID=<%= loginedUser.getAccountNo() %>"><span class="glyphicon glyphicon-user"></span>View Flight Suggestion</a></li>
         	</ul>
 </div>

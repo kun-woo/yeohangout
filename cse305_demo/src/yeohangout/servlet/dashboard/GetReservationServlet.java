@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import yeohangout.javabeans.Flight;
+import yeohangout.javabeans.Reservation;
 
 /**
  * Servlet implementation class GetReservationServlet
@@ -50,18 +51,18 @@ public class GetReservationServlet extends HttpServlet {
 							+ "user=howoo&password=111255764");
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM FlightListAll");
+				ps = connect.prepareStatement("SELECT * FROM ResrData");
 				rs = ps.executeQuery();
 
-				ArrayList<Flight> flightArr = new ArrayList<Flight>();
+				ArrayList<Reservation> resrArr = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						flightArr.add(new Flight(rs.getString("AirlineID"), rs.getInt("FlightNo"), rs.getInt("NoOfSeats"), 
-								rs.getString("DaysOperating"), rs.getInt("MinLengthOfStay"), rs.getInt("MaxLengthOfStay")));
+						resrArr.add(new Reservation(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("flightArr", flightArr);
+					session.setAttribute("resrArr", resrArr);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -80,17 +81,18 @@ public class GetReservationServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM MostActFlight");
+				ps = connect.prepareStatement("SELECT * FROM ResrDataCust");
 				rs = ps.executeQuery();
 
-				ArrayList<Flight> flightArrActive = new ArrayList<Flight>();
+				ArrayList<Reservation> resrArrFlight = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						flightArrActive.add(new Flight(rs.getString("AirlineID"), rs.getInt("FlightNo"), rs.getInt("MaxLengthOfStay")));
+						resrArrFlight.add(new Reservation(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+								rs.getDouble("TotalFare"), rs.getInt("RepSSN")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("flightArrActive", flightArrActive);
+					session.setAttribute("resrArrFlight", resrArrFlight);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");

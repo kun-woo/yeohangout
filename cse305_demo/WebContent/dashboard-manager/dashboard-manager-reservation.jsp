@@ -82,19 +82,19 @@
 							</tr>
 						</thead>
 						<tbody>
-						<% for (int i=0; i<emplArr.size(); i++) { 
-							String fn = emplArr.get(i).getFirstName();
-							String ln = emplArr.get(i).getLastName();
+						<% for (int i=0; i<resrArr.size(); i++) { 
+							String fn = resrArr.get(i).getFirstName();
+							String ln = resrArr.get(i).getLastName();
 							String full = fn + " " + ln;
  						%>
 							<tr>
-								<td><%= emplArr.get(i).getSSN() %></td>
+								<td><%= resrArr.get(i).getSSN() %></td>
 								<td><%= full %></td>
-								<td><%= emplArr.get(i).isManager() %></td>
-								<td><%= emplArr.get(i).getStartDate() %></td>
-								<td><%= emplArr.get(i).getHourlyRate() %></td>
-								<td><%= emplArr.get(i).getUserName() %></td>
-								<td><%= emplArr.get(i).getPwd() %></td>
+								<td><%= resrArr.get(i).isManager() %></td>
+								<td><%= resrArr.get(i).getStartDate() %></td>
+								<td><%= resrArr.get(i).getHourlyRate() %></td>
+								<td><%= resrArr.get(i).getUserName() %></td>
+								<td><%= resrArr.get(i).getPwd() %></td>
 							</tr>
 							<%
 							}

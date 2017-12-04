@@ -1,6 +1,7 @@
 package yeohangout.javabeans;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Reservation implements Serializable{
@@ -8,12 +9,34 @@ public class Reservation implements Serializable{
 	
 	private int resrNo;
 	private Date resrDate;
+	private Timestamp resrDateTime;
 	private double bookingFee;
 	private double totalFare;
 	private int repSSN;
 	private int accountNo;
 	
+	
 	public Reservation() {}
+
+	public Reservation(int resrNo, Timestamp resrDateTime, double bookingFee, double totalFare, int repSSN,
+			int accountNo) {
+		super();
+		this.resrNo = resrNo;
+		this.resrDateTime = resrDateTime;
+		this.bookingFee = bookingFee;
+		this.totalFare = totalFare;
+		this.repSSN = repSSN;
+		this.accountNo = accountNo;
+	}
+
+	public Reservation(int resrNo, Timestamp resrDateTime, double bookingFee, double totalFare, int repSSN) {
+		super();
+		this.resrNo = resrNo;
+		this.resrDateTime = resrDateTime;
+		this.bookingFee = bookingFee;
+		this.totalFare = totalFare;
+		this.repSSN = repSSN;
+	}
 
 	public int getResrNo() {
 		return resrNo;

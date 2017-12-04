@@ -1,6 +1,9 @@
 package yeohangout.javabeans;
 
-public class Airline {
+import java.io.Serializable;
+
+public class Airline implements Serializable{
+	private static final long serialVersionUID = -4929667085854599919L;
 	private String arirlineID;
 	private String airlineName;
 	

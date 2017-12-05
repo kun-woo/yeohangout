@@ -46,11 +46,12 @@
 		<br>
 		<br>
 		<br>
-		<h1>Sorry my fella.. <b><%//Airline Name %>Ada Airlines</b> didn't accept your bid..</h1>
-		<i class="fa fa-times fa-5x times" aria-hidden="true"></i>
+		<h1>Sorry my fella.. <b class="bg-red no-wrap"><%//Airline Name %>Ada Airlines</b> <span class="no-wrap">didn't accept your bid..</span></h1>
+		<i class="fa fa-times fa-5x times bg-red" aria-hidden="true"></i>
 		<br>
 		<h2>Wanna <b>try</b> again?</h2>
-		<a href="#" class="btn btn-default btn-md">Go back to Search</a>
+		<br>
+		<a href="#" class="btn btn-success btn-md">Go back..</a>
 	</div>
 </body>
 </html>

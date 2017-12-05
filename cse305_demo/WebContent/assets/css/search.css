@@ -51,14 +51,11 @@
 .warning-text > small {
 	color: #bcad71;
 }
-.bg-panel {
-	border-radius: 25px;
-	border-top: 1px solid #e1e1e1;
-	border-bottom: 1px solid #e1e1e1;
-	border-right: 1px solid #e1e1e1;
-	border-left: 1px solid #e1e1e1;
-	
-	
+.bg-red {
+	color: red;
+}
+.bg-green {
+	color: lightgreen;
 }
 .bg-primary {
 	border-radius: 25px;

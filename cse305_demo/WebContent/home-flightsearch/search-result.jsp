@@ -1,3 +1,5 @@
+<%@page import="yeohangout.javabeans.EmployeeJude"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,9 +15,11 @@
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../assets/css/search.css" rel="stylesheet">
 <link href="../assets/css/dashboard.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/datatables.min.css" />
+<link href="../assets/css/search.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,153 +44,265 @@
 			</div>
 		</div>
 	</nav>
-
-	<div class="col-sm-3 col-md-2 sidebar">
-		<ul class="nav nav-sidebar">
-			<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
-		</ul>
-		<ul class="nav nav-sidebar">
-			<li><a href="../view-employee">Manage Employee</a></li>
-		</ul>
-		<ul class="nav nav-sidebar">
-			<li><a href="../view-sales-report">View Sales Report</a></li>
-			<li class="active"><a href="#">View Reservation <span
-					class="sr-only">(current)</span></a></li>
-			<li><a href="../view-total-revenue">View Total Revenue</a></li>
-			<li><a href="../view-flight">View Flight</a></li>
-			<li><a href="../view-customer">View Customer</a></li>
-		</ul>
-	</div>
-	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<%
+		ArrayList<EmployeeJude> emplArr = (ArrayList<EmployeeJude>) session.getAttribute("emplArr");
+	%>
+	<div class="container-fluid">
 		<div class="row">
-			<h1>Search Results</h1>
-			<div class="btn-group pull-right">
-				<a href="#" id="list" class="btn btn-default btn-sm"><span
-					class="glyphicon glyphicon-th-list"> </span>List</a> <a href="#"
-					id="grid" class="btn btn-default btn-sm"><span
-					class="glyphicon glyphicon-th"></span>Grid</a>
-			</div>
-		</div>
-		<div id="products" class="row list-group">
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
+			<div class="col-sm-3 col-md-3 sidebar">
+				<div class="row">
+					<div class></div>
+				</div>
+				<div class="row">
+					<form action="#" method="post">
+						<div class="side-form col-xs-12 bg-primary">
+							<h3>Another Shot?</h3>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">One
+									Way</label>
 							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">Round
+									Trip</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">Muti
+									City</label>
+							</div>
+							<div class="side-from-input">
+								<div class="dropdown">
+									<label for="button">Flying from</label>
+									<button class="btn btn-default btn-block dropdown-toggle"
+										type="button" data-toggle="dropdown">
+										City or Airport <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li class=><a href="#">JFK</a></li>
+										<li><a href="#">ICN</a></li>
+										<li><a href="#">LGA</a></li>
+									</ul>
+								</div>
+								<div class="dropdown">
+									<label for="button">Flying to</label>
+									<button class="btn btn-default btn-block dropdown-toggle"
+										type="button" data-toggle="dropdown">
+										City or Airport <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li class=><a href="#">JFK</a></li>
+										<li><a href="#">ICN</a></li>
+										<li><a href="#">LGA</a></li>
+									</ul>
+								</div>
+								<div class="bg-default" style="overflow:visible;">
+									<label class="control-label" for="text">Departing</label>
+									<div class='input-group date' id='datetimepicker1'>
+										<input type="text" class="form-control" name="deptTime"
+											placeholder="mm/dd/yyyy"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<div class="bg-default" style="overflow:visible;">
+									<label class="control-label" for="text">Returning</label>
+									<div class='input-group date' id='datetimepicker2'>
+										<input type="text" class="form-control" name="arrTime"
+											placeholder="mm/dd/yyyy"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<br>
+								<button class="btn btn-success btn-block" type="submit">Search</button>
+								<br>
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
 			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
-							</div>
-						</div>
-					</div>
+			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
+				<div class="row">
+					<h1 class="page-header col-xs-12">Search Result</h1>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="#">Add to cart</a>
-							</div>
-						</div>
-					</div>
+				<div class="row">
+					<h2 class="">Select your departure to New York <small> Wed, Dec 13</small></h2>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add
-									to cart</a>
+				<%// this search-row will be spanned%>
+				<div class="row search-row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
 							</div>
 						</div>
 					</div>
+					<!-- end .row.cart-row -->
+					</form>
 				</div>
-			</div>
-			<div class="item  col-xs-4 col-lg-4 list-group-item">
-				<div class="thumbnail">
-					<img class="group list-group-image"
-						src="http://placehold.it/400X240/000/fff" alt="" />
-					<div class="caption">
-						<h4 class="group inner list-group-item-heading">Product title</h4>
-						<p class="group inner list-group-item-text">Product
-							description... Lorem ipsum dolor sit amet, consectetuer
-							adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
-							laoreet dolore magna aliquam erat volutpat.</p>
-						<div class="row">
-							<div class="col-xs-12 col-md-6">
-								<p class="lead">$21.000</p>
-							</div>
-							<div class="col-xs-12 col-md-6">
-								<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add
-									to cart</a>
+				<div class="row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
 							</div>
 						</div>
 					</div>
+					<!-- end .row.cart-row -->
+					</form>
+				</div>
+				<div class="row search-row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
+							</div>
+						</div>
+					</div>
+					<!-- end .row.cart-row -->
+					</form>
+				</div>
+				<div class="row search-row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
+							</div>
+						</div>
+					</div>
+					<!-- end .row.cart-row -->
+					</form>
+				</div>
+				<div class="row search-row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
+							</div>
+						</div>
+					</div>
+					<!-- end .row.cart-row -->
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="../assets/js/jquery-3.2.1.min.js"></script>
-	<!-- Jquery JS-->
 	<script src="../assets/js/bootstrap.js"></script>
-	<!-- Bootstrap JS -->
+	<script src="../assets/js/dashboard.js"></script>
+	<script src="../assets/js/moment.js"></script> <!-- Moment JS -->
+	<script src="../assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
 	<script src="../assets/js/search.js"></script>
-
+	
 </body>
 </html>

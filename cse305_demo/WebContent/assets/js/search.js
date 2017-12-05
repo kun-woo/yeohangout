@@ -3,6 +3,20 @@
  */
 
 $(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+	$('#datetimepicker1').datetimepicker({
+		viewMode: 'years',
+		format: 'MM/DD/YYYY',
+		widgetPositioning: {
+			horizontal: 'left',
+	        vertical: 'bottom'
+		}
+	});
+	$('#datetimepicker2').datetimepicker({
+		viewMode: 'years',
+		format: 'MM/DD/YYYY',
+		widgetPositioning: {
+			horizontal: 'left',
+	        vertical: 'bottom'
+		}
+	});
 });

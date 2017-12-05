@@ -1,3 +1,5 @@
+<%@page import="yeohangout.javabeans.EmployeeJude"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,9 +15,10 @@
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../assets/css/search.css" rel="stylesheet">
 <link href="../assets/css/dashboard.css" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css"
+	href="../assets/css/datatables.min.css" />
+<link href="../assets/css/search.css" rel="stylesheet">
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -40,108 +43,56 @@
 			</div>
 		</div>
 	</nav>
-
-	<div class=”container-fluid”>
+	<%
+		ArrayList<EmployeeJude> emplArr = (ArrayList<EmployeeJude>) session.getAttribute("emplArr");
+	%>
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-xs-12">
+			<div class="col-sm-2 col-md-2 sidebar">
+				<ul class="nav nav-sidebar">
+					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
+				</ul>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="search-section col-xs-12 bg-primary">
-					<form action="" method="post">
-						<div class="search-tab col-xs-12">
-							<div class="fare-type">
-								<label class="radio-inline"><input type="radio"
-									name="optradio">Round Trip</label> <label class="radio-inline"><input
-									type="radio" name="optradio">One Way</label> <label
-									class="radio-inline"><input type="radio"
-									name="optradio">Multi-City</label>
+			<div class="col-sm-offset-2 col-sm-10 col-md-offset-2 col-md-10 main slideanim">
+				<div class="row">
+					<h1 class="page-header col-xs-12">Search Result</h1>
+				</div>
+				<div class="row">
+					<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4 col-md-4">
+							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
+							</h3>
+							<small>United Airline<%//airline name%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3 class="no-wrap">
+								<%//Time Spend%>29h 35m
+							</h3>
+							<small><%//Dpet-airport%>ICN - JFK<%//Land-airport%></small>
+						</div>
+						<div class="col-xs-6 col-sm-2 col-md-2">
+							<h3>1 Stop</h3>
+							<small class="no-wrap">4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<div class="form-group">
+								<h3>$1000</h3>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
 							</div>
 						</div>
-						<div class="search-bar col-xs-12">
-							
-						</div>
+					</div>
+					<!-- end .row.cart-row -->
 					</form>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="page-header col-xs-12">
-					<h1>
-						Pick Your Travel <small>A ticket to the happiness</small>
-					</h1>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2">
-							<a href="#"> <img src="http://via.placeholder.com/200x200"
-								alt="img-100x100" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4">
-							<h3><% //depttime %>12:15am - 3:50pm<% //arrtime%></h3>
-							<small>United Airline<% //airline name %></small>
-						</div>
-						<div class="col-xs-5 col-sm-2">
-							<h3><% //Time Spend%>29h 35m</h3>
-							<small><% //Dpet-airport%>ICN - JFK<% //Land-airport%></small>
-						</div>
-						<div class="col-xs-7 col-sm-2">
-							<h3>1 Stop</h3>
-							<small>4h 30m in AUH</small>
-						</div>
-						<div class="col-xs-12 col-sm-2">
-							<div class="form-group">
-								<h3 class="h3-price">$1000</h3> 
-								  <button type="submit" class="btn btn-primary btn-block">Book</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-				</form>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12">
-				<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2">
-							<a href="#"> <img src="http://via.placeholder.com/100x100"
-								alt="img-100x100" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4">
-							<h3>
-								<a href="#">Arr - Dept</a>
-							</h3>
-							Dang-Product-Pasdasdasdas
-						</div>
-						<div class="col-xs-5 col-sm-2">
-							<h3 class="h3-price">$1000</h3>
-							<small>each</small>
-						</div>
-						<div class="col-xs-7 col-sm-2">
-							<h3 class="h3-price">Dang</h3>
-							<small>item total</small>
-						</div>
-						<div class="col-xs-12 col-sm-2">
-							<div class="form-group">
-								<label class="control-label" for="button">Flying From</label> 
-								  <button type="submit" class="btn btn-primary btn-block">Submit</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-				</form>
-			</div>
-		</div>
 	</div>
+
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -149,7 +100,8 @@
 	<!-- Jquery JS-->
 	<script src="../assets/js/bootstrap.js"></script>
 	<!-- Bootstrap JS -->
-	<script src="../assets/js/search.js"></script>
-
+	<script src="../assets/js/dashboard.js"></script>
+	<!-- Dashboard JS -->
+	<script type="text/javascript" src="../assets/js/datatables.min.js"></script>
 </body>
 </html>

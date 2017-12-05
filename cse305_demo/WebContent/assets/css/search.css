@@ -18,6 +18,35 @@
 .cart-row img.img-responsive {
   margin: 0 auto; 
 }
+.bootstrap-datetimepicker-widget.dropdown-menu {
+  background-color: #30363b;
+  border-coor: #2b3135;
+  width: 100px;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu:after,
+.bootstrap-datetimepicker-widget.dropdown-menu:before {
+  display: none !important;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu .arrow {
+  display: none !important;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu .arrow:after,
+.bootstrap-datetimepicker-widget.dropdown-menu .arrow:before {
+  display: none !important;
+}
+.bootstrap-datetimepicker-widget.dropdown-menu a span:hover,
+.bootstrap-datetimepicker-widget.dropdown-menu a span:focus {
+  background-color: #32aa62 !important;
+  color: #fff !important;
+}
+.bg-primary {
+	border-radius: 25px;
+	opacity:	0.7;
+}
+.btn-primary {
+	border-radius: 25px;
+	opacity:	0.7;
+}
 .h3-price { 
   color: #0f49c6;
   font-family: 'Oxygen Mono', monospace;
@@ -38,28 +67,28 @@
 }
 
 @media screen and (max-width: 767px) {
-    h3 {
+    body, h3 {
         font-size: 0.9em;
     }
 }
 
 /* sm */
 @media screen and (min-width: 768px) {
-    h3 {
+    body, h3 {
         font-size: 1em;
     }
 }
 
 /* md */
 @media screen and (min-width: 992px) {
-    h3 {
+    body, h3 {
         font-size: 1.2em;
     }
 }
 
 /* lg */
 @media screen and (min-width: 1200px) {
-    h3 {
+    body, h3 {
         font-size: 1.3em;
     }
 }

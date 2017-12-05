@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<div id=contact class="container-fluid bg-gray">
+<div id=contact class="container-fluid bg-gray slideanim">
 		<h2 class="text-center">Contact</h2>
 		<br>
 		<div class="row">
@@ -38,4 +38,60 @@
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
+<div class="container-fluid">
+	<div class="row">
+			<div class="col-xs-12 col-sm-3 text-center">
+				<h3>Who we are</h3>
+				<h6>HTML Tutorial</h6>
+				<h6>CSS Tutorial</h6>
+				<h6>JavaScript Tutorial</h6>
+				<h6>W3.CSS Tutorial</h6>
+				<h6>Bootstrap Tutorial</h6>
+				<h6>SQL Tutorial</h6>
+				<h6>PHP Tutorial</h6>
+				<h6>jQuery Tutorial</h6>
+				<h6>Angular Tutorial</h6>
+				<h6>XML Tutorial</h6>
+			</div>
+			<div class="col-xs-12 col-sm-3 text-center">
+				<h3>What we do</h3>
+				<h6>HTML Tutorial</h6>
+				<h6>CSS Tutorial</h6>
+				<h6>JavaScript Tutorial</h6>
+				<h6>W3.CSS Tutorial</h6>
+				<h6>Bootstrap Tutorial</h6>
+				<h6>SQL Tutorial</h6>
+				<h6>PHP Tutorial</h6>
+				<h6>jQuery Tutorial</h6>
+				<h6>Angular Tutorial</h6>
+				<h6>XML Tutorial</h6>
+			</div>
+			<div class="col-xs-12 col-sm-3 text-center">
+				<h3>Our thinking</h3>
+				<h6>HTML Tutorial</h6>
+				<h6>CSS Tutorial</h6>
+				<h6>JavaScript Tutorial</h6>
+				<h6>W3.CSS Tutorial</h6>
+				<h6>Bootstrap Tutorial</h6>
+				<h6>SQL Tutorial</h6>
+				<h6>PHP Tutorial</h6>
+				<h6>jQuery Tutorial</h6>
+				<h6>Angular Tutorial</h6>
+				<h6>XML Tutorial</h6>
+			</div>
+			<div class="col-xs-12 col-sm-3 text-center">
+				<h3>Our goals</h3>
+				<h6>HTML Tutorial</h6>
+				<h6>CSS Tutorial</h6>
+				<h6>JavaScript Tutorial</h6>
+				<h6>W3.CSS Tutorial</h6>
+				<h6>Bootstrap Tutorial</h6>
+				<h6>SQL Tutorial</h6>
+				<h6>PHP Tutorial</h6>
+				<h6>jQuery Tutorial</h6>
+				<h6>Angular Tutorial</h6>
+				<h6>XML Tutorial</h6>
+			</div>
+		</div>
+</div>

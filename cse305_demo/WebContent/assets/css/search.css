@@ -39,6 +39,15 @@
   background-color: #32aa62 !important;
   color: #fff !important;
 }
+.bg-panel {
+	border-radius: 25px;
+	border-top: 1px solid #e1e1e1;
+	border-bottom: 1px solid #e1e1e1;
+	border-right: 1px solid #e1e1e1;
+	border-left: 1px solid #e1e1e1;
+	
+	
+}
 .bg-primary {
 	border-radius: 25px;
 	opacity:	0.7;
@@ -67,28 +76,40 @@
 }
 
 @media screen and (max-width: 767px) {
-    body, h3 {
-        font-size: 0.9em;
+    body {
+        font-size: 1.5em;
+    }
+    h3 {
+    		font-size: 2.0em;
     }
 }
 
 /* sm */
 @media screen and (min-width: 768px) {
-    body, h3 {
+    body {
         font-size: 1em;
+    }
+    h3 {
+    		font-size: 1.5em;
     }
 }
 
 /* md */
 @media screen and (min-width: 992px) {
-    body, h3 {
+    body {
         font-size: 1.2em;
+    }
+    h3 {
+    		font-size: 1.8em;
     }
 }
 
 /* lg */
 @media screen and (min-width: 1200px) {
-    body, h3 {
-        font-size: 1.3em;
+    body {
+        font-size: 1.5em;
+    }
+    h3 {
+    		font-size: 2.0em;
     }
 }

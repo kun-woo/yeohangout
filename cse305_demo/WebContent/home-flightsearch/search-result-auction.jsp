@@ -152,10 +152,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<div class="no-wrap">Name</div>
+								<div class="no-wrap">Your Price</div>
+								<input type="text" class="form-control" name="price" placeholder="Price">
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Book</button>
+								<button type="submit" class="btn btn-primary btn-block">Bid</button>
 							</div>
 						</div>
 					</div>
@@ -186,10 +187,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<div class="no-wrap">Name</div>
+								<div class="no-wrap">Your Price</div>
+								<input type="text" class="form-control" name="price" placeholder="Price">
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Book</button>
+								<button type="submit" class="btn btn-primary btn-block">Bid</button>
 							</div>
 						</div>
 					</div>
@@ -220,10 +222,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<div class="no-wrap">Name</div>
+								<div class="no-wrap">Your Price</div>
+								<input type="text" class="form-control" name="price" placeholder="Price">
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Book</button>
+								<button type="submit" class="btn btn-primary btn-block">Bid</button>
 							</div>
 						</div>
 					</div>
@@ -254,10 +257,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<div class="no-wrap">Name</div>
+								<div class="no-wrap">Your Price</div>
+								<input type="text" class="form-control" name="price" placeholder="Price">
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Book</button>
+								<button type="submit" class="btn btn-primary btn-block">Bid</button>
 							</div>
 						</div>
 					</div>
@@ -288,10 +292,11 @@
 						</div>
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<div class="no-wrap">Name</div>
+								<div class="no-wrap">Your Price</div>
+								<input type="text" class="form-control" name="price" placeholder="Price">
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Book</button>
+								<button type="submit" class="btn btn-primary btn-block">Bid</button>
 							</div>
 						</div>
 					</div>

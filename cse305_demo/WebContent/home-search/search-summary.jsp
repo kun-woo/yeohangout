@@ -51,7 +51,78 @@
 	%>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-9 col-md-9 main">
+			<div class="col-sm-3 col-md-3 sidebar" style="overflow:visible;">
+				<br>
+				<div class="row">				
+					<form action="#" method="post">
+						<div class="side-form col-xs-12 bg-primary">
+							<h3>Another Shot?</h3>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">One
+									Way</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">Round
+									Trip</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="side-radio">Muti
+									City</label>
+							</div>
+							<div class="side-form-input">
+								<div class="dropdown">
+									<label for="button">Flying from</label>
+									<button class="btn btn-default btn-block dropdown-toggle"
+										type="button" data-toggle="dropdown">
+										City or Airport <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li class=><a href="#">JFK</a></li>
+										<li><a href="#">ICN</a></li>
+										<li><a href="#">LGA</a></li>
+									</ul>
+								</div>
+								<div class="dropdown">
+									<label for="button">Flying to</label>
+									<button class="btn btn-default btn-block dropdown-toggle"
+										type="button" data-toggle="dropdown">
+										City or Airport <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li class=><a href="#">JFK</a></li>
+										<li><a href="#">ICN</a></li>
+										<li><a href="#">LGA</a></li>
+									</ul>
+								</div>
+								<div class="bg-default" style="overflow:visible;">
+									<label class="control-label" for="text">Departing</label>
+									<div class='input-group date' id='datetimepicker1'>
+										<input type="text" class="form-control" name="deptTime"
+											placeholder="mm/dd/yyyy"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<div class="bg-default" style="overflow:visible;">
+									<label class="control-label" for="text">Returning</label>
+									<div class='input-group date' id='datetimepicker2'>
+										<input type="text" class="form-control" name="arrTime"
+											placeholder="mm/dd/yyyy"> <span
+											class="input-group-addon"> <span
+											class="glyphicon glyphicon-calendar"></span>
+										</span>
+									</div>
+								</div>
+								<br>
+								<button class="btn btn-success btn-block" type="submit">Search</button>
+								<br>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main">
 				<div class="row">
 					<h1 class="page-header col-xs-12">Review your Trip</h1>
 				</div>
@@ -270,77 +341,6 @@
 				</div>
 			</div>
 			
-			<div class="col-sm-offset-9 col-sm-3 col-md-offset-9 col-md-3 sidebar" style="overflow:visible;">
-				<br>
-				<div class="row">				
-					<form action="#" method="post">
-						<div class="side-form col-xs-12 bg-primary">
-							<h3>Another Shot?</h3>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">One
-									Way</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">Round
-									Trip</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">Muti
-									City</label>
-							</div>
-							<div class="side-form-input">
-								<div class="dropdown">
-									<label for="button">Flying from</label>
-									<button class="btn btn-default btn-block dropdown-toggle"
-										type="button" data-toggle="dropdown">
-										City or Airport <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li class=><a href="#">JFK</a></li>
-										<li><a href="#">ICN</a></li>
-										<li><a href="#">LGA</a></li>
-									</ul>
-								</div>
-								<div class="dropdown">
-									<label for="button">Flying to</label>
-									<button class="btn btn-default btn-block dropdown-toggle"
-										type="button" data-toggle="dropdown">
-										City or Airport <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li class=><a href="#">JFK</a></li>
-										<li><a href="#">ICN</a></li>
-										<li><a href="#">LGA</a></li>
-									</ul>
-								</div>
-								<div class="bg-default" style="overflow:visible;">
-									<label class="control-label" for="text">Departing</label>
-									<div class='input-group date' id='datetimepicker1'>
-										<input type="text" class="form-control" name="deptTime"
-											placeholder="mm/dd/yyyy"> <span
-											class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="bg-default" style="overflow:visible;">
-									<label class="control-label" for="text">Returning</label>
-									<div class='input-group date' id='datetimepicker2'>
-										<input type="text" class="form-control" name="arrTime"
-											placeholder="mm/dd/yyyy"> <span
-											class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<br>
-								<button class="btn btn-success btn-block" type="submit">Search</button>
-								<br>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
 		</div>
 	</div>
 

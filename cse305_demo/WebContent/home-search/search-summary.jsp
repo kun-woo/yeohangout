@@ -155,7 +155,7 @@
 								<img src="../images/airline/2.jpg" class="img-responsive img-fixed">
 							</div>
 							<div class="col-xs-7 col-sm-8">
-								<h3>United Airline</h3>
+								<h3>Ada Airline</h3>
 							</div>
 						</div>
 						<br>
@@ -212,7 +212,7 @@
 								<img src="../images/airline/2.jpg" class="img-responsive img-fixed">
 							</div>
 							<div class="col-xs-7 col-sm-8">
-								<h3>United Airline</h3>
+								<h3>Ada Airline</h3>
 							</div>
 						</div>
 						<br>

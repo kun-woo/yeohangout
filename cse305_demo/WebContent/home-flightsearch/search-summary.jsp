@@ -60,9 +60,9 @@
 				<div class="row search-row">
 					<form action="../add-plane" method="post" novalidate>
 					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
-							</a>
+					
+						<div class="col-xs-12 col-sm-4">
+							<h3>Wed, Dec 13</h3>
 						</div>
 						<div class="col-xs-12 col-sm-4 col-md-4">
 							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
@@ -85,6 +85,24 @@
 								<div class="no-wrap"<%//Type %>>One Way</div>
 								<br>
 								<button type="submit" class="btn btn-primary btn-block">Book</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<h3>United Airline</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-5">
+								<h3>12:15am</h3>
+								ICN
+							</div>
+							<div class="col-xs-2">
+								<span class="glyphicon glyphicon-arrow-right"></span>
+							</div>
+							<div class="col-xs-5">
+								<h3>8:30am</h3>
+								JFK
 							</div>
 						</div>
 					</div>

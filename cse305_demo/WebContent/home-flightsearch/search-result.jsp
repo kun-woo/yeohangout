@@ -41,42 +41,104 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid">
-		<h1>Search Bar</h1>
-	</div>
-	<div class="container-fluid">
-		<h1>Select Departure</h1>
-	</div>
-	<div class="container-fluid">
-		<div class="col-sm-3 col-xs-12">
-			<h1>Search Options</h1>
-		</div>
-		<div class="col-sm-9 col-xs-12">
-			<div class="container-fluid">
-				<h1>Search Results</h1>
+	<div class=”container-fluid”>
+		<div class="row">
+			<div class="col-xs-12">
 			</div>
-			<div class="container-fluid bg-warning">
-				<div class="col-xs-2 col-sm-2 bg-primary text-center">
-					<h5>Logo</h5>
-					<h6>Logo</h6>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="search-section col-xs-12 bg-primary">
+					<form action="" method="post">
+						<div class="search-tab col-xs-12">
+							<div class="fare-type">
+								<label class="radio-inline"><input type="radio"
+									name="optradio">Round Trip</label> <label class="radio-inline"><input
+									type="radio" name="optradio">One Way</label> <label
+									class="radio-inline"><input type="radio"
+									name="optradio">Multi-City</label>
+							</div>
+						</div>
+						<div class="search-bar col-xs-12">
+							
+						</div>
+					</form>
 				</div>
-				<div class="col-xs-12 col-sm-2 bg-success">
-					<h5>Text</h5>
-					<h6>Text</h6>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="page-header col-xs-12">
+					<h1>
+						Pick Your Travel <small>A ticket to the happiness</small>
+					</h1>
 				</div>
-				<div class="col-xs-12 col-sm-2 bg-success">
-					<h5>Text</h5>
-					<h6>Text</h6>
-				</div>
-				<div class="col-xs-12 col-sm-2 bg-success">
-					<h5>Text</h5>
-					<h6>Text</h6>
-				</div>
-				<div class="col-xs-12 col-sm-4 bg-primary">
-					<h5>$1000</h5>
-					<h6>Fair-Type</h6>
-					<a href="#search" class="btn btn-success btn-block" role="button">Select</a>
-				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2">
+							<a href="#"> <img src="http://via.placeholder.com/200x200"
+								alt="img-100x100" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<h3><% //depttime %>12:15am - 3:50pm<% //arrtime%></h3>
+							<small>United Airline<% //airline name %></small>
+						</div>
+						<div class="col-xs-5 col-sm-2">
+							<h3><% //Time Spend%>29h 35m</h3>
+							<small><% //Dpet-airport%>ICN - JFK<% //Land-airport%></small>
+						</div>
+						<div class="col-xs-7 col-sm-2">
+							<h3>1 Stop</h3>
+							<small>4h 30m in AUH</small>
+						</div>
+						<div class="col-xs-12 col-sm-2">
+							<div class="form-group">
+								<h3 class="h3-price">$1000</h3> 
+								  <button type="submit" class="btn btn-primary btn-block">Book</button>
+							</div>
+						</div>
+					</div>
+					<!-- end .row.cart-row -->
+				</form>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<form action="../add-plane" method="post" novalidate>
+					<div class="row cart-row">
+						<div class="col-xs-12 col-sm-2">
+							<a href="#"> <img src="http://via.placeholder.com/100x100"
+								alt="img-100x100" class="img-responsive">
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<h3>
+								<a href="#">Arr - Dept</a>
+							</h3>
+							Dang-Product-Pasdasdasdas
+						</div>
+						<div class="col-xs-5 col-sm-2">
+							<h3 class="h3-price">$1000</h3>
+							<small>each</small>
+						</div>
+						<div class="col-xs-7 col-sm-2">
+							<h3 class="h3-price">Dang</h3>
+							<small>item total</small>
+						</div>
+						<div class="col-xs-12 col-sm-2">
+							<div class="form-group">
+								<label class="control-label" for="button">Flying From</label> 
+								  <button type="submit" class="btn btn-primary btn-block">Submit</button>
+							</div>
+						</div>
+					</div>
+					<!-- end .row.cart-row -->
+				</form>
 			</div>
 		</div>
 	</div>

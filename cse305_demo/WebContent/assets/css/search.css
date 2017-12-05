@@ -1,1 +1,34 @@
 @charset "UTF-8";
+@import 'https://fonts.googleapis.com/css?family=Oxygen+Mono';
+
+.page-header {
+  text-align: center;
+}
+.page-header small {
+  display: block;
+}
+.cart-row {
+  margin: 10px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
+.cart-row div {
+  text-align: center; 
+}
+.cart-row img.img-responsive {
+  margin: 0 auto; 
+}
+.h3-price { 
+  color: #0f49c6;
+  font-family: 'Oxygen Mono', monospace;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .page-header {
+    text-align: left;
+  }
+  .page-header small {
+    display: inline;
+  }
+}

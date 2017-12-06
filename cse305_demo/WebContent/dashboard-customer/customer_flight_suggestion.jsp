@@ -5,7 +5,7 @@
 <%@ page import="yeohangout.javabeans.Leg" %>
 <%@ page import="yeohangout.javabeans.Flight" %>
 <!-- HEADER -->
-<%@ include file="../header.jsp"%>
+<%@ include file="../home/header.jsp"%>
 
 
 <!-- 
@@ -81,4 +81,4 @@ You have to come up with a certain heuristic based on customer's past reservatio
 
 
 <!-- FOOTER -->
-<%@ include file="../footer.jsp"%>
+<%@ include file="../home/footer.jsp"%>

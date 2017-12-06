@@ -2,31 +2,31 @@
     pageEncoding="UTF-8"%>
     
 	<!-- HEADER -->
-	<%@ include file="../header.jsp"%>
+	<%@ include file="../home/header.jsp"%>
 	<!-- Slider -->
-	<%@ include file="../slider.jsp"%>
+	<%@ include file="../home/slider.jsp"%>
 	
 	<!-- SignUp Modal -->
-	<%@ include file="../signup.jsp"%>
+	<%@ include file="../home/signup.jsp"%>
 	
 	<!-- LogIn Modal -->
-	<%@ include file="../signin.jsp"%>
+	<%@ include file="../home/signin.jsp"%>
 	
 	<!-- Popular -->
-	<%@ include file="../popular.jsp"%>
+	<%@ include file="../home/popular.jsp"%>
 	
 	<!-- Search -->
-	<%@ include file="../search.jsp"%>
+	<%@ include file="../home-search/search.jsp"%>
 	
 	<!-- About -->
-	<%@ include file="../about.jsp"%>
+	<%@ include file="../home/about.jsp"%>
 	
 	<!-- Service -->
-	<%@ include file="../service.jsp"%>
+	<%@ include file="../home/service.jsp"%>
 	
 	<!-- Contact -->
-	<%@ include file="../contact.jsp"%>
+	<%@ include file="../home/contact.jsp"%>
 	
 	<!-- Footer -->
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="../home/footer.jsp"%>
 	

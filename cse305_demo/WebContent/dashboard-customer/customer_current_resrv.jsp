@@ -11,15 +11,15 @@
 <%@ page import="yeohangout.javabeans.IncludeAndLeg"%>
 
 	<!-- HEADER -->
-	<%@ include file="../header.jsp"%>
+	<%@ include file="../home/header.jsp"%>
 	
 	
 	<div class="container-fluid bg-gray text-center">
 	<%
-		UserAccount loginedEmployee = MyUtils.getLoginedUser(MyUtils.getSession());
+		UserAccount loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
 	%>
 	
-	<h2> <%= loginedEmployee.getUserID()%>'s Reservation</h2>
+	<h2> <%= loginedUser.getUserID()%>'s Reservation</h2>
 		<table class="table">
 			<thead class="table-inverse">
 				<tr>
@@ -32,16 +32,18 @@
 			</thead>
 			
 			<tbody>
-				<%
-					ArrayList<Reservation> reservationList = (ArrayList<Reservation>)request.getAttribute("cu_every_reservations"); 
-				
+			
+			<% ArrayList<Reservation> reservationList = (ArrayList<Reservation>)request.getAttribute("cu_reservations"); 
+	
+				for (int i=0; i<reservationList.size(); i++){
+					int resrNo = reservationList.get(i).getResrNo();
 					
-					for (int i=0; i<reservationList.size(); i++){
-						int resrNo = reservationList.get(i).getResrNo();
-						
-						ArrayList<IncludeAndLeg> itineraries = reservationList.get(i).getItineraries();
-							
-				%>
+					/* ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(request.getCon, resrNo, true);
+					 */
+					ArrayList<IncludeAndLeg> itineraries = reservationList.get(i).getItineraries();
+					if(itineraries.size()!=0){
+					
+			%>
 				<tr>
 					<td> <%= resrNo %> </td>
 					<td> <%= reservationList.get(i).getResrDate() %> </td>
@@ -52,16 +54,17 @@
 								session.setAttribute("iter_count", i);
 								session.setAttribute("itineryList", itineraries);
 	        			%>
-					<a data-toggle="modal" data-target="#viewItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
-					<% System.out.println(resrNo); %>
-					<%@ include file="../ViewItinerary.jsp" %>
+					<a data-toggle="modal" data-target="#viewCurrentItinerary-<%= i %>" tabindex=i><span class="glyphicon glyphicon-user"></span>View Itinery</a>
+					
+					
+					<%@ include file="../dashboard-customer/viewCurrentItinerary.jsp" %>
 					</td>
 				</tr>
-				 <%
-					
-					}
-				 %>
-			 
+			 <%
+				}
+				}
+			 %>
+		 
 		 	</tbody>
 		 </table>
 	 </div>
@@ -69,4 +72,4 @@
 	
 					
 	<!-- Footer -->
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="../home/footer.jsp"%>

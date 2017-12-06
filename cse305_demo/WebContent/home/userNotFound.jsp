@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="../header.jsp"%>
+<%@ include file="../home/header.jsp"%>
 
 <div class="container-fluid bg-gray text-center">
 	<h2> User is not found</h2>
@@ -35,5 +35,5 @@
 	<input id = "signupBt" name ="signupBt" value = "Sign Up" type = "button" onclick ="window.location.href='signup.jsp'"/>
 	
 </div>
-<%@ include file="../footer.jsp"%>
+<%@ include file="../home/footer.jsp"%>
 

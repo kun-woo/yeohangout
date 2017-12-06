@@ -69,7 +69,7 @@ public class CurrentReservationServlet extends HttpServlet{
 		//Redirection to index.jsp
 		request.setAttribute("cu_reservations", reservations);		//send data from servlet to jsp
 		
-		RequestDispatcher rd = request.getRequestDispatcher("customer_current_resrv.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_current_resrv.jsp");
 		rd.forward(request, response);
 	}
 

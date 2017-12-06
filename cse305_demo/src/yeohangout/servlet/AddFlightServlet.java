@@ -86,7 +86,7 @@ public class AddFlightServlet extends HttpServlet{
 		}
 		//Redirection to index.jsp
 		
-		response.sendRedirect(contextPath+"/employee_menu.jsp");
+		response.sendRedirect(contextPath+"/dashboard-manager/employee_menu.jsp");
 	}
 
 	/**

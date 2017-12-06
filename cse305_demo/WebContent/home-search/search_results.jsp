@@ -6,16 +6,16 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 	<!-- HEADER -->
-	<%@ include file="../header.jsp"%>
+	<%@ include file="../home/header.jsp"%>
 	
 	<!-- SignUp Modal -->
-	<%@ include file="../signup.jsp"%>
+	<%@ include file="../home/signup.jsp"%>
 	
 	<!-- LogIn Modal -->
-	<%@ include file="../signin.jsp"%>
+	<%@ include file="../home/signin.jsp"%>
 	
 	<!-- Search -->
-	<%@ include file="../search.jsp"%>
+	<%@ include file="search.jsp"%>
 	
 	<c:choose>
 		<c:when test = "${searchType.equals(one-way)}">
@@ -48,5 +48,5 @@
   	</table>
 	
 	<!-- Footer -->
-	<%@ include file="../footer.jsp"%>
+	<%@ include file="../home/footer.jsp"%>
 	

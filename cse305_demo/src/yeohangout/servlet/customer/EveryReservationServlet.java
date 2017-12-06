@@ -65,7 +65,7 @@ private static final long serialVersionUID = 1L;
 		//Redirection to index.jsp
 		request.setAttribute("cu_every_reservations", reservations);		//send data from servlet to jsp
 		
-		RequestDispatcher rd = request.getRequestDispatcher("customer_every_resrv.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_every_resrv.jsp");
 		rd.forward(request, response);
 	}
 

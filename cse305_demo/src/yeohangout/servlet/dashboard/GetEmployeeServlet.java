@@ -68,7 +68,8 @@ public class GetEmployeeServlet extends HttpServlet {
 					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-employee.jsp");
 				}
 			else {
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
+				String contextPath = request.getContextPath();
+				RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-manager-employee.jsp");
 				PrintWriter out= response.getWriter();
 				out.println("<font color=red>No user found with given input, please register first.</font>");
 				rd.include(request, response);

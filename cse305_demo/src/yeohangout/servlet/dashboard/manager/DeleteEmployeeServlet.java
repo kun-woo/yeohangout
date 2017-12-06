@@ -72,7 +72,6 @@ public class DeleteEmployeeServlet extends HttpServlet {
 					ps.setInt(1, SSN);
 					ps.execute();
 					
-					ps = dao.getBackupConnection().prepareStatement("DELETE FROM Employee WHERE SSN = ?");
 					ps.setInt(1, SSN);
 					ps.execute();
 

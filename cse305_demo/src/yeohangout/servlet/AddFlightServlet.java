@@ -67,7 +67,6 @@ public class AddFlightServlet extends HttpServlet{
 					System.out.println("insert");
 					AirlineUtils.insertFlight(connect, newFlight);
 					// Insert new flight info to BackUp Database
-					AirlineUtils.insertFlight(dao.getBackupConnection(), newFlight);
 				}else {
 					System.out.println("exists");
 					//MyUtils.setIdAlreadyExists(true);

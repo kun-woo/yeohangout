@@ -55,7 +55,6 @@ private static final long serialVersionUID = 1L;
 			if(AirlineUtils.searchAirport(connect, ID)==null){
 				AirlineUtils.insertAirport(connect, newAirport);
 				// Insert new airport info to BackUp Database
-				AirlineUtils.insertAirport(dao.getBackupConnection(), newAirport);
 			}else {
 				//MyUtils.setIdAlreadyExists(true);
 			}

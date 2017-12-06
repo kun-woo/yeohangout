@@ -40,7 +40,7 @@ public class FlightSearchServlet extends HttpServlet {
 		System.out.println("---Connected to Flight Search Servlet---");
 
 		RequestDispatcher rd = 	getServletContext()
-								.getRequestDispatcher("/search_results.jsp");
+								.getRequestDispatcher("/home-search/search_results.jsp");
 
 
 		String depCity 		= request.getParameter("depCity");

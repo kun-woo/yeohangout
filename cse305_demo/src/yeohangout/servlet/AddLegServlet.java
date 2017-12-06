@@ -109,7 +109,7 @@ private static final long serialVersionUID = 1L;
 		}
 	
 		
-		response.sendRedirect(contextPath+"/employee_menu.jsp");
+		response.sendRedirect(contextPath+"/dashboard-manager/employee_menu.jsp");
 	}
 
 		

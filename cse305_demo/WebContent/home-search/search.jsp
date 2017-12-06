@@ -7,16 +7,27 @@
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
 				<br>
-				<div class="form-group">
-					<div class="col-sm-12 text-left">
+				<form class="form" action="flightsearch" method="POST">		
+					<div class="col-sm-6 col-xs-12 text-left">
 							<div class="btn-group">								
-							<button type="button" class="btn btn-default btn-md">One-Way</button>
-							<button type="button" class="btn btn-default btn-md active">Round Trip</button>
-							<button type="button" class="btn btn-default btn-md">Multi-City</button>
+								<button type="button" name="one-way" class="btn btn-default btn-md">One-Way</button>
+								<button type="button" name="round-trip" class="btn btn-default btn-md active">Round Trip</button>
+								<button type="button" name="multi-city" class="btn btn-default btn-md">Multi-City</button>
 						</div>
 					</div>
-				</div>
-				<form class="form" action="flightsearch" method="POST">					
+					<div class="col-sm-6 col-md-offset-2 col-md-4 col-xs-12 text-right">
+						<div class="dropdown">
+							<button class="btn btn-default btn-block dropdown-toggle"
+								type="button" data-toggle="dropdown">
+								Cabin Class <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li class=><a>Economy</a></li>
+								<li><a>Business</a></li>
+								<li><a>First Class</a></li>
+							</ul>
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 text-left">

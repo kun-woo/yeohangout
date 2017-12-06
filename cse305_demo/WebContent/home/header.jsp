@@ -10,9 +10,19 @@
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> 
 
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css" /> <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
+<link rel="stylesheet" type="text/css" href="../assets/css/main.css">
+
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" /> <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
 <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+
+<script src="../assets/js/jquery-3.2.1.min.js"></script> <!-- Jquery JS-->
+<script src="../assets/js/bootstrap.js"></script> <!-- Boostrap JS -->
+<script src="../assets/js/moment.js"></script> <!-- Moment JS -->
+<script src="../assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
+
 
 <script src="assets/js/jquery-3.2.1.min.js"></script> <!-- Jquery JS-->
 <script src="assets/js/bootstrap.js"></script> <!-- Boostrap JS -->
@@ -55,20 +65,20 @@
 					} else if(MyUtils.getUserType() == 0){ 
 				%>	
 
-        				<li><a data-toggle="modal" href="./customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
+        				<li><a data-toggle="modal" href="../customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			<%
         				} else if(MyUtils.getUserType()==1){
         					
         			%>
-        				<li><a data-toggle="modal" href="./employee_menu.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+        				<li><a data-toggle="modal" href="../employee_menu.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
 					<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			 
         				
         			<%
 					} else if(MyUtils.getUserType()==2){
 				%>
-			<li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+			<li><a data-toggle="modal" href="../dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
         				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
 				<%
 					}

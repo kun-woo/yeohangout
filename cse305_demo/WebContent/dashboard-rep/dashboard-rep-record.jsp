@@ -1,4 +1,7 @@
-<%@page import="yeohangout.javabeans.EmployeeJude"%>
+<%@page import="yeohangout.javabeans.Reservation"%>
+<%@page import="yeohangout.javabeans.Includes"%>
+<%@page import="yeohangout.javabeans.Passenger"%>
+<%@page import="yeohangout.javabeans.ResrPassenger"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -37,12 +40,17 @@
 					<li><a href="../index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
 					<li><a href="#">LOG OUT</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="#">HELP</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<%ArrayList<EmployeeJude> emplArr = (ArrayList<EmployeeJude>) session.getAttribute("emplArr"); %>
+	<% ArrayList<Reservation> resrArr = (ArrayList<Reservation>) session.getAttribute("resrArr"); 
+		ArrayList<Includes> inclArr = (ArrayList<Includes>) session.getAttribute("inclArr"); 
+		ArrayList<Passenger> passArr = (ArrayList<Passenger>) session.getAttribute("passArr"); 
+		ArrayList<ResrPassenger> resrPassArr = (ArrayList<ResrPassenger>) session.getAttribute("resrPassArr"); 
+		
+	%>
 
 	<!-- AddTable Modal -->
 	<div class="modal fade" id="addTable" role="dialog">
@@ -51,66 +59,100 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>Add Employee</h4>
+					<h4>Add Reservation</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="../add-employee" class="form-horizontal" method="post">
+					<form role="form" action="../record-reservation" class="form-horizontal" method="post">
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">First
+							<label class="control-label col-sm-4" for="text">Passenger
 								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" name="firstName" class="form-control" placeholder="First Name">
+								<input type="text" name="passName" class="form-control" placeholder="Passenger">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Last
-								Name:</label>
+							<label class="control-label col-sm-4" for="text">Account
+								Number:</label>
 							<div class="col-sm-8">
-								<input type="text" name="lastName" class="form-control" placeholder="Last Name">
+								<input type="text" name="accountNo" class="form-control" placeholder="Account Number">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">SSN:</label>
+							<label class="control-label col-sm-4" for="text">Reservation
+								Number:</label>
 							<div class="col-sm-8">
-								<input type="text" name="SSN" class="form-control" placeholder="SSN">
+								<input type="text" name="resrNo" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">isManager:</label>
-							<div class="col-sm-8">
-								<input type="text" name="isManager" class="form-control" placeholder="isManager">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Start
+							<label class="control-label col-sm-4" for="text">Reservation
 								Date:</label>
 							<div class="col-sm-8">
-								<input type="text" name="startDate" class="form-control" placeholder="YYYY-MM-DD">
+								<input type="text" name="rserDate" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Hourly
-								Rate:</label>
+							<label class="control-label col-sm-4" for="text">Booking Fee:</label>
 							<div class="col-sm-8">
-								<input type="text" name="hourlyRate" class="form-control" placeholder="Hourly Rate">
+								<input type="text" name="bookingFee" class="form-control" placeholder="Booking Fee">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">User
-								Name:</label>
+							<label class="control-label col-sm-4" for="text">Total Fare:</label>
 							<div class="col-sm-8">
-								<input type="text" name="userName" class="form-control" placeholder="User Name">
+								<input type="text" name="totalFare" class="form-control" placeholder="Total Fare">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Password:</label>
+							<label class="control-label col-sm-4" for="text">Representative
+								SSN:</label>
 							<div class="col-sm-8">
-								<input type="text" name="pwd" class="form-control" placeholder="HPassword">
+								<input type="text" name="repSSN" class="form-control" placeholder="SSN">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Airline:</label>
+							<div class="col-sm-8">
+								<input type="text" name="airlineID" class="form-control" placeholder="Airline">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Flight
+								Number:</label>
+							<div class="col-sm-8">
+								<input type="text" name="flightNo" class="form-control" placeholder="Flight Number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Leg
+								Number:</label>
+							<div class="col-sm-8">
+								<input type="text" name="legNo" class="form-control" placeholder="Leg Number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Seat
+								Number:</label>
+							<div class="col-sm-8">
+								<input type="text" name="seatNo" class="form-control" placeholder="Seat Number">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Cabin
+								Class:</label>
+							<div class="col-sm-8">
+								<input type="text" name="class" class="form-control" placeholder="Cabin Class">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-4" for="text">Meal:</label>
+							<div class="col-sm-8">
+								<input type="text" name="meal" class="form-control" placeholder="Meal">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-4 col-sm-8">
-								<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
+								<button type="submit" class="btn btn-default btn-md pull-right">Record</button>
 							</div>
 						</div>
 					</form>
@@ -134,9 +176,9 @@
 				<div class="modal-body">
 					<form action="../delete-employee" role="form" class="form-horizontal" method="post">
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">SSN:</label>
+							<label class="control-label col-sm-4" for="text">Reservation Number:</label>
 							<div class="col-sm-8">
-								<input type="text" name="SSN" class="form-control" placeholder="SSN">
+								<input type="text" name="resrNo" class="form-control" placeholder="Reservation Number">
 							</div>
 						</div>
 						<div class="form-group">
@@ -158,27 +200,24 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
+					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
+					<li><a href="../view-employee">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-employee">Manage
-							Employee</a></li>
-					<li class="active"><a href="#">Manage
-							User <span class="sr-only">(current)</span>
-					</a></li>
+					<li class="active"><a href="#">Record Reservation <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-sales-report">View Sales Report</a></li>
-					<li><a href="../view-reservation">View Reservation</a></li>
-					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
-					<li><a href="../view-flight">View Flight</a></li>
-					<li><a href="../view-customer-seated">View Customer</a></li>
+					<li><a href="../manage-customer">Manage
+							Customer</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="../produce-flight-suggest">Flight Suggest To Customer</a></li>
 				</ul>
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">Manage Customer Representative</h1>
+					<h1 class="page-header">Record Reservation</h1>
 					<div class="btn-group">
 						<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
 							data-target="#addTable">Add</a> 
@@ -193,9 +232,9 @@
 						<table id="test-table1" class="table table-striped">
 							<thead>
 								<tr>
-									<th>SSN</th>
-									<th>Name</th>
-									<th>isManager</th>
+									<th>Reservation Number</th>
+									<th>Reservation Date</th>
+									<th>Booking Fee</th>
 									<th>Start Date</th>
 									<th>Hourly Rate</th>
 									<th>User Name</th>
@@ -205,18 +244,15 @@
 							</thead>
 							<tbody>
 						<% 
-						ArrayList<Integer> ssnArray = new ArrayList<Integer>();
+						ArrayList<Integer> resrNoArr = new ArrayList<Integer>();
 						
-						for (int i=0; i<emplArr.size(); i++) { 
-							String fn = emplArr.get(i).getFirstName();
-							String ln = emplArr.get(i).getLastName();
-							String full = fn + " " + ln;
-							ssnArray.add(emplArr.get(i).getSSN());
+						for (int i=0; i<resrArr.size(); i++) { 
+							resrNoArr.add(resrArr.get(i).getResrNo());
 							
 							
  						%>
 							<tr>
-								<td><%= emplArr.get(i).getSSN() %></td>
+								<td><%= resrArr.get(i).getSSN() %></td>
 								<td><%= full %></td>
 								<td><%= emplArr.get(i).isManager() %></td>
 								<td><%= emplArr.get(i).getStartDate() %></td>
@@ -227,7 +263,7 @@
 								<td>
 								<% 
 									session.setAttribute("dash_edit_emp", i);
-									session.setAttribute("emp_ssn_arr", ssnArray);
+									session.setAttribute("emp_ssn_arr", resrNoArr);
 								%>
 								<a role="button" class="btn btn-default btn-md" data-toggle="modal"
 									data-target="#editTable-<%= i %>" tabindex=i>Edit</a></td>

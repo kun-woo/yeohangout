@@ -6,13 +6,13 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 	<!-- HEADER -->
-	<%@ include file="../home/header.jsp"%>
+	<%@ include file="../header.jsp"%>
 	
 	<!-- SignUp Modal -->
-	<%@ include file="../home/signup.jsp"%>
+	<%@ include file="../signup.jsp"%>
 	
 	<!-- LogIn Modal -->
-	<%@ include file="../home/signin.jsp"%>
+	<%@ include file="../signin.jsp"%>
 	
 	<!-- Search -->
 	<%@ include file="../home-search/search.jsp"%>
@@ -49,5 +49,5 @@
   	</table>
 	
 	<!-- Footer -->
-	<%@ include file="../home/footer.jsp"%>
+	<%@ include file="../footer.jsp"%>
 	

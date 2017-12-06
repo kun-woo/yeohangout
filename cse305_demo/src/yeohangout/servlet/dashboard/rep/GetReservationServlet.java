@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import yeohangout.javabeans.Includes;
 import yeohangout.javabeans.Passenger;
+import yeohangout.javabeans.Person;
 import yeohangout.javabeans.Reservation;
 import yeohangout.javabeans.ResrPassenger;
 
@@ -56,6 +57,7 @@ public class GetReservationServlet extends HttpServlet {
 			ArrayList<Passenger> passArr = new ArrayList<Passenger>();
 			ArrayList<Includes> inclArr = new ArrayList<Includes>();
 			ArrayList<ResrPassenger> resrPassArr = new ArrayList<ResrPassenger>();
+			ArrayList<Person> personArr = new ArrayList<Person>();
 			
 			try {
 				// Execute SQL query
@@ -146,6 +148,31 @@ public class GetReservationServlet extends HttpServlet {
 					}
 					HttpSession session = request.getSession();
 					session.setAttribute("resrPassArr", resrPassArr);
+					
+				}
+				else {
+					String contextPath = request.getContextPath();
+					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
+					PrintWriter out= response.getWriter();
+					out.println("<font color=red>No user found with given input, please register first.</font>");
+					rd.include(request, response);
+				}
+			} finally {
+				ps.close();
+				rs.close();
+			}
+			
+			try {
+				// Execute SQL query
+				ps = connect.prepareStatement("SELECT Id, FirstName, LastName FROM Person");
+				rs = ps.executeQuery();
+
+				if (rs != null) {
+					while (rs.next()) {
+						personArr.add(new Person(rs.getInt("Id"), rs.getString("LastName"), rs.getString("FirstName")));
+					}
+					HttpSession session = request.getSession();
+					session.setAttribute("personArr", personArr);
 					
 				}
 				else {

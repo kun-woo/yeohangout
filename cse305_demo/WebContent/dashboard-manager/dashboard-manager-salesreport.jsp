@@ -58,7 +58,7 @@
 					<li><a href="../view-reservation">View Reservation</a></li>
 					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
 					<li><a href="../view-flight">View Flight</a></li>
-					<li><a href="../view-customer">View Customer</a></li>
+					<li><a href="../view-customer-seated">View Customer</a></li>
 				</ul>
 			</div>
 			<div

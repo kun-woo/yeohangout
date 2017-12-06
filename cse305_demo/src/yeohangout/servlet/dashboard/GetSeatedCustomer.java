@@ -17,13 +17,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import yeohangout.javabeans.SalesReport;
+import yeohangout.javabeans.Customer;
 
 /**
- * Servlet implementation class SalesReportServlet
+ * Servlet implementation class GetSeatedCustomer
  */
-@WebServlet(name = "view-sales-report", urlPatterns = { "/view-sales-report" })
-public class GetSalesReportServlet extends HttpServlet {
+@WebServlet(name = "view-customer-seated", urlPatterns = { "/view-customer-seated" })
+public class GetSeatedCustomer extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
 	private ResultSet rs;
@@ -31,7 +31,7 @@ public class GetSalesReportServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetSalesReportServlet() {
+	public GetSeatedCustomer() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -50,24 +50,23 @@ public class GetSalesReportServlet extends HttpServlet {
 							+ "user=howoo&password=111255764");
 			// Execute SQL query
 			ps = connect.prepareStatement("SELECT *"
-					+ "FROM Salesreport");
+					+ "FROM CustSeat");
 			rs = ps.executeQuery();
 
-			ArrayList<SalesReport> srArr = new ArrayList<SalesReport>();
+			ArrayList<Customer> custArr = new ArrayList<Customer>();
 
 			if (rs != null) {
 				while (rs.next()) {
-					srArr.add(new SalesReport(rs.getString("Month"), rs.getString("Revenue")));
+					custArr.add(new Customer(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("SeatNo"), rs.getInt("FlightNo"), rs.getInt("Airline ID"), rs.getInt("LegNo")));
 				}
 				HttpSession session = request.getSession();
-				session.setAttribute("salesReport", srArr);
+				session.setAttribute("custArr", custArr);
 				String contextPath = request.getContextPath();
-				response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-salesreport.jsp");
+				response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-customer.jsp");
 			}
 			else {
-				RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-salesreport.jsp");
-				PrintWriter out= response.getWriter();
-				out.println("<font color=red>No sales report foundss</font>");
+				String contextPath = request.getContextPath();
+				RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-manager-salesreport.jsp");
 				rd.include(request, response);
 			}
 

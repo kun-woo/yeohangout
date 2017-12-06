@@ -7,7 +7,8 @@
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
 				<br>
-				<form class="form" action="searchOneway" method="POST">		
+				<form class="form" action="searchOneway" method="POST">	
+					
 					<div class="col-sm-6 col-xs-12 text-left">
 							<div class="btn-group">								
 								<button type="button" name="one-way" class="btn btn-default btn-md">One-Way</button>

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +26,6 @@ import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.MyUtils;
 
 @WebServlet(name = "searchOneway", urlPatterns= {"/searchOneway"})
-
 public class SearchOnewayFlightServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,10 +35,9 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 	}
 
 	
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ServletOutputStream out = response.getOutputStream();
+		//ServletOutputStream out = response.getOutputStream();
 		String contextPath = request.getContextPath();
 		
 		String depCity = request.getParameter("depCity");
@@ -46,7 +45,7 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		String depTimeString = request.getParameter("depTime");
 		String arrCity = request.getParameter("arrCity");
 		String arrCountry = request.getParameter("arrCountry");
-		int passanger = Integer.parseInt(request.getParameter("num_of_passenger"));
+	//	int passanger = Integer.parseInt(request.getParameter("num_of_passenger"));
 		Date depTime  =null;
 	
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
@@ -85,15 +84,16 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(searchedLegs.size()>0) {
-			request.setAttribute("cu_reservations", searchedLegs);
-		}//send data from servlet to jsp
-		response.sendRedirect(contextPath+"/home-search/search-result.jsp");
+	
+		request.setAttribute("searchLegs", searchedLegs);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("home-search/search-result.jsp");
+		rd.forward(request, response);
+		
 	}
 
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 }

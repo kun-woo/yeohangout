@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import yeohangout.javabeans.Employee;
 import yeohangout.javabeans.EmployeeJude;
 import yeohangout.javabeans.Person;
 import yeohangout.mysql.DBUtils;
@@ -24,7 +22,6 @@ import yeohangout.mysql.DBUtils;
 @WebServlet(name = "add-employee", urlPatterns = { "/add-employee" })
 public class AddEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PreparedStatement ps;
 
 	/**
 	 * @see HttpServlet#HttpServlet()

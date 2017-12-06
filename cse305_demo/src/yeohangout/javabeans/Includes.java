@@ -1,5 +1,6 @@
 package yeohangout.javabeans;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Includes {
@@ -8,10 +9,20 @@ public class Includes {
 	private int flightNo;
 	private int legNo;
 	private Date date;
+	private Timestamp dateTime;
 	
 	
 	public Includes() {}
 
+	public Includes(int resrNo, String airlineID, int flightNo, int legNo, Timestamp dateTime) {
+		super();
+		ResrNo = resrNo;
+		AirlineID = airlineID;
+		this.flightNo = flightNo;
+		this.legNo = legNo;
+		this.dateTime = dateTime;
+	}
+	
 	public Includes(int resrNo, String airlineID, int flightNo, int legNo, Date date) {
 		super();
 		ResrNo = resrNo;
@@ -69,5 +80,15 @@ public class Includes {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
+	public Timestamp getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(Timestamp dateTime) {
+		this.dateTime = dateTime;
+	}
+	
+	
 	
 }

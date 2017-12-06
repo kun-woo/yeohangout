@@ -17,7 +17,7 @@ public class FlightSearchUtils {
 			ArrayList<Leg> legs = new ArrayList<Leg>();
 			
 			//String sql = "SELECT l.AirlineID, l.FlightNo, l.LegNo, l.DepAirportID, l.ArrAirportID, l.ArrTime, l.DepTime "+
-			String sql = "Select * From howoo.leg l Where l.depAirportID = ? AND l.arrAirportID = ? AND depDate>=?";		
+			String sql = "Select * From howoo.leg l Where l.depAirportID = ? AND l.arrAirportID = ? AND depTime>=?";		
 			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 			
 			ps.setString(1, depAirport);

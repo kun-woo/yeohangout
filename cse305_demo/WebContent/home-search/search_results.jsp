@@ -15,7 +15,7 @@
 	<%@ include file="../home/signin.jsp"%>
 	
 	<!-- Search -->
-	<%@ include file="search.jsp"%>
+	<%@ include file="../home-search/search.jsp"%>
 	
 	<c:choose>
 		<c:when test = "${searchType.equals(one-way)}">

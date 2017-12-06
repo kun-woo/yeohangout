@@ -105,7 +105,7 @@
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">Password:</label>
 							<div class="col-sm-8">
-								<input type="text" name="pwd" class="form-control" placeholder="HPassword">
+								<input type="text" name="pwd" class="form-control" placeholder="Password">
 							</div>
 						</div>
 						<div class="form-group">

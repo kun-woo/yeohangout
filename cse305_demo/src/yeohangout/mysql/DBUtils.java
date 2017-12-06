@@ -167,10 +167,10 @@ public class DBUtils {
     
     public static void updateEmployee(Connection conn, EmployeeJude updatedEmp, int keySSN) throws SQLException{
 		
-    		String sql = "UPDATE Employee SET SSN = ?, IsManager = ?,  HourlyRate = ?, UserName = ?, Pwd = ? WHERE Employee.SSN = ?";
-    		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
+    	String sql = "UPDATE Employee SET SSN = ?, IsManager = ?,  HourlyRate = ?, UserName = ?, Pwd = ? WHERE Employee.SSN = ?";
+    	PreparedStatement ps = (PreparedStatement) conn.prepareStatement(sql);
 		
-    		ps.setInt(1, updatedEmp.getSSN());
+    	ps.setInt(1, updatedEmp.getSSN());
 		ps.setBoolean(2, updatedEmp.isManager());
 		ps.setDouble(3, updatedEmp.getHourlyRate());
 		ps.setString(4, updatedEmp.getUserName() );

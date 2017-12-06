@@ -51,7 +51,7 @@ public class AddAirlineServlet extends HttpServlet{
 		newAirline.setAirlineName(airlineName);
 		
 
-		//Insert new user info to Database, This code will insert the sign up information into Person and Customer table.
+		//Insert new airline info to Database, This code will insert the sign up information into Airline table.
 		try {
 			MySQLAccess dao = new MySQLAccess();
 			dao.readDataBase();
@@ -60,6 +60,9 @@ public class AddAirlineServlet extends HttpServlet{
 			
 			if(AirlineUtils.searchAirline(connect, airlineId)==null){
 				AirlineUtils.insertAirline(connect, newAirline);
+				// Insert new airline info to BackUp Database
+				AirlineUtils.insertAirline(dao.getBackupConnection(), newAirline);
+				
 			}else {
 				//MyUtils.setIdAlreadyExists(true);
 			}

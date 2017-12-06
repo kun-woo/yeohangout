@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class GetCustomerServlet
+ * Servlet implementation class GetFlightSuggest
  */
-@WebServlet(name = "view-customer", urlPatterns = { "/view-customer" })
-public class GetCustomerServlet extends HttpServlet {
+@WebServlet(name = "get-flight-suggest", urlPatterns = { "/get-flight-suggest" })
+public class GetFlightSuggest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCustomerServlet() {
+    public GetFlightSuggest() {
         super();
         // TODO Auto-generated constructor stub
     }

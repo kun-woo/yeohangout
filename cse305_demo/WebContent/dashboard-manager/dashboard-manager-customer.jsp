@@ -58,38 +58,38 @@
 					<li><a href="../view-sales-report">View Sales Report</a></li>
 					<li><a href="../view-reservation">View Reservation</a></li>
 					<li><a href="../view-total-revenue">View Total Revenue</a></li>					
-					<li class="active"><a href="#">View Flight <span class="sr-only">(current)</span></a></li>
-					<li><a href="../view-customer">View Customer</a></li>
+					<li><a href="../view-flight">View Flight</a></li>
+					<li class="active"><a href="#">View Customer <span class="sr-only">(current)</span></a></li>
 				</ul>
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main slideanim">
-				<h1 class="page-header">View Customer</h1>
+				<h1 class="page-header">View Seated Customer</h1>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="table-1" class="table table-striped">
 						<thead>
 							<tr>
-								<th>Airline</th>
+								<th>Account Number</th>
+								<th>Name</th>
+								<th>Seat Number</th>
 								<th>Flight Number</th>
-								<th>Number of Seats</th>
-								<th>Days of Operating</th>
-								<th>Minimum Length of Stay</th>
-								<th>Max Length of Stay</th>
+								<th>Airline</th>
+								<th>Leg Number</th>
 							</tr>
 						</thead>
 						<tbody>
-						<%-- <% for (int i=0; i<custArr.size(); i++) { %>
+						<% for (int i=0; i<custArr.size(); i++) { %>
 							<tr>
+								<td><%= custArr.get(i).getAccountNo() %></td>
+								<td><%= custArr.get(i).getName() %></td>
+								<td><%= custArr.get(i).getSeatNo() %></td>
+								<td><%= custArr.get(i).getFlightNo() %></td>
 								<td><%= custArr.get(i).getAirlineID() %></td>
-								<td><%= custArr.get(i).getFlightNumber() %></td>
-								<td><%= custArr.get(i).getNumberOfSeats() %></td>
-								<td><%= custArr.get(i).getDaysOperating() %></td>
-								<td><%= custArr.get(i).getMinLenStay() %></td>
-								<td><%= custArr.get(i).getMaxLenStay() %></td>
+								<td><%= custArr.get(i).getLegNo() %></td>
 							</tr>
 							<%
 							}
-							%> --%>
+							%>
 						</tbody>
 					</table>
 				</div>

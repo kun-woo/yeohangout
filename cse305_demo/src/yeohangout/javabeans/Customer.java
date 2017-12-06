@@ -12,4 +12,52 @@ public class Customer implements Serializable{
 	private int flightNo;
 	private int airlineID;
 	private int legNo;
+	
+	public Customer(String name, int accountNo, int seatNo, int flightNo, int airlineID, int legNo) {
+		super();
+		this.name = name;
+		this.accountNo = accountNo;
+		this.seatNo = seatNo;
+		this.flightNo = flightNo;
+		this.airlineID = airlineID;
+		this.legNo = legNo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAccountNo() {
+		return accountNo;
+	}
+	public void setAccountNo(int accountNo) {
+		this.accountNo = accountNo;
+	}
+	public int getSeatNo() {
+		return seatNo;
+	}
+	public void setSeatNo(int seatNo) {
+		this.seatNo = seatNo;
+	}
+	public int getFlightNo() {
+		return flightNo;
+	}
+	public void setFlightNo(int flightNo) {
+		this.flightNo = flightNo;
+	}
+	public int getAirlineID() {
+		return airlineID;
+	}
+	public void setAirlineID(int airlineID) {
+		this.airlineID = airlineID;
+	}
+	public int getLegNo() {
+		return legNo;
+	}
+	public void setLegNo(int legNo) {
+		this.legNo = legNo;
+	}
+	
+	
 }

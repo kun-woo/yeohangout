@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="yeohangout.mysql.MyUtils"%>
+<%@ include file="../home/header.jsp"%>
+
+
 <!-- SignUp Modal -->
 	<% 
 		//This code is for alerting there is an userID which is same as user signed up.
@@ -139,3 +142,4 @@
 				</div>
 			</div>
 		</div>
+<%@ include file="../home/footer.jsp"%>

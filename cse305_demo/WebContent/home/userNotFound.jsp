@@ -32,7 +32,7 @@
 	<p> If you're not a customer of Yeo Hang Out</p>
 	
 	<p> Go to Sign up!!</p> 
-	<input id = "signupBt" name ="signupBt" value = "Sign Up" type = "button" onclick ="window.location.href='signup.jsp'"/>
+	<a href="signup.jsp" id = "signupBt" role = "button" class="btn btn-success btn-md">Sign Up</a>
 	
 </div>
 <%@ include file="../home/footer.jsp"%>

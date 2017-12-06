@@ -30,6 +30,7 @@
 <script src="assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
 
 <script src="assets/js/main.js"></script>
+
 <title>YeoHangOut</title>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">

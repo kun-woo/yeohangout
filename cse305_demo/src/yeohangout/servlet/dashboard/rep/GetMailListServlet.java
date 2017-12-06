@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class GetCustomerServlet
+ * Servlet implementation class GetMailListServlet
  */
-@WebServlet(name = "view-customer", urlPatterns = { "/view-customer" })
-public class GetCustomerServlet extends HttpServlet {
+@WebServlet(name = "view-mail-list", urlPatterns = { "/view-mail-list" })
+public class GetMailListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetCustomerServlet() {
+    public GetMailListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

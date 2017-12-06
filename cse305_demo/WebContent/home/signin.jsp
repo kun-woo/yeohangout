@@ -33,7 +33,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default pull-left">
+					<button type="submit" class="btn btn-default pull-left" data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> Cancel
 					</button>
 					<p>

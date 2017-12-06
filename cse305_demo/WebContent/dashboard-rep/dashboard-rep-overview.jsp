@@ -59,7 +59,7 @@
 					<li><a href="../view-employee">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../produce-flight-suggest">Flight Suggest To Customer</a></li>
+					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>
 				</ul>
 			</div>
 			<div

@@ -204,10 +204,10 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="../dashboard-rep/dashboard-rep-overview.jsp">Overview <span class="sr-only">(current)</span></a></li>
+					<li><a href="../dashboard-rep/dashboard-rep-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Record Reservation </a></li>
+					<li class="active"><a href="#">Record Reservation <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../manage-customer">Manage
@@ -218,13 +218,13 @@
 					<li><a href="../view-employee">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../produce-flight-suggest">Flight Suggest To Customer</a></li>
+					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>
 				</ul>
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">View Reservation</h1>
+					<h1 class="page-header">Reservation</h1>
 					<!-- <div class="btn-group">
 						<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
 							data-target="#addTable">Add</a> 
@@ -232,7 +232,7 @@
 							data-target="#deleteTable">Delete</a>
 					</div> -->
 					<a role="button" class="btn btn-default btn-md" data-toggle="modal"
-						data-target="#addTable">Add</a>
+						data-target="#addTable">Record</a>
 					<div>
 						<!-- For Padding -->
 						<br>
@@ -288,7 +288,7 @@
 				<br>
 				
 				<div class="row">
-					<h1 class="page-header">View Passenger</h1>
+					<h1 class="page-header">Passenger</h1>
 					<div>
 						<!-- For Padding -->
 						<br>
@@ -342,7 +342,7 @@
 				<br>
 				
 				<div class="row">
-					<h1 class="page-header">View Includes</h1>
+					<h1 class="page-header">Includes</h1>
 					<div>
 						<!-- For Padding -->
 						<br>

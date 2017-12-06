@@ -88,7 +88,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-				<h5>This message will be shown only when input is wrong.</h5>
+					<h5>Powered by <a>Yeo Hang Out</a></h5>
 				</div>
 			</div>
 		</div>

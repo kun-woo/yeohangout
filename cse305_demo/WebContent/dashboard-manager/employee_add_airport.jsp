@@ -10,7 +10,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bg-gray text-center">
-						<form role="form" action="addAirport" method="POST">
+						<form role="form" action="../addAirport" method="POST">
 							<!-- Airport ID -->
 							<div class="form-group">
 								<div class="input-group">

@@ -11,7 +11,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bg-gray text-center">
-						<form role="form" action="addLeg" method="POST">
+						<form role="form" action="../addLeg" method="POST">
 							<div class="form-group">
 								<div class="input-group">
 									<input type="text" class="form-control" id="airline_id" name = "airlineID"

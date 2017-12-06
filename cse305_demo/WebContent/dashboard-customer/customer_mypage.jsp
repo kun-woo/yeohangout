@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="yeohangout.javabeans.UserAccount" %>
 	<!-- HEADER -->
-	<%@ include file="../home/header.jsp"%>
+	<%@ include file="../header.jsp"%>
 	
 	<%
 		UserAccount loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
@@ -18,4 +18,4 @@
 
 
 	<!-- Footer -->
-	<%@ include file="../home/footer.jsp"%>
+	<%@ include file="../footer.jsp"%>

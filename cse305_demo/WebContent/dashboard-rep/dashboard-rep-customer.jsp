@@ -237,7 +237,7 @@
 								</tr>
 							</thead>
 							<tbody>
-						<% 
+						<%-- <% 
 						ArrayList<Integer> accountNoArr = new ArrayList<Integer>();
 						
 						for (int i=0; i<custArr.size(); i++) { 
@@ -266,7 +266,7 @@
 						
 
 							%>
-							</tbody>
+ --%>							</tbody>
 						</table>
 					</div>
 				</div>
@@ -291,7 +291,7 @@
 								</tr>
 							</thead>
 							<tbody>
-						<%
+						<%-- <%
 						for (int i=0; i < personArr.size(); i++) {
 							if (passArr.get(j).getId() == personArr.get(i).getId())
 							{
@@ -358,7 +358,7 @@
 							}
 						
 
-							%>
+							%> --%>
 							</tbody>
 						</table>
 					</div>

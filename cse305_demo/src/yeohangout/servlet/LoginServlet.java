@@ -65,13 +65,13 @@ public class LoginServlet extends HttpServlet {
 				//
 				if(loginedEmployee ==null) {
 					System.out.println("NO USER");
-					response.sendRedirect(contextPath + "/home/userNotFound.jsp");
+					response.sendRedirect(contextPath + "/userNotFound.jsp");
 					return;
 				}else if(!loginedEmployee.getPassword().equals(password)) {
 					//the home page will be changed employee version
 		
 					System.out.println("Not matched");
-					response.sendRedirect(contextPath+"/home/userNotFound.jsp");
+					response.sendRedirect(contextPath+"/userNotFound.jsp");
 					
 				} else {
 					System.out.println("here");
@@ -94,7 +94,7 @@ public class LoginServlet extends HttpServlet {
 			} else if (!loginedUser.getPassword().equals(password)){
 				System.out.println("NOT MATCHED");
 				//if the password is not matched.
-				response.sendRedirect(contextPath+"/home/userNotFound.jsp");
+				response.sendRedirect(contextPath+"/userNotFound.jsp");
 			} else {
 				HttpSession session = request.getSession(true);
 				//store user into session and cookie

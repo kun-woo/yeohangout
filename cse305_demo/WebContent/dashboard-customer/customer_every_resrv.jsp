@@ -11,7 +11,7 @@
 <%@ page import="yeohangout.javabeans.IncludeAndLeg"%>
 
 	<!-- HEADER -->
-	<%@ include file="../home/header.jsp"%>
+	<%@ include file="../header.jsp"%>
 	
 	
 	<div class="container-fluid bg-gray text-center">
@@ -69,4 +69,4 @@
 	
 					
 	<!-- Footer -->
-	<%@ include file="../home/footer.jsp"%>
+	<%@ include file="../footer.jsp"%>

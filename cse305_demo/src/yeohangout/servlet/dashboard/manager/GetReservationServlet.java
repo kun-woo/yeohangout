@@ -1,4 +1,4 @@
-package yeohangout.servlet.dashboard;
+package yeohangout.servlet.dashboard.manager;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import yeohangout.javabeans.Revenue;
+import yeohangout.javabeans.Reservation;
 
 /**
- * Servlet implementation class GetRevenue
+ * Servlet implementation class GetReservationServlet
  */
-@WebServlet(name = "view-total-revenue", urlPatterns = { "/view-total-revenue" })
-public class GetRevenueServlet extends HttpServlet {
+@WebServlet(name = "view-reservation", urlPatterns = { "/view-reservation" })
+public class GetReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
 	private ResultSet rs;
@@ -30,7 +30,7 @@ public class GetRevenueServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetRevenueServlet() {
+	public GetReservationServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -49,17 +49,18 @@ public class GetRevenueServlet extends HttpServlet {
 							+ "user=howoo&password=111255764");
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM RevnCity");
+				ps = connect.prepareStatement("SELECT * FROM ResrData");
 				rs = ps.executeQuery();
 
-				ArrayList<Revenue> revnCityArr = new ArrayList<Revenue>();
+				ArrayList<Reservation> resrArr = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						revnCityArr.add(new Revenue(rs.getString("City"), rs.getDouble("Revenue")));
+						resrArr.add(new Reservation(rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("revnCityArr", revnCityArr);
+					session.setAttribute("resrArr", resrArr);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -78,17 +79,19 @@ public class GetRevenueServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM RevnCust");
+				ps = connect.prepareStatement("SELECT * FROM ResrFlightListInfo");
 				rs = ps.executeQuery();
 
-				ArrayList<Revenue> revnCustArr = new ArrayList<Revenue>();
+				ArrayList<Reservation> resrArrFlight = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						revnCustArr.add(new Revenue(rs.getDouble("Revenue"), rs.getString("Name"), rs.getInt("AccountNo")));
+						resrArrFlight.add(new Reservation(rs.getString("AirlineID"), rs.getInt("FlightNo"), 
+								rs.getInt("ResrNo"), rs.getTimestamp("ResrDate"), rs.getDouble("BookingFee"), 
+								rs.getDouble("TotalFare"), rs.getInt("RepSSN"), rs.getInt("AccountNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("revnCustArr", revnCustArr);
+					session.setAttribute("resrArrFlight", resrArrFlight);
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
@@ -107,55 +110,26 @@ public class GetRevenueServlet extends HttpServlet {
 
 			try {
 				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM RevnCustRep");
+				ps = connect.prepareStatement("SELECT * FROM ResrCustList");
 				rs = ps.executeQuery();
 
-				ArrayList<Revenue> revnCustRepArr = new ArrayList<Revenue>();
+				ArrayList<Reservation> resrArrCust = new ArrayList<Reservation>();
 
 				if (rs != null) {
 					while (rs.next()) {
-						revnCustRepArr.add(new Revenue(rs.getInt("SSN"), rs.getString("Name"), rs.getDouble("Revenue")));
+						resrArrCust.add(new Reservation(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("ResrNo")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("revnCustRepArr", revnCustRepArr);
-				}
-				else {
-					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
-					System.out.println("No user found with given input, please register first.");
-					rd.include(request, response);
-				}
-
-			} finally {
-				try {
-					rs.close();
-					ps.close();
-				} catch (SQLException e) {
-					System.out.println("No user found with given input, please register first.");
-				}
-			}
-			
-			try {
-				// Execute SQL query
-				ps = connect.prepareStatement("SELECT * FROM RevnFlight");
-				rs = ps.executeQuery();
-
-				ArrayList<Revenue> revnFlightArr = new ArrayList<Revenue>();
-
-				if (rs != null) {
-					while (rs.next()) {
-						revnFlightArr.add(new Revenue(rs.getString("AirlineID"), rs.getDouble("FlightNo"), rs.getInt("Revenue")));
-					}
-					HttpSession session = request.getSession();
-					session.setAttribute("revnFlightArr", revnFlightArr);
+					session.setAttribute("resrArrCust", resrArrCust);
 					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-revenue.jsp");
+					response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-reservation.jsp");
 				}
 				else {
 					RequestDispatcher rd = getServletContext().getRequestDispatcher("/dashboard-manager/dashboard-manager-employee.jsp");
 					System.out.println("No user found with given input, please register first.");
 					rd.include(request, response);
 				}
-
+				
 				connect.close();
 
 			} finally {
@@ -166,7 +140,7 @@ public class GetRevenueServlet extends HttpServlet {
 					System.out.println("No user found with given input, please register first.");
 				}
 			}
-
+			
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -180,4 +154,5 @@ public class GetRevenueServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

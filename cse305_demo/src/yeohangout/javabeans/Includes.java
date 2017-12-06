@@ -12,6 +12,14 @@ public class Includes {
 	
 	public Includes() {}
 
+	public Includes(int resrNo, String airlineID, int flightNo, int legNo, Date date) {
+		super();
+		ResrNo = resrNo;
+		AirlineID = airlineID;
+		this.flightNo = flightNo;
+		this.legNo = legNo;
+		this.date = date;
+	}
 
 	public int getResrNo() {
 		return ResrNo;

@@ -10,10 +10,10 @@ public class Customer implements Serializable{
 	private int accountNo;
 	private int seatNo;
 	private int flightNo;
-	private int airlineID;
+	private String airlineID;
 	private int legNo;
 	
-	public Customer(String name, int accountNo, int seatNo, int flightNo, int airlineID, int legNo) {
+	public Customer(String name, int accountNo, int seatNo, int flightNo, String airlineID, int legNo) {
 		super();
 		this.name = name;
 		this.accountNo = accountNo;
@@ -46,10 +46,10 @@ public class Customer implements Serializable{
 	public void setFlightNo(int flightNo) {
 		this.flightNo = flightNo;
 	}
-	public int getAirlineID() {
+	public String getAirlineID() {
 		return airlineID;
 	}
-	public void setAirlineID(int airlineID) {
+	public void setAirlineID(String airlineID) {
 		this.airlineID = airlineID;
 	}
 	public int getLegNo() {

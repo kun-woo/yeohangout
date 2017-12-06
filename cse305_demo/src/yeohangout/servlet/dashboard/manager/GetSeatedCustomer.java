@@ -58,7 +58,7 @@ public class GetSeatedCustomer extends HttpServlet {
 
 			if (rs != null) {
 				while (rs.next()) {
-					custArr.add(new Customer(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("SeatNo"), rs.getInt("FlightNo"), rs.getInt("Airline ID"), rs.getInt("LegNo")));
+					custArr.add(new Customer(rs.getString("Name"), rs.getInt("AccountNo"), rs.getInt("SeatNo"), rs.getInt("FlightNo"), rs.getString("AirlineID"), rs.getInt("LegNo")));
 				}
 				HttpSession session = request.getSession();
 				session.setAttribute("custArr", custArr);

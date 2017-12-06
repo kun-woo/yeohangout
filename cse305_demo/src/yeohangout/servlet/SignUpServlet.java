@@ -93,8 +93,6 @@ public class SignUpServlet extends HttpServlet {
 				DBUtils.insertUser(connect, newUser);
 				
 				// Insert new person and user info to BackUp Database 
-				DBUtils.insertPerson(dao.getBackupConnection(), newPerson);
-				DBUtils.insertUser(dao.getBackupConnection(), newUser);
 			}else {
 				MyUtils.setIdAlreadyExists(true);
 			}

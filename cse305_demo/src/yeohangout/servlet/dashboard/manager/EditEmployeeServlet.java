@@ -118,7 +118,6 @@ public class EditEmployeeServlet extends HttpServlet {
 				
 				DBUtils.updatePerson(connect, updatedEmployee.getFirstName(), updatedEmployee.getLastName(), updatedEmployee.getId());
 				// Insert new employee info to BackUp Database 
-				DBUtils.updatePerson(dao.getBackupConnection(), updatedEmployee.getFirstName(), updatedEmployee.getLastName(), updatedEmployee.getId());
 				
 				PrintWriter out= response.getWriter();
 				out.println("Add successful, please check table.");

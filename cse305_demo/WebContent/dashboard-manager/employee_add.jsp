@@ -11,7 +11,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="container-fluid bg-gray text-center">
-						<form role="form" action="addAirline" method="POST">
+						<form role="form" action="../addAirline" method="POST">
 							<!-- Airline ID -->
 							<div class="form-group">
 								<div class="input-group">

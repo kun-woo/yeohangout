@@ -61,7 +61,6 @@ public class AddAirlineServlet extends HttpServlet{
 			if(AirlineUtils.searchAirline(connect, airlineId)==null){
 				AirlineUtils.insertAirline(connect, newAirline);
 				// Insert new airline info to BackUp Database
-				AirlineUtils.insertAirline(dao.getBackupConnection(), newAirline);
 				
 			}else {
 				//MyUtils.setIdAlreadyExists(true);

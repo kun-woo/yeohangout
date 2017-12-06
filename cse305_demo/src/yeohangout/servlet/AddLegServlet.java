@@ -92,7 +92,6 @@ private static final long serialVersionUID = 1L;
 					
 					AirlineUtils.insertLeg(connect, newLeg);
 					// Insert new leg info to BackUp Database 
-					AirlineUtils.insertLeg(dao.getBackupConnection(), newLeg);
 					System.out.println("Leg Inserted");
 					
 					

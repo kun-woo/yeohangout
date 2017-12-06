@@ -109,8 +109,6 @@ public class AddEmployeeServlet extends HttpServlet {
 				// Execute SQL query
 				//Add Person
 				DBUtils.insertPerson(connect, newPerson);
-				// Insert new person info to BackUp Database 
-				DBUtils.insertPerson(dao.getBackupConnection(), newPerson);
 				
 
 				
@@ -126,8 +124,7 @@ public class AddEmployeeServlet extends HttpServlet {
 					
 				DBUtils.insertEmployee(connect, newEmployee);
 				// Insert new employee info to BackUp Database 
-				DBUtils.insertEmployee(dao.getBackupConnection(), newEmployee);
-					
+				
 				PrintWriter out= response.getWriter();
 				out.println("<font color=green>Add successful, please check table.</font>");
 					

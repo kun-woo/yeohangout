@@ -53,6 +53,7 @@ public class RecordReservationServlet extends HttpServlet {
 		double bookingFee = Double.parseDouble(request.getParameter("bookingFee"));
 		double totalFare = Double.parseDouble(request.getParameter("totalFare"));
 		int repSSN = Integer.parseInt(request.getParameter("repSSN"));
+		int accountNo = Integer.parseInt(request.getParameter("accountNo"));
 		String airlineID = request.getParameter("airlineID");
 		int flightNo = Integer.parseInt(request.getParameter("flightNo"));
 		int legNo = Integer.parseInt(request.getParameter("legNo"));
@@ -111,7 +112,7 @@ public class RecordReservationServlet extends HttpServlet {
 					        pstm = (PreparedStatement) connect.prepareStatement(sql);
 					       
 					       pstm.setInt(1, newPassenger.getId());
-					       pstm.setInt(2, 3);
+					       pstm.setInt(2, accountNo);
 					       pstm.executeUpdate();
 						
 						
@@ -132,7 +133,7 @@ public class RecordReservationServlet extends HttpServlet {
 					       pstm.setDouble(3, bookingFee);
 					       pstm.setDouble(4, totalFare);
 					       pstm.setInt(5, repSSN);
-					       pstm.setInt(6, 3);
+					       pstm.setInt(6, accountNo);
 					       pstm.executeUpdate();
 						
 						
@@ -168,7 +169,7 @@ public class RecordReservationServlet extends HttpServlet {
 					       
 					        pstm.setInt(1, resrNo);
 						    pstm.setInt(2, newPassenger.getId());
-						    pstm.setDouble(3, 3);
+						    pstm.setDouble(3, accountNo);
 						    pstm.setDouble(4, seatNo);
 						    pstm.setString(5, cabinClass);
 						    pstm.setString(6, meal);

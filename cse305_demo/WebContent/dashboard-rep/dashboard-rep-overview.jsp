@@ -48,7 +48,7 @@
 					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../record-reservation">Record Reservation </a></li>
+					<li><a href="../view-rep-reservation">Record Reservation </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../manage-customer">Manage

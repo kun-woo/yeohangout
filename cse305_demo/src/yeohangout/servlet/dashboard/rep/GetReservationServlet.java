@@ -25,7 +25,7 @@ import yeohangout.javabeans.ResrPassenger;
 /**
  * Servlet implementation class GetReservationServlet
  */
-@WebServlet("/GetReservationServlet")
+@WebServlet(name = "view-rep-reservation", urlPatterns = { "/view-rep-reservation" })
 public class GetReservationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
@@ -73,7 +73,7 @@ public class GetReservationServlet extends HttpServlet {
 				}
 				else {
 					String contextPath = request.getContextPath();
-					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-rep-overview.jsp");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
 					PrintWriter out= response.getWriter();
 					out.println("<font color=red>No user found with given input, please register first.</font>");
 					rd.include(request, response);
@@ -98,7 +98,7 @@ public class GetReservationServlet extends HttpServlet {
 				}
 				else {
 					String contextPath = request.getContextPath();
-					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-rep-overview.jsp");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
 					PrintWriter out= response.getWriter();
 					out.println("<font color=red>No user found with given input, please register first.</font>");
 					rd.include(request, response);
@@ -124,7 +124,7 @@ public class GetReservationServlet extends HttpServlet {
 				}
 				else {
 					String contextPath = request.getContextPath();
-					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-rep-overview.jsp");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
 					PrintWriter out= response.getWriter();
 					out.println("<font color=red>No user found with given input, please register first.</font>");
 					rd.include(request, response);
@@ -150,7 +150,7 @@ public class GetReservationServlet extends HttpServlet {
 				}
 				else {
 					String contextPath = request.getContextPath();
-					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-manager/dashboard-rep-overview.jsp");
+					RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
 					PrintWriter out= response.getWriter();
 					out.println("<font color=red>No user found with given input, please register first.</font>");
 					rd.include(request, response);
@@ -161,7 +161,7 @@ public class GetReservationServlet extends HttpServlet {
 			}
 
 			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/dashboard-manager/dashboard-rep-record.jsp");
+			response.sendRedirect(contextPath + "/dashboard-rep/dashboard-rep-record.jsp");
 			connect.close();
 
 		} catch (ClassNotFoundException | SQLException e) {

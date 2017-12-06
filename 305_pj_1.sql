@@ -1,4 +1,4 @@
--- DROP DATABASE IF EXISTS `sample_305`;
+-- DROP DATABASE -- IF EXISTS `sample_305`;
 -- 
 -- CREATE DATABASE `sample_305`;
 -- 
@@ -78,7 +78,7 @@ FOREIGN KEY (AirlineID, FlightNo) REFERENCES Flight(AirlineID, FlightNo)
 CHECK (Fare > 0));
 
 CREATE TABLE Person (
-Id INTEGER,
+Id INTEGER AUTO_INCREMENT,
 FirstName VARCHAR(50) NOT NULL,
 LastName VARCHAR(50) NOT NULL,
 Address VARCHAR(100) NOT NULL,
@@ -97,6 +97,8 @@ AccountNo INTEGER,
 CreditCardNo CHAR(16),
 CreationDate DateTime NOT NULL,
 Rating INTEGER,
+UserName VARCHAR(50),
+Pwd INTEGER,
 PRIMARY KEY (AccountNo),
 FOREIGN KEY (Id) REFERENCES Person (Id)
 	ON DELETE CASCADE
@@ -117,6 +119,8 @@ SSN INTEGER,
 IsManager BOOLEAN NOT NULL,
 StartDate DATE NOT NULL,
 HourlyRate NUMERIC(10,2) NOT NULL,
+UserName VARCHAR(50),
+Pwd INTEGER,
 PRIMARY KEY (SSN),
 FOREIGN KEY (Id) REFERENCES Person (Id)
 	ON DELETE CASCADE
@@ -132,7 +136,7 @@ PRIMARY KEY (Id, AccountNo),
 FOREIGN KEY (Id) REFERENCES Person(Id)
 	ON DELETE CASCADE
     ON UPDATE CASCADE,
-FOREIGN KEY (AccountNo) REFERENCES Customer(AccountNo)
+FOREIGN KEY (AccfareountNo) REFERENCES Customer(AccountNo)
 	ON DELETE NO ACTION
     ON UPDATE CASCADE);
 
@@ -254,9 +258,6 @@ DROP TRIGGER IF EXISTS person_check |
 CREATE TRIGGER person_check BEFORE INSERT ON Person
   FOR EACH ROW
   BEGIN
-    IF NEW.Id <= 0 THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'An Id below or equal to 0';
-    END IF;
     IF NEW.Zipcode <= 0 THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'A Zipcode below or equal to 0';
     END IF;
@@ -361,9 +362,6 @@ DROP TRIGGER IF EXISTS person_check_update |
 CREATE TRIGGER person_check_update BEFORE UPDATE ON Person
   FOR EACH ROW
   BEGIN
-    IF NEW.Id <= 0 THEN
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'An Id below or equal to 0';
-    END IF;
     IF NEW.Zipcode <= 0 THEN
 		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'A Zipcode below or equal to 0';
     END IF;
@@ -543,6 +541,14 @@ UNION
 		Includes I, Reservation R
 	WHERE
 		I.ResrNo = R.ResrNo;
+        
+CREATE VIEW ResrFlightListInfo AS -- For manager to view reservations by flight number + more info
+	SELECT
+		RFL.AirlineID, RFL.FlightNo, RFL.ResrNo,  ResrDate, BookingFee, TotalFare, RepSSN, AccountNo
+	FROM
+		ResrFlightList RFL, ResrData RD
+	WHERE
+		RFL.ResrNo = RD.ResrNo;
 
 CREATE VIEW ResrCustList AS -- For manager to view reservations by customer name
 	SELECT
@@ -1151,6 +1157,3 @@ END;
 |
 
 delimiter ;
-
--- Call Procedures with Typical Values
-CALL howoo.AddCust (1, 4, '5262147830293048', '2011-01-03 03:30:30', 0);

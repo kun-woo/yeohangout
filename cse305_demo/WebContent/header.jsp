@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="yeohangout.mysql.MyUtils"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -66,21 +66,21 @@
 					} else if(MyUtils.getUserType() == 0){ 
 				%>	
 
-        				<li><a data-toggle="modal" href="../customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
-        				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+        				<li><a data-toggle="modal" href="dashboard-customer/customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
+        				<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			<%
         				} else if(MyUtils.getUserType()==1){
         					
         			%>
-        				<li><a data-toggle="modal" href="../dashboard-rep/dashboard-rep-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
-					<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+        				<li><a data-toggle="modal" href="dashboard-rep/dashboard-rep-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+					<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
         			 
         				
         			<%
 					} else if(MyUtils.getUserType()==2){
 				%>
-			<li><a data-toggle="modal" href="../dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
-        				<li><a data-toggle="mdoal" href="logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+			<li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+        				<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
 				<%
 					}
 				%>

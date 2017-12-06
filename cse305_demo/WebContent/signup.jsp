@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%@ page import="yeohangout.mysql.MyUtils"%>
-<%@ include file="../home/header.jsp"%>
+<%@ include file="header.jsp"%>
 
 
 <!-- SignUp Modal -->

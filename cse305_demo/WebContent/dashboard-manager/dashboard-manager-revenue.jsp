@@ -36,7 +36,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="../index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
-					<li><a href="#">LOG OUT</a></li>
+					<li><a href="${pageContext.request.contextPath}/logout">LOG OUT</a></li>
 					<li><a href="#">HELP</a></li>
 				</ul>
 			</div>

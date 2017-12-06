@@ -2,6 +2,7 @@
 <%@page import="yeohangout.javabeans.Includes"%>
 <%@page import="yeohangout.javabeans.Passenger"%>
 <%@page import="yeohangout.javabeans.ResrPassenger"%>
+<%@page import="yeohangout.javabeans.Person"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -46,10 +47,13 @@
 		</div>
 	</nav>
 	<% ArrayList<Reservation> resrArr = (ArrayList<Reservation>) session.getAttribute("resrArr"); 
-		ArrayList<Includes> inclArr = (ArrayList<Includes>) session.getAttribute("inclArr"); 
-		ArrayList<Passenger> passArr = (ArrayList<Passenger>) session.getAttribute("passArr"); 
-		ArrayList<ResrPassenger> resrPassArr = (ArrayList<ResrPassenger>) session.getAttribute("resrPassArr"); 
-		
+	   ArrayList<Includes> inclArr = (ArrayList<Includes>) session.getAttribute("inclArr");
+	   ArrayList<Passenger> passArr = (ArrayList<Passenger>) session.getAttribute("passArr");
+	   ArrayList<ResrPassenger> resrPassArr = (ArrayList<ResrPassenger>) session.getAttribute("resrPassArr");
+	   ArrayList<Person> personArr = (ArrayList<Person>) session.getAttribute("personArr");
+	   ArrayList<String> fArr = new ArrayList<String>();
+	   ArrayList<String> lArr = new ArrayList<String>();	   
+	   int j = 0;
 	%>
 
 	<!-- AddTable Modal -->
@@ -81,14 +85,14 @@
 							<label class="control-label col-sm-4" for="text">Reservation
 								Number:</label>
 							<div class="col-sm-8">
-								<input type="text" name="resrNo" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss">
+								<input type="text" name="resrNo" class="form-control" placeholder="Reservation Number">
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">Reservation
 								Date:</label>
 							<div class="col-sm-8">
-								<input type="text" name="rserDate" class="form-control" placeholder="yyyy-MM-dd hh:mm:ss">
+								<input type="text" name="rserDate" class="form-control" placeholder="yyyy-MM-dd HH:mm:SS">
 							</div>
 						</div>
 						<div class="form-group">
@@ -165,9 +169,9 @@
 	</div>
 	
 	<!-- Delete Modal -->
-	<div class="modal fade" id="deleteTable" role="dialog">
+	<!-- <div class="modal fade" id="deleteTable" role="dialog">
 		<div class="modal-dialog">
-			<!-- Modal content-->
+			Modal content
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -194,14 +198,13 @@
 			</div>
 		</div>
 	</div>
-	
+ -->	
 	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
-					<li><a href="../view-employee">View Employee</a></li>
+					<li><a href="../dashboard-rep/dashboard-rep-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#">Record Reservation <span class="sr-only">(current)</span></a></li>
@@ -211,19 +214,25 @@
 							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../produce-flight-suggest">Flight Suggest To Customer</a></li>
+					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
+					<li><a href="../view-employee">View Employee</a></li>
+				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>
 				</ul>
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">Record Reservation</h1>
-					<div class="btn-group">
+					<h1 class="page-header">Reservation</h1>
+					<!-- <div class="btn-group">
 						<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
 							data-target="#addTable">Add</a> 
 						<a role="button" class="btn btn-default btn-md" data-toggle="modal"
 							data-target="#deleteTable">Delete</a>
-					</div>
+					</div> -->
+					<a role="button" class="btn btn-default btn-md" data-toggle="modal"
+						data-target="#addTable">Record</a>
 					<div>
 						<!-- For Padding -->
 						<br>
@@ -235,12 +244,11 @@
 									<th>Reservation Number</th>
 									<th>Reservation Date</th>
 									<th>Booking Fee</th>
-									<th>Start Date</th>
-									<th>Hourly Rate</th>
-									<th>User Name</th>
-									<th>Password</th>
-									<th>Edit</th>
-								</tr>
+									<th>Total Fare</th>
+									<th>Representative SSN</th>
+									<th>Account Number</th>
+<!-- 									<th>Edit</th>
+ -->								</tr>
 							</thead>
 							<tbody>
 						<% 
@@ -253,9 +261,12 @@
  						%>
 							<tr>
 								<td><%= resrArr.get(i).getResrNo() %></td>
-								
-								<td>
-								<% 
+								<td><%= resrArr.get(i).getResrDateTime() %></td>
+								<td><%= resrArr.get(i).getBookingFee() %></td>
+								<td><%= resrArr.get(i).getTotalFare() %></td>
+								<td><%= resrArr.get(i).getRepSSN() %></td>
+								<td><%= resrArr.get(i).getAccountNo() %></td>
+								<%-- <% 
 									session.setAttribute("dash_edit_emp", i);
 									session.setAttribute("emp_ssn_arr", resrNoArr);
 								%>
@@ -264,6 +275,60 @@
 									
 								
 								<%@ include file = "../dashboard-manager/dashboard-manager-user-edit-rep.jsp" %>
+							</tr> --%>
+							<%
+							}
+						
+
+							%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<br>
+				
+				<div class="row">
+					<h1 class="page-header">Passenger</h1>
+					<div>
+						<!-- For Padding -->
+						<br>
+					</div>
+					<div class="table-responsive">
+						<table id="table-3" class="table table-striped">
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Account Number</th>
+									<th>Reservation Number</th>
+									<th>Seat Number</th>
+									<th>Cabin Class</th>
+									<th>Meal</th>
+								</tr>
+							</thead>
+							<tbody>
+						<%
+						for (int i=0; i < personArr.size(); i++) {
+							if (passArr.get(j).getId() == personArr.get(i).getId())
+							{
+								fArr.add(personArr.get(i).getFirstName());
+								lArr.add(personArr.get(i).getLastName());
+								j++;
+							}
+						}
+						%>
+						<% 						
+						for (int i=0; i<passArr.size(); i++) {
+							String fname = fArr.get(i);
+							String lname = lArr.get(i);
+							String name = fname + " " + lname;
+ 						%>
+							<tr>
+								<td><%= name %></td>
+								<td><%= passArr.get(i).getAccountNo() %></td>
+								<td><%= resrPassArr.get(i).getResrNo() %></td>
+								<td><%= resrPassArr.get(i).getSeatNo() %></td>
+								<td><%= resrPassArr.get(i).getCabinClass() %></td>
+								<td><%= resrPassArr.get(i).getMeal() %></td>								
 							</tr>
 							<%
 							}
@@ -274,13 +339,49 @@
 						</table>
 					</div>
 				</div>
+				<br>
+				
+				<div class="row">
+					<h1 class="page-header">Includes</h1>
+					<div>
+						<!-- For Padding -->
+						<br>
+					</div>
+					<div class="table-responsive">
+						<table id="table-2" class="table table-striped">
+							<thead>
+								<tr>
+									<th>Reservation Number</th>
+									<th>Airline</th>
+									<th>Flight Number</th>
+									<th>Leg Number</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+						<% 						
+						for (int i=0; i<inclArr.size(); i++) {
+ 						%>
+							<tr>
+								<td><%= inclArr.get(i).getResrNo() %></td>
+								<td><%= inclArr.get(i).getAirlineID() %></td>
+								<td><%= inclArr.get(i).getFlightNo() %></td>
+								<td><%= inclArr.get(i).getLegNo() %></td>
+								<td><%= inclArr.get(i).getDateTime() %></td>
+							</tr>
+							<%
+							}
+						
 
+							%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				
 			</div>
 		</div>
 	</div>
-		
-	
-	
 	
 	<!-- Bootstrap core JavaScript
     ================================================== -->

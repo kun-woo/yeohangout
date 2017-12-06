@@ -19,7 +19,7 @@ import yeohangout.javabeans.Leg;
 import yeohangout.mysql.AirlineUtils;
 import yeohangout.mysql.MySQLAccess;
 
-@WebServlet("/flightSuggestion")
+@WebServlet(name = "flightSuggestion", urlPatterns= {"/flightSuggestion"})
 
 public class FlightSuggestionServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -64,7 +64,7 @@ public class FlightSuggestionServlet extends HttpServlet{
 		request.setAttribute("legs", legs);		//send data from servlet to jsp
 		request.setAttribute("flights", flights);
 		System.out.println("FLIGHT" + flights.size());
-		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_flight_suggestion.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/dashboard-customer/customer_flight_suggestion.jsp");
 		rd.forward(request, response);
 	}
 

@@ -22,7 +22,7 @@ import yeohangout.mysql.IncludeUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.ReservationUtils;
 
-@WebServlet("/currentReservationServlet")
+@WebServlet(name = "currentReservationServlet", urlPatterns={"/currentReservationServlet"})
 
 public class CurrentReservationServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
@@ -68,8 +68,8 @@ public class CurrentReservationServlet extends HttpServlet{
 		
 		//Redirection to index.jsp
 		request.setAttribute("cu_reservations", reservations);		//send data from servlet to jsp
-		
-		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_current_resrv.jsp");
+		System.out.println("context path : "+contextPath);
+		RequestDispatcher rd = request.getRequestDispatcher("/dashboard-customer/customer_current_resrv.jsp");
 		rd.forward(request, response);
 	}
 

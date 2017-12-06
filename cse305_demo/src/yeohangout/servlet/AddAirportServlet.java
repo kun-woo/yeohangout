@@ -45,7 +45,7 @@ private static final long serialVersionUID = 1L;
 		newAirport.setCity(city);
 		newAirport.setCountry(country);
 
-		//Insert new user info to Database, This code will insert the sign up information into Person and Customer table.
+		//Insert new airport info to Database, This code will insert the sign up information into Airport table.
 		try {
 			MySQLAccess dao = new MySQLAccess();
 			dao.readDataBase();
@@ -54,6 +54,8 @@ private static final long serialVersionUID = 1L;
 			
 			if(AirlineUtils.searchAirport(connect, ID)==null){
 				AirlineUtils.insertAirport(connect, newAirport);
+				// Insert new airport info to BackUp Database
+				AirlineUtils.insertAirport(dao.getBackupConnection(), newAirport);
 			}else {
 				//MyUtils.setIdAlreadyExists(true);
 			}

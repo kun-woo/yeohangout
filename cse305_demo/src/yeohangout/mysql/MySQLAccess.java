@@ -16,6 +16,7 @@ import java.sql.Statement;
  */
 public class MySQLAccess {
 	private Connection connect;
+	private Connection backupConnect;
     private Statement statement;
     private ResultSet resultSet;
 
@@ -27,6 +28,9 @@ public class MySQLAccess {
             connect = DriverManager
                     .getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
                             + "user=howoo&password=111255764");
+            backupConnect = DriverManager
+            				.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/jdemarchi?"
+            							+ "user=jdemarchi&password=109849117");
 
         } catch (Exception e) {
             throw e;
@@ -35,6 +39,10 @@ public class MySQLAccess {
 	
 	public Connection getConnection() {
 		return connect;
+	}
+	
+	public Connection getBackupConnection() {
+		return backupConnect;
 	}
 	
     public void close() {

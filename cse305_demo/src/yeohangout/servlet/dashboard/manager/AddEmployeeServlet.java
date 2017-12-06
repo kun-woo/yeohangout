@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import yeohangout.javabeans.EmployeeJude;
 import yeohangout.javabeans.Person;
 import yeohangout.mysql.DBUtils;
+import yeohangout.mysql.MySQLAccess;
 
 /**
  * Servlet implementation class AddEmployeeServlet
@@ -99,42 +100,51 @@ public class AddEmployeeServlet extends HttpServlet {
 			
 			// This will load the MySQL driver, each DB has its own driver
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				// Setup the connection with the DB
-				Connection connect = DriverManager
-						.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
-								+ "user=howoo&password=111255764");
-					// Execute SQL query
-					//Add Person
-					DBUtils.insertPerson(connect, newPerson);
-					
+				MySQLAccess dao = new MySQLAccess();
+				dao.readDataBase();
+				Connection connect = null;
+				connect = dao.getConnection();
+				
+				
+				// Execute SQL query
+				//Add Person
+				DBUtils.insertPerson(connect, newPerson);
+				// Insert new person info to BackUp Database 
+				DBUtils.insertPerson(dao.getBackupConnection(), newPerson);
 				
 
 				
-					// Execute SQL query
-					EmployeeJude newEmployee = new EmployeeJude();
-					newEmployee.setId(newPerson.getId());
-					newEmployee.setSSN(SSN);
-					newEmployee.setManager(isManager);
-					newEmployee.setHourlyRate(hourlyRate);
-					newEmployee.setUserName(userName);
-					newEmployee.setPwd(pwd);
+				// Execute SQL query
+				EmployeeJude newEmployee = new EmployeeJude();
+				newEmployee.setId(newPerson.getId());
+				newEmployee.setSSN(SSN);
+				newEmployee.setManager(isManager);
+				newEmployee.setHourlyRate(hourlyRate);
+				newEmployee.setUserName(userName);
+				newEmployee.setPwd(pwd);
 					
 					
-					DBUtils.insertEmployee(connect, newEmployee);
+				DBUtils.insertEmployee(connect, newEmployee);
+				// Insert new employee info to BackUp Database 
+				DBUtils.insertEmployee(dao.getBackupConnection(), newEmployee);
 					
+				PrintWriter out= response.getWriter();
+				out.println("<font color=green>Add successful, please check table.</font>");
 					
-					PrintWriter out= response.getWriter();
-					out.println("<font color=green>Add successful, please check table.</font>");
+				response.sendRedirect("view-employee");
 					
-					response.sendRedirect("view-employee");
-					
-					connect.close();
+				connect.close();
 
-			} catch (ClassNotFoundException | SQLException e) {
+			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 		
 		}
 	}

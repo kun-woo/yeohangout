@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import yeohangout.mysql.MySQLAccess;
+
 /**
  * Servlet implementation class DeleteEmployeeServlet
  */
@@ -59,18 +61,22 @@ public class DeleteEmployeeServlet extends HttpServlet {
 		else {
 			// This will load the MySQL driver, each DB has its own driver
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				// Setup the connection with the DB
-				Connection connect = DriverManager
-						.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
-								+ "user=howoo&password=111255764");
+				MySQLAccess dao = new MySQLAccess();
+				dao.readDataBase();
+				Connection connect = null;
+				connect = dao.getConnection();
+				
 				try {
 					// Execute SQL query
 					ps = connect.prepareStatement("DELETE FROM Employee WHERE SSN = ?");
 					ps.setInt(1, SSN);
 					ps.execute();
+					
+					ps = dao.getBackupConnection().prepareStatement("DELETE FROM Employee WHERE SSN = ?");
+					ps.setInt(1, SSN);
+					ps.execute();
 
-					PrintWriter out= response.getWriter();
+					PrintWriter out = response.getWriter();
 					out.println("Add successful, please check table.");
 
 					response.sendRedirect("view-employee");
@@ -88,6 +94,8 @@ public class DeleteEmployeeServlet extends HttpServlet {
 
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

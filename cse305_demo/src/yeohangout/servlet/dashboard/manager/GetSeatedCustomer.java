@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import yeohangout.javabeans.Customer;
+import yeohangout.mysql.MySQLAccess;
 
 /**
  * Servlet implementation class GetSeatedCustomer
@@ -43,11 +44,11 @@ public class GetSeatedCustomer extends HttpServlet {
 		// TODO Auto-generated method stub
 		// This will load the MySQL driver, each DB has its own driver
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			// Setup the connection with the DB
-			Connection connect = DriverManager
-					.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
-							+ "user=howoo&password=111255764");
+			MySQLAccess dao = new MySQLAccess();
+			dao.readDataBase();
+			Connection connect = null;
+			connect = dao.getConnection();
+			
 			// Execute SQL query
 			ps = connect.prepareStatement("SELECT *"
 					+ "FROM CustSeat");
@@ -73,6 +74,9 @@ public class GetSeatedCustomer extends HttpServlet {
 			connect.close();
 
 		} catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {

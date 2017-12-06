@@ -30,8 +30,9 @@
 	<table class="table">
 		
 		<c:forEach items="${searchResults}" var="result">
+		<c:set var="imageURL" value="/images/airline/${result.airlineID}.png"></c:set>
 			<tr>
-				<td><img src="/images/airline/${result.airlineID}.png" alt="Airline:" width="40" height="40"></td>
+				<td><img src=imageURL alt="Airline:" width="40" height="40"></td>
 				<td><c:out value="${result.depDate}"></c:out></td>
 				<td><c:out value="${result.arrDate}"></c:out></td>
 				<td>Reserve</td>

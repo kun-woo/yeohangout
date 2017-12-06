@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import yeohangout.javabeans.EmployeeJude;
 import yeohangout.mysql.DBUtils;
+import yeohangout.mysql.MySQLAccess;
 
 /**
  * Servlet implementation class EditEmployeeServlet
@@ -93,11 +94,10 @@ public class EditEmployeeServlet extends HttpServlet {
 		else {
 			// This will load the MySQL driver, each DB has its own driver
 			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				// Setup the connection with the DB
-				Connection connect = DriverManager
-						.getConnection("jdbc:mysql://mysql2.cs.stonybrook.edu:3306/howoo?"
-								+ "user=howoo&password=111255764");
+				MySQLAccess dao = new MySQLAccess();
+				dao.readDataBase();
+				Connection connect = null;
+				connect = dao.getConnection();
 				//try {
 				// Execute SQL query
 				EmployeeJude updatedEmployee = new EmployeeJude();
@@ -117,6 +117,8 @@ public class EditEmployeeServlet extends HttpServlet {
 				updatedEmployee.setLastName(lastName);
 				
 				DBUtils.updatePerson(connect, updatedEmployee.getFirstName(), updatedEmployee.getLastName(), updatedEmployee.getId());
+				// Insert new employee info to BackUp Database 
+				DBUtils.updatePerson(dao.getBackupConnection(), updatedEmployee.getFirstName(), updatedEmployee.getLastName(), updatedEmployee.getId());
 				
 				PrintWriter out= response.getWriter();
 				out.println("Add successful, please check table.");
@@ -165,6 +167,8 @@ public class EditEmployeeServlet extends HttpServlet {
 
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

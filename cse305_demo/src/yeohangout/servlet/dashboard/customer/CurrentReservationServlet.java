@@ -1,4 +1,4 @@
-package yeohangout.servlet.customer;
+package yeohangout.servlet.dashboard.customer;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -7,23 +7,27 @@ import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import yeohangout.javabeans.Flight;
 import yeohangout.javabeans.IncludeAndLeg;
+import yeohangout.javabeans.Leg;
 import yeohangout.javabeans.Reservation;
+import yeohangout.mysql.AirlineUtils;
 import yeohangout.mysql.IncludeUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.ReservationUtils;
 
-@WebServlet("/everyReservationServlet")
+@WebServlet("/currentReservationServlet")
 
-public class EveryReservationServlet extends HttpServlet{
-private static final long serialVersionUID = 1L;
+public class CurrentReservationServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
 	
-	public EveryReservationServlet() {
+	public CurrentReservationServlet() {
 		super();
 	}
 
@@ -42,11 +46,11 @@ private static final long serialVersionUID = 1L;
 			dao.readDataBase();
 			Connection connect = null;
 			connect = dao.getConnection();
-			
+
+
 			reservations = ReservationUtils.searchReservationListByAccountNo(connect, accountNO);
-			
 			for(Reservation res : reservations) {
-				ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(connect, res.getResrNo(), false);
+				ArrayList<IncludeAndLeg> itineraries = IncludeUtils.searchIncludesAndLegByResrNo(connect, res.getResrNo(), true);
 				res.setItineraries(itineraries);
 			}
 			
@@ -63,9 +67,9 @@ private static final long serialVersionUID = 1L;
 		}
 		
 		//Redirection to index.jsp
-		request.setAttribute("cu_every_reservations", reservations);		//send data from servlet to jsp
+		request.setAttribute("cu_reservations", reservations);		//send data from servlet to jsp
 		
-		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_every_resrv.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(contextPath+"/dashboard-customer/customer_current_resrv.jsp");
 		rd.forward(request, response);
 	}
 

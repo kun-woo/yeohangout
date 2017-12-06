@@ -1,4 +1,4 @@
-package yeohangout.servlet.dashboard;
+package yeohangout.servlet.dashboard.manager;
 
 import java.io.IOException;
 import java.sql.Connection;

@@ -7,7 +7,7 @@
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
 				<br>
-				<form class="form" action="flightsearch" method="POST">		
+				<form class="form" action="searchOneway" method="POST">		
 					<div class="col-sm-6 col-xs-12 text-left">
 							<div class="btn-group">								
 								<button type="button" name="one-way" class="btn btn-default btn-md">One-Way</button>
@@ -83,7 +83,7 @@
 							<label class="control-label" for="text">Passengers</label>
 							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle dropdown-btn"
-									type="button" data-toggle="dropdown">
+									type="button" name = "num_of_passenger" data-toggle="dropdown">
 									0 <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">

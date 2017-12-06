@@ -41,14 +41,57 @@ public class AirportUtils {
 				currAirport.setCity(rs.getString("City"));
 				currAirport.setCountry(rs.getString("Country"));
 			
-				System.out.println("\tAIRPORT : " + currAirport.getName());
 				airportArray.add(currAirport);
 			}
+			
+			pstm.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return airportArray;
+	}
+	
+public static Airport searchAirportByCityCountry(Connection conn, String city, String country) throws SQLException {
+		
+		String sql;
+		Airport airportArray = null;
+		
+		PreparedStatement pstm;
+		ResultSet rs;
+		
+		sql =     "SELECT * "
+				+ "FROM howoo.airport a "
+				+ "WHERE a.City = ? AND a.Country = ?";
+		
+		try {
+			pstm = (PreparedStatement) conn.prepareStatement(sql);
+		
+			pstm.setString(1, city);
+			pstm.setString(2, country);
+			System.out.println("\tCITY : " + city);
+			System.out.println("\tCOUNTRY : " + country);
+		
+			rs = pstm.executeQuery();
+		
+			while(rs.next()) {
+				Airport currAirport = new Airport();
+				currAirport.setID(rs.getString("Id"));
+				currAirport.setName(rs.getString("Name"));
+				currAirport.setCity(rs.getString("City"));
+				currAirport.setCountry(rs.getString("Country"));
+			
+				airportArray = currAirport;
+				break;
+			}
+			
+			pstm.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return airportArray;
 	}
 

@@ -252,13 +252,7 @@
 							
  						%>
 							<tr>
-								<td><%= resrArr.get(i).getSSN() %></td>
-								<td><%= full %></td>
-								<td><%= emplArr.get(i).isManager() %></td>
-								<td><%= emplArr.get(i).getStartDate() %></td>
-								<td><%= emplArr.get(i).getHourlyRate() %></td>
-								<td><%= emplArr.get(i).getUserName() %></td>
-								<td><%= emplArr.get(i).getPwd() %></td>
+								<td><%= resrArr.get(i).getResrNo() %></td>
 								
 								<td>
 								<% 
@@ -280,73 +274,7 @@
 						</table>
 					</div>
 				</div>
-				<div class="row">
-					<h1 class="page-header">Manage Customer</h1>
-					<div class="btn-group">
-						<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
-							data-target="#addTable">Add</a> 
-						<a role="button" class="btn btn-default btn-md" data-toggle="modal"
-							data-target="#deleteTable">Delete</a>
-					</div>
-					<div>
-						<!-- For Padding -->
-						<br>
-					</div>
-					<div class="table-responsive">
-						<table id="test-table1" class="table table-striped">
-							<thead>
-							<tr>
-								<th>SSN</th>
-								<th>Name</th>
-								<th>isManager</th>
-								<th>Start Date</th>
-								<th>Hourly Rate</th>
-								<th>User Name</th>
-								<th>Password</th>
-								<th>Edit</th>
-							</tr>
-							</thead>
-							<tbody>
-						<% 
-						ArrayList<Integer> ssn2Array = new ArrayList<Integer>();
-						
-						for (int i=0; i<emplArr.size(); i++) { 
-							String fn = emplArr.get(i).getFirstName();
-							String ln = emplArr.get(i).getLastName();
-							String full = fn + " " + ln;
-							ssnArray.add(emplArr.get(i).getSSN());
-							
-							
- 						%>
-							<tr>
-								<td><%= emplArr.get(i).getSSN() %></td>
-								<td><%= full %></td>
-								<td><%= emplArr.get(i).isManager() %></td>
-								<td><%= emplArr.get(i).getStartDate() %></td>
-								<td><%= emplArr.get(i).getHourlyRate() %></td>
-								<td><%= emplArr.get(i).getUserName() %></td>
-								<td><%= emplArr.get(i).getPwd() %></td>
-								
-								<td>
-								<% 
-									session.setAttribute("dash_edit_emp", i);
-									session.setAttribute("emp_ssn_arr", ssnArray);
-								%>
-								<a role="button" class="btn btn-default btn-md" data-toggle="modal"
-									data-target="#editTable-<%= i %>" tabindex=i>Edit</a></td>
-									
-								
-								<%@ include file = "../dashboard-manager/dashboard-manager-user-edit-customer.jsp" %>
-							</tr>
-							<%
-							}
-						
 
-							%>
-							</tbody>
-						</table>
-					</div>
-				</div>
 			</div>
 		</div>
 	</div>

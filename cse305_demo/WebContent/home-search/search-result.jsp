@@ -53,22 +53,16 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-3 sidebar" style="overflow:visible;">
-				<br>
-				<h3>Find a Tour</h3>
-  				<ul class="nav nav-pills">
-    				<li><a data-toggle="pill" href="#one-way">One Way</a></li>
-    				<li class="active"><a data-toggle="pill" href="#round-trip">Round Trip</a></li>
-    				<li><a data-toggle="pill" href="#multi-city">Multi-City</a></li>
-  				</ul>
-  				
-						
-			</div>
 			
 			<%
 				ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
-				
+				UserAccount loginedUser = null;
+				if(MyUtils.getUserType()==0){
+					loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
+				}
+				System.out.println("logined : "+ loginedUser.getUserID());
 			%>
+			
 			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
 				<div class="row">
 					<h1 class="page-header col-xs-12">Search Result</h1>
@@ -82,7 +76,7 @@
 					for(LegFlightAirport result : searchedLegs){
 				%>
 				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
+					<form action="makeReservation" method="post" novalidate>
 					
 					<div class="row cart-row">
 						
@@ -125,9 +119,24 @@
 							<div class="no-wrap">4h 30m in AUH</div>
 						</div>
 						
+						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						
+						<%
+							if(loginedUser!=null){
+						%>
+						<input type ="hidden" name ="loginedUser" value = "<%= loginedUser.getUserID() %>">
+						<%} else{ %>
+						<input type ="hidden" name ="loginedUser" value = "noUser">
+						<%} %>
+						
+						<input type="hidden" name="travelType" class="form-control" value = "O">
+						
+						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h4>$1000</h4>
+								<h4>$ <%=result.getFare().getFare() %></h4>
 								<div class="no-wrap"<%//Type %>><h6>One Way</h6></div>
 								<br>
 								<button type="submit" class="btn btn-primary btn-block">Book</button>

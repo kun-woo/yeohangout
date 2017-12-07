@@ -156,7 +156,7 @@
 						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h4>$1000</h4>
+								<h4>$ <%=result.getFare().getFare() %></h4>
 								<div class="no-wrap"<%//Type %>><h6>One Way</h6></div>
 								<br>
 								<button type="submit" class="btn btn-primary btn-block">Book</button>

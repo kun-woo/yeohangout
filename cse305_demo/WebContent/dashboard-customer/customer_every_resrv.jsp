@@ -29,6 +29,7 @@
 					<li><a data-toggle="modal" href="${pageContext.request.contextPath}/currentReservationServlet?userID=<%= loginedEmployee.getAccountNo() %>" >Current Reservation</a></li>
         				<li class="active"><a data-toggle="modal" href="${pageContext.request.contextPath}/everyReservationServlet?userID=<%= loginedEmployee.getAccountNo() %>" >All of Reservations History</a></li>
 					<li><a data-toggle="modal" href="${pageContext.request.contextPath}/flightSuggestion?userID=<%= loginedEmployee.getAccountNo() %>">View Flight Suggestion</a></li>
+					<li><a href="${pageContext.request.contextPath}/get-customer-auction?userID=<%= loginedEmployee.getAccountNo() %>">View Auction</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

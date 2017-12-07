@@ -42,8 +42,7 @@
 			</div>
 		</div>
 	</nav>
-	<% ArrayList<Customer> custArr = (ArrayList<Customer>) session.getAttribute("custArr");
-	%>
+	<%ArrayList<Customer> custArr = (ArrayList<Customer>) session.getAttribute("custArr"); %>
 
 	<!-- AddTable Modal -->
 	<div class="modal fade" id="addTable" role="dialog">
@@ -55,134 +54,55 @@
 					<h4>Add Customer</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="../record-reservation" class="form-horizontal" method="post">
+					<form role="form" action="../add-customer" class="form-horizontal" method="post">
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Passenger
+							<label class="control-label col-sm-4" for="text">First
 								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" name="passName" class="form-control" placeholder="Passenger">
+								<input type="text" name="firstName" class="form-control" placeholder="First Name">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Account
-								Number:</label>
+							<label class="control-label col-sm-4" for="text">Last
+								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" name="accountNo" class="form-control" placeholder="Account Number">
+								<input type="text" name="lastName" class="form-control" placeholder="Last Name">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Reservation
-								Number:</label>
+							<label class="control-label col-sm-4" for="text">Customer's Credit Card:</label>
 							<div class="col-sm-8">
-								<input type="text" name="resrNo" class="form-control" placeholder="Reservation Number">
+								<input type="text" name="creditCardNo" class="form-control" placeholder="Credit Card">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Reservation
-								Date:</label>
+							<label class="control-label col-sm-4" for="text">Rating:</label>
 							<div class="col-sm-8">
-								<input type="text" name="rserDate" class="form-control" placeholder="yyyy-MM-dd HH:mm:SS">
+								<input type="text" name="rating" class="form-control" placeholder="Rating">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Booking Fee:</label>
+							<label class="control-label col-sm-4" for="text">User
+								Name:</label>
 							<div class="col-sm-8">
-								<input type="text" name="bookingFee" class="form-control" placeholder="Booking Fee">
+								<input type="text" name="userName" class="form-control" placeholder="User Name">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Total Fare:</label>
+							<label class="control-label col-sm-4" for="text">Password:</label>
 							<div class="col-sm-8">
-								<input type="text" name="totalFare" class="form-control" placeholder="Total Fare">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Representative
-								SSN:</label>
-							<div class="col-sm-8">
-								<input type="text" name="repSSN" class="form-control" placeholder="SSN">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Airline:</label>
-							<div class="col-sm-8">
-								<input type="text" name="airlineID" class="form-control" placeholder="Airline">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Flight
-								Number:</label>
-							<div class="col-sm-8">
-								<input type="text" name="flightNo" class="form-control" placeholder="Flight Number">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Leg
-								Number:</label>
-							<div class="col-sm-8">
-								<input type="text" name="legNo" class="form-control" placeholder="Leg Number">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Seat
-								Number:</label>
-							<div class="col-sm-8">
-								<input type="text" name="seatNo" class="form-control" placeholder="Seat Number">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Cabin
-								Class:</label>
-							<div class="col-sm-8">
-								<input type="text" name="class" class="form-control" placeholder="Cabin Class">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Meal:</label>
-							<div class="col-sm-8">
-								<input type="text" name="meal" class="form-control" placeholder="Meal">
+								<input type="password" name="pwd" class="form-control" placeholder="Password">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-4 col-sm-8">
-								<button type="submit" class="btn btn-default btn-md pull-right">Record</button>
+								<button type="submit" class="btn btn-default btn-md pull-right">Update</button>
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-				<h5>This message will be shown only when input is wrong.</h5>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Delete Modal -->
-	<div class="modal fade" id="deleteTable" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content -->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4>Delete Customer</h4>
-				</div>
-				<div class="modal-body">
-					<form action="../delete-employee" role="form" class="form-horizontal" method="post">
-						<div class="form-group">
-							<label class="control-label col-sm-4" for="text">Reservation Number:</label>
-							<div class="col-sm-8">
-								<input type="text" name="resrNo" class="form-control" placeholder="Reservation Number">
-							</div>
-						</div>
-						<div class="form-group">
-							<div class="col-sm-offset-4 col-sm-8">
-								<button type="submit" class="btn btn-default btn-md pull-right">Delete</button>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<h5>This message will be shown only when input is wrong.</h5>
+				<h5>Powered by <a>Yeo Hang Out</a></h5>
 				</div>
 			</div>
 		</div>
@@ -198,12 +118,12 @@
 					<li><a href="../view-rep-reservation">Record Reservation </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="../manage-customer">Manage
+					<li class="active"><a href="#">Manage
 							Customer <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
-					<li><a href="../view-employee">View Employee</a></li>
+					<li><a href="../view-employee-rep">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>
@@ -212,13 +132,9 @@
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="row">
-					<h1 class="page-header">Reservation</h1>
-					<div class="btn-group">
-						<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
-							data-target="#addTable">Add</a> 
-						<a role="button" class="btn btn-default btn-md" data-toggle="modal"
-							data-target="#deleteTable">Delete</a>
-					</div>
+					<h1 class="page-header">Manage Customer</h1>
+					<a role="button" class="btn btn-default btn-md" data-toggle="modal" 
+						data-target="#addTable">Add</a>
 					<div>
 						<!-- For Padding -->
 						<br>
@@ -227,93 +143,52 @@
 						<table id="test-table1" class="table table-striped">
 							<thead>
 								<tr>
+									<th>Name</th>
 									<th>Account Number</th>
-									<th>Reservation Date</th>
-									<th>Booking Fee</th>
-									<th>Total Fare</th>
-									<th>Representative SSN</th>
-									<th>Account Number</th>
- 									<th>Edit</th>
+									<th>Credit Card</th>
+									<th>Creation Date</th>
+									<th>Rating</th>
+									<th>User Name</th>
+									<th>Password</th>
+									<th>Delete</th>
+									<th>Edit</th>
 								</tr>
 							</thead>
 							<tbody>
-						<%-- <% 
+						<% 
 						ArrayList<Integer> accountNoArr = new ArrayList<Integer>();
 						
 						for (int i=0; i<custArr.size(); i++) { 
+							String fn = custArr.get(i).getFname();
+							String ln = custArr.get(i).getLname();
+							String full = fn + " " + ln;
 							accountNoArr.add(custArr.get(i).getAccountNo());
 							
 							
  						%>
 							<tr>
-								<td><%= custArr.get(i).getResrNo() %></td>
-								<td><%= custArr.get(i).getResrDateTime() %></td>
-								<td><%= resrArr.get(i).getBookingFee() %></td>
-								<td><%= resrArr.get(i).getTotalFare() %></td>
-								<td><%= resrArr.get(i).getRepSSN() %></td>
-								<td><%= resrArr.get(i).getAccountNo() %></td>
+								<td><%= full %></td>
+								<td><%= custArr.get(i).getAccountNo() %></td>
+								<td><%= custArr.get(i).getCreditCard() %></td>
+								<td><%= custArr.get(i).getCreDate() %></td>
+								<td><%= custArr.get(i).getRating() %></td>
+								<td><%= custArr.get(i).getUserName() %></td>
+								<td><%= custArr.get(i).getPwd() %></td>
+								<td>
 								<% 
-									session.setAttribute("dash_edit_emp", i);
-									session.setAttribute("emp_ssn_arr", resrNoArr);
+									session.setAttribute("dash_delete_cust", custArr.get(i).getAccountNo());
 								%>
-								<td><a role="button" class="btn btn-default btn-md" data-toggle="modal"
+								<a role="button" class="btn btn-default btn-md" href="../delete-customer-rep">Delete</a></td>
+								<td>
+								<% 
+									session.setAttribute("dash_edit_cust_rep", i);
+									session.setAttribute("cust_edit_arr_rep", accountNoArr);
+								%>
+								<a role="button" class="btn btn-default btn-md" data-toggle="modal"
 									data-target="#editTable-<%= i %>" tabindex=i>Edit</a></td>
-							
-								<%@ include file = "../dashboard-manager/dashboard-manager-user-edit-rep.jsp" %>
-							</tr>
-							<%
-							}
-						
-
-							%>
- --%>							</tbody>
-						</table>
-					</div>
-				</div>
-				<br>
-				
-				<div class="row">
-					<h1 class="page-header">Passenger</h1>
-					<div>
-						<!-- For Padding -->
-						<br>
-					</div>
-					<div class="table-responsive">
-						<table id="table-3" class="table table-striped">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Account Number</th>
-									<th>Reservation Number</th>
-									<th>Seat Number</th>
-									<th>Cabin Class</th>
-									<th>Meal</th>
-								</tr>
-							</thead>
-							<tbody>
-						<%-- <%
-						for (int i=0; i < personArr.size(); i++) {
-							if (passArr.get(j).getId() == personArr.get(i).getId())
-							{
-								fArr.add(personArr.get(i).getFirstName());
-								lArr.add(personArr.get(i).getLastName());
-								j++;
-							}
-						}
-						%>
-						<% 						
-						for (int i=0; i<passArr.size(); i++) {
-							String fname = fArr.get(i);
-							String lname = lArr.get(i);
-							String name = fname + " " + lname;
- 						%>
-							<tr>
-								<td><%= name %></td>
-								<td><%= passArr.get(i).getAccountNo() %></td>
-								<td><%= resrPassArr.get(i).getResrNo() %></td>
-								<td><%= resrPassArr.get(i).getSeatNo() %></td>
-								<td><%= resrPassArr.get(i).getCabinClass() %></td>
-								<td><%= resrPassArr.get(i).getMeal() %></td>								
+									
+								
+								<%@ include file = "../dashboard-rep/dashboard-rep-customer-edit.jsp" %>
 							</tr>
 							<%
 							}
@@ -324,46 +199,6 @@
 						</table>
 					</div>
 				</div>
-				<br>
-				
-				<div class="row">
-					<h1 class="page-header">Includes</h1>
-					<div>
-						<!-- For Padding -->
-						<br>
-					</div>
-					<div class="table-responsive">
-						<table id="table-2" class="table table-striped">
-							<thead>
-								<tr>
-									<th>Reservation Number</th>
-									<th>Airline</th>
-									<th>Flight Number</th>
-									<th>Leg Number</th>
-									<th>Date</th>
-								</tr>
-							</thead>
-							<tbody>
-						<% 						
-						for (int i=0; i<inclArr.size(); i++) {
- 						%>
-							<tr>
-								<td><%= inclArr.get(i).getResrNo() %></td>
-								<td><%= inclArr.get(i).getAirlineID() %></td>
-								<td><%= inclArr.get(i).getFlightNo() %></td>
-								<td><%= inclArr.get(i).getLegNo() %></td>
-								<td><%= inclArr.get(i).getDateTime() %></td>
-							</tr>
-							<%
-							}
-						
-
-							%> --%>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				
 			</div>
 		</div>
 	</div>

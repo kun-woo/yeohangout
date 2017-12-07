@@ -2,11 +2,12 @@ package yeohangout.servlet.dashboard.rep;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,31 +17,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import yeohangout.javabeans.Customer;
+import yeohangout.javabeans.EmployeeJude;
 import yeohangout.mysql.MySQLAccess;
 
 /**
- * Servlet implementation class GetFlightSuggest
+ * Servlet implementation class ManageServlet
  */
-@WebServlet(name = "get-flight-suggest", urlPatterns = { "/get-flight-suggest" })
-public class GetFlightSuggest extends HttpServlet {
+@WebServlet(name = "view-employee-rep", urlPatterns = { "/view-employee-rep" })
+public class GetEmployeeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
 	private ResultSet rs;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetFlightSuggest() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public GetEmployeeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		// This will load the MySQL driver, each DB has its own driver
 		try {
 			MySQLAccess dao = new MySQLAccess();
 			dao.readDataBase();
@@ -48,26 +51,26 @@ public class GetFlightSuggest extends HttpServlet {
 			connect = dao.getConnection();
 			
 			// Execute SQL query
-			ps = connect.prepareStatement("SELECT p.FirstName, p.LastName, e.AccountNo, e.CreditCardNo, e.CreationDate, "
-					+ "e.Rating, e.UserName, e.Pwd "
-					+ "FROM Customer e LEFT JOIN Person P ON p.Id = e.Id");
+			ps = connect.prepareStatement("SELECT p.FirstName, p.LastName, e.SSN, e.isManager, e.StartDate, "
+					+ "e.HourlyRate, e.UserName, e.Pwd "
+					+ "FROM Employee e LEFT JOIN Person P ON p.Id = e.Id");
 			rs = ps.executeQuery();
 			
-			ArrayList<Customer> custArr = new ArrayList<Customer>();
+			ArrayList<EmployeeJude> emplArr = new ArrayList<EmployeeJude>();
 
 			if (rs != null) {
 					while (rs.next()) {
-						custArr.add(new Customer(rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("AccountNo"), rs.getString("CreditCardNo"), 
-						rs.getTimestamp("CreationDate"), rs.getInt("Rating"), rs.getString("UserName"), rs.getString("Pwd")));
+						emplArr.add(new EmployeeJude(rs.getString("FirstName"), rs.getString("LastName"), rs.getInt("SSN"), rs.getBoolean("isManager"), 
+						rs.getDate("StartDate"), rs.getDouble("HourlyRate"), rs.getString("UserName"), rs.getString("Pwd")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("custArr-suggest", custArr);
+					session.setAttribute("emplArr", emplArr);
 					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-rep/dashboard-rep-suggest.jsp");
+					response.sendRedirect(contextPath + "/dashboard-rep/dashboard-rep-employee.jsp");
 				}
 			else {
 				String contextPath = request.getContextPath();
-				RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-overview.jsp");
+				RequestDispatcher rd = getServletContext().getRequestDispatcher(contextPath + "/dashboard-rep/dashboard-rep-employee.jsp");
 				PrintWriter out= response.getWriter();
 				out.println("<font color=red>No user found with given input, please register first.</font>");
 				rd.include(request, response);

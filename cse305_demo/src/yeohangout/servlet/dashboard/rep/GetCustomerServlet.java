@@ -20,18 +20,19 @@ import yeohangout.javabeans.Customer;
 import yeohangout.mysql.MySQLAccess;
 
 /**
- * Servlet implementation class GetFlightSuggest
+ * Servlet implementation class GetCustomerRepServlet
  */
-@WebServlet(name = "get-flight-suggest", urlPatterns = { "/get-flight-suggest" })
-public class GetFlightSuggest extends HttpServlet {
+@WebServlet(name = "view-customer-rep", urlPatterns = { "/view-customer-rep" })
+public class GetCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
 	private ResultSet rs;
+
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetFlightSuggest() {
+    public GetCustomerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,6 +42,7 @@ public class GetFlightSuggest extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// This will load the MySQL driver, each DB has its own driver
 		try {
 			MySQLAccess dao = new MySQLAccess();
 			dao.readDataBase();
@@ -61,9 +63,9 @@ public class GetFlightSuggest extends HttpServlet {
 						rs.getTimestamp("CreationDate"), rs.getInt("Rating"), rs.getString("UserName"), rs.getString("Pwd")));
 					}
 					HttpSession session = request.getSession();
-					session.setAttribute("custArr-suggest", custArr);
+					session.setAttribute("custArr", custArr);
 					String contextPath = request.getContextPath();
-					response.sendRedirect(contextPath + "/dashboard-rep/dashboard-rep-suggest.jsp");
+					response.sendRedirect(contextPath + "/dashboard-rep/dashboard-rep-customer.jsp");
 				}
 			else {
 				String contextPath = request.getContextPath();

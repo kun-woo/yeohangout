@@ -1,4 +1,4 @@
-package yeohangout.servlet.dashboard.manager;
+package yeohangout.servlet.dashboard.rep;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,7 +21,7 @@ import yeohangout.mysql.MySQLAccess;
 /**
  * Servlet implementation class AddCustomerServlet
  */
-@WebServlet(name = "add-customer", urlPatterns = { "/add-customer" })
+@WebServlet(name = "add-customer-rep", urlPatterns = { "/add-customer-rep" })
 public class AddCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -116,7 +116,7 @@ public class AddCustomerServlet extends HttpServlet {
 	    			pstm.close();
 				// Insert new employee info to BackUp Database 
 
-				response.sendRedirect("view-customer");
+				response.sendRedirect("view-customer-rep");
 
 				connect.close();
 

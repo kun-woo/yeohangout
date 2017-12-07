@@ -54,6 +54,7 @@ public class AddAirlineServlet extends HttpServlet{
 		//Insert new airline info to Database, This code will insert the sign up information into Airline table.
 		try {
 			MySQLAccess dao = new MySQLAccess();
+			
 			dao.readDataBase();
 			Connection connect = null;
 			connect = dao.getConnection();

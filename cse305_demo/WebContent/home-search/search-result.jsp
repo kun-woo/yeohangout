@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 	
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="yeohangout.javabeans.Leg" %>
+<%@ page import="yeohangout.javabeans.LegFlightAirport" %>
 <%@ page import = "yeohangout.javabeans.UserAccount" %>
 <%@ page import = "yeohangout.mysql.MyUtils" %>
 
@@ -78,45 +78,70 @@
   				</div>			
 			</div>
 			
+			<%
+				ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
+				
+			%>
 			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
 				<div class="row">
 					<h1 class="page-header col-xs-12">Search Result</h1>
 				</div>
 				<div class="row">
-					<h2>Select your <%//Change %>departure to <%//Change %>New York <small class="no-wrap"> Wed, Dec 13</small></h2>
+					<h2>Select your <%//Change %>departure to <%//Change %> <small class="no-wrap"> Wed, Dec 13</small></h2>
 				</div>
 				
 				<%
-					ArrayList<Leg> searchedLegs = (ArrayList<Leg>)request.getAttribute("searchLegs");
 	
-					for(Leg leg : searchedLegs){
+					for(LegFlightAirport result : searchedLegs){
 				%>
 				<div class="row search-row">
 					<form action="../add-plane" method="post" novalidate>
+					
 					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
+						
+						
+						
+						<div class="col-xs-12 col-sm-1 col-md-1">
 							<a href="#"> <img src="${pageContext.request.contextPath}/images/airline/${result.airlineID}.png" class="img-responsive">
 							</a>
 						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%= leg.getDepDate()  %> - <%= leg.getArrDate()  %>
-							</h3>
-							<div class="no-wrap"><%= leg.getAirlineID() %></div>
+						
+						<div class = "col-xs-12 col-sm-1 col-md-1">
+						
+							<h4><%= result.getLeg().getAirlineID() %></h4>
+							<h5><%= result.getLeg().getFlightNo() %></h5>
 						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
+						
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<h4><%= result.getLeg().getDepDate()  %> </h4> 
+							
+						</div>
+						
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<h4> <%= result.getLeg().getArrDate()  %> </h4>
+						</div>
+						
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<h4 class="no-wrap">
 								<%//Time Spend%>Not yet
-							</h3>
-							<div class="no-wrap"><%= leg.getDepAirportID() %> - <%= leg.getArrAirportID() %></div>
+							</h4>
+							
+							<div class="no-wrap">
+							
+							<h4><% //= result.getDepAirport().getCity() %>(<%= result.getLeg().getDepAirportID() %>) - 
+								<% //= result.getArrAirport().getCity() %>(<%= result.getLeg().getArrAirportID() %>)</h4>
+							</div>
 						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
+						
+						<div class="col-xs-6 col-sm-1 col-md-1">
+							<h4><%= result.getTransfer() %>Stop</h4>
 							<div class="no-wrap">4h 30m in AUH</div>
 						</div>
+						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<h3>$1000</h3>
-								<div class="no-wrap"<%//Type %>>One Way</div>
+								<h4>$1000</h4>
+								<div class="no-wrap"<%//Type %>><h6>One Way</h6></div>
 								<br>
 								<button type="submit" class="btn btn-primary btn-block">Book</button>
 							</div>

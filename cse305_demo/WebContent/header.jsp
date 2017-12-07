@@ -45,6 +45,7 @@
 				<li><a href="#about">ABOUT</a></li>
 				<li><a href="#service">SERVICE</a></li>
 				<li><a href="#contact">CONTACT</a></li>
+				<li><a data-toggle="modal" data-target="#help-info" style="cursor: pointer">HELP</a></li>
 				
 				<%
 					if(MyUtils.getSession()==null){

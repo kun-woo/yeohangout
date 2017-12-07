@@ -1,6 +1,6 @@
 package yeohangout.servlet.reservation;
 
-import java.io.IOException;
+
 import java.sql.Connection;
 
 import javax.servlet.ServletException;
@@ -16,16 +16,17 @@ import yeohangout.mysql.DBUtils;
 import yeohangout.mysql.IncludeUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.ReservationUtils;
+import java.io.IOException;
 
-@WebServlet(name="payment", urlPatterns= {"/payment"})
-public class PaymentServlet extends HttpServlet{
+@WebServlet(name="paymentRoundTrip", urlPatterns= {"/paymentRoundTrip"})
+public class RoundTripPaymentServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	       
 	    /**
 	     * @see HttpServlet#HttpServlet()
 	     */
-	    public PaymentServlet() {
+	    public RoundTripPaymentServlet() {
 	        super();
 	        // TODO Auto-generated constructor stub
 	    }
@@ -50,6 +51,12 @@ public class PaymentServlet extends HttpServlet{
 			String userID = request.getParameter("userID");
 			double totalFare = Double.parseDouble(request.getParameter("totalFare"));
 			
+			String airlineID2 = request.getParameter("airlineID2");
+			int flightNo2 = Integer.parseInt( request.getParameter("flightNo2"));
+			int legNO2 = Integer.parseInt(request.getParameter("legNo2"));
+			double totalFare2 = Double.parseDouble(request.getParameter("totalFare2"));
+			
+			
 			try {
 				MySQLAccess dao = new MySQLAccess();
 				dao.readDataBase();
@@ -61,13 +68,14 @@ public class PaymentServlet extends HttpServlet{
 				Reservation newResr = new Reservation();
 				newResr.setResrDate(new java.util.Date());
 				newResr.setBookingFee(10.00);
-				newResr.setTotalFare(totalFare);
+				newResr.setTotalFare(totalFare+totalFare2);
 				newResr.setRepSSN(1234);
 				newResr.setAccountNo(user.getAccountNo());
 				
 				ReservationUtils.insertReservation(connect, newResr);
 				//Insert Includes Table
 				
+				//first
 				Includes newInclude = new Includes();
 				
 				newInclude.setResrNo(newResr.getResrNo());
@@ -77,6 +85,17 @@ public class PaymentServlet extends HttpServlet{
 				newInclude.setDate(newResr.getResrDate());
 				
 				IncludeUtils.insertInclude(connect, newInclude);
+				
+				//second
+				Includes newInclude2 = new Includes();
+				
+				newInclude2.setResrNo(newResr.getResrNo());
+				newInclude2.setAirlineID(airlineID2);
+				newInclude2.setFlightNo(flightNo2);
+				newInclude2.setLegNo(legNO2);
+				newInclude2.setDate(newResr.getResrDate());
+				
+				IncludeUtils.insertInclude(connect, newInclude2);
 				
 			} catch(Exception ex){
 				ex.printStackTrace();

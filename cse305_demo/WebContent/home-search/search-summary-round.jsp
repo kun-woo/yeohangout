@@ -192,7 +192,7 @@
 					<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 						<div class="row">
 							<div class="card-body">
-								<form action="payment" method="post" novalidate="novalidate">
+								<form action="paymentRoundTrip" method="post" novalidate="novalidate">
 									<div class="form-group text-center">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i
@@ -246,19 +246,27 @@
 											class="form-control" placeholder="xxxxx">
 									</div>
 									
-									<input type = "hidden" name ="legFlightAirport1" value="<%= resultSet %>"/>
-									<input type = "hidden" name ="userID" value = ""/>
+									<input type = "hidden" name ="airlineID" value="<%= resultSet.getLeg().getAirlineID() %>"/>
+									<input type = "hidden" name = "flightNo" value =  "<%= resultSet.getLeg().getFlightNo() %>"/>
+									<input type = "hidden" name = "legNo" value =  "<%= resultSet.getLeg().getLegNo() %>"/>
+									<input type = "hidden" name ="userID" value = "<%= loginedUserID %>"/>
+									<input type = "hidden" name = "totalFare" value = "<%=resultSet.getFare().getFare() %>"/>
 									<!-- back -->
-									<input type = "hidden" name ="legFlightAirport2" value="<%= resultSetBack %>"/>
+									<input type = "hidden" name ="airlineID2" value="<%= resultSetBack.getLeg().getAirlineID() %>"/>
+									<input type = "hidden" name = "flightNo2" value =  "<%= resultSetBack.getLeg().getFlightNo() %>"/>
+									<input type = "hidden" name = "legNo2" value =  "<%= resultSetBack.getLeg().getLegNo() %>"/>
+									<input type = "hidden" name = "totalFare2" value = "<%=resultSetBack.getFare().getFare() %>"/>
 									
 									
 									
 									<div>
-										<a id="payment-button" type="submit"
-											class="btn btn-lg btn-success btn-block" href="search-confirm.jsp">
-											<i class="fa fa-lock fa-lg"></i>&nbsp; <span
-												id="payment-button-amount">Pay</span>
-										</a>
+										<i class="fa fa-lock fa-lg">
+										
+										<input id="payment-button" type="submit"
+											class="btn btn-lg btn-success btn-block"/>
+										
+										</i><span id="payment-button-amount">Pay</span>
+										
 									</div>
 								</form>
 							</div>

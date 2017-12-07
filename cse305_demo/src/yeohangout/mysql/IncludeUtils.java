@@ -24,7 +24,7 @@ public class IncludeUtils {
  		
  		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
  		
- 		pstm.setInt(1, includes.getLegNo());
+ 		pstm.setInt(1, includes.getResrNo());
  		pstm.setString(2, includes.getAirlineID());
  		pstm.setInt(3, includes.getFlightNo());
  		pstm.setInt(4, includes.getLegNo());

@@ -185,14 +185,16 @@
 									<input type = "hidden" name = "flightNo" value =  "<%= resultSet.getLeg().getFlightNo() %>"/>
 									<input type = "hidden" name = "legNo" value =  "<%= resultSet.getLeg().getLegNo() %>"/>
 									<input type = "hidden" name ="userID" value = "<%= loginedUserID %>"/>
-									
+									<input type = "hidden" name = "totalFare" value = "<%=resultSet.getFare().getFare() %>"/>
 									
 									<div>
-										<a id="payment-button" type="submit"
-											class="btn btn-lg btn-success btn-block" href="search-confirm.jsp">
-											<i class="fa fa-lock fa-lg"></i>&nbsp; <span
-												id="payment-button-amount">Pay</span>
-										</a>
+										<i class="fa fa-lock fa-lg">
+										
+										<input id="payment-button" type="submit"
+											class="btn btn-lg btn-success btn-block"/>
+										
+										</i><span id="payment-button-amount">Pay</span>
+										
 									</div>
 								</form>
 							</div>

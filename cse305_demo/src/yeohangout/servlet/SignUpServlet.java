@@ -95,6 +95,7 @@ public class SignUpServlet extends HttpServlet {
 				// Insert new person and user info to BackUp Database 
 			}else {
 				MyUtils.setIdAlreadyExists(true);
+				
 			}
 			
 			dao.close();

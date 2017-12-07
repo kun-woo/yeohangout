@@ -76,9 +76,12 @@ public class FlightSearchUtils {
 					resultLFA.setTransfer(resultLFA.getLeg().getSecondLegNO()-resultLFA.getLeg().getLegNo());
 				}else {
 					
-					String sql2 = "SELECT COUNT(*) AS count FROM LEG WHERE airlineID = ? AND flightNO";
+					String sql2 = "SELECT COUNT(*) AS count FROM LEG WHERE airlineID = ? AND flightNO = ?";
 					int maxLegs=-1;
 					PreparedStatement ps2 = (PreparedStatement) conn.prepareStatement(sql2);
+					ps2.setString(1, newLeg.getAirlineID());
+					ps2.setInt(2, newLeg.getFlightNo());
+					
 					ResultSet rs2 =  ps2.executeQuery();
 					
 					if(rs2.next()) {

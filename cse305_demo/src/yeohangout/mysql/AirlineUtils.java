@@ -214,6 +214,7 @@ public class AirlineUtils {
 			
 			 }
 			 
+			 
 			 public static ArrayList<Flight> searchFlighSuggestionBasedOnBestSeller(Connection conn, int accountNo) throws SQLException{
 				 ArrayList<Flight> flights = new ArrayList();
 				 String sql = "Select * FROM howoo.bestflight bf"

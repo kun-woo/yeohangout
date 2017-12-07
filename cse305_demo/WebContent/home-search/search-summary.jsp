@@ -306,11 +306,11 @@
 											class="form-control" placeholder="xxxxx">
 									</div>
 									<div>
-										<button id="payment-button" type="submit"
-											class="btn btn-lg btn-success btn-block">
+										<a id="payment-button" type="submit"
+											class="btn btn-lg btn-success btn-block" href="search-confirm.jsp">
 											<i class="fa fa-lock fa-lg"></i>&nbsp; <span
 												id="payment-button-amount">Pay</span>
-										</button>
+										</a>
 									</div>
 								</form>
 							</div>

@@ -79,9 +79,7 @@ public class MultiCityReservationServlet extends HttpServlet {
 					}
 					
 					dao.close();
-				}
-				
-				catch(Exception ex){
+				} catch(Exception ex){
 					ex.printStackTrace();
 				}
 				response.sendRedirect(contextPath+"/home-search/search-result-multi.jsp");

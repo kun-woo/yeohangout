@@ -5,6 +5,7 @@ public class LegFlightAirport {
 	private Airport depAirport;
 	private Airport arrAirport;
 	private Flight flight;
+	private Fare fare;
 	private int transfer;
 	
 	public LegFlightAirport(Leg leg, Airport depAirport, Airport arrAirport, Flight flight) {
@@ -13,6 +14,7 @@ public class LegFlightAirport {
 		this.arrAirport = arrAirport;
 		this.flight = flight;
 	}
+	
 	public LegFlightAirport(Leg leg) {
 		this.leg = leg;
 	}
@@ -55,6 +57,14 @@ public class LegFlightAirport {
 	
 	public void setTransfer(int transfer) {
 		this.transfer = transfer;
+	}
+	
+	public void setFare(Fare fare) {
+		this.fare = fare;
+	}
+	
+	public Fare getFare() {
+		return fare;
 	}
 
 	

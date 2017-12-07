@@ -22,6 +22,7 @@ import yeohangout.javabeans.Leg;
 import yeohangout.javabeans.LegFlightAirport;
 import yeohangout.mysql.AirlineUtils;
 import yeohangout.mysql.AirportUtils;
+import yeohangout.mysql.FareUtils;
 import yeohangout.mysql.FlightSearchUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.MyUtils;
@@ -94,13 +95,14 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 			
 			Airport searchedDepAirport = AirportUtils.searchAirportByCityCountry(connect, depCity, depCountry);
 			Airport searchedArrAirport = AirportUtils.searchAirportByCityCountry(connect, arrCity, arrCountry);
-		
+			
 			if(buttonType.equals("one-way")) {
 				//one way
 			
 				if(searchedDepAirport!=null && searchedArrAirport!=null) {
 					
 					searchedLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedDepAirport.getID(), searchedArrAirport.getID(), depTime);
+					
 					
 				}else {
 					//Error
@@ -147,6 +149,7 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 				
 				searchedLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedDepAirport.getID(), searchedArrAirport.getID(), depTime);
 				sfmc.setFirstLegs(searchedLegs);
+				
 				if(searchedLegs.size()>0) {
 					SingletonForMulticity.setValid(true);
 				}
@@ -165,6 +168,28 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 				}
 			}
 			
+			for(LegFlightAirport searchLeg : searchedLegs) {
+				searchLeg.setFare(FareUtils.searchFare(connect, searchLeg.getLeg().getAirlineID(), searchLeg.getLeg().getFlightNo()));
+			}
+			
+			if(buttonType.equals("round-trip")){
+				for(LegFlightAirport searchLeg : searchedLegsBack ) {
+					searchLeg.setFare(FareUtils.searchFare(connect, searchLeg.getLeg().getAirlineID(), searchLeg.getLeg().getFlightNo()));
+				}
+			}
+			
+			if(buttonType.equals("multi-city")) {
+				if(secondLegs.size()>0) {
+					for(LegFlightAirport searchLeg : secondLegs) 
+						searchLeg.setFare(FareUtils.searchFare(connect, searchLeg.getLeg().getAirlineID(), searchLeg.getLeg().getFlightNo()));
+					
+				}
+				if(thirdLegs.size()>0) {
+					for(LegFlightAirport searchLeg : thirdLegs) 
+						searchLeg.setFare(FareUtils.searchFare(connect, searchLeg.getLeg().getAirlineID(), searchLeg.getLeg().getFlightNo()));
+				}
+				
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException ex) {
@@ -176,6 +201,9 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		} finally {
 			dao.close();
 		}
+		
+		
+		
 		
 		
 		request.setAttribute("searchLegs", searchedLegs);

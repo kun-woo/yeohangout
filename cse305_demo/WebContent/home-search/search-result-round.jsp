@@ -58,7 +58,12 @@
 			<%
 				ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
 				ArrayList<LegFlightAirport> bakcLegs = (ArrayList<LegFlightAirport>)request.getAttribute("backLegs");
-				
+				UserAccount loginedUser = null;
+				if(MyUtils.getUserType()==0){
+					loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
+				}
+				System.out.println("logined : "+ loginedUser.getUserID());
+			
 			%>
 			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
 				<div class="row">
@@ -116,7 +121,7 @@
 						
 						<div class="col-xs-12 col-sm-1 col-md-1">
 							<div class="form-group">
-								<h4>$1000</h4>
+								<h4>$ <%=result.getFare().getFare() %></h4>
 								<div class="no-wrap"<%//Type %>><h6>One Way</h6></div>
 								<br>
 							</div>
@@ -166,8 +171,7 @@
 						
 						<div class="col-xs-12 col-sm-1 col-md-1">
 							<div class="form-group">
-							
-								<h4>$1000</h4>
+							<h4>$ <%=backResult.getFare().getFare() %></h4>
 								<div class="no-wrap"<%//Type %>><h6>ROUND TRIP</h6></div>
 							</div>
 						</div>
@@ -178,6 +182,13 @@
 						<input type="hidden" name="airlineID2" class="form-control" value = "<%= backResult.getLeg().getAirlineID() %>">
 						<input type="hidden" name="flightNO2" class="form-control" value = "<%= backResult.getLeg().getFlightNo() %>">
 						<input type="hidden" name="legNO2" class="form-control" value = "<%= backResult.getLeg().getLegNo() %>">
+						<%
+							if(loginedUser!=null){
+						%>
+						<input type ="hidden" name ="loginedUser" value = "<%= loginedUser.getUserID() %>">
+						<%} else{ %>
+						<input type ="hidden" name ="loginedUser" value = "noUser">
+						<%} %>
 						<input type="hidden" name="travelType" class="form-control" value = "R">
 						
 						

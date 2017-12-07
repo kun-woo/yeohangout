@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import yeohangout.javabeans.Airport;
+import yeohangout.javabeans.Fare;
 import yeohangout.javabeans.Leg;
 import yeohangout.javabeans.LegFlightAirport;
+import yeohangout.javabeans.UserAccount;
 import yeohangout.mysql.AirlineUtils;
+import yeohangout.mysql.FareUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.MyUtils;
 import yeohangout.mysql.SingletonForMulticity;
@@ -56,6 +59,7 @@ public class MakeReservationOneway extends HttpServlet {
 		LegFlightAirport backResult = null;
 		
 		if(MyUtils.getUserType()==0) {
+			String loginedUser = request.getParameter("loginedUser");
 			
 			try {
 				MySQLAccess dao = new MySQLAccess();
@@ -65,10 +69,14 @@ public class MakeReservationOneway extends HttpServlet {
 				Leg selectedLeg = AirlineUtils.searchLeg(connect, airlineID, flightNo, legNO);
 				Airport depAirport = AirlineUtils.searchAirport(connect, selectedLeg.getDepAirportID());
 				Airport arrAirport = AirlineUtils.searchAirport(connect, selectedLeg.getArrAirportID());
+				Fare fare = FareUtils.searchFare(connect, airlineID, flightNo);
+				
 				result= 	new LegFlightAirport(selectedLeg);
 				
 				result.setDepAirport(depAirport);
 				result.setArrAirport(arrAirport);
+				result.setFare(fare);
+				System.out.println("FARE : !!!!" + fare.getFare());
 				
 				if(travleType.equals("R")) {
 					
@@ -80,10 +88,13 @@ public class MakeReservationOneway extends HttpServlet {
 					Leg selectedLeg2 = AirlineUtils.searchLeg(connect, airlineID2, flightNo2, legNO2);
 					Airport depAirport2 = AirlineUtils.searchAirport(connect, selectedLeg2.getDepAirportID());
 					Airport arrAirport2 = AirlineUtils.searchAirport(connect, selectedLeg2.getArrAirportID());
+					Fare fare2 = FareUtils.searchFare(connect, airlineID2, flightNo2);
 					backResult= 	new LegFlightAirport(selectedLeg2);
 					
 					backResult.setDepAirport(depAirport2);
 					backResult.setArrAirport(arrAirport2);
+					backResult.setFare(fare2);
+					
 				}
 				
 				
@@ -94,6 +105,7 @@ public class MakeReservationOneway extends HttpServlet {
 			}
 			
 			request.setAttribute("result_resrv", result);		//send data from servlet to jsp
+			request.setAttribute("loginedUser", loginedUser);
 			
 			RequestDispatcher rd = null;
 			

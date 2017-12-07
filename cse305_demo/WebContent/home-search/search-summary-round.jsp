@@ -56,7 +56,12 @@
 	<%
 		LegFlightAirport resultSet = (LegFlightAirport)request.getAttribute("result_resrv");
 		
-		LegFlightAirport resultSetBack  = (LegFlightAirport)request.getAttribute("result_back_resrv");;
+		LegFlightAirport resultSetBack  = (LegFlightAirport)request.getAttribute("result_back_resrv");
+		
+		String loginedUserID = (String) request.getAttribute("loginedUser");
+		System.out.println("LOGINED : "+loginedUserID);
+	
+		
 	
 		
 	%>
@@ -187,7 +192,7 @@
 					<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 						<div class="row">
 							<div class="card-body">
-								<form action="#" method="post" novalidate="novalidate">
+								<form action="payment" method="post" novalidate="novalidate">
 									<div class="form-group text-center">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i
@@ -203,7 +208,7 @@
 									<div class="form-group">
 										<label for="cc-payment" class="control-label">Payment
 											amount</label>
-										<h3>$1000.20</h3> 
+										<h3>$ <%= resultSet.getFare().getFare() + resultSetBack.getFare().getFare() %></h3> 
 									</div>
 									<div class="form-group">
 										<label for="cc-name" class="control-label">Name
@@ -240,6 +245,14 @@
 											code</label> <input id="x_zip" name="x_zip" type="text"
 											class="form-control" placeholder="xxxxx">
 									</div>
+									
+									<input type = "hidden" name ="legFlightAirport1" value="<%= resultSet %>"/>
+									<input type = "hidden" name ="userID" value = ""/>
+									<!-- back -->
+									<input type = "hidden" name ="legFlightAirport2" value="<%= resultSetBack %>"/>
+									
+									
+									
 									<div>
 										<a id="payment-button" type="submit"
 											class="btn btn-lg btn-success btn-block" href="search-confirm.jsp">

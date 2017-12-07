@@ -54,12 +54,12 @@
 					<li><a href="../view-rep-reservation">Record Reservation </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="#">Manage
-							Customer <span class="sr-only">(current)</span></a></li>
+					<li><a href="../view-customer-rep">Manage
+							Customer </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
-					<li class="active"><a href="#">View Employee</a></li>
+					<li class="active"><a href="#">View Employee <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>

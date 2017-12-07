@@ -51,12 +51,28 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		String arrCountry = request.getParameter("arrCountry");
 		String buttonType = request.getParameter("type_btn");
 	
-		
 		Date depTime  =null;	
 		Date returnTime = null;
 	
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
 		DateFormat df2 = new SimpleDateFormat("MM/dd/yyyy"); 
+		
+		boolean auctionFlag = false;
+		String [] auctionVal = request.getParameterValues("auction");
+		
+		for (int i = 0; i < auctionVal.length; i++) {
+
+		    String myCheckBoxValue = request.getParameter(auctionVal[i]);
+
+		    // if null, it means checkbox is not in request, so unchecked 
+		    if (myCheckBoxValue == null)
+		        auctionFlag = false;
+
+		    // if is there, it means checkbox checked
+		    else
+		        auctionFlag = true;
+
+		}
 		
 		try {
 			depTime = (java.util.Date)df.parse(depTimeString);

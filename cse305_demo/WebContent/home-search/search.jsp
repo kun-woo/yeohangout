@@ -53,17 +53,7 @@
 					
 					
 					<div class="col-sm-6 col-md-offset-2 col-md-4 col-xs-12 text-right">
-						<div class="dropdown">
-							<button class="btn btn-default btn-block dropdown-toggle"
-								type="button" data-toggle="dropdown">
-								Cabin Class <span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu">
-								<li class=><a>Economy</a></li>
-								<li><a>Business</a></li>
-								<li><a>First Class</a></li>
-							</ul>
-						</div>
+						<input type="text" class="form-control" name="cabinClass" placeholder="Cabin Class">
 					</div>
 					
 					
@@ -184,20 +174,7 @@
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>
 							<label class="control-label" for="text">Passengers</label>
-							<div class="dropdown">
-								<button class="btn btn-default dropdown-toggle dropdown-btn"
-									type="button" name = "num_of_passenger" data-toggle="dropdown">
-									0 <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a>1</a></li>
-									<li><a>2</a></li>
-									<li><a>3</a></li>
-									<li><a>4</a></li>
-									<li><a>5</a></li>
-									<li><a>6</a></li>
-								</ul>
-							</div>
+							<input type="text" class="form-control" name="passenger" placeholder="# Passengers">
 						</div>
 					</div>
 					
@@ -205,19 +182,8 @@
 					<div class="form-group">
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>
-							<label class="control-label" for="checkbox">Feeling Lucky? (Auction)</label><!-- 
-							<input type="checkbox" name="my-checkbox" data-on-color="danger" data-on-text="YES!"
-								data-off-text="NAH" data-handle-width="10" data-size="normal" id="checkbox"> -->
-							<div class="dropdown">
-								<button class="btn btn-default dropdown-toggle dropdown-btn"
-									type="button" data-toggle="dropdown">
-									Nah <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a>Yeah!</a></li>
-									<li><a>Well..nah..</a></li>
-								</ul>
-							</div>
+							<label class="control-label" for="checkbox">Feeling Lucky? (Auction)</label>
+							<input type="checkbox" name="auction" value="checked" id="checkbox">
 						</div>
 					</div>
 					

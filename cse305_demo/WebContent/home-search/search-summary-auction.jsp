@@ -143,7 +143,7 @@
 									<div class="form-group">
 										<label for="cc-payment" class="control-label">Payment
 											amount</label>
-										<h3>$ <%= resultSet.getFare().getFare() %></h3> 
+										<h3>$ <%= request.getAttribute("price") %></h3> 
 									</div>
 									<div class="form-group">
 										<label for="cc-name" class="control-label">Name

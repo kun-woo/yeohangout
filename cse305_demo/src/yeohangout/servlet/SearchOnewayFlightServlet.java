@@ -50,7 +50,14 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		String arrCity = request.getParameter("arrCity");
 		String arrCountry = request.getParameter("arrCountry");
 		String buttonType = request.getParameter("type_btn");
-	
+//		System.out.println(" Wong ");
+//		
+//		System.out.println(" :" +request.getParameter("auc_btn"));
+//	
+		String auction = request.getParameter("auc_btn");
+//		System.out.println(" Ma ");
+		
+		
 		Date depTime  =null;	
 		Date returnTime = null;
 	
@@ -58,21 +65,14 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		DateFormat df2 = new SimpleDateFormat("MM/dd/yyyy"); 
 		
 		boolean auctionFlag = false;
-		String [] auctionVal = request.getParameterValues("auction");
 		
-		for (int i = 0; i < auctionVal.length; i++) {
-
-		    String myCheckBoxValue = request.getParameter(auctionVal[i]);
-
-		    // if null, it means checkbox is not in request, so unchecked 
-		    if (myCheckBoxValue == null)
-		        auctionFlag = false;
-
-		    // if is there, it means checkbox checked
-		    else
-		        auctionFlag = true;
-
+		if (auction.equals("normal")) {
+			auctionFlag = false;
 		}
+		else {
+			auctionFlag = true;
+		}
+		
 		
 		try {
 			depTime = (java.util.Date)df.parse(depTimeString);
@@ -234,6 +234,10 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 //			request.setAttribute("secondLegs", secondLegs);
 //			request.setAttribute("thirdLegs", thirdLegs);
 			rd = request.getRequestDispatcher("home-search/search-result-multi.jsp");
+		}
+		System.out.println("Dang" + auctionFlag);
+		if(auctionFlag) {
+			rd = request.getRequestDispatcher("home-search/search-result-auction.jsp");
 		}
 		
 		rd.forward(request, response);

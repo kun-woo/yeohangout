@@ -9,12 +9,16 @@
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../assets/css/dashboard.css" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+<link href="${pageContext.request.contextPath}/assets/css/dashboard.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/datatables.min.css" />
-<link href="../assets/css/search.css" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
-<link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+	href="${pageContext.request.contextPath}/assets/css/datatables.min.css" />
+<link href="${pageContext.request.contextPath}/assets/css/search.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -51,7 +55,7 @@
 		<br>
 		<h2>Wanna <b>try</b> again?</h2>
 		<br>
-		<a href="../index.jsp#search" class="btn btn-success btn-md">Go back..</a>
+		<a href="${pageContext.request.contextPath}/index.jsp#search" class="btn btn-success btn-md">Go back..</a>
 	</div>
 </body>
 </html>

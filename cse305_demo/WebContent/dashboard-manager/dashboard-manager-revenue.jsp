@@ -15,9 +15,9 @@
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../assets/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/dashboard.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/datatables.min.css" />
+	href="${pageContext.request.contextPath}/assets/css/datatables.min.css" />
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -34,7 +34,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="../index.jsp">HOME</a></li>
+					<li><a href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
 					<li><a href="${pageContext.request.contextPath}/logout">LOG OUT</a></li>
 					<li><a href="#">HELP</a></li>
@@ -55,17 +55,17 @@
 					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-employee">Manage
+					<li><a href="${pageContext.request.contextPath}/view-employee">Manage
 							Employee</a></li>
-					<li><a href="../view-customer">Manage
+					<li><a href="${pageContext.request.contextPath}/view-customer">Manage
 							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-sales-report">View Sales Report</a></li>
-					<li><a href="../view-reservation">View Reservation</a></li>
+					<li><a href="${pageContext.request.contextPath}/view-sales-report">View Sales Report</a></li>
+					<li><a href="${pageContext.request.contextPath}/view-reservation">View Reservation</a></li>
 					<li class="active"><a href="#">View Total Revenue <span class="sr-only">(current)</span></a></li>					
-					<li><a href="../view-flight">View Flight</a></li>
-					<li><a href="../view-customer-seated">View Customer</a></li>
+					<li><a href="${pageContext.request.contextPath}/view-flight">View Flight</a></li>
+					<li><a href="${pageContext.request.contextPath}/view-customer-seated">View Customer</a></li>
 				</ul>
 			</div>
 			<div
@@ -171,13 +171,13 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
 	<!-- Jquery JS-->
-	<script src="../assets/js/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
 	<!-- Bootstrap JS -->
-	<script src="../assets/js/dashboard.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dashboard.js"></script>
 	<!-- Dashboard JS -->
-	<script type="text/javascript" src="../assets/js/datatables.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/datatables.min.js"></script>
 
 </body>
 </html>

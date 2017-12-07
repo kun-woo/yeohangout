@@ -35,9 +35,9 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
-				<li><a href="#">SETTINGS</a></li>
-				<li><a href="#">LOG OUT</a></li>
-				<li><a href="${pageContext.request.contextPath}/logout">HELP</a></li>
+				<li><a href="../help.jsp">SETTINGS</a></li>
+				<li><a href="${pageContext.request.contextPath}/logout">LOG OUT</a></li>
+				<li><a href="../help.jsp">HELP</a></li>
 			</ul>
 		</div>
 	</div>

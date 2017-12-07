@@ -61,6 +61,12 @@
 					<li><a href="../view-flight">View Flight</a></li>
 					<li><a href="../view-customer-seated">View Customer</a></li>
 				</ul>
+				<ul class="nav nav-sidebar">
+					<li><a href="#" data-toggle="modal" data-target="#addAirline">Add Airline</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#addFlight">Add Flight</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#addAirport">Add Airport</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#addLeg">Add Leg</a></li>
+				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">Financial Performance</h1>
@@ -124,6 +130,11 @@
 			</div>
 		</div>
 	</div>
+	
+	<%@include file="../dashboard-manager/employee_add.jsp" %>
+<%@include file="../dashboard-manager/employee_add_flight.jsp"%>	
+<%@include file="../dashboard-manager/employee_add_airport.jsp" %>		
+<%@include file="../dashboard-manager/employee_add_leg.jsp" %>	
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->

@@ -78,10 +78,8 @@ public class AddEmployeeServlet extends HttpServlet {
 //		}
 
 		if (errorMsg != null){
-			PrintWriter out= response.getWriter();
-			out.println(errorMsg);
 			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/dashboard-manager/dashboard-manager-overview.jsp");
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 			
 		}
 		else {

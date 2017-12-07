@@ -36,6 +36,7 @@ You have to come up with a certain heuristic based on customer's past reservatio
 					<li><a data-toggle="modal" href="${pageContext.request.contextPath}/currentReservationServlet?userID=<%= loginedUser.getAccountNo() %>" >Current Reservation</a></li>
 					<li><a data-toggle="modal" href="${pageContext.request.contextPath}/everyReservationServlet?userID=<%= loginedUser.getAccountNo() %>" >All of Reservations History</a></li>
         				<li class="active"><a data-toggle="modal" href="${pageContext.request.contextPath}/flightSuggestion?userID=<%= loginedUser.getAccountNo() %>">View Flight Suggestion</a></li>
+        				<li><a href="${pageContext.request.contextPath}/get-customer-auction?userID=<%= loginedUser.getAccountNo() %>">View Auction</a></li>
 				</ul>
 			</div>
 			

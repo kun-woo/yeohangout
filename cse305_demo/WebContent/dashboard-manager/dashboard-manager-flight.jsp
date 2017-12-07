@@ -67,6 +67,16 @@
 					<li class="active"><a href="#">View Flight <span class="sr-only">(current)</span></a></li>
 					<li><a href="../view-customer-seated">View Customer</a></li>
 				</ul>
+				<ul>
+					<li><a data-toggle="modal" data-target="#addAirline"><span
+							class="glyphicon glyphicon-user"></span>Add Airline</a></li>
+					<li><a data-toggle="modal" data-target="#addFlight"><span
+							class="glyphicon glyphicon-user"></span>Add Flight</a></li>
+					<li><a data-toggle="modal" data-target="#addAirport"><span
+							class="glyphicon glyphicon-user"></span>Add Airport</a></li>
+					<li><a data-toggle="modal" data-target="#addLeg"><span
+							class="glyphicon glyphicon-user"></span>Add Leg</a></li>
+				</ul>
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -212,6 +222,12 @@
 			</div>
 		</div>
 	</div>
+
+	
+	<%@include file="../dashboard-manager/employee_add.jsp" %>
+<%@include file="../dashboard-manager/employee_add_flight.jsp"%>	
+<%@include file="../dashboard-manager/employee_add_airport.jsp" %>		
+<%@include file="../dashboard-manager/employee_add_leg.jsp" %>
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->

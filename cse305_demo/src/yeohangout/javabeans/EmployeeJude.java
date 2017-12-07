@@ -3,6 +3,7 @@ package yeohangout.javabeans;
 import java.io.Serializable;
 import java.sql.Date;
 
+
 public class EmployeeJude implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

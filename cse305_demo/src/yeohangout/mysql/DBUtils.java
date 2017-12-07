@@ -1,6 +1,5 @@
 package yeohangout.mysql;
 
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -69,7 +68,7 @@ public class DBUtils {
     public static void insertEmployee(Connection conn, EmployeeJude employee) throws SQLException {
     		String sql = "INSERT into Employee(id, SSN, IsManager, StartDate, "
 					+ "HourlyRate, UserName, Pwd) "
-					+ "values(?,?, ?, now(), ?, ?, ?)";
+					+ "values(?,?, ?,now(), ?, ?, ?)";
 		PreparedStatement pstm = (PreparedStatement) conn.prepareStatement(sql);
 	   
 		pstm.setInt(1,employee.getId());

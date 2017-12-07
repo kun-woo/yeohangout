@@ -80,7 +80,7 @@
 							<br>
 							<label class="control-label" for="text">Returning</label>
 							<div class='input-group date' id='datetimepicker2'>
-								<input type="text" class="form-control" name="arrTime" placeholder="mm/dd/yyyy">
+								<input type="text" class="form-control" name="returnTime" placeholder="mm/dd/yyyy">
 								<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>

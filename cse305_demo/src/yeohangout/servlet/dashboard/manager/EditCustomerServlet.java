@@ -21,13 +21,13 @@ import yeohangout.mysql.MySQLAccess;
  * Servlet implementation class EdistCustomerServlet
  */
 @WebServlet(name = "edit-customer", urlPatterns = { "/edit-customer" })
-public class EdistCustomerServlet extends HttpServlet {
+public class EditCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EdistCustomerServlet() {
+    public EditCustomerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

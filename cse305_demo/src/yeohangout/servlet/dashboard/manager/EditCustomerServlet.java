@@ -3,6 +3,7 @@ package yeohangout.servlet.dashboard.manager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
@@ -23,6 +24,8 @@ import yeohangout.mysql.MySQLAccess;
 @WebServlet(name = "edit-customer", urlPatterns = { "/edit-customer" })
 public class EditCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private ResultSet rs;
+
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -53,6 +56,7 @@ public class EditCustomerServlet extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		int keyCust = Integer.parseInt(request.getParameter("edited_cust"));
 		String errorMsg = null;
+		int id = 0;
 
 
 		if (firstName == null || firstName.equals("")) {
@@ -83,23 +87,56 @@ public class EditCustomerServlet extends HttpServlet {
 				dao.readDataBase();
 				Connection connect = null;
 				connect = dao.getConnection();
+    				PreparedStatement pstm = null;
+
+				try {
+					// Execute SQL query
 
 
-				// Execute SQL query
+					String sql = "UPDATE Customer SET CreditCardNo = ?, CreationDate = now(), Rating = ?, "
+							+ "UserName = ?, Pwd = ? WHERE Customer.AccountNo = ?";	    		
+					pstm = (PreparedStatement) connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		    	   
+		    			pstm.setString(1, creditCardNo);
+		    			pstm.setInt(2, rating);
+		    			pstm.setString(3, userName);
+		    			pstm.setString(4, pwd);
+		    			pstm.setInt(5, keyCust);
 
+		    			
+		    			pstm.executeUpdate();
+				} finally {
+					pstm.close();
+				}
+				
+				try {
+					// Execute SQL query
+					String sql = "SELECT Id FROM Customer";	    		
+					pstm = (PreparedStatement) connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
-				String sql = "UPDATE Customer SET CreditCardNo = ?, CreationDate = now(), Rating = ?, "
-						+ "UserName = ?, Pwd = ? WHERE Customer.AccountNo = ?";	    		
-	    			PreparedStatement pstm = (PreparedStatement) connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-	    	   
-	    			pstm.setString(1, creditCardNo);
-	    			pstm.setInt(2, rating);
-	    			pstm.setString(3, userName);
-	    			pstm.setString(4, pwd);
-	    			pstm.setInt(5, keyCust);
+		    			rs = pstm.executeQuery();
+		    			if(rs.next()){
+			    			id = rs.getInt("Id");
+		    			}
+				} finally {
+					pstm.close();
+					rs.close();
+				}
+				
+				try {
+					// Execute SQL query
 
-	    			
-	    			pstm.executeUpdate();
+					String sql = "UPDATE Person SET FirstName = ?, LastName = ? WHERE ID = ?";
+					pstm = (PreparedStatement) connect.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		    	   
+		    			pstm.setString(1, firstName);
+		    			pstm.setString(2, lastName);
+		    			pstm.setInt(3, id);
+
+		    			pstm.executeUpdate();
+				} finally {
+					pstm.close();
+				}
 	    		
 				// Insert new employee info to BackUp Database 
 

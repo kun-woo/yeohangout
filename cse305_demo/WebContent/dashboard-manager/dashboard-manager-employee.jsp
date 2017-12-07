@@ -131,6 +131,8 @@
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#">Manage
 							Employee <span class="sr-only">(current)</span>
+					<li><a href="../view-customer">Manage
+							Customer</a></li>
 					</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">

@@ -210,7 +210,7 @@
 					<li class="active"><a href="#">Record Reservation <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../manage-customer">Manage
+					<li><a href="../view-customer-rep">Manage
 							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
@@ -313,6 +313,10 @@
 								fArr.add(personArr.get(i).getFirstName());
 								lArr.add(personArr.get(i).getLastName());
 								j++;
+								if (j >= passArr.size())
+								{
+									break;
+								}
 							}
 						}
 						%>

@@ -51,7 +51,7 @@
 					<li><a href="../view-rep-reservation">Record Reservation </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../manage-customer">Manage
+					<li><a href="../view-customer-rep">Manage
 							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">

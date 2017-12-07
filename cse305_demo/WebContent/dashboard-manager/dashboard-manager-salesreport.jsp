@@ -52,6 +52,8 @@
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-employee">Manage
 							Employee</a></li>
+					<li><a href="../view-customer">Manage
+							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li class="active"><a href="#">View Sales Report <span class="sr-only">(current)</span></a></li>

@@ -10,12 +10,16 @@
 				<form class="form" action="searchOneway" method="POST">	
 					
 					<div class="col-sm-6 col-xs-12 text-left">
-							<div class="btn-group">								
-								<button type="button" name="one-way" class="btn btn-default btn-md">One-Way</button>
-								<button type="button" name="round-trip" class="btn btn-default btn-md active">Round Trip</button>
-								<button type="button" name="multi-city" class="btn btn-default btn-md">Multi-City</button>
-						</div>
+									
+						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb"/>
+							<label for="one_way_rb">One-Way</label>
+						<input type="radio" name="type_btn" value = "round-trip" class="btn btn-default btn-md active" id="round_trip_rb"/>
+							<label for="round_trip_rb"> Round-Trip  </label>
+						<input type="radio" name="type_btn" value = "multi-city"class="btn btn-default btn-md" id="multi_city_rb"/>
+							<label for="multi_city_rb">Multi-City </label>
 					</div>
+					
+					
 					<div class="col-sm-6 col-md-offset-2 col-md-4 col-xs-12 text-right">
 						<div class="dropdown">
 							<button class="btn btn-default btn-block dropdown-toggle"
@@ -29,6 +33,8 @@
 							</ul>
 						</div>
 					</div>
+					
+					
 					<div class="form-group">
 						<div class="row">
 							<div class="col-sm-6 text-left">
@@ -52,7 +58,9 @@
 								<input type="text" class="form-control" name="arrCountry" placeholder="Country">
 							</div>
 						</div>
-					</div>				
+					</div>	
+					
+								
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4 text-left">
 							<br>
@@ -65,6 +73,8 @@
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class="form-group">
 						<div class="col-sm-6 col-md-4 text-left">
 							<br>
@@ -77,6 +87,7 @@
 							</div>
 						</div>
 					</div>
+					
 					
 					<div class="form-group">
 						<div class="col-sm-6 col-md-2 text-left">
@@ -98,6 +109,8 @@
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class="form-group">
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>
@@ -116,6 +129,8 @@
 							</div>
 						</div>
 					</div>
+					
+					
 					<div class="form-group">
 						<div class="col-sm-12 text-left">
 							<br>

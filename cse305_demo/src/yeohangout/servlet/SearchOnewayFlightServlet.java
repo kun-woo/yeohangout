@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import yeohangout.javabeans.Airport;
 import yeohangout.javabeans.Leg;
+import yeohangout.javabeans.LegFlightAirport;
 import yeohangout.mysql.AirlineUtils;
 import yeohangout.mysql.AirportUtils;
 import yeohangout.mysql.FlightSearchUtils;
@@ -45,46 +46,63 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		String depTimeString = request.getParameter("depTime");
 		String arrCity = request.getParameter("arrCity");
 		String arrCountry = request.getParameter("arrCountry");
-	//	int passanger = Integer.parseInt(request.getParameter("num_of_passenger"));
-		Date depTime  =null;
+		
+		String buttonType = request.getParameter("type_btn");
+	
+		System.out.println("Button Type : "+buttonType);
+		
+		
+		Date depTime  =null;	
 	
 		DateFormat df = new SimpleDateFormat("MM/dd/yyyy"); 
-		ArrayList<Leg> searchedLegs = new ArrayList<Leg>();
-		
-		try {
-			depTime = (java.util.Date)df.parse(depTimeString);
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
+		ArrayList<LegFlightAirport> searchedLegs = new ArrayList<LegFlightAirport>();
 		
 		
-		try {
-				MySQLAccess dao = new MySQLAccess();
-				dao.readDataBase();
-				Connection connect = null;
-				connect = dao.getConnection();
-				
-				Airport searchedDepAirport = AirportUtils.searchAirportByCityCountry(connect, depCity, depCountry);
-				Airport searchedArrAirport = AirportUtils.searchAirportByCityCountry(connect, arrCity, arrCountry);
-				if(searchedDepAirport!=null && searchedArrAirport!=null) {
-					searchedLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedDepAirport.getID(), searchedArrAirport.getID(), depTime);
+		if(buttonType.equals("one-way")) {
+			
+			//one way
+			try {
+				depTime = (java.util.Date)df.parse(depTimeString);
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+			try {
+					MySQLAccess dao = new MySQLAccess();
+					dao.readDataBase();
+					Connection connect = null;
+					connect = dao.getConnection();
 					
-				}else {
-					//Error
-				}
-				
-				dao.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException ex) {
-			// TODO Auto-generated catch block
-			ex.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+					Airport searchedDepAirport = AirportUtils.searchAirportByCityCountry(connect, depCity, depCountry);
+					Airport searchedArrAirport = AirportUtils.searchAirportByCityCountry(connect, arrCity, arrCountry);
+					if(searchedDepAirport!=null && searchedArrAirport!=null) {
+						
+						searchedLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedDepAirport.getID(), searchedArrAirport.getID(), depTime);
+						
+						
+					}else {
+						//Error
+					}
+					
+					dao.close();
+					
+			} catch(SQLException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}else if(buttonType.equals("round-trip")) {
+			System.out.println("Round Trip");
+		}else {
+			System.out.println("Multi");
 		}
 		
-	
 		request.setAttribute("searchLegs", searchedLegs);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("home-search/search-result.jsp");

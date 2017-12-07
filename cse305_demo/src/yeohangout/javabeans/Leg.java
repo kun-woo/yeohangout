@@ -6,6 +6,7 @@ public class Leg {
 	private String airlineID;
 	private int flightNo;
 	private int legNo;
+	private int secondLegNO;
 	private String depAirportID;
 	private String arrAirportID;
 	private Date depDate;
@@ -69,5 +70,15 @@ public class Leg {
 
 	public void setArrDate(Date arrDate) {
 		this.arrDate = arrDate;
+	}
+
+	public int getSecondLegNO() {
+		return secondLegNO;
+	}
+
+	public void setSecondLegNO(int secondLegNO) {
+		this.secondLegNO = secondLegNO;
 	}	
+	
+	
 }

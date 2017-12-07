@@ -6,6 +6,7 @@
 <%@ page import="yeohangout.javabeans.EmployeeJude"%>
 <%@ page import="yeohangout.javabeans.LegFlightAirport" %>
 
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -55,11 +56,14 @@
 	<%
 		LegFlightAirport resultSet = (LegFlightAirport)request.getAttribute("result_resrv");
 		
+		LegFlightAirport resultSetBack  = (LegFlightAirport)request.getAttribute("result_back_resrv");;
+	
+		
 	%>
 	<div class="container-fluid">
 		<div class="row">
 			
-				<div class="row">
+			<div class="row">
 					<h1 class="page-header col-xs-12">Review your Trip</h1>
 				</div>
 				<div class="row">
@@ -120,6 +124,63 @@
 					<!-- end .row.cart-row -->
 					
 					
+				</div>
+				<!-- Round Trip -->
+					
+				
+						
+				<div class="row search-row">
+					<div class="row cart-row">
+						<div class="row">
+							<div class="col-xs-12 col-sm-4">
+								<h3 class="no-wrap"><%= resultSetBack.getLeg().getDepDate() %></h3>
+							</div>
+							<div class="col-xs-3 col-sm-2 text-muted">
+								<h3>From</h3>
+								<h3>To</h3>
+							</div>
+							<div class="col-xs-9 col-sm-6">
+								<h3 class="no-wrap">
+									<%= resultSetBack.getDepAirport().getCity() %> ( <%=resultSetBack.getLeg().getDepAirportID() %> )
+								</h3>
+								<h3 class="no-wrap">
+									<%= resultSetBack.getArrAirport().getCity() %> ( <%=resultSetBack.getLeg().getArrAirportID() %> )
+								</h3>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-5 col-sm-4">
+								<img src="${pageContext.request.contextPath}/images/airline/2.jpg" class="img-responsive img-fixed">
+							</div>
+							<div class="col-xs-7 col-sm-8">
+								<h3>Ada Airline</h3>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-5 col-sm-4">
+								<h3 class="no-wrap"><%= resultSetBack.getLeg().getDepDate() %></h3>
+								<h3 class="no-wrap"><small><%=resultSetBack.getLeg().getDepAirportID() %> </small></h3>
+							</div>
+							<div class="col-xs-2 col-sm-2 text-muted">
+								<h3><span class="glyphicon glyphicon-arrow-right"></span></h3>
+							</div>
+							<div class="col-xs-5 col-sm-2">
+								<h3 class="no-wrap"><%= resultSetBack.getLeg().getArrDate() %></h3>
+								<h3 class="no-wrap"><small><%=resultSetBack.getLeg().getArrAirportID() %></small></h3>
+							</div>
+							<div class="col-xs-12 col-sm-4">
+								<h3 class="no-wrap">
+									<%=resultSetBack.getTransfer() %> Stop(s)
+								</h3>
+							
+							</div>
+						</div>
+					</div>
+					
+					
+					<!-- end .row.cart-row -->
 				</div>
 				
 				<div class="row">
@@ -191,9 +252,9 @@
 						</div>
 					</div>
 				</div>
+			</div>
 			
-			
-		</div>
+		
 	</div>
 
 	<!-- Bootstrap core JavaScript

@@ -82,7 +82,7 @@
 					for(LegFlightAirport result : searchedLegs){
 				%>
 				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
+					<form action="makeReservation" method="post" novalidate>
 					
 					<div class="row cart-row">
 						
@@ -124,6 +124,12 @@
 							<h4><%= result.getTransfer() %>Stop</h4>
 							<div class="no-wrap">4h 30m in AUH</div>
 						</div>
+						
+						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						<input type="hidden" name="travelType" class="form-control" value = "O">
+						
 						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">

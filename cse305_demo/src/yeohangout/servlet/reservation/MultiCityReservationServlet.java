@@ -93,7 +93,7 @@ public class MultiCityReservationServlet extends HttpServlet {
 			
 		}else {
 			//Reservation
-			System.out.println("Reservation");
+			response.sendRedirect(contextPath+"/home-search/search-summary.jsp");
 		}
 	}
 

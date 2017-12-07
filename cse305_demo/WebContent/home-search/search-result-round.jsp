@@ -53,17 +53,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-3 sidebar" style="overflow:visible;">
-				<br>
-				<h3>Find a Tour</h3>
-  				<ul class="nav nav-pills">
-    				<li><a data-toggle="pill" href="#one-way">One Way</a></li>
-    				<li class="active"><a data-toggle="pill" href="#round-trip">Round Trip</a></li>
-    				<li><a data-toggle="pill" href="#multi-city">Multi-City</a></li>
-  				</ul>
-  				
-						
-			</div>
+			
 			
 			<%
 				ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
@@ -85,7 +75,7 @@
 						for(LegFlightAirport backResult : bakcLegs){
 				%>
 				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
+					<form action="makeReservation" method="post" novalidate>
 					
 					<div class="row cart-row">
 						
@@ -181,6 +171,15 @@
 								<div class="no-wrap"<%//Type %>><h6>ROUND TRIP</h6></div>
 							</div>
 						</div>
+						
+						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						<input type="hidden" name="airlineID2" class="form-control" value = "<%= backResult.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO2" class="form-control" value = "<%= backResult.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO2" class="form-control" value = "<%= backResult.getLeg().getLegNo() %>">
+						<input type="hidden" name="travelType" class="form-control" value = "R">
+						
 						
 						<div class="col-xs-12 col-sm-1 col-md-1">	
 							<br/>

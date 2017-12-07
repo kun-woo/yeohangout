@@ -128,7 +128,7 @@ public class MakeReservationAuction extends HttpServlet {
 			
 			if( price < 500)
 			{
-				rd = request.getRequestDispatcher("/home-search/search-summary-denied.jsp");
+				rd = request.getRequestDispatcher("/home-search/search-summary-denined.jsp");
 			}
 			else
 			{

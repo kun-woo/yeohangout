@@ -39,7 +39,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<input type="text" class="form-control" id="id"
-										placeholder="Username" name ="userID"/> <span class="input-group-addon">
+										placeholder="Username" name ="userID" required> <span class="input-group-addon" >
 										<span class="glyphicon glyphicon-user"></span>
 									</span>
 								</div>
@@ -47,7 +47,7 @@
 							<div class="form-group">
 								<div class="input-group">
 									<input type="password" class="form-control" id="pwd"
-										placeholder="Password" name ="password"/> <span class="input-group-addon">
+										placeholder="Password" name ="password" required> <span class="input-group-addon">
 										<span class="glyphicon glyphicon-edit"></span>
 									</span>
 								</div>
@@ -55,23 +55,23 @@
 							<div class="form-group">
 								<div class="input-group">
 									<input type="password" class="form-control" id="pwd2"
-										placeholder="Password confirm" name ="passwordConf"/> <span class="input-group-addon">
+										placeholder="Password confirm" name ="passwordConf" required> <span class="input-group-addon">
 										<span class="glyphicon glyphicon-check"></span>
 									</span>
 								</div>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="fname"
-									placeholder="First Name" name="personFName">
+									placeholder="First Name" name="personFName" required>
 							</div>
 							<div class="form-group">
 								<input type="text" class="form-control" id="lname"
-									placeholder="Last Name" name="personLName">
+									placeholder="Last Name" name="personLName" required>
 								</span>
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" id="address" name = "personAddress" placeholder="Address"/>
+									<input type="text" class="form-control" id="address" name = "personAddress" placeholder="Address" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-home"></span>
 									</span>
@@ -79,7 +79,7 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" name = "city" id="city" placeholder="City"/>
+									<input type="text" class="form-control" name = "city" id="city" placeholder="City" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-th-large"></span>
 									</span>
@@ -87,7 +87,7 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" id="state" name = "state" placeholder="State!"/>
+									<input type="text" class="form-control" id="state" name = "state" placeholder="State!" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-menu-hamburger"></span>
 									</span>
@@ -95,7 +95,7 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" name = "zipcode" id="zipcode" placeholder="Zipcode"/>
+									<input type="text" class="form-control" name = "zipcode" id="zipcode" placeholder="Zipcode" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-menu-hamburger"></span>
 									</span>
@@ -104,7 +104,7 @@
 					
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" name = "creditCardNo" id="creditCardNo" placeholder="Credit Card No."/>
+									<input type="text" class="form-control" name = "creditCardNo" id="creditCardNo" placeholder="Credit Card No." required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-menu-hamburger"></span>
 									</span>
@@ -112,7 +112,7 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="email" class="form-control" id="email" name = "email" placeholder="Email"/>
+									<input type="email" class="form-control" id="email" name = "email" placeholder="Email" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-envelope"></span>
 									</span>
@@ -120,12 +120,13 @@
 							</div>
 							<div class="form-group">
 								<div class="input-group">
-									<input type="number" class="form-control" id="telephone" name ="telephone" placeholder="Telephone"/>
+									<input type="number" class="form-control" id="telephone" name ="telephone" placeholder="Telephone" required>
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-earphone"></span>
 									</span>
 								</div>
 							</div>
+							
 							<input type="submit" name = "submitBt" value = "Sign Up" class="btn btn-block sign-up-button"/>
 							
 						</form>
@@ -135,9 +136,6 @@
 							data-dismiss="modal">
 							<span class="glyphicon glyphicon-remove"></span> Cancel
 						</button>
-						<p>
-							Need <a>help?</a>
-						</p>
 					</div>
 				</div>
 			</div>

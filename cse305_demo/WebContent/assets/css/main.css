@@ -255,13 +255,13 @@ body {
 /* Add a gray color to all navbar links */
 .navbar li a, .navbar .navbar-brand { 
     color: #000 !important;
+    cursor: pointer;
 }
 
 /* On hover, the links will turn blue */
 .navbar-nav li a:hover {
     color: #0f49c6 !important;
     background-color: #fff !important;
-    cursor: "pointer";
 }
 
 /* The active link */

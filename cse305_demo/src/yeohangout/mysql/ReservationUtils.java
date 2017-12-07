@@ -44,8 +44,8 @@ public class ReservationUtils {
 	 		pstm.setInt(1, accountNo);
 	 		
 	 		ResultSet rs = pstm.executeQuery();
-	 		int count = 0;
-	 		while(rs.next()&&count<10) {
+	 		
+	 		while(rs.next()) {
 	 			Reservation searchedReservation = new Reservation();
 	 			
 	 			searchedReservation.setResrNo(rs.getInt("ResrNo"));
@@ -56,7 +56,6 @@ public class ReservationUtils {
 	 			searchedReservation.setAccountNo(rs.getInt("accountNo"));
 	 			
 	 			reservations.add(searchedReservation);
-	 			count++;
 	 			
 	 		}
 	 		

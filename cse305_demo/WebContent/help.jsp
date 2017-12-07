@@ -84,8 +84,7 @@
 
 		</div>
 		<br>
-		<h2>Wanna go for a <b>shot</b>?</h2>
-		<br>
+		
 		<a href="index.jsp#search" class="btn btn-success btn-md">YEAH!</a>
 	</div>
 </body>

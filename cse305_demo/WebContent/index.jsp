@@ -6,9 +6,6 @@
 	<!-- Slider -->
 	<%@ include file="slider.jsp"%>
 	
-	<!-- Help Modal -->
-	<%@ include file="help-info.jsp"%>
-	
 	<!-- SignUp Modal -->
 	<%@ include file="signup.jsp"%>
 	

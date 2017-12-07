@@ -3,7 +3,16 @@
 
 <%@ include file="header.jsp"%>
 
-<div class="container-fluid bg-gray text-center">
+<!-- Help Modal -->
+<%@ include file="help-info.jsp"%>
+	
+<!-- SignUp Modal -->
+<%@ include file="signup.jsp"%>
+	
+<!-- LogIn Modal -->
+<%@ include file="signin.jsp"%>
+
+<div class="container-fluid bg-gray text-center" style="max-width: 400px;">
 	<h2> User is not found</h2>
 	
 	<h3> Sign In Again</h3>
@@ -31,9 +40,11 @@
  	
 	<p> If you're not a customer of Yeo Hang Out</p>
 	
-	<p> Go to Sign up!!</p> 
-	<a href="signup.jsp" id = "signupBt" role = "button" class="btn btn-success btn-md">Sign Up</a>
+	<p>Create an account today.</p> 
 	
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mySignUp">
+  			Sign Up
+	</button>
 </div>
 <%@ include file="footer.jsp"%>
 

@@ -85,6 +85,7 @@ public class FlightSearchUtils {
 						maxLegs= rs2.getInt("count");
 						System.out.println("maxLegs : "+maxLegs);
 					}
+					
 					if(maxLegs>=resultLFA.getLeg().getSecondLegNO()) {
 						resultLFA.setTransfer(maxLegs-resultLFA.getLeg().getSecondLegNO()+resultLFA.getLeg().getLegNo());
 					}
@@ -102,4 +103,6 @@ public class FlightSearchUtils {
 			
 			return seaarchResult;
 	    }
+	
+	
 }

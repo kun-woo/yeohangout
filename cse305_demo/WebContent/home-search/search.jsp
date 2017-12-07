@@ -11,7 +11,7 @@
 					
 					<div class="col-sm-6 col-xs-12 text-left">
 									
-						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb"/>
+						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb" checked/>
 							<label for="one_way_rb">One-Way</label>
 						<input type="radio" name="type_btn" value = "round-trip" class="btn btn-default btn-md active" id="round_trip_rb"/>
 							<label for="round_trip_rb"> Round-Trip  </label>
@@ -80,7 +80,7 @@
 							<br>
 							<label class="control-label" for="text">Returning</label>
 							<div class='input-group date' id='datetimepicker2'>
-								<input type="text" class="form-control" name="arrTime" placeholder="mm/dd/yyyy">
+								<input type="text" class="form-control" name="returnTime" placeholder="mm/dd/yyyy">
 								<span class="input-group-addon"> 
 									<span class="glyphicon glyphicon-calendar"></span>
 								</span>

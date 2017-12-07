@@ -55,11 +55,15 @@ public class SignUpServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String telephone = request.getParameter("telephone");
 		
-		int zipcode = Integer.parseInt(request.getParameter("zipcode"));
-		int creditCardNo = Integer.parseInt(request.getParameter("creditCardNo"));
+		String zipString = request.getParameter("zipcode");
+		String creditCardString = request.getParameter("creditCardNo");
+		
 		String userID = request.getParameter("userID");
 		String password = request.getParameter("password");
 		Date currentDate = new Date(Calendar.getInstance().getTimeInMillis());
+		
+		int zipcode = Integer.parseInt(zipString);
+		int creditCardNo = Integer.parseInt(creditCardString);
 
 		newPerson.setFirstName(fName);
 		newPerson.setLastName(lName);
@@ -69,7 +73,6 @@ public class SignUpServlet extends HttpServlet {
 		newPerson.setZipcode(zipcode);
 		newPerson.setEmail(email);
 		newPerson.setTelephone(telephone);
-		
 
 		newUser.setCreditCardNo(creditCardNo);
 		newUser.setAccountCreationDate(currentDate);

@@ -68,13 +68,13 @@ public class AddAirlineServlet extends HttpServlet{
 			}
 			dao.close();
 		} catch(SQLException e) {
-			response.sendRedirect(contextPath + "/error.jsp");
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		} catch (ClassNotFoundException ex) {
 			// TODO Auto-generated catch block
-			response.sendRedirect(contextPath + "/error.jsp");
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			response.sendRedirect(contextPath + "/error.jsp");
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		}
 
 		//Redirection to index.jsp

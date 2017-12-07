@@ -54,7 +54,7 @@
 					<h4>Add Customer</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="../add-customer" class="form-horizontal" method="post">
+					<form data-toggle="validator" role="form" action="../add-customer" class="form-horizontal" method="post">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">First
 								Name:</label>
@@ -216,6 +216,7 @@
 	<script src="../assets/js/dashboard.js"></script>
 	<!-- Dashboard JS -->
 	<script type="text/javascript" src="../assets/js/datatables.min.js"></script>
+	<script src="https://cdnjs.com/libraries/1000hz-bootstrap-validator"></script>
 
 </body>
 </html>

@@ -123,6 +123,7 @@
 	<script src="../assets/js/dashboard.js"></script>
 	<!-- Dashboard JS -->
 	<script type="text/javascript" src="../assets/js/datatables.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.com/libraries/1000hz-bootstrap-validator"></script>
 
 </body>
 </html>

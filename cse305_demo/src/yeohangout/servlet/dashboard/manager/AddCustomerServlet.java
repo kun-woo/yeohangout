@@ -53,6 +53,7 @@ public class AddCustomerServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String pwd = request.getParameter("pwd");
 		String errorMsg = null;
+		String contextPath = request.getContextPath();
 
 
 		if (firstName == null || firstName.equals("")) {
@@ -69,10 +70,7 @@ public class AddCustomerServlet extends HttpServlet {
 		}
 
 		if (errorMsg != null){
-			PrintWriter out= response.getWriter();
-			out.println(errorMsg);
-			String contextPath = request.getContextPath();
-			response.sendRedirect(contextPath + "/dashboard-manager/dashboard-rep-overview.jsp");
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 
 		}
 		else {
@@ -122,13 +120,13 @@ public class AddCustomerServlet extends HttpServlet {
 
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				response.sendRedirect(contextPath + "/errorpage.jsp");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				response.sendRedirect(contextPath + "/errorpage.jsp");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				response.sendRedirect(contextPath + "/errorpage.jsp");
 			} 
 
 		}

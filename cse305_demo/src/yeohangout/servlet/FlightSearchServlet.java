@@ -38,6 +38,8 @@ public class FlightSearchServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("---Connected to Flight Search Servlet---");
+		String contextPath = request.getContextPath();
+
 
 		RequestDispatcher rd = 	getServletContext()
 								.getRequestDispatcher("/home-search/search-result.jsp");
@@ -107,11 +109,11 @@ public class FlightSearchServlet extends HttpServlet {
 			dao.close();
 			
 		} catch(SQLException e) {
-			e.printStackTrace();
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		} catch (ClassNotFoundException ex) {
-			ex.printStackTrace();
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		} catch (Exception e) {
-			e.printStackTrace();
+			response.sendRedirect(contextPath + "/errorpage.jsp");
 		}
 		
 	}

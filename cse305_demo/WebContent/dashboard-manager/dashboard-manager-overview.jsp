@@ -51,6 +51,8 @@
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-employee">Manage Employee</a></li>
+					<li><a href="../view-customer">Manage
+							Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-sales-report">View Sales Report</a></li>

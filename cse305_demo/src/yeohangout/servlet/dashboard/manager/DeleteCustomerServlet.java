@@ -3,7 +3,6 @@ package yeohangout.servlet.dashboard.manager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -18,20 +17,20 @@ import javax.servlet.http.HttpSession;
 import yeohangout.mysql.MySQLAccess;
 
 /**
- * Servlet implementation class DeleteEmployeeServlet
+ * Servlet implementation class DeleteCustomerServlet
  */
-@WebServlet(name = "delete-employee", urlPatterns = { "/delete-employee" })
-public class DeleteEmployeeServlet extends HttpServlet {
+@WebServlet(name = "delete-customer", urlPatterns = { "/delete-customer" })
+public class DeleteCustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PreparedStatement ps;
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public DeleteEmployeeServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DeleteCustomerServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,10 +38,10 @@ public class DeleteEmployeeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		int SSN = Integer.parseInt(session.getAttribute("dash_delete_emp").toString());
+		int accountNo = Integer.parseInt(session.getAttribute("dash_delete_cust").toString());
 		String errorMsg = null;
 
-		if (SSN == 0) {
+		if (accountNo == 0) {
 			errorMsg = "Input 0";
 		}
 
@@ -62,14 +61,15 @@ public class DeleteEmployeeServlet extends HttpServlet {
 
 				try {
 					// Execute SQL query
-					ps = connect.prepareStatement("DELETE FROM Employee WHERE SSN = ?");
-					ps.setInt(1, SSN);
+					ps = connect.prepareStatement("DELETE FROM Customer WHERE AccountNo = ?");
+					ps.setInt(1, accountNo);
 					ps.execute();
-					
+
+
 					PrintWriter out = response.getWriter();
 					out.println("Delete successful, please check table.");
 
-					response.sendRedirect("view-employee");
+					response.sendRedirect("view-customer");
 
 					connect.close();
 
@@ -98,4 +98,5 @@ public class DeleteEmployeeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

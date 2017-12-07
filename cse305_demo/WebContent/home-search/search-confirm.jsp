@@ -51,7 +51,7 @@
 		<br>
 		<h2>Wanna see more?</h2>
 		<br>
-		<a href="#" class="btn btn-success btn-md">Check out!</a>
+		<a href="../index.jsp#search" class="btn btn-success btn-md">Check out!</a>
 	</div>
 </body>
 </html>

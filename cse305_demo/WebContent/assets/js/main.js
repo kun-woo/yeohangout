@@ -33,6 +33,14 @@ $(function () {
 	
 	$('#datetimepicker3').datetimepicker();
 	$('#datetimepicker4').datetimepicker();
+	
+	$('#datetimepicker5').datetimepicker({
+		format: 'MM/DD/YYYY'
+	});
+	$('#datetimepicker6').datetimepicker({
+		format: 'MM/DD/YYYY'
+	});
+	
 });
 
 //For Carousel

@@ -25,6 +25,7 @@ import yeohangout.mysql.AirportUtils;
 import yeohangout.mysql.FlightSearchUtils;
 import yeohangout.mysql.MySQLAccess;
 import yeohangout.mysql.MyUtils;
+import yeohangout.mysql.SingletonForMulticity;
 
 @WebServlet(name = "searchOneway", urlPatterns= {"/searchOneway"})
 public class SearchOnewayFlightServlet extends HttpServlet {
@@ -60,8 +61,8 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 			depTime = (java.util.Date)df.parse(depTimeString);
 			
 			if(buttonType.equals("round-trip")) {
+				
 				String retTimeString = request.getParameter("returnTime");
-				System.out.println("ret TIme : "+retTimeString);
 				
 				returnTime = (java.util.Date) df2.parse(retTimeString);
 			}
@@ -71,7 +72,16 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		}
 		
 		ArrayList<LegFlightAirport> searchedLegs = new ArrayList<LegFlightAirport>();
+		
+		//for round-trip
 		ArrayList<LegFlightAirport> searchedLegsBack = new ArrayList<LegFlightAirport>();
+		
+		//for multi city
+		ArrayList<LegFlightAirport> secondLegs = new ArrayList<LegFlightAirport>();
+		ArrayList<LegFlightAirport> thirdLegs = new ArrayList<LegFlightAirport>();
+		
+		
+		
 		
 		MySQLAccess dao = null;
 		
@@ -111,6 +121,48 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 				
 			}else {
 				System.out.println("Multi");
+				
+				SingletonForMulticity.clearSingleton();
+				
+				SingletonForMulticity sfmc = SingletonForMulticity.getSingletonForMulticity();
+				
+				String depCity2 = request.getParameter("arrCity");
+				String depCountry2 = request.getParameter("arrCountry");
+				String depTimeString2 = request.getParameter("depTime2");
+				String arrCity2 = request.getParameter("arrCity2");
+				String arrCountry2 = request.getParameter("arrCountry2");
+				Airport searchedSecDepAirport = AirportUtils.searchAirportByCityCountry(connect, depCity2, depCountry2);
+				Airport searchedSecArrAirport = AirportUtils.searchAirportByCityCountry(connect, arrCity2, arrCountry2);
+				Date depTime2 = (java.util.Date) df2.parse(depTimeString2);
+				
+				
+				String depCity3 = request.getParameter("arrCity2");
+				String depCountry3 = request.getParameter("arrCountry2");
+				String depTimeString3 = request.getParameter("depTime3");
+				String arrCity3 = request.getParameter("arrCity3");
+				String arrCountry3 = request.getParameter("arrCountry3");
+				Airport searchedThirdDepAirport = AirportUtils.searchAirportByCityCountry(connect, depCity3, depCountry3);
+				Airport searchedThirdArrAirport = AirportUtils.searchAirportByCityCountry(connect, arrCity3, arrCountry3);
+				Date depTime3 = (java.util.Date) df2.parse(depTimeString3);
+				
+				searchedLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedDepAirport.getID(), searchedArrAirport.getID(), depTime);
+				sfmc.setFirstLegs(searchedLegs);
+				if(searchedLegs.size()>0) {
+					SingletonForMulticity.setValid(true);
+				}
+				
+				secondLegs = FlightSearchUtils.searchFlightByAirport(connect, searchedSecDepAirport.getID(), searchedSecArrAirport.getID(), depTime2);
+				
+				if(secondLegs.size()>0) {
+					sfmc.setSecondLegs(secondLegs);
+				}
+				
+			
+				thirdLegs =  FlightSearchUtils.searchFlightByAirport(connect, searchedThirdDepAirport.getID(), searchedThirdArrAirport.getID(), depTime3);
+				
+				if(thirdLegs.size()>0) {
+					sfmc.setThirdLegs(thirdLegs);
+				}
 			}
 			
 		} catch(SQLException e) {
@@ -134,6 +186,10 @@ public class SearchOnewayFlightServlet extends HttpServlet {
 		}else if(buttonType.equals("round-trip")) {
 			request.setAttribute("backLegs", searchedLegsBack);
 			rd = request.getRequestDispatcher("home-search/search-result-round.jsp");
+		}else {
+//			request.setAttribute("secondLegs", secondLegs);
+//			request.setAttribute("thirdLegs", thirdLegs);
+			rd = request.getRequestDispatcher("home-search/search-result-multi.jsp");
 		}
 		
 		rd.forward(request, response);

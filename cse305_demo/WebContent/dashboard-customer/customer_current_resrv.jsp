@@ -67,8 +67,8 @@
 								<td> <%= reservationList.get(i).getTotalFare() %> </td>
 								<td>
 								<%
-											session.setAttribute("iter_count", i);
-											session.setAttribute("itineryList", itineraries);
+									session.setAttribute("iter_count", i);
+									session.setAttribute("itineryList", itineraries);
 				        			%>
 								<a data-toggle="modal" data-target="#viewCurrentItinerary-<%= i %>" tabindex=i>View Itinery</a>
 								

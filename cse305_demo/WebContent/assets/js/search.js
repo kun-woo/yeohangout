@@ -19,5 +19,22 @@ $(document).ready(function() {
 	        vertical: 'bottom'
 		}
 	});
+	
+	$('#datetimepicker5').datetimepicker({
+		viewMode: 'years',
+		format: 'MM/DD/YYYY',
+		widgetPositioning: {
+			horizontal: 'left',
+	        vertical: 'bottom'
+		}
+	});
+	$('#datetimepicker6').datetimepicker({
+		viewMode: 'years',
+		format: 'MM/DD/YYYY',
+		widgetPositioning: {
+			horizontal: 'left',
+	        vertical: 'bottom'
+		}
+	});
 });
 

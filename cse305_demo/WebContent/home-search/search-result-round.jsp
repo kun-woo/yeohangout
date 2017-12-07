@@ -62,20 +62,7 @@
     				<li><a data-toggle="pill" href="#multi-city">Multi-City</a></li>
   				</ul>
   				
-				<div class="tab-content">
-    					<div id="one-way" class="tab-pane fade">
-      					<!-- One-Way -->
-						<%@ include file="../home-search/one-way-search.jsp"%>
-					</div>
-    					<div id="round-trip" class="tab-pane fade in active">
-      					<!-- Round-Trip -->
-						<%@ include file="../home-search/round-trip-search.jsp"%>
-					</div>
-    					<div id="multi-city" class="tab-pane fade">
-      					<!-- Multi-City -->
-						<%@ include file="../home-search/multi-city-search.jsp"%>
-       				</div>
-  				</div>			
+						
 			</div>
 			
 			<%

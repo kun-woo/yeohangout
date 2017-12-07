@@ -5,6 +5,7 @@
 <%@ page import="yeohangout.javabeans.LegFlightAirport" %>
 <%@ page import = "yeohangout.javabeans.UserAccount" %>
 <%@ page import = "yeohangout.mysql.MyUtils" %>
+<%@ page import = "yeohangout.mysql.SingletonForMulticity" %>
 
 
 <!DOCTYPE html>
@@ -28,6 +29,7 @@
 
 </head>
 <body>
+
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -53,36 +55,57 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-3 sidebar" style="overflow:visible;">
-				<br>
-				<h3>Find a Tour</h3>
-  				<ul class="nav nav-pills">
-    				<li><a data-toggle="pill" href="#one-way">One Way</a></li>
-    				<li class="active"><a data-toggle="pill" href="#round-trip">Round Trip</a></li>
-    				<li><a data-toggle="pill" href="#multi-city">Multi-City</a></li>
-  				</ul>
-  				
-						
-			</div>
+			
 			
 			<%
-				ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
+				ArrayList<LegFlightAirport> searchedLegs = null;
 				
+				if(SingletonForMulticity.getCount()==0){
+					searchedLegs = SingletonForMulticity.getFirstLegs();
+				}else if(SingletonForMulticity.getCount()==1){
+					searchedLegs = SingletonForMulticity.getSecondLegs();
+				}else if(SingletonForMulticity.getCount()==2){
+					searchedLegs = SingletonForMulticity.getThirdLegs();
+				}
+				
+				
+				if(SingletonForMulticity.getCount()==0){
+					if(SingletonForMulticity.getSecondLegs().size()>0){
+						SingletonForMulticity.increaseCount();
+						SingletonForMulticity.setValid(true);
+					}else{
+						SingletonForMulticity.setValid(false);
+					}
+				}else if(SingletonForMulticity.getCount()==1){
+					if(SingletonForMulticity.getThirdLegs().size()>0){
+						SingletonForMulticity.increaseCount();
+						SingletonForMulticity.setValid(true);
+					}else{
+						SingletonForMulticity.setValid(false);
+					}
+				}else{
+					SingletonForMulticity.increaseCount();
+					
+					SingletonForMulticity.setValid(false);
+				}
 			%>
+			
 			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
 				<div class="row">
-					<h1 class="page-header col-xs-12">Search Result</h1>
+					<h1 class="page-header col-xs-12">Step <%= SingletonForMulticity.getCount() %> </h1>
 				</div>
 				<div class="row">
 					<h2>Select your <%//Change %>departure to <%//Change %> <small class="no-wrap"> Wed, Dec 13</small></h2>
 				</div>
 				
-				<%
-	
+				<%	
+					System.out.println("CURRENT COUNT "+SingletonForMulticity.getCount());
 					for(LegFlightAirport result : searchedLegs){
 				%>
+				
 				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
+				
+					<form action="${pageContext.request.contextPath}/multi-resr" method="post" novalidate>
 					
 					<div class="row cart-row">
 						
@@ -124,6 +147,12 @@
 							<h4><%= result.getTransfer() %>Stop</h4>
 							<div class="no-wrap">4h 30m in AUH</div>
 						</div>
+						
+
+						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						
 						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">

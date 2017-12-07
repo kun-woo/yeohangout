@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <div id="search" class="container-fluid text-center">
 		<h2>Find a Tour</h2>
 		<h4>Travel with Yeo Hang Out</h4>
@@ -11,11 +12,11 @@
 					
 					<div class="col-sm-6 col-xs-12 text-left">
 									
-						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb" checked/>
+						<input type="radio" name="type_btn"  value = "one-way"  onclick="if(this.checked){checkFunction(this.value)}" class="btn btn-default btn-md" id="one_way_rb" checked />
 							<label for="one_way_rb">One-Way</label>
-						<input type="radio" name="type_btn" value = "round-trip" class="btn btn-default btn-md active" id="round_trip_rb"/>
+						<input type="radio" name="type_btn" value = "round-trip" onclick="if(this.checked){checkFunction()}" class="btn btn-default btn-md active" id="round_trip_rb"/>
 							<label for="round_trip_rb"> Round-Trip  </label>
-						<input type="radio" name="type_btn" value = "multi-city"class="btn btn-default btn-md" id="multi_city_rb"/>
+						<input type="radio" name="type_btn" value = "multi-city" onclick="if(this.checked){checkFunction()}" class="btn btn-default btn-md" id="multi_city_rb"/>
 							<label for="multi_city_rb">Multi-City </label>
 					</div>
 					
@@ -141,3 +142,5 @@
 			</div>
 		</div>
 	</div>
+	
+	

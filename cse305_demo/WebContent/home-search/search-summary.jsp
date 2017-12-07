@@ -63,7 +63,7 @@
 				<div class="row">
 					<h1 class="page-header col-xs-12">Review your Trip</h1>
 				</div>
-				<div class="row">
+				<div class="col-xs-12">
 					<h2 class="bg-warning warning-text">Price Change<br><small>Because prices change often, we recommend booking now to lock in this price.</small></h2>
 				</div>
 				<%// this search-row will be spanned%>

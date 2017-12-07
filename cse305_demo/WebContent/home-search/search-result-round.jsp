@@ -65,7 +65,7 @@
 				System.out.println("logined : "+ loginedUser.getUserID());
 			
 			%>
-			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
+			<div class="ccol-sm-12 main">
 				<div class="row">
 					<h1 class="page-header col-xs-12">Search Result</h1>
 				</div>

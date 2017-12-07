@@ -174,7 +174,7 @@
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>
 							<label class="control-label" for="text">Passengers</label>
-							<input type="text" class="form-control" name="passenger" placeholder="# Passengers">
+							<input type="number" class="form-control" name="passenger" placeholder="# Passengers">
 						</div>
 					</div>
 					
@@ -182,8 +182,10 @@
 					<div class="form-group">
 						<div class="col-sm-6 col-md-2 text-left">
 							<br>
-							<label class="control-label" for="checkbox">Feeling Lucky? (Auction)</label>
-							<input type="checkbox" name="auction" value="checked" id="checkbox">
+							<input type="radio"  name="auc_btn"  value = "normal" class="btn btn-default btn-md" id="nor_rb" checked />
+							<label for="nor_rb">Normal</label>
+							<input type="radio"  name="auc_btn"  value = "auction" class="btn btn-default btn-md active" id="auc_rb"/>
+							<label for="auc_rb">Auction</label>
 						</div>
 					</div>
 					

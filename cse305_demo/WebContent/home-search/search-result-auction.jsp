@@ -1,5 +1,7 @@
-<%@page import="yeohangout.javabeans.EmployeeJude"%>
-<%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="yeohangout.javabeans.LegFlightAirport" %>
+<%@ page import = "yeohangout.javabeans.UserAccount" %>
+<%@ page import = "yeohangout.mysql.MyUtils" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,14 +14,15 @@
 <meta name="author" content="yeo hang out" />
 <title>Yeo Hang Out</title>
 <!-- Bootstrap core CSS -->
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="../assets/css/dashboard.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/assets/css/dashboard.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css"
-	href="../assets/css/datatables.min.css" />
-<link href="../assets/css/search.css" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
+	  href="${pageContext.request.contextPath}/assets/css/datatables.min.css" />
+<link href="${pageContext.request.contextPath}/assets/css/search.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-datetimepicker.min.css" /> <!-- Bootstrap DTP CSS -->
+
 </head>
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,264 +48,102 @@
 		</div>
 	</nav>
 	<%
-		ArrayList<EmployeeJude> emplArr = (ArrayList<EmployeeJude>) session.getAttribute("emplArr");
+	ArrayList<LegFlightAirport> searchedLegs = (ArrayList<LegFlightAirport>)request.getAttribute("searchLegs");
+	UserAccount loginedUser = null;
+	if(MyUtils.getUserType()==0){
+		loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
+		}
+		System.out.println("logined : "+ loginedUser.getUserID());
 	%>
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-sm-3 col-md-3 sidebar" style="overflow:visible;">
-				<br>
-				<div class="row">
-					<form action="#" method="post">
-						<div class="side-form col-xs-12 bg-primary">
-							<h3>Another Shot?</h3>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">One
-									Way</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">Round
-									Trip</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="side-radio">Muti
-									City</label>
-							</div>
-							<div class="side-form-input">
-								<div class="dropdown">
-									<label for="button">Flying from</label>
-									<button class="btn btn-default btn-block dropdown-toggle"
-										type="button" data-toggle="dropdown">
-										City or Airport <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li class=><a href="#">JFK</a></li>
-										<li><a href="#">ICN</a></li>
-										<li><a href="#">LGA</a></li>
-									</ul>
-								</div>
-								<div class="dropdown">
-									<label for="button">Flying to</label>
-									<button class="btn btn-default btn-block dropdown-toggle"
-										type="button" data-toggle="dropdown">
-										City or Airport <span class="caret"></span>
-									</button>
-									<ul class="dropdown-menu">
-										<li class=><a href="#">JFK</a></li>
-										<li><a href="#">ICN</a></li>
-										<li><a href="#">LGA</a></li>
-									</ul>
-								</div>
-								<div class="bg-default" style="overflow:visible;">
-									<label class="control-label" for="text">Departing</label>
-									<div class='input-group date' id='datetimepicker1'>
-										<input type="text" class="form-control" name="deptTime"
-											placeholder="mm/dd/yyyy"> <span
-											class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<div class="bg-default" style="overflow:visible;">
-									<label class="control-label" for="text">Returning</label>
-									<div class='input-group date' id='datetimepicker2'>
-										<input type="text" class="form-control" name="arrTime"
-											placeholder="mm/dd/yyyy"> <span
-											class="input-group-addon"> <span
-											class="glyphicon glyphicon-calendar"></span>
-										</span>
-									</div>
-								</div>
-								<br>
-								<button class="btn btn-success btn-block" type="submit">Search</button>
-								<br>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-sm-offset-3 col-sm-9 col-md-offset-3 col-md-9 main slideanim">
+			<div class="col-sm-12 main slideanim">
 				<div class="row">
 					<h1 class="page-header col-xs-12">Search Result</h1>
 				</div>
 				<div class="row">
-					<h2>Select your <%//Change %>departure to <%//Change %>New York <small class="no-wrap"> Wed, Dec 13</small></h2>
+					<h2>Select your departure</h2>
 				</div>
-				<%// this search-row will be spanned%>
+				
+				<%
+	
+					for(LegFlightAirport result : searchedLegs){
+				%>
 				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
+					<form action="make-auction" method="post" novalidate>
+					
 					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
+						
+						
+						
+						<div class="col-xs-12 col-sm-1 col-md-1">
+							<a href="#"> <img src="${pageContext.request.contextPath}/images/airline/${result.airlineID}.png" class="img-responsive">
 							</a>
 						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
-							</h3>
-							<div class="no-wrap">United Airline<%//airline name%></div>
+						
+						<div class = "col-xs-12 col-sm-1 col-md-1">
+						
+							<h4><%= result.getLeg().getAirlineID() %></h4>
+							<h5><%= result.getLeg().getFlightNo() %></h5>
 						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
-								<%//Time Spend%>29h 35m
-							</h3>
-							<div class="no-wrap"><%//Dpet-airport%>ICN - JFK<%//Land-airport%></div>
+						
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<h4><%= result.getLeg().getDepDate()  %> </h4> 
+							
 						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
+						
+						<div class="col-xs-12 col-sm-2 col-md-2">
+							<h4> <%= result.getLeg().getArrDate()  %> </h4>
+						</div>
+						
+						<div class="col-xs-6 col-sm-3 col-md-3">
+							<h4 class="no-wrap">
+								<%//Time Spend%>Not yet
+							</h4>
+							
+							<div class="no-wrap">
+							
+							<h4><% //= result.getDepAirport().getCity() %>(<%= result.getLeg().getDepAirportID() %>) - 
+								<% //= result.getArrAirport().getCity() %>(<%= result.getLeg().getArrAirportID() %>)</h4>
+							</div>
+						</div>
+						
+						<div class="col-xs-6 col-sm-1 col-md-1">
+							<h4><%= result.getTransfer() %>Stop</h4>
 							<div class="no-wrap">4h 30m in AUH</div>
 						</div>
+						
+						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
+						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
+						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						
+						<%
+							if(loginedUser!=null){
+						%>
+						<input type ="hidden" name ="loginedUser" value = "<%= loginedUser.getUserID() %>">
+						<%} else{ %>
+						<input type ="hidden" name ="loginedUser" value = "noUser">
+						<%} %>
+						
+						<input type="hidden" name="travelType" class="form-control" value = "O">
+						
+						
 						<div class="col-xs-12 col-sm-2 col-md-2">
 							<div class="form-group">
-								<div class="no-wrap">Name</div>
-								<div class="no-wrap">Your Price</div>
-								<input type="text" class="form-control" name="price" placeholder="Price">
+								<label class="control-label" for="text">Name York Price</label> 
+								<input type="number" name="price" placeholder="Price" class="form-control">
+								<div class="no-wrap"<%//Type %>><h6>One Way</h6></div>
 								<br>
-								<button type="submit" class="btn btn-primary btn-block">Bid</button>
+								<button type="submit" class="btn btn-primary btn-block">Book</button>
 							</div>
 						</div>
 					</div>
-					<!-- end .row.cart-row -->
 					</form>
 				</div>
-				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
-							</h3>
-							<div class="no-wrap">United Airline<%//airline name%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
-								<%//Time Spend%>29h 35m
-							</h3>
-							<div class="no-wrap"><%//Dpet-airport%>ICN - JFK<%//Land-airport%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
-							<div class="no-wrap">4h 30m in AUH</div>
-						</div>
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<div class="form-group">
-								<div class="no-wrap">Name</div>
-								<div class="no-wrap">Your Price</div>
-								<input type="text" class="form-control" name="price" placeholder="Price">
-								<br>
-								<button type="submit" class="btn btn-primary btn-block">Bid</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-					</form>
-				</div>
-				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
-							</h3>
-							<div class="no-wrap">United Airline<%//airline name%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
-								<%//Time Spend%>29h 35m
-							</h3>
-							<div class="no-wrap"><%//Dpet-airport%>ICN - JFK<%//Land-airport%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
-							<div class="no-wrap">4h 30m in AUH</div>
-						</div>
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<div class="form-group">
-								<div class="no-wrap">Name</div>
-								<div class="no-wrap">Your Price</div>
-								<input type="text" class="form-control" name="price" placeholder="Price">
-								<br>
-								<button type="submit" class="btn btn-primary btn-block">Bid</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-					</form>
-				</div>
-				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
-							</h3>
-							<div class="no-wrap">United Airline<%//airline name%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
-								<%//Time Spend%>29h 35m
-							</h3>
-							<div class="no-wrap"><%//Dpet-airport%>ICN - JFK<%//Land-airport%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
-							<div class="no-wrap">4h 30m in AUH</div>
-						</div>
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<div class="form-group">
-								<div class="no-wrap">Name</div>
-								<div class="no-wrap">Your Price</div>
-								<input type="text" class="form-control" name="price" placeholder="Price">
-								<br>
-								<button type="submit" class="btn btn-primary btn-block">Bid</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-					</form>
-				</div>
-				<div class="row search-row">
-					<form action="../add-plane" method="post" novalidate>
-					<div class="row cart-row">
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<a href="#"> <img src="../images/airline/1.png" class="img-responsive">
-							</a>
-						</div>
-						<div class="col-xs-12 col-sm-4 col-md-4">
-							<h3><%//depttime%>12:15am - 3:50pm<%//arrtime%>
-							</h3>
-							<div class="no-wrap">United Airline<%//airline name%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3 class="no-wrap">
-								<%//Time Spend%>29h 35m
-							</h3>
-							<div class="no-wrap"><%//Dpet-airport%>ICN - JFK<%//Land-airport%></div>
-						</div>
-						<div class="col-xs-6 col-sm-2 col-md-2">
-							<h3>1 Stop</h3>
-							<div class="no-wrap">4h 30m in AUH</div>
-						</div>
-						<div class="col-xs-12 col-sm-2 col-md-2">
-							<div class="form-group">
-								<div class="no-wrap">Name</div>
-								<div class="no-wrap">Your Price</div>
-								<input type="text" class="form-control" name="price" placeholder="Price">
-								<br>
-								<button type="submit" class="btn btn-primary btn-block">Bid</button>
-							</div>
-						</div>
-					</div>
-					<!-- end .row.cart-row -->
-					</form>
-				</div>
+				<%
+					} 
+				%>
+
 			</div>
 		</div>
 	</div>
@@ -310,12 +151,27 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="../assets/js/jquery-3.2.1.min.js"></script>
-	<script src="../assets/js/bootstrap.js"></script>
-	<script src="../assets/js/dashboard.js"></script>
-	<script src="../assets/js/moment.js"></script> <!-- Moment JS -->
-	<script src="../assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
-	<script src="../assets/js/search.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/jquery-3.2.1.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/dashboard.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/moment.js"></script> <!-- Moment JS -->
+	<script src="${pageContext.request.contextPath}/assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
+	<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+	<script>
+		function openCity(evt, cityName) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none";
+		    }
+		    tablinks = document.getElementsByClassName("tablinks");
+		    for (i = 0; i < tablinks.length; i++) {
+		        tablinks[i].className = tablinks[i].className.replace(" active", "");
+		    }
+		    document.getElementById(cityName).style.display = "block";
+		    evt.currentTarget.className += " active";
+		}
+	</script>
 	
 </body>
 </html>

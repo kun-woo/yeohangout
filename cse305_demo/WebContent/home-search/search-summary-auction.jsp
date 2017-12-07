@@ -6,7 +6,6 @@
 <%@ page import="yeohangout.javabeans.EmployeeJude"%>
 <%@ page import="yeohangout.javabeans.LegFlightAirport" %>
 
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -47,7 +46,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
 					<li><a href="#">SETTINGS</a></li>
-					<li><a href="${pageContext.request.contextPath}/logout">LOG OUT</a></li>
+					<li><a href="#">LOG OUT</a></li>
 					<li><a href="#">HELP</a></li>
 				</ul>
 			</div>
@@ -55,20 +54,13 @@
 	</nav>
 	<%
 		LegFlightAirport resultSet = (LegFlightAirport)request.getAttribute("result_resrv");
-		
-		LegFlightAirport resultSetBack  = (LegFlightAirport)request.getAttribute("result_back_resrv");
-		
 		String loginedUserID = (String) request.getAttribute("loginedUser");
 		System.out.println("LOGINED : "+loginedUserID);
-	
-		
-	
-		
 	%>
 	<div class="container-fluid">
 		<div class="row">
 			
-			<div class="row">
+				<div class="row">
 					<h1 class="page-header col-xs-12">Review your Trip</h1>
 				</div>
 				<div class="col-xs-12">
@@ -130,69 +122,12 @@
 					
 					
 				</div>
-				<!-- Round Trip -->
-					
-				
-						
-				<div class="row search-row">
-					<div class="row cart-row">
-						<div class="row">
-							<div class="col-xs-12 col-sm-4">
-								<h3 class="no-wrap"><%= resultSetBack.getLeg().getDepDate() %></h3>
-							</div>
-							<div class="col-xs-3 col-sm-2 text-muted">
-								<h3>From</h3>
-								<h3>To</h3>
-							</div>
-							<div class="col-xs-9 col-sm-6">
-								<h3 class="no-wrap">
-									<%= resultSetBack.getDepAirport().getCity() %> ( <%=resultSetBack.getLeg().getDepAirportID() %> )
-								</h3>
-								<h3 class="no-wrap">
-									<%= resultSetBack.getArrAirport().getCity() %> ( <%=resultSetBack.getLeg().getArrAirportID() %> )
-								</h3>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-5 col-sm-4">
-								<img src="${pageContext.request.contextPath}/images/airline/2.jpg" class="img-responsive img-fixed">
-							</div>
-							<div class="col-xs-7 col-sm-8">
-								<h3>Ada Airline</h3>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-xs-5 col-sm-4">
-								<h3 class="no-wrap"><%= resultSetBack.getLeg().getDepDate() %></h3>
-								<h3 class="no-wrap"><small><%=resultSetBack.getLeg().getDepAirportID() %> </small></h3>
-							</div>
-							<div class="col-xs-2 col-sm-2 text-muted">
-								<h3><span class="glyphicon glyphicon-arrow-right"></span></h3>
-							</div>
-							<div class="col-xs-5 col-sm-2">
-								<h3 class="no-wrap"><%= resultSetBack.getLeg().getArrDate() %></h3>
-								<h3 class="no-wrap"><small><%=resultSetBack.getLeg().getArrAirportID() %></small></h3>
-							</div>
-							<div class="col-xs-12 col-sm-4">
-								<h3 class="no-wrap">
-									<%=resultSetBack.getTransfer() %> Stop(s)
-								</h3>
-							
-							</div>
-						</div>
-					</div>
-					
-					
-					<!-- end .row.cart-row -->
-				</div>
 				
 				<div class="row">
 					<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 						<div class="row">
 							<div class="card-body">
-								<form action="paymentRoundTrip" method="post" novalidate="novalidate">
+								<form action="payment" method="post" novalidate="novalidate">
 									<div class="form-group text-center">
 										<ul class="list-inline">
 											<li class="list-inline-item"><i
@@ -208,7 +143,7 @@
 									<div class="form-group">
 										<label for="cc-payment" class="control-label">Payment
 											amount</label>
-										<h3>$ <%= resultSet.getFare().getFare() + resultSetBack.getFare().getFare() %></h3> 
+										<h3>$ <%= request.getAttribute("price") %></h3> 
 									</div>
 									<div class="form-group">
 										<label for="cc-name" class="control-label">Name
@@ -251,13 +186,6 @@
 									<input type = "hidden" name = "legNo" value =  "<%= resultSet.getLeg().getLegNo() %>"/>
 									<input type = "hidden" name ="userID" value = "<%= loginedUserID %>"/>
 									<input type = "hidden" name = "totalFare" value = "<%=resultSet.getFare().getFare() %>"/>
-									<!-- back -->
-									<input type = "hidden" name ="airlineID2" value="<%= resultSetBack.getLeg().getAirlineID() %>"/>
-									<input type = "hidden" name = "flightNo2" value =  "<%= resultSetBack.getLeg().getFlightNo() %>"/>
-									<input type = "hidden" name = "legNo2" value =  "<%= resultSetBack.getLeg().getLegNo() %>"/>
-									<input type = "hidden" name = "totalFare2" value = "<%=resultSetBack.getFare().getFare() %>"/>
-									
-									
 									
 									<div>
 										<i class="fa fa-lock fa-lg">
@@ -273,9 +201,9 @@
 						</div>
 					</div>
 				</div>
-			</div>
 			
-		
+				
+		</div>
 	</div>
 
 	<!-- Bootstrap core JavaScript

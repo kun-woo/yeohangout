@@ -9,6 +9,7 @@
 	
 	<%
 		UserAccount loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
+		session.setAttribute("suggested", 0);
 		
 	%>
 	

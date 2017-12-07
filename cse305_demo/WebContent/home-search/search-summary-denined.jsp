@@ -51,7 +51,7 @@
 		<br>
 		<h2>Wanna <b>try</b> again?</h2>
 		<br>
-		<a href="#" class="btn btn-success btn-md">Go back..</a>
+		<a href="../index.jsp#search" class="btn btn-success btn-md">Go back..</a>
 	</div>
 </body>
 </html>

@@ -19,6 +19,12 @@ You have to come up with a certain heuristic based on customer's past reservatio
 
 <%
 		UserAccount loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
+		/* int a = (int) session.getAttribute("suggested");
+		String style = "hidden";
+		if (a == 1) {
+			style ="visible";
+		} */
+			
 %>
 					
 
@@ -39,7 +45,7 @@ You have to come up with a certain heuristic based on customer's past reservatio
 					<h1> Flight Suggestion for <%=loginedUser.getUserID()%></h1>
 					
 					<h2> SUGGESTED LEG BASED ON YOUR ARRIVAL DATA</h2>
-					<table class="table">
+					<table class="table" <%-- style="visibility:<%= style %>;" --%>  >
 						<thead>
 							<tr>
 								<td>Airline ID</td>

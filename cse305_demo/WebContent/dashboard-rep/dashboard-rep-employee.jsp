@@ -1,3 +1,5 @@
+<%@page import="yeohangout.javabeans.EmployeeJude"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,23 +42,24 @@
 			</div>
 		</div>
 	</nav>
+	<%ArrayList<EmployeeJude> emplArr = (ArrayList<EmployeeJude>) session.getAttribute("emplArr"); %>
 	
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
+					<li><a href="../dashboard-rep/dashboard-rep-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-rep-reservation">Record Reservation </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li><a href="../view-customer-rep">Manage
-							Customer</a></li>
+					<li><a href="#">Manage
+							Customer <span class="sr-only">(current)</span></a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
-					<li><a href="../view-employee-rep">View Employee</a></li>
+					<li class="active"><a href="#">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>
@@ -64,70 +67,50 @@
 			</div>
 			<div
 				class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Financial Performance</h1>
-
-				<div class="row placeholders">
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<div id="test-circle1"></div>
-						<h4>Ticket</h4>
-						<span class="text-muted">Sales</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<div id="test-circle2"></div>
-						<h4>Airline</h4>
-						<span class="text-muted">Sales</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<div id="test-circle3"></div>
-						<h4>Airport</h4>
-						<span class="text-muted">Sales</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<div id="test-circle4"></div>
-						<h4>Other</h4>
-						<span class="text-muted">Sales</span>
-					</div>
+				<h1 class="page-header">View Employee</h1>
+				<div>
+					<!-- For Padding -->
+					<br>
 				</div>
-
-					<h2 class="sub-header">Usages</h2>
-					<div class="row">
-						<div class="col-xs-12 col-sm-6">
-							<canvas id="myChart" width="400" height="400"></canvas>
-						</div>
-						<div class="col-xs-12 col-sm-6">
-							<canvas id="mySChart" width="400" height="400"></canvas>
-						</div>
-					</div>
-					
-					<h2 class="sub-header">Activities</h2>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table id="test-table1" class="table table-striped">
 						<thead>
 							<tr>
-								<th>Date</th>
-								<th>ID</th>
+								<th>SSN</th>
 								<th>Name</th>
-								<th>Department</th>
-								<th>Logged at</th>
+								<th>isManager</th>
+								<th>Start Date</th>
 							</tr>
 						</thead>
 						<tbody>
+						<% 
+						ArrayList<Integer> ssnArray = new ArrayList<Integer>();
+						
+						for (int i=0; i<emplArr.size(); i++) { 
+							String fn = emplArr.get(i).getFirstName();
+							String ln = emplArr.get(i).getLastName();
+							String full = fn + " " + ln;
+							ssnArray.add(emplArr.get(i).getSSN());
+							
+							
+ 						%>
 							<tr>
-								<td>2017-11-30</td>
-								<td>1</td>
-								<td>Jude Woo</td>
-								<td>R&D</td>
-								<td>05:05:30</td>
+								<td><%= emplArr.get(i).getSSN() %></td>
+								<td><%= full %></td>
+								<td><%= emplArr.get(i).isManager() %></td>
+								<td><%= emplArr.get(i).getStartDate() %></td>
 							</tr>
+							<%
+							}
+						
+
+							%>
 						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-		
-	
-	
 	
 	<!-- Bootstrap core JavaScript
     ================================================== -->
@@ -139,8 +122,6 @@
 	<script src="../assets/js/dashboard.js"></script>
 	<!-- Dashboard JS -->
 	<script type="text/javascript" src="../assets/js/datatables.min.js"></script>
-	<script src="../assets/js/jquery.circliful.min.js"></script> <!-- Circliful JS -->
-	<script src="../assets/js/Chart.bundle.min.js"></script> <!-- Chart JS -->
 
 </body>
 </html>

@@ -129,11 +129,10 @@
 					<li><a href="dashboard-manager-overview.jsp">Overview </a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Manage
-							Employee <span class="sr-only">(current)</span>
-					<li><a href="../view-customer">Manage
-							Customer</a></li>
+					<li class="active"><a href="#">Manage Employee <span
+							class="sr-only">(current)</span>
 					</a></li>
+					<li><a href="../view-customer">Manage Customer</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-sales-report">View Sales Report</a></li>

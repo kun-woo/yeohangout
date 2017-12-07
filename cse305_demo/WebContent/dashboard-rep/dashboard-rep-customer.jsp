@@ -123,7 +123,7 @@
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../view-mail-list">View Customer Mailing List</a></li>
-					<li><a href="../view-employee">View Employee</a></li>
+					<li><a href="../view-employee-rep">View Employee</a></li>
 				</ul>
 				<ul class="nav nav-sidebar">
 					<li><a href="../get-flight-suggest">Flight Suggest To Customer</a></li>

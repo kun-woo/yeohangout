@@ -11,7 +11,7 @@
 					
 					<div class="col-sm-6 col-xs-12 text-left">
 									
-						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb"/>
+						<input type="radio" name="type_btn"  value = "one-way" class="btn btn-default btn-md" id="one_way_rb" checked/>
 							<label for="one_way_rb">One-Way</label>
 						<input type="radio" name="type_btn" value = "round-trip" class="btn btn-default btn-md active" id="round_trip_rb"/>
 							<label for="round_trip_rb"> Round-Trip  </label>

@@ -126,6 +126,7 @@
 									</span>
 								</div>
 							</div>
+							
 							<input type="submit" name = "submitBt" value = "Sign Up" class="btn btn-block sign-up-button"/>
 							
 						</form>

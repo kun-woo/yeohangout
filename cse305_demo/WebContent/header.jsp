@@ -50,27 +50,26 @@
 					if(MyUtils.getSession()==null){
 				%>
 					<li><a data-toggle="modal" data-target="#mySignUp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        				<li><a data-toggle="modal" data-target="#myLogIn" ><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        			<li><a data-toggle="modal" data-target="#myLogIn" ><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
         			
 				<%
 					} else if(MyUtils.getUserType() == 0){ 
 				%>	
 
-        				<li><a data-toggle="modal" href="dashboard-customer/customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
-        				<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
-        			<%
-        				} else if(MyUtils.getUserType()==1){
-        					
-        			%>
-        				<li><a data-toggle="modal" href="dashboard-rep/dashboard-rep-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
-					<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
-        			 
+       				<li><a data-toggle="modal" href="dashboard-customer/customer_mypage.jsp"><span class="glyphicon glyphicon-th-list"></span> My Page</a></li>
+       				<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+       			<%
+        			} else if(MyUtils.getUserType()==1){
         				
-        			<%
+        		%>
+        			<li><a data-toggle="modal" href="dashboard-rep/dashboard-rep-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+					<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+        				
+        		<%
 					} else if(MyUtils.getUserType()==2){
 				%>
-			<li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
-        				<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
+					<li><a data-toggle="modal" href="dashboard-manager/dashboard-manager-overview.jsp"><span class="glyphicon glyphicon-th-list"></span>Manage</a></li>
+        			<li><a data-toggle="mdoal" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-th-list"></span>Log Out</a>
 				<%
 					}
 				%>

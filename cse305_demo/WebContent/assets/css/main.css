@@ -261,6 +261,7 @@ body {
 .navbar-nav li a:hover {
     color: #0f49c6 !important;
     background-color: #fff !important;
+    cursor: "pointer";
 }
 
 /* The active link */

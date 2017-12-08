@@ -18,6 +18,7 @@
 <script src="assets/js/bootstrap.js"></script> <!-- Boostrap JS -->
 <script src="assets/js/moment.js"></script> <!-- Moment JS -->
 <script src="assets/js/bootstrap-datetimepicker.js"></script> <!-- Boostrap DTP JS -->
+<script src="assets/js/validator.min.js"></script> <!-- Boostrap DTP JS -->
 
 <script src="assets/js/main.js"></script>
 

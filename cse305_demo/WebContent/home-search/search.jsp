@@ -39,7 +39,7 @@
 		<div class="row text-center slideanim">
 			<div class="col-sm-12 search-form">
 				<br>
-				<form class="form" action="searchOneway" method="POST">	
+				<form role="form" data-toggle="validator" action="searchOneway" method="POST">	
 					
 					<div class="col-sm-6 col-xs-12 text-left">
 									

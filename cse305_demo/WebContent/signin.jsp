@@ -10,7 +10,7 @@
 					<h4> Yeo Hang Out </h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="login" method="POST">
+					<form role="form" data-toggle="validator" action="login" method="POST">
 						<div class="form-group">
 							<div class="input-group">
 								<input type="text" class="form-control" id="id" name = "userID"

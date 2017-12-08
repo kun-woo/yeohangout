@@ -21,7 +21,7 @@
 					<%
 						 int edited_ssn =  edited_emp_ssn_arr.get(edited_emp_index); 
 					%>
-					<form action="../edit-employee" role="form" class="form-horizontal" method="post">
+					<form action="../edit-employee" role="form" data-toggle="validator" class="form-horizontal" method="post">
 						
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">First

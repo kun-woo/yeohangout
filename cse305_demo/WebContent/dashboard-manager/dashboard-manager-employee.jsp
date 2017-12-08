@@ -54,7 +54,7 @@
 					<h4>Add Employee</h4>
 				</div>
 				<div class="modal-body">
-					<form role="form" action="../add-employee" class="form-horizontal" method="post">
+					<form role="form" data-toggle="validator" action="../add-employee" class="form-horizontal" method="post">
 						<div class="form-group">
 							<label class="control-label col-sm-4" for="text">First
 								Name:</label>
@@ -242,6 +242,8 @@
 	<script src="${pageContext.request.contextPath}/assets/js/dashboard.js"></script>
 	<!-- Dashboard JS -->
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/datatables.min.js"></script>
+	<script src="${pageContext.request.contextPath}assets/js/validator.min.js"></script> <!-- Boostrap DTP JS -->
+	
 
 </body>
 </html>

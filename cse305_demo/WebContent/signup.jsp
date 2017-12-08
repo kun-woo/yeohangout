@@ -35,7 +35,7 @@
 						<h4> Yeo Hang Out </h4>
 					</div>
 					<div class="modal-body">
-						<form name="signupForm" onsubmit = "return checkPassword()"  action="signup" method="POST" >
+						<form role="form" data-toggle="validator" name="signupForm" onsubmit = "return checkPassword()"  action="signup" method="POST" >
 							<div class="form-group">
 								<div class="input-group">
 									<input type="text" class="form-control" id="id"

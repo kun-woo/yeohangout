@@ -71,22 +71,24 @@
 				
 				if(SingletonForMulticity.getCount()==0){
 					if(SingletonForMulticity.getSecondLegs().size()>0){
-						SingletonForMulticity.increaseCount();
 						SingletonForMulticity.setValid(true);
 					}else{
 						SingletonForMulticity.setValid(false);
 					}
 				}else if(SingletonForMulticity.getCount()==1){
 					if(SingletonForMulticity.getThirdLegs().size()>0){
-						SingletonForMulticity.increaseCount();
 						SingletonForMulticity.setValid(true);
 					}else{
 						SingletonForMulticity.setValid(false);
 					}
 				}else{
-					SingletonForMulticity.increaseCount();
-					
 					SingletonForMulticity.setValid(false);
+				}
+				
+				UserAccount loginedUser = null;
+				
+				if(MyUtils.getUserType()==0){
+					loginedUser = MyUtils.getLoginedUser(MyUtils.getSession());
 				}
 			%>
 			
@@ -152,6 +154,14 @@
 						<input type="hidden" name="airlineID" class="form-control" value = "<%= result.getLeg().getAirlineID() %>">
 						<input type="hidden" name="flightNO" class="form-control" value = "<%= result.getLeg().getFlightNo() %>">
 						<input type="hidden" name="legNO" class="form-control" value = "<%= result.getLeg().getLegNo() %>">
+						
+						<%
+							if(loginedUser!=null){
+						%>
+						<input type ="hidden" name ="loginedUser" value = "<%= loginedUser.getUserID() %>">
+						<%} else{ %>
+						<input type ="hidden" name ="loginedUser" value = "noUser">
+						<%} %>
 						
 						
 						<div class="col-xs-12 col-sm-2 col-md-2">

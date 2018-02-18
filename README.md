@@ -10,22 +10,18 @@ Fri Feb 18 22:18:39 UTC 2018 - Deployed on AWS
 GUIDELINE
 ================================================================================
 1. Log in to Customer (Id: wg Pw: 2) 
-2. <br />
-Sample Search Query:<br />
-Flying Type: One-way<br />
-Cabin Class: Economy<br />
-Flying From: Los Angeles, United States of America<br />
-Flying To: New York, United States of America<br />
-Departing Time: 2011-01-03<br />
-Passengers: 1<br />
-Purchasing Type: Normal<br />
+2. Sample Search Query:
+  * Flying Type: One-way
+  * Cabin Class: Economy
+  * Flying From: Los Angeles, United States of America
+  * Flying To: New York, United States of America
+  * Departing Time: 2011-01-03
+  * Passengers: 1
+  * Purchasing Type: Normal
 3. No Payment Required
 4. Check the booked ticket on my iternary
-5.Don't forget to log out
-6.
-<br />Sample Employee:<br />
-Id: Jw1<br />
-Pw: Jw2<br />
-Sample Manager:<br />
-Id: woo<br />
-Pw: woo<br />
+5. Don't forget to log out
+6. Sample Employee:
+  * Id: Jw1 Pw: Jw2
+7. Sample Manager:
+  * Id: woo Pw: woo

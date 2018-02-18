@@ -1,25 +1,35 @@
 # yeohangout
 CSE 305 Database Project
 
+# URL
+http://yeohangout-env.us-east-2.elasticbeanstalk.com/
+
 # Notice
-- Updated JDBC Driver in lib folder (2017-11-11 16:13:42)
-- ~~Updated UI (demo5.jsp) in WebContent folder (2017-11-25 11:38:30)~~
-- Updated index.jsp in WebContent folder (2017-11-26 00:30:20)
+Fri Feb 18 22:18:39 UTC 2018 - Deployed on AWS 
 
 GUIDELINE
 ================================================================================
-1. Pull latest changes from 'master'
-2. Create & switch to 'New Branch'
-3. Let others know you are going to commit
-4. Commit & push local changes to 'New Branch'
-5. Click 'Pull requests' then 'merge' 'New Branch' to 'master'
-6. Confirm 'Pull requests'
-
-SIGNED
-================================================================================
-Wed Aug 23 04:28:39 UTC 2017 - Jude Hokyoon Woo
-
-Wed Aug 23 06:38:28 UTC 2017 - Jayson DeMarchi
-
-Wed Aug 23 06:42:39 UTC 2017 - Wongeun Cho
-
+1. 
+Log in to Customer (Id: wg Pw: 2) 
+2. 
+Sample Search Query:
+Flying Type: One-way
+Cabin Class: Economy
+Flying From: Los Angeles, United States of America
+Flying To: New York, United States of America
+Departing Time: 2011-01-03
+Passengers: 1
+Purchasing Type: Normal
+3. 
+No Payment Required
+4. 
+Check the booked ticket on my iternary
+5.
+Don't forget to log out
+6.
+Sample Employee:
+Id: Jw1
+Pw: Jw2
+Sample Manager:
+Id: woo
+Pw: woo 
